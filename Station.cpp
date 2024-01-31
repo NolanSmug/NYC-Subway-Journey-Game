@@ -6,12 +6,24 @@
 
 using namespace std;
 
-Station::Station() : name(), transfers() {}
+Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
 
-Station::Station(string name, vector<string> transfers):
+Station::Station(string id, string name, vector<string> transfers, Borough borough) :
+        id(id),
         name(name),
-        transfers(transfers) {}
+        transfers(transfers),
+        borough(borough) {}
 
+// ID
+string Station::getId() {
+    return id;
+}
+
+void Station::setId(const string& newId) {
+    id = newId;
+}
+
+// Name
 string Station::getName() {
     return name;
 }
@@ -20,6 +32,7 @@ void Station::setName(const string& newName) {
     name = newName;
 }
 
+// Transfers
 vector<string> Station::getTransfers() {
     return transfers;
 }
@@ -27,3 +40,13 @@ vector<string> Station::getTransfers() {
 void Station::addTransfers(const string& newTransfer) {
     transfers.push_back(newTransfer);
 }
+
+// Borough
+Borough Station::getBorough() {
+    return borough;
+}
+
+void Station::setBorough(Borough newBorough) {
+    borough = newBorough;
+}
+

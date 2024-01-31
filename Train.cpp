@@ -8,7 +8,7 @@ using namespace std;
 
 Train::Train() : lineName(), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
 
-Train::Train(string lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars):
+Train::Train(string lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
         lineName(lineName),
         direction(direction),
         scheduledStops(scheduledStops),
