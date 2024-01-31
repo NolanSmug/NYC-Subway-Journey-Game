@@ -1,9 +1,10 @@
 #include <iostream>
 #include "Train.h"
+#include "Station.h"
 
 using namespace std;
 
-const vector<std::string> ONE_TRAIN_STOPS = {
+const vector<string> ONE_TRAIN_STOPS = {
         "South Ferry",
         "Rector St",
         "Cortlandt St",
@@ -47,5 +48,8 @@ const vector<std::string> ONE_TRAIN_STOPS = {
 
 
 int main() {
-    Train oneLine = Train("One Train", ONE_TRAIN_STOPS, false, 10);
-}
+    Station rector = Station("Rector St.", {"1"});
+    vector<Station> oneTrainStations;
+    oneTrainStations.push_back(rector);
+
+    Train oneLine = Train("1 Train", Train::BRONXBOUND, oneTrainStations, false, 10);}

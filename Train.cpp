@@ -6,27 +6,43 @@
 
 using namespace std;
 
-Train::Train() : express(false), numCars(10) {}
+Train::Train() : lineName(), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
 
-Train::Train(string lineName, vector<string> scheduledStops, bool express, int numCars)
-        : lineName(lineName), scheduledStops(scheduledStops), express(express), numCars(numCars) {}
+Train::Train(string lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars):
+        lineName(lineName),
+        direction(direction),
+        scheduledStops(scheduledStops),
+        express(express),
+        numCars(numCars) {}
 
-string Train::getLineName() const {
+// Name
+string Train::getName() const {
     return lineName;
 }
 
-void Train::setLineName(const string& newLineName) {
-    lineName = newLineName;
+void Train::setName(const string& newName) {
+    lineName = newName;
 }
 
-vector<string> Train::getScheduledStops() const {
+// Direction
+Train::Direction Train::getDirection() {
+    return direction;
+}
+
+void Train::setDirection(const Train::Direction& newDirection) {
+    direction = newDirection;
+}
+
+// Scheduled Stops
+vector<Station> Train::getScheduledStops() const {
     return scheduledStops;
 }
 
-void Train::addScheduledStops(const string& newStop) {
+void Train::addScheduledStops(const Station& newStop) {
     scheduledStops.push_back(newStop);
 }
 
+// Express
 bool Train::isExpress() const {
     return express;
 }
@@ -35,6 +51,7 @@ void Train::setExpress(bool isExpress) {
     express = isExpress;
 }
 
+// Number of Cars
 int Train::getNumCars() const {
     return numCars;
 }
