@@ -38,8 +38,10 @@ public:
     vector<string> getTransfers();
     void addTransfers(const string& newTransfer);
 
-    Borough getBorough();  // Getter for borough
-    void setBorough(Borough newBorough);  // Setter for borough
+    Borough getBorough();
+    void setBorough(Borough newBorough);
+
+//    vector<Station> createStations(const vector<string> stationData);
 };
 
 #endif //M1OEP_NCYR1_STATION_H

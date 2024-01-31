@@ -3,6 +3,7 @@
 //
 
 #include "Station.h"
+#include "sstream"
 
 using namespace std;
 
@@ -49,4 +50,3 @@ Borough Station::getBorough() {
 void Station::setBorough(Borough newBorough) {
     borough = newBorough;
 }
-
