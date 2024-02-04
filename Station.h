@@ -18,6 +18,8 @@ enum Borough {
     STATEN_ISLAND
 };
 
+static const char * EnumStrings[] = { "Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island" };
+
 class Station {
 private:
     string id;
@@ -29,19 +31,21 @@ public:
     Station();
     Station(string id, string name, vector<string> transfers = {}, Borough borough = MANHATTAN);
 
+    friend ostream& operator<<(ostream& str, Station station);
+
     string getId();
-    void setId(const string& newId);
+    void setId(string newId);
 
     string getName();
-    void setName(const string& newName);
+    void setName(string newName);
 
     vector<string> getTransfers();
-    void addTransfers(const string& newTransfer);
+    void addTransfers(string newTransfer);
 
     Borough getBorough();
     void setBorough(Borough newBorough);
 
-//    vector<Station> createStations(const vector<string> stationData);
+    const char * getTextForEnum(int enumVal);
 };
 
 #endif //M1OEP_NCYR1_STATION_H

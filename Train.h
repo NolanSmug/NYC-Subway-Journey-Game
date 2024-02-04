@@ -18,25 +18,33 @@ public:
     Train();
     Train(string lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars);
 
-    string getName() const;
-    void setName(const string& newName);
+    string getName();
+    void setName(string newName);
 
     Direction getDirection();
-    void setDirection(const Direction& newDirection);
+    void setDirection(Direction newDirection);
 
-    vector<Station> getScheduledStops() const;
-    void addScheduledStops(const Station& newStop);
+    vector<Station> getScheduledStops();
+    void addScheduledStop(Station newStop);
 
-    bool isExpress() const;
+    Station getCurrentStation();
+    int getCurrentStationIndex();
+    void setCurrentStation(int stationIndex);
+    Station getNextStation();
+    bool advanceStation();
+    bool advanceStation(int numStations);
+
+    bool isExpress();
     void setExpress(bool isExpress);
 
-    int getNumCars() const;
+    int getNumCars();
     void setNumCars(int newNumCars);
 
 private:
     string lineName;
     Direction direction;
     vector<Station> scheduledStops;
+    int currentStationIndex = 0;
     bool express;
     int numCars;
 };

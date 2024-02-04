@@ -4,9 +4,12 @@
 
 #include "Station.h"
 #include "sstream"
+#include <fstream>
+using std::ifstream, std::string, std::vector;
 
 using namespace std;
 
+// Constructors
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
 
 Station::Station(string id, string name, vector<string> transfers, Borough borough) :
@@ -15,12 +18,27 @@ Station::Station(string id, string name, vector<string> transfers, Borough borou
         transfers(transfers),
         borough(borough) {}
 
+// overloaded cout operator
+ostream& operator<<(ostream& str, Station station) {
+    str << "Name: " << station.getName() << endl;
+//    str << "ID: " << station.getId() << endl;
+    str << "Transfer Available to the: ";
+    for (string line : station.getTransfers()) {
+        str << line << (station.getTransfers().size() == 1 ? "" : ", ");
+    }
+    str << endl;
+    str << "Borough: " << station.getTextForEnum(station.getBorough()) << endl;
+    str << "\n";
+
+    return str;
+}
+
 // ID
 string Station::getId() {
     return id;
 }
 
-void Station::setId(const string& newId) {
+void Station::setId(string newId) {
     id = newId;
 }
 
@@ -29,7 +47,7 @@ string Station::getName() {
     return name;
 }
 
-void Station::setName(const string& newName) {
+void Station::setName(string newName) {
     name = newName;
 }
 
@@ -38,7 +56,7 @@ vector<string> Station::getTransfers() {
     return transfers;
 }
 
-void Station::addTransfers(const string& newTransfer) {
+void Station::addTransfers(string newTransfer) {
     transfers.push_back(newTransfer);
 }
 
@@ -47,6 +65,10 @@ Borough Station::getBorough() {
     return borough;
 }
 
-void Station::setBorough(Borough newBorough) {
-    borough = newBorough;
+void Station::setBorough(Borough newborough) {
+    borough = newborough;
+}
+
+const char * Station::getTextForEnum(int enumVal) {
+    return EnumStrings[enumVal];
 }
