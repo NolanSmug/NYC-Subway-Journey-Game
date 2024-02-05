@@ -19,11 +19,11 @@ The `1 Train` has 39 stations.
 
 **Classes:**
 
-| Name          | Private Variables                                                                             | Description                                                                                                                                                                              |
-|---------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name          | Private Variables                                                                            | Description                                                                                                                                                                              |
+|---------------|----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Train**     | `lineName`, `direction (enum)`, `scheduledStops`, `currentStationIndex`, `express`, `numCars` | Manages a `Train` Object and its scheduled stops, and methods to advance through `Stations`. Includes an `enum Direction`, and the overloaded method `bool advanceStation()`.            |
-| **Station**   | `id`, `name`, `transfers`, `borough (enum)`                                                   | Manages a `Station` Object that holds variables corresponding to strings in a `csv` file. Includes an `enum Borough`, a `getTextForEnum` method, and an overloaded `<<` (cout) operator. |
-| **SubwayMap** | `allStations<Stations>`                                                                       | Reads a `.csv` file and inserts `stop_id`, `stop_name`, `transfers`, `borough` strings into a vector of `Station` Objects.                                                               |
+| **Station**   | `id`, `name`, `transfers`, `borough (enum)`                                                  | Manages a `Station` Object that holds variables corresponding to strings in a `csv` file. Includes an `enum Borough`, a `getTextForEnum` method, and an overloaded `<<` (cout) operator. |
+| **SubwayMap** | `allStations<Station>`                                                                       | Reads a `.csv` file and inserts `stop_id`, `stop_name`, `transfers`, `borough` strings into a vector of `Station` Objects.                                                               |
 
 **Main:**
 
