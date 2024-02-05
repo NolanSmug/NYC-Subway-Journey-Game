@@ -8,6 +8,7 @@ using namespace std;
 
 Train::Direction get_direction_from_user();
 Station advance_station_from_user(Train &train);
+void print_all_stations(vector<Station> stations);
 
 int main() {
     SubwayMap subwayMap = SubwayMap();
@@ -17,25 +18,31 @@ int main() {
     // set up starting and ending stations
     srand(time(0)); // random number seed based on current time
     int numStations = stations.size();
-    int startingStation = 0;//rand() % numStations;
+    int startingStation = rand() % numStations;
     int destinationStation = startingStation;
-    while (destinationStation == startingStation && abs(startingStation - destinationStation) <= 5) {
+    // make sure destination station is at least 4 stops away (can't be too easy)
+    while (destinationStation == startingStation && abs(startingStation - destinationStation) <= 4) {
         destinationStation = rand() % numStations;
     }
 
-    // start game
+    // START GAME
     Train oneLine = Train("1 Train", Train::BRONXBOUND, stations, false, 10);
     oneLine.setCurrentStation(startingStation);
+    print_all_stations(stations);
     cout << "Your current Station:\n" << oneLine.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
 
     oneLine.setDirection(get_direction_from_user()); // ask user for a direction they want to start going
+
+    // game loop
     while (oneLine.getCurrentStation().getName() != stations[destinationStation].getName()) {
         cout << advance_station_from_user(oneLine); // ask user how many stations they'd like to advance and advance
 
+        // check to see if user passed the destination station, in which case they lose the game (for now)
         if (oneLine.getDirection() == Train::MANHATTANBOUND && oneLine.getCurrentStationIndex() < destinationStation) {
             break;
-        } else if (oneLine.getDirection() == Train::BRONXBOUND && oneLine.getCurrentStationIndex() > destinationStation) {
+        }
+        else if (oneLine.getDirection() == Train::BRONXBOUND && oneLine.getCurrentStationIndex() > destinationStation) {
             break;
         }
     }
@@ -70,7 +77,7 @@ Train::Direction get_direction_from_user() {
         }
     }
 
-    return input == "d" ? Train::Direction::MANHATTANBOUND : Train::Direction::BRONXBOUND;
+    return tolower(input[0]) == 'd' ? Train::Direction::MANHATTANBOUND : Train::Direction::BRONXBOUND;
 }
 
 Station advance_station_from_user(Train &train) {
@@ -106,5 +113,17 @@ Station advance_station_from_user(Train &train) {
 
     cout << "\nCurrent Station:\n";
     return train.getCurrentStation();
+}
+
+void print_all_stations(vector<Station> stations) {
+    for (Station station : stations) {
+        if (station.getId() == "101") { // if printing last stop
+            cout << station.getName() << endl;
+        }
+        else {
+            cout << station.getName() << "\n   |\n";
+        }
+    }
+    cout << "---------------------------------\n" << endl;
 }
 

@@ -64,9 +64,14 @@ bool Train::advanceStation() {
     bool valid = currentStationIndex < scheduledStops.size();
 
     if (direction == BRONXBOUND) {
+
         currentStationIndex += (valid ? 1 : 0);
-    } else if (direction == MANHATTANBOUND) {
+    }
+    else if (direction == MANHATTANBOUND) {
         currentStationIndex -= (valid ? 1 : 0);
+    }
+    else {
+        valid = false;
     }
     setCurrentStation(currentStationIndex);
 

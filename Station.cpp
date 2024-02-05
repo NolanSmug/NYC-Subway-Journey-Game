@@ -21,7 +21,7 @@ Station::Station(string id, string name, vector<string> transfers, Borough borou
 // overloaded cout operator
 ostream& operator<<(ostream& str, Station station) {
     str << "Name: " << station.getName() << endl;
-//    str << "ID: " << station.getId() << endl;
+//    str << "ID: " << station.getId() << endl; // should I bother printing the ID?
     str << "Transfer Available to the: ";
     for (string line : station.getTransfers()) {
         str << line << (station.getTransfers().size() == 1 ? "" : ", ");
