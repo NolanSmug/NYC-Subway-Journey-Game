@@ -48,7 +48,7 @@ It will be interesting to see the game played out when I add the ability to tran
 ## Video Demonstration ##
 
 **[YouTube Link](https://www.youtube.com/watch?v=8oJfOjqpsMM)**
-> **Note:** I set hard coded values to make the demonstration as simple and understandable as possible. In the provided code, the two `Stations` are chosen at random.
+> **Note:** I set hard coded values to make the demonstration as simple and understandable as possible. In the provided code, the two `Station` Objects are chosen at random.
 
 
 ## Grade ##
