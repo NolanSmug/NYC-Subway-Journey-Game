@@ -69,6 +69,8 @@ void Station::setBorough(Borough newborough) {
     borough = newborough;
 }
 
+// pattern for enum toString() found on StackOverflow
+// https://stackoverflow.com/a/6281535
 const char * Station::getTextForEnum(int enumVal) {
     return EnumStrings[enumVal];
 }
