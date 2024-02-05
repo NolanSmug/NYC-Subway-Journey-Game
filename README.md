@@ -1,5 +1,5 @@
 # Nolan Cyr
-## CS 2300 Module 1 Open-Ended Project – Subway Navigator: NYC Edition
+## CS 2300 Module 1 Open-Ended Project – Subway Shuffle: A Randomized NYC Journey
 
 ## Summary of Program
 This is a game where a player is placed into a random NYC subway station,
@@ -8,14 +8,14 @@ and the objective is to reach another random station.
 Upon starting the game, the player is given their current station, and the `destination station`.
 With this information, the player is given a choice between traveling on the uptown, or downtown tracks.
 Next, the player is asked how many stations they would like to advance,
-and after a valid input is given the station they are now at.
+and after a valid input is given, the station they are now at.
 
 This process is repeated until either:
 1. The player reaches the `destination station`, to which they win the game!
 2. The player accidentally passes the `destination station`, to which they lose.
 
 Currently, I only have complete support on the `1 Train`, and plan to add the rest of the system in future modules.
-The `1 Train` has 39 stations.
+The `1 Train` has 39 stations. [Link to CSV](/Users/nolancyr/Desktop/CS 2300/Module 1/M1OEP-ncyr1/csv/one_line_stations.csv).
 
 **Classes:**
 
@@ -42,6 +42,7 @@ Notice that each `Station` also has a list of transfers to other train lines tha
 meaning this file holds data for a **graph of the NYC Subway System**.
 
 I realized this thanks to CS 2250 Computability & Complexity, which taught me how graphs are two-tuple data structures.
+[All Stations CSV](/Users/nolancyr/Desktop/CS 2300/Module 1/M1OEP-ncyr1/csv/nyc_stations.csv).
 
 It will be interesting to see the game played out when I add the ability to transfer to other train lines at each station.
 
