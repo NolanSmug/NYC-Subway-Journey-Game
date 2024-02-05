@@ -1,5 +1,5 @@
 # Nolan Cyr
-## CS 2300 Module 1 Open-Ended Project  – NYC Subway Travel
+## CS 2300 Module 1 Open-Ended Project – Subway Navigator: NYC Edition
 
 ## Summary of Program
 This is a game where a player is placed into a random NYC subway station,
