@@ -52,7 +52,7 @@ the game played out when I add the ability to transfer to other train lines at e
 ## Grade ##
 
 Although I have not put my documentation in my classes,
-at my 2023 Summer internship they had me document my code on a separate webpage _Confluence_(similar to Markdown format).
+at my 2023 Summer internship they had me document my code on a separate webpage _Confluence_ (similar to Markdown format).
 I decided to do a similar thing in my README above, as I feel like the separation makes the code less cluttered and more readable.
 - Main Program Complexity (40)
 - 3 Classes (60)
