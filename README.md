@@ -1,7 +1,5 @@
-• Your README.md file should include:
 # Nolan Cyr
 ## CS 2300 Module 1 Open-Ended Project  – NYC Subway Travel
-
 
 ## Summary of Program
 This is a game where a player is placed into a random NYC subway station,
