@@ -19,11 +19,11 @@ The `1 Train` has 39 stations.
 
 **Classes:**
 
-| Name          | Private Variables                                                                      | Description                                                                                                                                                                   |
-|---------------|----------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Train**     | `lineName`, `direction`, `scheduledStops`, `currentStationIndex`, `express`, `numCars` | Manages a `Train` Object and its scheduled stops, and methods to advance through `Stations`. Includes an `enum Direction`, and the overloaded method `bool advanceStation()`. |
-| **Station**   | `id`, `name`, `transfers`, `borough`                                                   | Manages a `Station` Object that holds variables corresponding to strings in a `csv` file. Includes an `enum Borough` an an `getTextForEnum` method.                           |
-| **SubwayMap** | `allStations`                                                                          | Reads a `.csv` file and inserts `stop_id`, `stop_name`, `transfers`, `borough` strings into a vector of `Station` Objects.                                                    |
+| Name          | Private Variables                                                                      | Description                                                                                                                                                                              |
+|---------------|----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Train**     | `lineName`, `direction`, `scheduledStops`, `currentStationIndex`, `express`, `numCars` | Manages a `Train` Object and its scheduled stops, and methods to advance through `Stations`. Includes an `enum Direction`, and the overloaded method `bool advanceStation()`.            |
+| **Station**   | `id`, `name`, `transfers`, `borough`                                                   | Manages a `Station` Object that holds variables corresponding to strings in a `csv` file. Includes an `enum Borough`, a `getTextForEnum` method, and an overloaded `<<` (cout) operator. |
+| **SubwayMap** | `allStations`                                                                          | Reads a `.csv` file and inserts `stop_id`, `stop_name`, `transfers`, `borough` strings into a vector of `Station` Objects.                                                               |
 
 **Main:**
 
@@ -47,18 +47,18 @@ It will be interesting to see the game played out when I add the ability to tran
 
 ## Video Demonstration ##
 
-**[Youtube Link](https://www.youtube.com/watch?v=8oJfOjqpsMM)**
+**[YouTube Link](https://www.youtube.com/watch?v=8oJfOjqpsMM)**
 > **Note:** I set hard coded values to make the demonstration as simple and understandable as possible. In the provided code, the two `Stations` are chosen at random.
 
 
 ## Grade ##
 
-Although I have not put my documentation in my classes,
-at my 2023 Summer internship they had me document my code on a separate webpage _Confluence_ (similar to Markdown format).
+At my Summer internship, they had me document my code on a separate webpage _Confluence_ (similar to Markdown format).
 I decided to do a similar thing in my README above, as I feel like the separation makes the code less cluttered and more readable.
 - Main Program Complexity (40)
 - 3 Classes (60)
 - 2 Enumerated Types (10)
 - 1 Overloaded Operator (5)
+- 1 Overloaded Method (5)
 
 Therefore, my proposed grade for this Project is: **100**

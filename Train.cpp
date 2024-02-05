@@ -55,7 +55,8 @@ void Train::setCurrentStation(int stationIndex) {
 }
 
 Station Train::getNextStation() {
-    int increment = (direction == BRONXBOUND ? 1 : -1);
+    int increment = (direction == BRONXBOUND ? 1 : -1); // choose if we want
+                                                        // to add or subtract to the index based on direction
 
     return scheduledStops[currentStationIndex == scheduledStops.size() - increment ? currentStationIndex : currentStationIndex + 1];
 }
@@ -64,14 +65,13 @@ bool Train::advanceStation() {
     bool valid = currentStationIndex < scheduledStops.size();
 
     if (direction == BRONXBOUND) {
-
-        currentStationIndex += (valid ? 1 : 0);
+        currentStationIndex += (valid ? 1 : 0); // increment if uptown
     }
     else if (direction == MANHATTANBOUND) {
-        currentStationIndex -= (valid ? 1 : 0);
+        currentStationIndex -= (valid ? 1 : 0); // decrement if downtown
     }
     else {
-        valid = false;
+        valid = false; // ensure code doesn't break
     }
     setCurrentStation(currentStationIndex);
 
@@ -80,7 +80,8 @@ bool Train::advanceStation() {
 
 bool Train::advanceStation(int numStations) {
     bool valid;
-
+    // valid flag needs to have a little more checks here for if the user enters an integer outside of the range
+    // (which is also based on the direction of the train
     if (direction == BRONXBOUND) {
         valid = (currentStationIndex + numStations < scheduledStops.size()) && (numStations > 0);
         currentStationIndex += (valid ? numStations : 0);
