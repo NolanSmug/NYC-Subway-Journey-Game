@@ -46,7 +46,7 @@ private:
     vector<Station> scheduledStops;
     int currentStationIndex = 0;
     bool express;
-    int numCars;
+    int numCars; // not sure if this could be useful ever
 };
 
 #endif
