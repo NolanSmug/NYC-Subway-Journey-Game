@@ -39,10 +39,9 @@ the game is very simple assuming you refer to the map or have expert NYC subway 
 However, if you look in the `csv` directory,
 you can see I have a second `.csv` file containing `Station` data for ALL NYC subway stations.
 Notice that each `Station` also has a list of transfers to other train lines that you can reach,
-meaning this file holds data for a **graph of the NYC Subway System**.
+meaning this file holds data for a **graph of the NYC Subway System**. [All Stations CSV](/Users/nolancyr/Desktop/CS 2300/Module 1/M1OEP-ncyr1/csv/nyc_stations.csv).
 
 I realized this thanks to CS 2250 Computability & Complexity, which taught me how graphs are two-tuple data structures.
-[All Stations CSV](/Users/nolancyr/Desktop/CS 2300/Module 1/M1OEP-ncyr1/csv/nyc_stations.csv).
 
 It will be interesting to see the game played out when I add the ability to transfer to other train lines at each station.
 
