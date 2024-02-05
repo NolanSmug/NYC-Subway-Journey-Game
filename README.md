@@ -40,8 +40,10 @@ However, if you look in the `csv` directory,
 you can see I have a second `.csv` file containing `Station` data for ALL NYC subway stations.
 Notice that each `Station` also has a list of transfers to other train lines that you can reach,
 meaning this file holds data for a **graph of the NYC Subway System**.
-It will be interesting to see
-the game played out when I add the ability to transfer to other train lines at each station.
+
+I realized this thanks to CS 2250 Computability & Complexity, which taught me how that graphs are two-tuple.
+
+It will be interesting to see the game played out when I add the ability to transfer to other train lines at each station.
 
 ## Video Demonstration ##
 
