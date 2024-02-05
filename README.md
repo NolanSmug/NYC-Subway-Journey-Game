@@ -55,8 +55,8 @@ It will be interesting to see the game played out when I add the ability to tran
 
 At my Summer internship, they had me document my code on a separate webpage _Confluence_ (similar to Markdown format).
 I decided to do a similar thing in my README above, as I feel like the separation makes the code less cluttered and more readable.
-- Main Program Complexity (40)
 - 3 Classes (60)
+- Main Program Complexity (40)
 - 2 Enumerated Types (10)
 - 1 Overloaded Operator (5)
 - 1 Overloaded Method (5)
