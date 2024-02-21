@@ -19,3 +19,7 @@ build/
 *.vcxproj
 *.vcproj
 *.xcodeproj/
+
+# Ignore specific files
+LastTest.log
+M2OEP-ncyr1.h
