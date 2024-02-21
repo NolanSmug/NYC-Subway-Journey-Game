@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Train::Direction get_direction_from_user();
+Direction get_direction_from_user();
 Station advance_station_from_user(Train &train);
 
 int main() {
@@ -25,7 +25,7 @@ int main() {
     }
 
     // START GAME
-    Train oneLine = Train("1 Train", Train::BRONXBOUND, stations, false, 10);
+    Train oneLine = Train(ONE_TRAIN, BRONXBOUND, stations, false, 10);
     oneLine.setCurrentStation(startingStation);
     cout << "Your current Station:\n" << oneLine.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
@@ -37,10 +37,10 @@ int main() {
         cout << advance_station_from_user(oneLine); // ask user how many stations they'd like to advance and advance
 
         // check to see if user passed the destination station, in which case they lose the game (for now)
-        if (oneLine.getDirection() == Train::MANHATTANBOUND && oneLine.getCurrentStationIndex() < destinationStation) {
+        if (oneLine.getDirection() == MANHATTANBOUND && oneLine.getCurrentStationIndex() < destinationStation) {
             break;
         }
-        else if (oneLine.getDirection() == Train::BRONXBOUND && oneLine.getCurrentStationIndex() > destinationStation) {
+        else if (oneLine.getDirection() == BRONXBOUND && oneLine.getCurrentStationIndex() > destinationStation) {
             break;
         }
     }
@@ -54,7 +54,7 @@ int main() {
 
 }
 
-Train::Direction get_direction_from_user() {
+Direction get_direction_from_user() {
     bool valid = false;
     string input = " ";
 
@@ -75,7 +75,7 @@ Train::Direction get_direction_from_user() {
         }
     }
 
-    return tolower(input[0]) == 'd' ? Train::Direction::MANHATTANBOUND : Train::Direction::BRONXBOUND;
+    return tolower(input[0]) == 'd' ? MANHATTANBOUND : BRONXBOUND;
 }
 
 Station advance_station_from_user(Train &train) {

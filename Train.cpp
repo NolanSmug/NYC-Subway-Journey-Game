@@ -5,9 +5,9 @@
 
 using namespace std;
 
-Train::Train() : lineName(), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
+Train::Train() : lineName(NULL_TRAIN), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
 
-Train::Train(string lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
+Train::Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
         lineName(lineName),
         direction(direction),
         scheduledStops(scheduledStops),
@@ -15,16 +15,16 @@ Train::Train(string lineName, Direction direction, vector<Station> scheduledStop
         numCars(numCars) {}
 
 // Name
-string Train::getName() {
+LineName Train::getName() {
     return lineName;
 }
 
-void Train::setName(string newName) {
-    lineName = newName;
+void Train::setName(LineName newLineName) {
+    lineName = newLineName;
 }
 
 // Direction
-Train::Direction Train::getDirection() {
+Direction Train::getDirection() {
     return direction;
 }
 
@@ -114,4 +114,8 @@ int Train::getNumCars() {
 
 void Train::setNumCars(int newNumCars) {
     numCars = newNumCars;
+}
+
+string Train::getTextForEnum(int enumVal) {
+    return LineEnumStrings[enumVal];
 }
