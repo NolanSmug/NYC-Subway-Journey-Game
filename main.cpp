@@ -115,15 +115,4 @@ Station advance_station_from_user(Train &train) {
     return train.getCurrentStation();
 }
 
-void print_all_stations(vector<Station> stations) {
-    for (Station station : stations) {
-        if (station.getId() == "101") { // if printing last stop
-            cout << station.getName() << endl;
-        }
-        else {
-            cout << station.getName() << "\n   |\n";
-        }
-    }
-    cout << "---------------------------------\n" << endl;
-}
 
