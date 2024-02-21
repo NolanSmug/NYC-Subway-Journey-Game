@@ -1,5 +1,5 @@
 # Nolan Cyr
-## CS 2300 Module 1 Open-Ended Project – Subway Shuffle: A Randomized NYC Journey
+## CS 2300 Module 2 Open-Ended Project – Subway Shuffle: A Randomized NYC Journey Pt 2
 
 ## Summary of Program
 This is a game where a player is placed into a random NYC subway station,
@@ -14,8 +14,9 @@ This process is repeated until either:
 1. The player reaches the `destination station`, to which they win the game!
 2. The player accidentally passes the `destination station`, to which they lose.
 
-Currently, I only have complete support on the `1 Train`, and plan to add the rest of the system in future modules.
-The `1 Train` has 39 stations. [Link to CSV](/Users/nolancyr/Desktop/CS 2300/Module 1/M1OEP-ncyr1/csv/one_line_stations.csv).
+[//]: # (Currently, I only have complete support on the `1 Train`, and plan to add the rest of the system in future modules.)
+
+[//]: # (The `1 Train` has 39 stations. [Link to CSV]&#40;/Users/nolancyr/Desktop/CS 2300/Module 1/M1OEP-ncyr1/csv/one_line_stations.csv&#41;.)
 
 **Classes:**
 
