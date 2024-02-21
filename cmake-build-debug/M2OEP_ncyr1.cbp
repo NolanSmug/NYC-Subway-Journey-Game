@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6"/>
 	<Project>
-		<Option title="M1OEP_ncyr1"/>
+		<Option title="M2OEP_ncyr1"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
@@ -17,8 +17,8 @@
 					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="M1OEP_ncyr1">
-				<Option output="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/cmake-build-debug/M1OEP_ncyr1" prefix_auto="0" extension_auto="0"/>
+			<Target title="M2OEP_ncyr1">
+				<Option output="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/cmake-build-debug/M2OEP_ncyr1" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -31,14 +31,14 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 M1OEP_ncyr1"/>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 M2OEP_ncyr1"/>
 					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="M1OEP_ncyr1/fast">
-				<Option output="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/cmake-build-debug/M1OEP_ncyr1" prefix_auto="0" extension_auto="0"/>
+			<Target title="M2OEP_ncyr1/fast">
+				<Option output="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/cmake-build-debug/M2OEP_ncyr1" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -51,7 +51,7 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 M1OEP_ncyr1/fast"/>
+					<Build command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 M2OEP_ncyr1/fast"/>
 					<CompileFile command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j10 -f &quot;/Users/nolancyr/Desktop/CS\ 2300/Module\ 2/M2OEP-ncyr1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -79,31 +79,31 @@
 			</Target>
 		</Build>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/Line.cpp">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/Line.h">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/Station.cpp">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/Station.h">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/SubwayMap.cpp">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/SubwayMap.h">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/Train.cpp">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/Train.h">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/main.cpp">
-			<Option target="M1OEP_ncyr1"/>
+			<Option target="M2OEP_ncyr1"/>
 		</Unit>
 		<Unit filename="/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

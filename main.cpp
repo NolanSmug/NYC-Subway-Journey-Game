@@ -8,7 +8,6 @@ using namespace std;
 
 Train::Direction get_direction_from_user();
 Station advance_station_from_user(Train &train);
-void print_all_stations(vector<Station> stations);
 
 int main() {
     SubwayMap subwayMap = SubwayMap();
@@ -28,7 +27,6 @@ int main() {
     // START GAME
     Train oneLine = Train("1 Train", Train::BRONXBOUND, stations, false, 10);
     oneLine.setCurrentStation(startingStation);
-    print_all_stations(stations);
     cout << "Your current Station:\n" << oneLine.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
 

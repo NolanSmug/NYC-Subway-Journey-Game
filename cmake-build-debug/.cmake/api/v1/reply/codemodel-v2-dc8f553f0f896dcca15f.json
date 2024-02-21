@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "M1OEP_ncyr1",
+					"name" : "M2OEP_ncyr1",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "M1OEP_ncyr1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-M1OEP_ncyr1-Debug-afafba3f961256f2fbc1.json",
-					"name" : "M1OEP_ncyr1",
+					"id" : "M2OEP_ncyr1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-M2OEP_ncyr1-Debug-4f192811db52ce19e943.json",
+					"name" : "M2OEP_ncyr1",
 					"projectIndex" : 0
 				}
 			]

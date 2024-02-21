@@ -907,7 +907,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "M1OEP_ncyr1"
+			"value" : "M2OEP_ncyr1"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1231,6 +1231,42 @@
 		},
 		{
 			"name" : "M1OEP_ncyr1_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1"
+		},
+		{
+			"name" : "M2OEP_ncyr1_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/nolancyr/Desktop/CS 2300/Module 2/M2OEP-ncyr1/cmake-build-debug"
+		},
+		{
+			"name" : "M2OEP_ncyr1_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "M2OEP_ncyr1_SOURCE_DIR",
 			"properties" : 
 			[
 				{
