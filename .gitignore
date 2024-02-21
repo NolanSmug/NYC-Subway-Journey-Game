@@ -7,7 +7,6 @@
 /dataSources/
 /dataSources.local.xml### Example user template template
 ### Example user template
-
 # IntelliJ project files
 .idea
 *.iml
