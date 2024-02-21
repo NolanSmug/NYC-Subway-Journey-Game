@@ -2,12 +2,15 @@
 #include "SubwayMap.h"
 #include "Train.h"
 #include "sstream"
+#include "random"
 #include <iostream>
+
 
 using namespace std;
 
 Direction get_direction_from_user();
 Station advance_station_from_user(Train &train);
+int get_random_station(unsigned int numStations);
 
 int main() {
     SubwayMap subwayMap = SubwayMap();
@@ -15,14 +18,13 @@ int main() {
     subwayMap.createAllStations("../csv/one_line_stations.csv", stations);
 
     // set up starting and ending stations
-    srand(time(0));
-    int numStations = stations.size();
-    int startingStation = rand() % numStations;
+    unsigned int numStations = stations.size();
+    int startingStation = get_random_station(numStations);
     int destinationStation = startingStation;
-    // make sure destination station is at least 4 stops away (can't be too easy)
-    while (destinationStation == startingStation &&
-           abs(startingStation - destinationStation) <= 4) {
-        destinationStation = rand() % numStations;
+
+    // make sure destination station is at least 4 stops away
+    while (destinationStation == startingStation && abs(startingStation - destinationStation) <= 4) {
+        destinationStation = get_random_station(numStations);
     }
 
     // START GAME
@@ -56,6 +58,14 @@ int main() {
     else {
         cout << "UH OH, YOU MISSED/PASSED THE STATION!\nGAME OVER" << endl;
     }
+}
+
+int get_random_station(unsigned int numStations) {
+    std::random_device rd;
+    std::mt19937 generator(rd());
+
+    std::uniform_int_distribution<> distribution(0, numStations - 1);
+    return distribution(generator);
 }
 
 Direction get_direction_from_user() {
