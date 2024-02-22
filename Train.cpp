@@ -53,7 +53,7 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
     // If the transfer is valid, proceed with the transfer
     if (valid) {
         setCurrentStation(currentStation.getName());
-        updateScheduledStops(newLine);  // update the train's Stations vector
+        updateScheduledStops(newLine);  // update the train's Station vector
         return true;
     }
     else {
@@ -63,7 +63,7 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
 
 
 void Train::updateScheduledStops(LineName line) {
-    // TODO: THIS!
+    // TODO: THIS?
 }
 
 // Scheduled Stops
