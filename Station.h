@@ -50,5 +50,3 @@ public:
 };
 
 #endif //M1OEP_NCYR1_STATION_H
-
-
