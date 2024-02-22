@@ -3,3 +3,7 @@
 //
 
 #include "Line.h"
+
+string Line::getTextForEnum(int enumVal) {
+    return LineEnumStrings[enumVal];
+}

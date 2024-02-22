@@ -13,7 +13,7 @@ using namespace std;
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
 
 // I want transfers to be a vector of <LineName> enums. There will be a lot of refactoring needed for this!
-Station::Station(string id, string name, vector<string> transfers, Borough borough) :
+Station::Station(string id, string name, vector<LineName> transfers, Borough borough) :
         id(id),
         name(name),
         transfers(transfers),
@@ -24,7 +24,7 @@ ostream& operator<<(ostream& str, Station station) {
     str << "Name: " << station.getName() << endl;
 //    str << "ID: " << station.getId() << endl; // should I bother printing the ID?
     str << "Transfer Available to the: ";
-    for (string line : station.getTransfers()) {
+    for (LineName line : station.getTransfers()) {
         str << line << (station.getTransfers().size() == 1 ? "" : ", ");
     }
     str << endl;
@@ -53,11 +53,11 @@ void Station::setName(string newName) {
 }
 
 // Transfers
-vector<string> Station::getTransfers() {
+vector<LineName> Station::getTransfers() {
     return transfers;
 }
 
-void Station::addTransfers(string newTransfer) {
+void Station::addTransfers(LineName newTransfer) {
     transfers.push_back(newTransfer);
 }
 

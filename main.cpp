@@ -33,6 +33,8 @@ int main() {
     cout << "Your current Station:\n" << oneLine.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
 
+    oneLine.transferToLine(TWO_TRAIN,stations[startingStation]);
+
     oneLine.setDirection(get_direction_from_user()); // ask user for a direction
     // they want to start going
 
