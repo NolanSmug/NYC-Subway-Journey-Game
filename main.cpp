@@ -5,7 +5,6 @@
 #include "random"
 #include <iostream>
 
-
 using namespace std;
 
 Direction get_direction_from_user();
@@ -35,15 +34,13 @@ int main() {
 
 //    oneLine.transferToLine(TWO_TRAIN,stations[startingStation]);
 
-    oneLine.setDirection(get_direction_from_user()); // ask user for a direction
-    // they want to start going
+    oneLine.setDirection(get_direction_from_user()); // ask user for a direction they want to start going
 
     // game loop
     while (oneLine.getCurrentStation().getName() != stations[destinationStation].getName()) {
         cout << advance_station_from_user(oneLine); // ask user how many stations they'd like to advance and advance
 
-        // check to see if user passed the destination station, in which case they
-        // lose the game (for now)
+        // check to see if user passed the destination station, in which case they lose the game (for now)
         if (oneLine.getDirection() == MANHATTANBOUND &&
             oneLine.getCurrentStationIndex() < destinationStation) {
             break;
@@ -91,7 +88,7 @@ Direction get_direction_from_user() {
         }
     }
 
-    return tolower(input[0]) == 'd' ? MANHATTANBOUND : BRONXBOUND;
+    return tolower(input[0]) == 'd' ? MANHATTANBOUND : BRONXBOUND; // TODO: don't forget this needs to be updated soon
 }
 
 Station advance_station_from_user(Train &train) {
