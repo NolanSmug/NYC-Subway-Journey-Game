@@ -63,7 +63,7 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
 
 
 void Train::updateScheduledStops(LineName line) {
-    // TODO: THIS?
+    // TODO
 }
 
 // Scheduled Stops
@@ -90,7 +90,7 @@ void Train::setCurrentStation(int stationIndex) { // overloaded
 
 void Train::setCurrentStation(string stationName) { // overloaded
     for (int i = 0; i < scheduledStops.size(); i++) {
-        if (scheduledStops[i].getName() == stationName) { // TODO: debug this. will this actually work?
+        if (scheduledStops[i].getName() == stationName) { // TODO: Debug this. Will this actually work?
             setCurrentStation(i); // overloaded method
             break;
         }
