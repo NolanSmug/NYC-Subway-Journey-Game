@@ -6,6 +6,9 @@
 
 #include <string>
 #include <vector>
+#include "Station.h"
+#include "SubwayMap.h"
+#include "Train.h"
 
 using namespace std;
 
@@ -15,6 +18,8 @@ private:
 
 public:
     void createAllStations(string filePath, vector<Station>& allStations);
+
+    void getStopsForLine(LineName line, vector<Station> &subwayStations);
 };
 
 #endif //M1OEP_NCYR1_SUBWAYMAP_H

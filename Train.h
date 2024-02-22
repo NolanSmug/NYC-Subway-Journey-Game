@@ -23,15 +23,15 @@ enum LineName { NULL_TRAIN,
 };
 
 static const char * LineEnumStrings[] = {
-        "Null Train",
-        "One Train", "Two Train", "Three Train",
-        "Four Train", "Five Train", "Six Train", "Seven Train",
-        "A Train", "C Train", "E Train",
-        "B Train", "D Train", "F Train", "M Train",
-        "N Train", "Q Train", "R Train", "W Train",
-        "J Train", "Z Train",
-        "G Train",
-        "L Train"
+        "Null_Train",
+        "One_Train", "Two_Train", "Three_Train",
+        "Four_Train", "Five_Train", "Six_Train", "Seven_Train",
+        "A_Train", "C_Train", "E_Train",
+        "B_Train", "D_Train", "F_Train", "M_Train",
+        "N_Train", "Q_Train", "R_Train", "W_Train",
+        "J_Train", "Z_Train",
+        "G_Train",
+        "L_Train"
 };
 
 
@@ -53,10 +53,12 @@ public:
     void addScheduledStop(Station newStop);
 
     Station getCurrentStation();
+    Station getNextStation();
     int getCurrentStationIndex();
+
     void setCurrentStation(int stationIndex);
     void setCurrentStation(string stationName);
-    Station getNextStation();
+
     bool advanceStation();
     bool advanceStation(int numStations);
 
@@ -66,7 +68,7 @@ public:
     int getNumCars();
     void setNumCars(int newNumCars);
 
-    string getTextForEnum(int enumVal);
+    static string getTextForEnum(int enumVal);
 
 private:
     LineName currentLine;

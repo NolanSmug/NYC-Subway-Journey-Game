@@ -4,7 +4,6 @@
 #include "sstream"
 #include <fstream>
 #include "vector"
-#include "Station.h"
 #include "SubwayMap.h"
 
 using namespace std;
@@ -67,3 +66,21 @@ void SubwayMap::createAllStations(string filePath, vector<Station> &subwayStatio
 
     inFile.close();
 }
+
+void stringToLowerCase(string &string) {
+    transform(string.begin(), string.end(), string.begin(), ::tolower);
+}
+
+void SubwayMap::getStopsForLine(LineName line, vector<Station> &subwayStations) {
+    string lineName = Train::getTextForEnum(line);
+
+    string filePath = lineName + "_stations.csv"; // standard file name pattern for each line
+    stringToLowerCase(filePath);               // ensure lowercase
+
+    createAllStations(filePath, subwayStations);
+}
+
+
+
+
+

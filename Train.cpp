@@ -32,31 +32,35 @@ void Train::setDirection(Direction newDirection) {
     direction = newDirection;
 }
 
-
-bool Train::transferToLine(LineName newLine, Station currentStation) {
+// helper method for transferToLine()
+bool validTransfer(LineName &newLine, Station &currentStation) {
     vector<string> transfers = currentStation.getTransfers();
 
-    // check if the new line is in the transfers vector
-    bool validTransfer = false;
     for (const auto& transferLine : transfers) {
         if (transferLine == LineEnumStrings[newLine]) { // TODO: right now this won't work. need some way to compare line enum
-            validTransfer = true;
-            break;
+            return true;
         }
     }
 
-    // If the transfer is valid, proceed with the transfer
-    if (validTransfer) {
-        setCurrentStation(currentStation.getName());
+    return false;
+}
 
-        // update the stops
-        updateStopsForLine(newLine);
+
+bool Train::transferToLine(LineName newLine, Station currentStation) {
+    bool valid = validTransfer(newLine, currentStation); // check if the new line is in the transfers vector
+
+    // If the transfer is valid, proceed with the transfer
+    if (valid) {
+        setCurrentStation(currentStation.getName());
+        updateStopsForLine(newLine);  // update the stops
         return true;
     }
     else {
         return false;
     }
 }
+
+
 
 void Train::updateStopsForLine(LineName line) {
 //    vector<Station> newStops = subwayMap.getStopsForLine(line);
@@ -157,6 +161,7 @@ int Train::getNumCars() {
 void Train::setNumCars(int newNumCars) {
     numCars = newNumCars;
 }
+
 
 string Train::getTextForEnum(int enumVal) {
     return LineEnumStrings[enumVal];

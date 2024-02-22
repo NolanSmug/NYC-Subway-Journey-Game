@@ -15,7 +15,7 @@ int get_random_station(unsigned int numStations);
 int main() {
     SubwayMap subwayMap = SubwayMap();
     vector<Station> stations;
-    subwayMap.createAllStations("../csv/one_line_stations.csv", stations);
+    subwayMap.createAllStations("../csv/one_train_stations.csv", stations);
 
     // set up starting and ending stations
     unsigned int numStations = stations.size();
