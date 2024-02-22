@@ -63,7 +63,7 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
 
 
 void Train::updateScheduledStops(LineName line) {
-    // TODO
+    // TODO: update the Train objects' scheduledStops
 }
 
 // Scheduled Stops
