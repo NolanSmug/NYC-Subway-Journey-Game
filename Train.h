@@ -46,12 +46,16 @@ public:
     Direction getDirection();
     void setDirection(Direction newDirection);
 
+    bool transferToLine(LineName newLine, Station currentStation);
+    void updateStopsForLine(LineName line);
+
     vector<Station> getScheduledStops();
     void addScheduledStop(Station newStop);
 
     Station getCurrentStation();
     int getCurrentStationIndex();
     void setCurrentStation(int stationIndex);
+    void setCurrentStation(string stationName);
     Station getNextStation();
     bool advanceStation();
     bool advanceStation(int numStations);
@@ -65,7 +69,8 @@ public:
     string getTextForEnum(int enumVal);
 
 private:
-    LineName lineName;
+    LineName currentLine;
+    LineName destinationLine; // users' desired line
     Direction direction;
     vector<Station> scheduledStops;
     int currentStationIndex = 0;

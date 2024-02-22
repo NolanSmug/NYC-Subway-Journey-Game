@@ -5,10 +5,10 @@
 
 using namespace std;
 
-Train::Train() : lineName(NULL_TRAIN), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
+Train::Train() : currentLine(NULL_TRAIN), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
 
-Train::Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
-        lineName(lineName),
+Train::Train(LineName currentLine, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
+        currentLine(currentLine),
         direction(direction),
         scheduledStops(scheduledStops),
         express(express),
@@ -16,11 +16,11 @@ Train::Train(LineName lineName, Direction direction, vector<Station> scheduledSt
 
 // Name
 LineName Train::getName() {
-    return lineName;
+    return currentLine;
 }
 
 void Train::setName(LineName newLineName) {
-    lineName = newLineName;
+    currentLine = newLineName;
 }
 
 // Direction
@@ -30,6 +30,39 @@ Direction Train::getDirection() {
 
 void Train::setDirection(Direction newDirection) {
     direction = newDirection;
+}
+
+
+bool Train::transferToLine(LineName newLine, Station currentStation) {
+    vector<string> transfers = currentStation.getTransfers();
+
+    // check if the new line is in the transfers vector
+    bool validTransfer = false;
+    for (const auto& transferLine : transfers) {
+        if (transferLine == LineEnumStrings[newLine]) { // TODO: right now this won't work. need some way to compare line enum
+            validTransfer = true;
+            break;
+        }
+    }
+
+    // If the transfer is valid, proceed with the transfer
+    if (validTransfer) {
+        setCurrentStation(currentStation.getName());
+
+        // update the stops
+        updateStopsForLine(newLine);
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+void Train::updateStopsForLine(LineName line) {
+//    vector<Station> newStops = subwayMap.getStopsForLine(line);
+
+//    scheduledStops = newStops;
+
 }
 
 // Scheduled Stops
@@ -52,6 +85,15 @@ int Train::getCurrentStationIndex() {
 
 void Train::setCurrentStation(int stationIndex) {
     currentStationIndex = stationIndex;
+}
+
+void Train::setCurrentStation(string stationName) {
+    for (int i = 0; i < scheduledStops.size(); i++) {
+        if (scheduledStops[i].getName() == stationName) {
+            setCurrentStation(i); // overloaded method
+            break;
+        }
+    }
 }
 
 Station Train::getNextStation() {
