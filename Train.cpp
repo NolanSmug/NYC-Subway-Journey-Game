@@ -84,14 +84,14 @@ int Train::getCurrentStationIndex() {
     return currentStationIndex;
 }
 
-void Train::setCurrentStation(int stationIndex) { // overloaded
+void Train::setCurrentStation(int stationIndex) {
     currentStationIndex = stationIndex;
 }
 
-void Train::setCurrentStation(string stationName) { // overloaded
+void Train::setCurrentStation(string stationName) {
     for (int i = 0; i < scheduledStops.size(); i++) {
         if (scheduledStops[i].getName() == stationName) { // TODO: Debug this. Will this actually work?
-            setCurrentStation(i); // overloaded method
+            setCurrentStation(i);
             break;
         }
     }
@@ -158,6 +158,3 @@ int Train::getNumCars() {
 void Train::setNumCars(int newNumCars) {
     numCars = newNumCars;
 }
-
-
-

@@ -34,11 +34,11 @@ public:
     Station getNextStation();
     int getCurrentStationIndex();
 
-    void setCurrentStation(int stationIndex);
-    void setCurrentStation(string stationName);
+    void setCurrentStation(int stationIndex);   // overloaded
+    void setCurrentStation(string stationName); // overloaded
 
-    bool advanceStation();
-    bool advanceStation(int numStations);
+    bool advanceStation();                  // overloaded
+    bool advanceStation(int numStations);   // overloaded
 
     bool isExpress();
     void setExpress(bool isExpress);
