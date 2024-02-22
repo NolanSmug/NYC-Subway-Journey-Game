@@ -37,9 +37,9 @@ void Train::setDirection(Direction newDirection) {
 bool validTransfer(LineName &newLine, Station &currentStation) {
     vector<LineName> transfers = currentStation.getTransfers();
 
-    for (const auto& transferLine : transfers) {
+    for (LineName transferLine : transfers) {
         if (transferLine == newLine) {
-            return true;
+            return true; // if found in the Station's transfer vector, valid
         }
     }
 
@@ -53,7 +53,7 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
     // If the transfer is valid, proceed with the transfer
     if (valid) {
         setCurrentStation(currentStation.getName());
-        updateScheduledStops(newLine);  // update the stops
+        updateScheduledStops(newLine);  // update the train's Stations vector
         return true;
     }
     else {
@@ -84,13 +84,13 @@ int Train::getCurrentStationIndex() {
     return currentStationIndex;
 }
 
-void Train::setCurrentStation(int stationIndex) {
+void Train::setCurrentStation(int stationIndex) { // overloaded
     currentStationIndex = stationIndex;
 }
 
-void Train::setCurrentStation(string stationName) {
+void Train::setCurrentStation(string stationName) { // overloaded
     for (int i = 0; i < scheduledStops.size(); i++) {
-        if (scheduledStops[i].getName() == stationName) { // TODO: debug this. does this actually work?
+        if (scheduledStops[i].getName() == stationName) { // TODO: debug this. will this actually work?
             setCurrentStation(i); // overloaded method
             break;
         }
