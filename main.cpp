@@ -51,6 +51,7 @@ int main() {
         }
     }
 
+    // game over stuff
     if (oneLine.getCurrentStation().getName() == stations[destinationStation].getName()) {
         cout << "YOU WIN" << endl;
     }
