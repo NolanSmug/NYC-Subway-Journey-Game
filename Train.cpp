@@ -33,6 +33,7 @@ void Train::setDirection(Direction newDirection) {
 }
 
 // helper method for transferToLine()
+// checks if users' requested LineName is at a specified Station
 bool validTransfer(LineName &newLine, Station &currentStation) {
     vector<string> transfers = currentStation.getTransfers();
 
@@ -61,9 +62,8 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
 }
 
 
-
 void Train::updateStopsForLine(LineName line) {
-//    vector<Station> newStops = subwayMap.getStopsForLine(line);
+//    vector<Station> newStops = subwayMap.getStopsForLine(line); //TODO: this
 
 //    scheduledStops = newStops;
 
@@ -93,7 +93,7 @@ void Train::setCurrentStation(int stationIndex) {
 
 void Train::setCurrentStation(string stationName) {
     for (int i = 0; i < scheduledStops.size(); i++) {
-        if (scheduledStops[i].getName() == stationName) {
+        if (scheduledStops[i].getName() == stationName) { // TODO: debug this. does this actually work?
             setCurrentStation(i); // overloaded method
             break;
         }
