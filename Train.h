@@ -46,8 +46,6 @@ public:
     int getNumCars();
     void setNumCars(int newNumCars);
 
-
-
 private:
     LineName currentLine;
     LineName destinationLine; // users' desired line
