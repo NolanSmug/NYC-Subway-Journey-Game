@@ -32,6 +32,8 @@ void Train::setDirection(Direction newDirection) {
     direction = newDirection;
 }
 
+// Transfer
+
 // helper method for transferToLine()
 // checks if users' requested LineName is at a specified Station
 bool validTransfer(LineName &newLine, Station &currentStation) {
@@ -48,16 +50,13 @@ bool validTransfer(LineName &newLine, Station &currentStation) {
 
 
 bool Train::transferToLine(LineName newLine, Station currentStation) {
-    bool valid = validTransfer(newLine, currentStation); // check if the new line is in the transfers vector
-
-    // If the transfer is valid, proceed with the transfer
-    if (valid) {
-        setCurrentStation(currentStation.getName());
-        updateScheduledStops(newLine);  // update the train's Station vector
+    if (validTransfer(newLine, currentStation)) { // if the transfer is valid, proceed with the transfer
+        updateScheduledStops(newLine);                      // update the Train's Station vector
+        setCurrentStation(currentStation.getName()); // update the Train's currentStation
         return true;
     }
     else {
-        return false;
+        return false;  // not a valid requested transfer
     }
 }
 

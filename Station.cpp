@@ -12,7 +12,6 @@ using namespace std;
 // Constructors
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
 
-// I want transfers to be a vector of <LineName> enums. There will be a lot of refactoring needed for this!
 Station::Station(string id, string name, vector<LineName> transfers, Borough borough) :
         id(id),
         name(name),
