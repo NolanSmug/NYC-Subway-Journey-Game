@@ -62,7 +62,6 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
 
 
 void Train::updateScheduledStops(LineName line) {
-    // TODO: update the Train objects' scheduledStops
     SubwayMap subwayMap;
     subwayMap.updateStopsForLine(line, scheduledStops);
 }
@@ -91,7 +90,7 @@ void Train::setCurrentStation(int stationIndex) {
 
 void Train::setCurrentStation(string stationName) {
     for (int i = 0; i < scheduledStops.size(); i++) {
-        if (scheduledStops[i].getName() == stationName) { // TODO: Debug this. Will this actually work?
+        if (scheduledStops[i].getName() == stationName) { // TODO: Debug this. Will this actually work in all scenarios?
             setCurrentStation(i);
             break;
         }
