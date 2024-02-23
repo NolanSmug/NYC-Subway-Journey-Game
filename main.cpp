@@ -28,17 +28,26 @@ int main() {
 
     // START GAME
     Train oneLine = Train(ONE_TRAIN, BRONXBOUND, stations, false, 10);
+    startingStation = 8; // testing purposes
     oneLine.setCurrentStation(startingStation);
     cout << "Your current Station:\n" << oneLine.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
-
-//    oneLine.transferToLine(TWO_TRAIN,stations[startingStation]);
 
     oneLine.setDirection(get_direction_from_user()); // ask user for a direction they want to start going
 
     // game loop
     while (oneLine.getCurrentStation().getName() != stations[destinationStation].getName()) {
         cout << advance_station_from_user(oneLine); // ask user how many stations they'd like to advance and advance
+
+        // TESTING TRANSFER FUNCTIONALITY (DEBUG)
+        bool transferSuccessful = oneLine.transferToLine(TWO_TRAIN, stations[startingStation]);
+        if (transferSuccessful) {
+            cout << "Transfer successful!" << endl;
+            cout << "Current Station after transfer:\n" << oneLine.getCurrentStation();
+            cout << "Next Station after transfer:\n" << oneLine.getNextStation();
+        } else {
+            cout << "Transfer failed. Invalid destination." << endl;
+        }
 
         // check to see if user passed the destination station, in which case they lose the game (for now)
         if (oneLine.getDirection() == MANHATTANBOUND &&

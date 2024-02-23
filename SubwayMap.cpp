@@ -39,6 +39,8 @@ void SubwayMap::createAllStations(string filePath, vector<Station> &subwayStatio
     ifstream inFile;
     inFile.open(filePath);
 
+    subwayStations.clear(); // clear if passed in for a transfer
+
     string header; // read header (ignore)
     if (inFile) {
         getline(inFile, header);
@@ -104,8 +106,8 @@ void stringToLowerCase(string &string) {
 void SubwayMap::updateStopsForLine(LineName line, vector<Station> &subwayStations) {
     string lineName = Line::getTextForEnum(line);
 
-    string filePath = lineName + "_stations.csv"; // standard file name pattern for each line
-    stringToLowerCase(filePath);               // ensure lowercase
+    string filePath = "../csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
+    stringToLowerCase(filePath); // ensure lowercase
 
-    createAllStations(filePath, subwayStations);
+    createAllStations(filePath, subwayStations); // create the Station vector
 }
