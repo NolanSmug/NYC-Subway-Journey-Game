@@ -10,11 +10,14 @@ using namespace std;
 Direction get_direction_from_user();
 Station advance_station_from_user(Train &train);
 int get_random_station(unsigned int numStations);
+void print_all_stations(vector<Station> stations);
 
 int main() {
     SubwayMap subwayMap = SubwayMap();
     vector<Station> stations;
     subwayMap.createAllStations("../csv/one_train_stations.csv", stations);
+
+//    print_all_stations(stations);
 
     // set up starting and ending stations
     unsigned int numStations = stations.size();
@@ -39,7 +42,7 @@ int main() {
     while (oneLine.getCurrentStation().getName() != stations[destinationStation].getName()) {
         cout << advance_station_from_user(oneLine); // ask user how many stations they'd like to advance and advance
 
-        // TESTING TRANSFER FUNCTIONALITY (DEBUG)
+// TESTING TRANSFER FUNCTIONALITY (DEBUG)
 //-------------------------------------------------------------------------------------------------------------//
         bool transferSuccessful = oneLine.transferToLine(TWO_TRAIN, stations[startingStation]);
         if (transferSuccessful) {
@@ -135,4 +138,16 @@ Station advance_station_from_user(Train &train) {
 
     cout << "\nCurrent Station:\n";
     return train.getCurrentStation();
+}
+
+void print_all_stations(vector<Station> stations) {
+    for (Station station : stations) {
+        if (station.getId() == "101") { // if printing last stop
+            cout << station.getName() << endl;
+        }
+        else {
+            cout << station.getName() << "\n   |\n";
+        }
+    }
+    cout << "---------------------------------\n" << endl;
 }
