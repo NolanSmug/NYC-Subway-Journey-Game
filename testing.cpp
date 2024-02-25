@@ -90,7 +90,7 @@ bool test_station_class() {
     }
 
     vector<LineName> transfers = station.getTransfers();
-    if (transfers.size() != 8) { // Assuming the sample station has 8 transfers
+    if (transfers.size() != 8) {
         passed = false;
         cout << "getTransfers() test failed" << endl;
     }
@@ -115,5 +115,3 @@ bool test_station_class() {
 
     return passed;
 }
-
-
