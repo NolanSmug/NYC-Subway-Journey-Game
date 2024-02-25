@@ -1,6 +1,7 @@
 #include "Station.h"
 #include "SubwayMap.h"
 #include "Train.h"
+#include "Line.h"
 #include "sstream"
 #include "random"
 #include <iostream>
