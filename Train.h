@@ -48,7 +48,6 @@ public:
 
 private:
     LineName currentLine;
-    LineName destinationLine; // users' desired line
     Direction direction;
     vector<Station> scheduledStops;
     int currentStationIndex = 0;
