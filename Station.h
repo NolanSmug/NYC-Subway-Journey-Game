@@ -42,6 +42,7 @@ public:
 
     vector<LineName> getTransfers();
     void addTransfers(LineName newTransfer);
+    bool hasTransferLine(string input);
 
     Borough getBorough();
     void setBorough(Borough newBorough);

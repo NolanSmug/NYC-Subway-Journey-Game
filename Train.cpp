@@ -3,6 +3,8 @@
 //
 #include "Train.h"
 
+#include <utility>
+
 using namespace std;
 
 Train::Train() : currentLine(NULL_TRAIN), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
@@ -53,11 +55,11 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
     if (validTransfer(newLine, currentStation)) { // if the transfer is valid, proceed with the transfer
         updateScheduledStops(newLine);                      // update the Train's Station vector
         setCurrentStation(currentStation.getName()); // update the Train's currentStation
+        currentLine = newLine;
         return true;
     }
-    else {
-        return false;  // not a valid requested transfer
-    }
+
+    return false;  // not a valid requested transfer
 }
 
 
@@ -90,7 +92,7 @@ void Train::setCurrentStation(int stationIndex) {
 
 void Train::setCurrentStation(string stationName) {
     for (int i = 0; i < scheduledStops.size(); i++) {
-        if (scheduledStops[i].getName() == stationName) { // TODO: Debug this. Will this actually work in all scenarios?
+        if (scheduledStops[i].getName() == stationName) {
             setCurrentStation(i);
             break;
         }

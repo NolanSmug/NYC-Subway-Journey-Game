@@ -21,7 +21,7 @@ enum LineName {
     L_TRAIN
 };
 
-static const char * LineEnumStrings[] = {
+static const char * LineEnumIDStrings[] = {
     "Null_Train",
     "One_Train", "Two_Train", "Three_Train",
     "Four_Train", "Five_Train", "Six_Train", "Seven_Train",
@@ -33,9 +33,24 @@ static const char * LineEnumStrings[] = {
     "L_Train"
 };
 
+static const char * LineEnumStrings[] = {
+        "Null_Train",
+        "1", "2", "3",
+        "4", "5", "6", "7",
+        "A", "C", "E",
+        "B", "D", "F", "M",
+        "N", "Q", "R", "W",
+        "J", "Z",
+        "G",
+        "L"
+};
+
 class Line {
 public:
     static string getTextForEnum(int enumVal);
+    static string getIDTextForEnum(int enumVal);
+
+    static LineName stringToLineEnum(string& lineStr);
 };
 
 #endif // LINE_H

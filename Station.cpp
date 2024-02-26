@@ -60,6 +60,16 @@ void Station::addTransfers(LineName newTransfer) {
     transfers.push_back(newTransfer);
 }
 
+bool Station::hasTransferLine(string input) {
+    for (LineName line : transfers) {
+        if (Line::getTextForEnum(line) == input) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 // Borough
 Borough Station::getBorough() {
     return borough;
