@@ -90,4 +90,9 @@ I decided to do a similar thing in my README above, as I feel like the separatio
   - **SubwayMap** has-a `vector<Station>`
 - File I/O (5)
 
+**IMPORTANT:** Thinking I was in my M2OEP repository, I created a branch when I started major refactoring for my transfer functionality. 
+I was however, in my M1OEP repositry, so I ended up merging that branch to M1OEP.
+I was easily able to sync my M2OEP reposirory with those changes (as it was forked from M1),
+I just don't want to get points off in case there's any confusion with the commit times/dates.
+
 Therefore, my proposed grade for this Project is: **100**
