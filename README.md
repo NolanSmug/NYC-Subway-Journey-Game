@@ -53,7 +53,7 @@ I have added all the necessary methods with logic for verifying, and executing a
 - `transferToLine()`: updates the current Train objects' `LineName`, and `scheduledStops`.
 - `updateStopsForLine()`: builds the correct path to a given `LineName`'s scheduledStops .csv file and returns it as a vector of Stations.
 
-I had to refactor A LOT of my code from Module 1, as it was difficult organizing, passing, and updating variables that needed to be updated to complete a transfer. The most difficult task was probably designing the most efficent way to have my classses interact with one another without a circular dependency.
+I had to refactor A LOT of my code from Module 1, as it was difficult organizing, passing, and updating variables that needed to be modified to complete a transfer. The most difficult task was probably designing the most efficent way to have my classses interact with one another without a circular dependency.
 
 ## Video Demonstrations ##
 
