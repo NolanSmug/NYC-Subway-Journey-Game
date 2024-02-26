@@ -12,7 +12,7 @@ using namespace std;
 // Constructors
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
 
-Station::Station(string id, string name, vector<string> transfers, Borough borough) :
+Station::Station(string id, string name, vector<LineName> transfers, Borough borough) :
         id(id),
         name(name),
         transfers(transfers),
@@ -23,7 +23,7 @@ ostream& operator<<(ostream& str, Station station) {
     str << "Name: " << station.getName() << endl;
 //    str << "ID: " << station.getId() << endl; // should I bother printing the ID?
     str << "Transfer Available to the: ";
-    for (string line : station.getTransfers()) {
+    for (LineName line : station.getTransfers()) {
         str << line << (station.getTransfers().size() == 1 ? "" : ", ");
     }
     str << endl;
@@ -52,11 +52,11 @@ void Station::setName(string newName) {
 }
 
 // Transfers
-vector<string> Station::getTransfers() {
+vector<LineName> Station::getTransfers() {
     return transfers;
 }
 
-void Station::addTransfers(string newTransfer) {
+void Station::addTransfers(LineName newTransfer) {
     transfers.push_back(newTransfer);
 }
 
@@ -71,6 +71,6 @@ void Station::setBorough(Borough newborough) {
 
 // pattern for enum toString() found on StackOverflow
 // https://stackoverflow.com/a/6281535
-const string Station::getTextForEnum(int enumVal) {
-    return EnumStrings[enumVal];
+string Station::getTextForEnum(int enumVal) {
+    return BoroughEnumStrings[enumVal];
 }

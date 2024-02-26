@@ -5,31 +5,65 @@
 
 using namespace std;
 
-Train::Train() : lineName(), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
+Train::Train() : currentLine(NULL_TRAIN), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
 
-Train::Train(string lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
-        lineName(lineName),
+Train::Train(LineName currentLine, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
+        currentLine(currentLine),
         direction(direction),
         scheduledStops(scheduledStops),
         express(express),
         numCars(numCars) {}
 
 // Name
-string Train::getName() {
-    return lineName;
+LineName Train::getName() {
+    return currentLine;
 }
 
-void Train::setName(string newName) {
-    lineName = newName;
+void Train::setName(LineName newLineName) {
+    currentLine = newLineName;
 }
 
 // Direction
-Train::Direction Train::getDirection() {
+Direction Train::getDirection() {
     return direction;
 }
 
 void Train::setDirection(Direction newDirection) {
     direction = newDirection;
+}
+
+// Transfer
+
+// helper method for transferToLine()
+// checks if users' requested LineName is at a specified Station
+bool validTransfer(LineName &newLine, Station &currentStation) {
+    vector<LineName> transfers = currentStation.getTransfers();
+
+    for (LineName transferLine : transfers) {
+        if (transferLine == newLine) {
+            return true; // if found in the Station's transfer vector, valid
+        }
+    }
+
+    return false;
+}
+
+
+bool Train::transferToLine(LineName newLine, Station currentStation) {
+    if (validTransfer(newLine, currentStation)) { // if the transfer is valid, proceed with the transfer
+        updateScheduledStops(newLine);                      // update the Train's Station vector
+        setCurrentStation(currentStation.getName()); // update the Train's currentStation
+        return true;
+    }
+    else {
+        return false;  // not a valid requested transfer
+    }
+}
+
+
+void Train::updateScheduledStops(LineName line) {
+    SubwayMap subwayMap;
+    subwayMap.updateStopsForLine(line, scheduledStops);
 }
 
 // Scheduled Stops
@@ -52,6 +86,15 @@ int Train::getCurrentStationIndex() {
 
 void Train::setCurrentStation(int stationIndex) {
     currentStationIndex = stationIndex;
+}
+
+void Train::setCurrentStation(string stationName) {
+    for (int i = 0; i < scheduledStops.size(); i++) {
+        if (scheduledStops[i].getName() == stationName) { // TODO: Debug this. Will this actually work in all scenarios?
+            setCurrentStation(i);
+            break;
+        }
+    }
 }
 
 Station Train::getNextStation() {

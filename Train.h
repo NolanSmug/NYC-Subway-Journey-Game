@@ -6,33 +6,39 @@
 
 #include <string>
 #include <vector>
-#include "Train.h"
 #include "Station.h"
+#include "Line.h"
+#include "SubwayMap.h"
 
 using namespace std;
+enum Direction {QUEENSBOUND, MANHATTANBOUND, BRONXBOUND};
 
 class Train {
 public:
-    enum Direction {QUEENSBOUND, MANHATTANBOUND, BRONXBOUND};
-
     Train();
-    Train(string lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars);
+    Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars);
 
-    string getName();
-    void setName(string newName);
+    LineName getName();
+    void setName(LineName newLineName);
 
     Direction getDirection();
     void setDirection(Direction newDirection);
+
+    bool transferToLine(LineName newLine, Station currentStation);
+    void updateScheduledStops(LineName line);
 
     vector<Station> getScheduledStops();
     void addScheduledStop(Station newStop);
 
     Station getCurrentStation();
-    int getCurrentStationIndex();
-    void setCurrentStation(int stationIndex);
     Station getNextStation();
-    bool advanceStation();
-    bool advanceStation(int numStations);
+    int getCurrentStationIndex();
+
+    void setCurrentStation(int stationIndex);   // overloaded
+    void setCurrentStation(string stationName); // overloaded
+
+    bool advanceStation();                  // overloaded
+    bool advanceStation(int numStations);   // overloaded
 
     bool isExpress();
     void setExpress(bool isExpress);
@@ -41,7 +47,7 @@ public:
     void setNumCars(int newNumCars);
 
 private:
-    string lineName;
+    LineName currentLine;
     Direction direction;
     vector<Station> scheduledStops;
     int currentStationIndex = 0;
@@ -50,4 +56,3 @@ private:
 };
 
 #endif
-

@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include "Line.h"
 
 using namespace std;
 
@@ -18,18 +19,18 @@ enum Borough {
     STATEN_ISLAND
 };
 
-static const char * EnumStrings[] = { "Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island" };
+static const char * BoroughEnumStrings[] = {"Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island" };
 
 class Station {
 private:
     string id;
     string name;
-    vector<string> transfers;
+    vector<LineName> transfers;
     Borough borough;
 
 public:
     Station();
-    Station(string id, string name, vector<string> transfers = {}, Borough borough = MANHATTAN);
+    Station(string id, string name, vector<LineName> transfers = {}, Borough borough = MANHATTAN);
 
     friend ostream& operator<<(ostream& str, Station station);
 
@@ -39,15 +40,13 @@ public:
     string getName();
     void setName(string newName);
 
-    vector<string> getTransfers();
-    void addTransfers(string newTransfer);
+    vector<LineName> getTransfers();
+    void addTransfers(LineName newTransfer);
 
     Borough getBorough();
     void setBorough(Borough newBorough);
 
-    const string getTextForEnum(int enumVal);
+    string getTextForEnum(int enumVal);
 };
 
 #endif //M1OEP_NCYR1_STATION_H
-
-

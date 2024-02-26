@@ -1,34 +1,39 @@
-#include <iostream>
-#include "sstream"
-#include "Train.h"
 #include "Station.h"
 #include "SubwayMap.h"
+#include "Train.h"
+#include "Line.h"
+#include "sstream"
+#include "random"
+#include <iostream>
 
 using namespace std;
 
-Train::Direction get_direction_from_user();
+Direction get_direction_from_user();
 Station advance_station_from_user(Train &train);
+int get_random_station(unsigned int numStations);
 void print_all_stations(vector<Station> stations);
 
 int main() {
     SubwayMap subwayMap = SubwayMap();
     vector<Station> stations;
-    subwayMap.createAllStations("../csv/one_line_stations.csv",stations);
+    subwayMap.createAllStations("../csv/one_train_stations.csv", stations);
+
+//    print_all_stations(stations);
 
     // set up starting and ending stations
-    srand(time(0)); // random number seed based on current time
-    int numStations = stations.size();
-    int startingStation = rand() % numStations;
+    unsigned int numStations = stations.size();
+    int startingStation = get_random_station(numStations);
     int destinationStation = startingStation;
-    // make sure destination station is at least 4 stops away (can't be too easy)
+
+    // make sure destination station is at least 4 stops away
     while (destinationStation == startingStation && abs(startingStation - destinationStation) <= 4) {
-        destinationStation = rand() % numStations;
+        destinationStation = get_random_station(numStations);
     }
 
     // START GAME
-    Train oneLine = Train("1 Train", Train::BRONXBOUND, stations, false, 10);
+    Train oneLine = Train(ONE_TRAIN, BRONXBOUND, stations, false, 10);
+    startingStation = 8; // testing purposes
     oneLine.setCurrentStation(startingStation);
-    print_all_stations(stations);
     cout << "Your current Station:\n" << oneLine.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
 
@@ -38,25 +43,48 @@ int main() {
     while (oneLine.getCurrentStation().getName() != stations[destinationStation].getName()) {
         cout << advance_station_from_user(oneLine); // ask user how many stations they'd like to advance and advance
 
+// TESTING TRANSFER FUNCTIONALITY (DEBUG)
+//-------------------------------------------------------------------------------------------------------------//
+        bool transferSuccessful = oneLine.transferToLine(TWO_TRAIN, stations[startingStation]);
+        if (transferSuccessful) {
+            cout << "Transfer successful!" << endl;
+            cout << "Current Station after transfer:\n" << oneLine.getCurrentStation();
+            cout << "Next Station after transfer:\n" << oneLine.getNextStation();
+        }
+        else {
+            cout << "Transfer failed. Invalid destination." << endl;
+        }
+//-------------------------------------------------------------------------------------------------------------//
+
         // check to see if user passed the destination station, in which case they lose the game (for now)
-        if (oneLine.getDirection() == Train::MANHATTANBOUND && oneLine.getCurrentStationIndex() < destinationStation) {
+        if (oneLine.getDirection() == MANHATTANBOUND &&
+            oneLine.getCurrentStationIndex() < destinationStation) {
             break;
         }
-        else if (oneLine.getDirection() == Train::BRONXBOUND && oneLine.getCurrentStationIndex() > destinationStation) {
+        else if (oneLine.getDirection() == BRONXBOUND &&
+                 oneLine.getCurrentStationIndex() > destinationStation) {
             break;
         }
     }
 
+    // game over stuff
     if (oneLine.getCurrentStation().getName() == stations[destinationStation].getName()) {
         cout << "YOU WIN" << endl;
     }
     else {
         cout << "UH OH, YOU MISSED/PASSED THE STATION!\nGAME OVER" << endl;
     }
-
 }
 
-Train::Direction get_direction_from_user() {
+int get_random_station(unsigned int numStations) {
+    std::random_device rd;
+    std::mt19937 generator(rd());
+
+    std::uniform_int_distribution<> distribution(0, numStations - 1);
+    return distribution(generator);
+}
+
+Direction get_direction_from_user() {
     bool valid = false;
     string input = " ";
 
@@ -69,7 +97,7 @@ Train::Direction get_direction_from_user() {
         if (length == 0) {
             cout << "No input. ";
         }
-        else if ((tolower(input[0]) == 'd' || tolower(input[0]) == 'u') && length == 1) {
+        else if ((tolower(input[0]) == 'd' || tolower(input[0]) == 'u') &&length == 1) {
             valid = true;
         }
         else {
@@ -77,7 +105,7 @@ Train::Direction get_direction_from_user() {
         }
     }
 
-    return tolower(input[0]) == 'd' ? Train::Direction::MANHATTANBOUND : Train::Direction::BRONXBOUND;
+    return tolower(input[0]) == 'd' ? MANHATTANBOUND : BRONXBOUND; // TODO: don't forget this needs to be updated soon
 }
 
 Station advance_station_from_user(Train &train) {
@@ -92,8 +120,7 @@ Station advance_station_from_user(Train &train) {
         if (input_string.length() == 0) {
             if (train.advanceStation()) {
                 valid = true;
-            }
-            else {
+            } else {
                 cout << "Invalid input. ";
             }
             continue;
@@ -108,7 +135,6 @@ Station advance_station_from_user(Train &train) {
         else {
             cout << "Invalid input. ";
         }
-
     }
 
     cout << "\nCurrent Station:\n";
@@ -126,4 +152,3 @@ void print_all_stations(vector<Station> stations) {
     }
     cout << "---------------------------------\n" << endl;
 }
-
