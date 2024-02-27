@@ -18,98 +18,95 @@ This process is repeated until either:
 
 ## Subway Game Classes
 
-### Train
+### Train  
 Manages a Train object and its scheduled stops.
 
-#### Private Variables:
-| Name                                                                | Description                                                       |
-|---------------------------------------------------------------------|-------------------------------------------------------------------|
-| <span style="color:#C586C0">`LineName currentLine`</span>           | Current subway line of the Train.                                 |
-| <span style="color:#C586C0">`Direction direction`</span>            | Direction of the Train (Queensbound, Manhattanbound, Bronxbound). |
-| <span style="color:#C586C0">`vector<Station> scheduledStops`</span> | Vector of stations representing scheduled stops.                  |
-| <span style="color:#C586C0">`int currentStationIndex`</span>        | Index of the current station in the scheduled stops vector.       |
-| <span style="color:#C586C0">`bool express`</span>                   | Indicates whether the Train is an express train or not.           |
-| <span style="color:#C586C0">`int numCars`</span>                    | Number of cars in the Train.                                      |
+#### Private Variables:  
+| Name                             | Description                                                       |
+|----------------------------------|-------------------------------------------------------------------|
+| `LineName currentLine`           | Current subway line of the Train.                                 |
+| `Direction direction`            | Direction of the Train (Queensbound, Manhattanbound, Bronxbound). |
+| `vector<Station> scheduledStops` | Vector of stations representing scheduled stops.                  |
+| `int currentStationIndex`        | Index of the current station in the scheduled stops vector.       |
+| `bool express`                   | Indicates whether the Train is an express train or not.           |
+| `int numCars`                    | Number of cars in the Train.                                      |
 
-#### Public Methods:
-| Method                                                                                             | Description                                                            |
-|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
-| <span style="color:#569CD6">`LineName getName()`</span>                                            | Retrieves the current line of the Train.                               |
-| <span style="color:#569CD6">`void setName(LineName newLineName)`</span>                            | Sets the current line of the Train.                                    |
-| <span style="color:#569CD6">`Direction getDirection()`</span>                                      | Retrieves the direction of the Train.                                  |
-| <span style="color:#569CD6">`void setDirection(Direction newDirection)`</span>                     | Sets the direction of the Train.                                       |
-| <span style="color:#569CD6">`bool transferToLine(LineName newLine, Station currentStation)`</span> | Attempts to transfer the Train to a different line at a given station. |
-| <span style="color:#569CD6">`void updateScheduledStops(LineName line)`</span>                      | Updates the scheduled stops based on the specified subway line.        |
-| <span style="color:#569CD6">`vector<Station> getScheduledStops()`</span>                           | Retrieves the scheduled stops of the Train.                            |
-| <span style="color:#569CD6">`void addScheduledStop(Station newStop)`</span>                        | Adds a station to the scheduled stops of the Train.                    |
-| <span style="color:#569CD6">`Station getCurrentStation()`</span>                                   | Retrieves the current station of the Train.                            |
-| <span style="color:#569CD6">`Station getNextStation()`</span>                                      | Retrieves the next station of the Train.                               |
-| <span style="color:#569CD6">`int getCurrentStationIndex()`</span>                                  | Retrieves the index of the current station.                            |
-| <span style="color:#569CD6">`void setCurrentStation(int stationIndex)`</span>                      | Sets the current station of the Train using an index.                  |
-| <span style="color:#569CD6">`void setCurrentStation(string stationName)`</span>                    | Sets the current station of the Train using a station name.            |
-| <span style="color:#569CD6">`bool advanceStation()`</span>                                         | Advances the Train to the next station.                                |
-| <span style="color:#569CD6">`bool advanceStation(int numStations)`</span>                          | Advances the Train by a specified number of stations.                  |
-| <span style="color:#569CD6">`bool isExpress()`</span>                                              | Checks if the Train is an express train.                               |
-| <span style="color:#569CD6">`void setExpress(bool isExpress)`</span>                               | Sets whether the Train is an express train or not.                     |
-| <span style="color:#569CD6">`int getNumCars()`</span>                                              | Retrieves the number of cars in the Train.                             |
-| <span style="color:#569CD6">`void setNumCars(int newNumCars)`</span>                               | Sets the number of cars in the Train.                                  |
+#### Public Methods:  
+| Method                                                          | Description                                                            |
+|-----------------------------------------------------------------|------------------------------------------------------------------------|
+| `LineName getName()`                                            | Retrieves the current line of the Train.                               |
+| `void setName(LineName newLineName)`                            | Sets the current line of the Train.                                    |
+| `Direction getDirection()`                                      | Retrieves the direction of the Train.                                  |
+| `void setDirection(Direction newDirection)`                     | Sets the direction of the Train.                                       |
+| `bool transferToLine(LineName newLine, Station currentStation)` | Attempts to transfer the Train to a different line at a given station. |
+| `void updateScheduledStops(LineName line)`                      | Updates the scheduled stops based on the specified subway line.        |
+| `vector<Station> getScheduledStops()`                           | Retrieves the scheduled stops of the Train.                            |
+| `void addScheduledStop(Station newStop)`                        | Adds a station to the scheduled stops of the Train.                    |
+| `Station getCurrentStation()`                                   | Retrieves the current station of the Train.                            |
+| `Station getNextStation()`                                      | Retrieves the next station of the Train.                               |
+| `int getCurrentStationIndex()`                                  | Retrieves the index of the current station.                            |
+| `void setCurrentStation(int stationIndex)`                      | Sets the current station of the Train using an index.                  |
+| `void setCurrentStation(string stationName)`                    | Sets the current station of the Train using a station name.            |
+| `bool advanceStation()`                                         | Advances the Train to the next station.                                |
+| `bool advanceStation(int numStations)`                          | Advances the Train by a specified number of stations.                  |
+| `bool isExpress()`                                              | Checks if the Train is an express train.                               |
+| `void setExpress(bool isExpress)`                               | Sets whether the Train is an express train or not.                     |
+| `int getNumCars()`                                              | Retrieves the number of cars in the Train.                             |
+| `void setNumCars(int newNumCars)`                               | Sets the number of cars in the Train.                                  |
 
 ****
-
-### Station
+### Station  
 Represents a subway station in the game.
 
-#### Private Variables:
-| Name                                                            | Description                                                 |
-|-----------------------------------------------------------------|-------------------------------------------------------------|
-| <span style="color:#C586C0">`string id`</span>                  | Identifier for the Station.                                 |
-| <span style="color:#C586C0">`string name`</span>                | Name of the Station.                                        |
-| <span style="color:#C586C0">`vector<LineName> transfers`</span> | List of subway lines available for transfer at the Station. |
-| <span style="color:#C586C0">`Borough borough`</span>            | Borough where the Station is located.                       |
+#### Private Variables:  
+| Name                         | Description                                                 |
+|------------------------------|-------------------------------------------------------------|
+| `string id`                  | Identifier for the Station.                                 |
+| `string name`                | Name of the Station.                                        |
+| `vector<LineName> transfers` | List of subway lines available for transfer at the Station. |
+| `Borough borough`            | Borough where the Station is located.                       |
 
-#### Public Methods:
-| Method                                                                       | Description                                                               |
-|------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| <span style="color:#569CD6">`string getId()`</span>                          | Retrieves the ID of the Station.                                          |
-| <span style="color:#569CD6">`void setId(string newId)`</span>                | Sets the ID of the Station.                                               |
-| <span style="color:#569CD6">`string getName()`</span>                        | Retrieves the name of the Station.                                        |
-| <span style="color:#569CD6">`void setName(string newName)`</span>            | Sets the name of the Station.                                             |
-| <span style="color:#569CD6">`vector<LineName> getTransfers()`</span>         | Retrieves the list of subway lines available for transfer at the Station. |
-| <span style="color:#569CD6">`void addTransfers(LineName newTransfer)`</span> | Adds a subway line to the list of available transfers at the Station.     |
-| <span style="color:#569CD6">`Borough getBorough()`</span>                    | Retrieves the borough of the Station.                                     |
-| <span style="color:#569CD6">`void setBorough(Borough newBorough)`</span>     | Sets the borough of the Station.                                          |
-| <span style="color:#569CD6">`string getTextForEnum(int enumVal)`</span>      | Retrieves the string representation of a Borough enum value.              |
+#### Public Methods:  
+| Method                                    | Description                                                               |
+|-------------------------------------------|---------------------------------------------------------------------------|
+| `string getId()`                          | Retrieves the ID of the Station.                                          |
+| `void setId(string newId)`                | Sets the ID of the Station.                                               |
+| `string getName()`                        | Retrieves the name of the Station.                                        |
+| `void setName(string newName)`            | Sets the name of the Station.                                             |
+| `vector<LineName> getTransfers()`         | Retrieves the list of subway lines available for transfer at the Station. |
+| `void addTransfers(LineName newTransfer)` | Adds a subway line to the list of available transfers at the Station.     |
+| `Borough getBorough()`                    | Retrieves the borough of the Station.                                     |
+| `void setBorough(Borough newBorough)`     | Sets the borough of the Station.                                          |
+| `string getTextForEnum(int enumVal)`      | Retrieves the string representation of a Borough enum value.              |
 
-#### Friend Overloaded Operator:
-| Operator                                                                                | Description                                                         |
-|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| <span style="color:#569CD6">`ostream& operator<<(ostream& str, Station station)`</span> | Overloaded insertion operator to output Station details to ostream. |
+#### Friend Overloaded Operator:  
+| Operator                                             | Description                                                         |
+|------------------------------------------------------|---------------------------------------------------------------------|
+| `ostream& operator<<(ostream& str, Station station)` | Overloaded insertion operator to output Station details to ostream. |
 
 ****
-
-### Line
+### Line  
 Handles the different subway lines in the game.
 
-#### Public Methods:
-| Method                                                                         | Description                                                   |
-|--------------------------------------------------------------------------------|---------------------------------------------------------------|
-| <span style="color:#569CD6">`static string getTextForEnum(int enumVal)`</span> | Retrieves the string representation of a LineName enum value. |
+#### Public Methods:  
+| Method                                      | Description                                                   |
+|---------------------------------------------|---------------------------------------------------------------|
+| `static string getTextForEnum(int enumVal)` | Retrieves the string representation of a LineName enum value. |
 
 ****
-
-### SubwayMap
+### SubwayMap  
 Reads station data from a CSV file and manages subway stations.
 
-#### Private Variables:
-| Name                                             | Description                            |
-|--------------------------------------------------|----------------------------------------|
-| <span style="color:#C586C0">`allStations`</span> | Vector containing all subway stations. |
+#### Private Variables:  
+| Name           | Description                                         |
+|----------------|-----------------------------------------------------|
+| `allStations`  | Vector containing all subway stations.              |
 
-#### Public Methods:
-| Method                                                                                                       | Description                                          |
-|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
-| <span style="color:#569CD6">`void createAllStations(string filePath, vector<Station>& allStations)`</span>   | Creates all subway stations from a CSV file.         |
-| <span style="color:#569CD6">`void updateStopsForLine(LineName line, vector<Station>& subwayStations)`</span> | Updates scheduled stops for a specified subway line. |
+#### Public Methods:  
+| Method                                                                    | Description                                          |
+|---------------------------------------------------------------------------|------------------------------------------------------|
+| `void createAllStations(string filePath, vector<Station>& allStations)`   | Creates all subway stations from a CSV file.         |
+| `void updateStopsForLine(LineName line, vector<Station>& subwayStations)` | Updates scheduled stops for a specified subway line. |
 
 ### Main
 
@@ -182,8 +179,8 @@ I decided to do a similar thing in my README above, as I feel like the separatio
 - File I/O (5)
 
 **IMPORTANT:** Thinking I was in my M2OEP repository, I created a branch when I started major refactoring for my transfer functionality. 
-I was however, in my M1OEP repositry, so I ended up merging that branch to M1OEP.
-I was easily able to sync my M2OEP reposirory with those changes (as it was forked from M1),
+I was however, in my M1OEP repository, so I ended up merging that branch to M1OEP.
+I was easily able to sync my M2OEP repository with those changes (as it was forked from M1),
 I just don't want to get points off in case there's any confusion with the commit times/dates.
 
 Therefore, my proposed grade for this Project is: **100**
