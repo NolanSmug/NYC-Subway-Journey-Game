@@ -170,7 +170,7 @@ on the `1 Line`.
 ```markdown
     1 Line:                     2 Line:
 
-   Chambers St -------------- Chambers St
+   Chambers St <------------> Chambers St
        |                           |
    Franklin St                     |
        |                           |
@@ -180,7 +180,7 @@ on the `1 Line`.
        |                           |
   Christopher St                   |
        |                           |
-     14 St --------------------- 14 St
+     14 St <------------------>  14 St 
        |                           |
      18 St                         |
        |                           |
@@ -188,9 +188,9 @@ on the `1 Line`.
        |                           |
      28 St                         |
        |                           |
-     34 St  -------------------  34 St
+     34 St  <----------------->  34 St
        |                           |
-   Times Sq ------------------- Times Sq
+   Times Sq <-----------------> Times Sq
 ```
 
 > The user is now on a train running on the `2 Line`, at `Chambers St`.
