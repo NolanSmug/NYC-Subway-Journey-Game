@@ -152,22 +152,6 @@ to have my classes interact with one another without any circular dependencies.
 
 ****
 
-**[Transferring Lines (Debugger)](https://www.youtube.com/watch?v=O2yxH51k6xI)**
-
-In this demonstration video,
-I step through the CLion debugger
-showing how all the fields we need to update in a Train object to perform a successful transfer.
-1. I set up some code in `main.cpp` to test the transfer to the `TWO_TRAIN` at 14th St
-2. `transferToLine()` is called with the requested transfers' `LineName` and the Train's `currentStation`
-3. `validTransfer()` returns `true`, as it finds the `TWO_LINE` in 14th st's vector of `LineName`s.
-4. `updateScheduledStops()` is called and builds a `SubwayMap` to be passed into the `SubwayMap` class (for `Station` file handling).
-5. `updateStopsForLine()` is called in `SubwayMap` and uses the requested `LineName` enum to build the path to the correct csv file (that holds the station data to that line). The standard pattern for the file names is: 
->`{LineName(str)}_stations.csv`
-
-6. `transferToLine()` returns `true` in main, and we can see that the current Train objects' `scheduledStops<Station>` has been updated with all of the `TWO_TRAIN` station data, and we are at the same station still.
-
-****
-
 **[Transferring Lines (Run)](https://youtu.be/w70_YOdGSuk)**
 
 In this example, the user is placed at `Rector St`
@@ -222,21 +206,18 @@ on the `1 Line`.
 
 The user now reached `Times Square`, the destination station. The game now ends.
 
-## Grade ##
+****
 
-At my Summer internship, they had me document my code on a separate webpage _Confluence_ (similar to Markdown format).
-I decided to do a similar thing in my README above, as I feel like the separation makes the code less cluttered and more readable.
-- Main Program Complexity (30)
-- Testing Program (20)
-- Has-A Relationships (80)
-  - **Train** has-a `Line` and has-a `vector<Station>`
-  - **Station** has-a `vector<Line>`
-  - **SubwayMap** has-a `vector<Station>`
-- File I/O (5)
+**[Transferring Lines (Debugger)](https://www.youtube.com/watch?v=O2yxH51k6xI)**
 
-**IMPORTANT:** Thinking I was in my M2OEP repository, I created a branch when I started major refactoring for my transfer functionality. 
-I was however, in my M1OEP repository, so I ended up merging that branch to M1OEP.
-I was easily able to sync my M2OEP repository with those changes (as it was forked from M1),
-I just don't want to get points off in case there's any confusion with the commit times/dates.
+In this demonstration video,
+I step through the CLion debugger
+showing how all the fields we need to update in a Train object to perform a successful transfer.
+1. I set up some code in `main.cpp` to test the transfer to the `TWO_TRAIN` at 14th St
+2. `transferToLine()` is called with the requested transfers' `LineName` and the Train's `currentStation`
+3. `validTransfer()` returns `true`, as it finds the `TWO_LINE` in 14th st's vector of `LineName`s.
+4. `updateScheduledStops()` is called and builds a `SubwayMap` to be passed into the `SubwayMap` class (for `Station` file handling).
+5. `updateStopsForLine()` is called in `SubwayMap` and uses the requested `LineName` enum to build the path to the correct csv file (that holds the station data to that line). The standard pattern for the file names is: 
+>`{LineName(str)}_stations.csv`
 
-Therefore, my proposed grade for this Project is: **100**
+6. `transferToLine()` returns `true` in main, and we can see that the current Train objects' `scheduledStops<Station>` has been updated with all of the `TWO_TRAIN` station data, and we are at the same station still.
