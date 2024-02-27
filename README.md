@@ -167,7 +167,7 @@ on the `1 Line`.
 
 5. User selects yes.
 6. User selects to switch to the `2 Line`, since the `2 Line` can get to `Times Square` in fewer stops.
-```markdown
+```text
      1 Line:                     2 Line:
                    Uptown
        ʌ                           ʌ
