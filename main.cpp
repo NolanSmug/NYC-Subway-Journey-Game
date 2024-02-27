@@ -51,12 +51,13 @@ int main() {
             ask_user_to_transfer(oneLine);
             oneLine.setDirection(get_direction_from_user());
             print_all_stations(oneLine.getScheduledStops());
-            cout << "Your Current Line:\n" << Train::getTextForEnum(currentDirection) << " " << Line::getTextForEnum(oneLine.getName()) << " Train" << endl;
+            cout << "Your Current Line:\n" << Train::getTextForEnum(currentDirection) << " "
+                 << Line::getTextForEnum(oneLine.getName()) << " Train" << endl;
             cout << "\nYour current Station:\n" << currentStation;
-        }
-        else {
+        } else {
             cout << advance_station_from_user(oneLine);
         }
+    }
 
 // CURRENTLY REMOVED (after the transfer logic was added)
         // check to see if the user passed the destination station, in which case they lose the game (for now)
@@ -66,7 +67,6 @@ int main() {
 //            (direction == BRONXBOUND && currentIndex > destinationStation)) {
 //            break;
 //        }
-    }
 
     // game over stuff
     if (oneLine.getCurrentStation().getName() == stations[destinationStation].getName()) {
