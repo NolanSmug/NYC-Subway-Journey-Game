@@ -170,7 +170,7 @@ on the `1 Line`.
 ```markdown
     1 Line:            2 Line:
 
-   Chambers St--------Chambers St
+   Chambers St ------ Chambers St
        |                  |
    Franklin St            |
        |                  |
@@ -180,7 +180,7 @@ on the `1 Line`.
        |                  |
   Christopher St          |
        |                  |
-     14 St--------------14 St
+     14 St ------------ 14 St
        |                  |
      18 St                |
        |                  |
@@ -188,9 +188,9 @@ on the `1 Line`.
        |                  |
      28 St                |
        |                  |
-     34 St--------------34 St
+     34 St ------------ 34 St
        |                  |
-  Times Sq-42 St-----Times Sq-42 St 
+  Times Sq-42 St --- Times Sq-42 St 
 
 ```
 
