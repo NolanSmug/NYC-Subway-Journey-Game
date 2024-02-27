@@ -21,14 +21,14 @@ This process is repeated until either:
 Manages a Train object and its scheduled stops.
 
 #### Private Variables:  
-| Name                             | Description                                                                      |
-|----------------------------------|----------------------------------------------------------------------------------|
-| `LineName currentLine`           | Current subway line of the Train.                                                |
-| `Direction direction`            | Direction of the Train (BRONXBOUND, MANHATTANBOUND, QUEENSBOUND, BROOKLYNBOUND). |
-| `vector<Station> scheduledStops` | Vector of stations representing scheduled stops.                                 |
-| `int currentStationIndex`        | Index of the current station in the scheduled stops vector.                      |
-| `bool express`                   | Indicates whether the Train is an express train or not.                          |
-| `int numCars`                    | Number of cars in the Train.                                                     |
+| Name                             | Description                                                                              |
+|----------------------------------|------------------------------------------------------------------------------------------|
+| `LineName currentLine`           | Current subway line of the Train.                                                        |
+| `Direction direction`            | Direction of the Train (`BRONXBOUND`, `MANHATTANBOUND`, `QUEENSBOUND`, `BROOKLYNBOUND`). |
+| `vector<Station> scheduledStops` | Vector of stations representing scheduled stops.                                         |
+| `int currentStationIndex`        | Index of the current station in the scheduled stops vector.                              |
+| `bool express`                   | Indicates whether the Train is an express train or not.                                  |
+| `int numCars`                    | Number of cars in the Train.                                                             |
 
 #### Public Methods:  
 | Method                                                          | Description                                                            |
@@ -164,6 +164,61 @@ showing how all the fields we need to update in a Train object to perform a succ
 
 6. `transferToLine()` returns `true` in main, and we can see that the current Train objects' `scheduledStops<Station>` has been updated with all of the `TWO_TRAIN` station data, and we are at the same station still.
 
+****
+
+**[Transferring Lines (Run)](https://youtu.be/w70_YOdGSuk)**
+
+In this example, the user is placed at `Rector St`
+on the `1 Line`.  
+**Goal**: Find our way to `Times Square 42nd St`
+
+
+1. User selects to start traveling Uptown (`Bronxbound`).
+2. User requests to advance 2 `Stations`.
+3. User arrives at `Chambers St`.
+
+> `Chambers St` has other lines that stop there (`2`,`3`). The user is asked if they would like to transfer.
+
+5. User selects yes.
+6. User selects to switch to the `2 Line`, since the `2 Line` can get to `Times Square` in fewer stops.
+```markdown
+    1 Line:            2 Line:
+
+   Chambers St--------Chambers St
+       |                  |
+   Franklin St            |
+       |                  |
+    Canal St              |
+       |                  |
+   Houston St             |
+       |                  |
+  Christopher St          |
+       |                  |
+     14 St--------------14 St
+       |                  |
+     18 St                |
+       |                  |
+     23 St                |
+       |                  |
+     28 St                |
+       |                  |
+     34 St--------------34 St
+       |                  |
+  Times Sq-42 St-----Times Sq-42 St 
+
+```
+
+> The user is now on a train running on the `2 Line`, at `Chambers St`.
+
+> Note: the user will always be asked again if they would like to transfer (in case they made a mistake).
+
+9. User selects to board on the Uptown platform, since we still want to be going uptown.
+
+>The user is now on a `Bronxbound 2 Train`.
+
+10. User selects to advance 3 `Stations` (after referring to the map).
+
+The user now reached `Times Square`, the destination station. The game now ends.
 
 ## Grade ##
 
