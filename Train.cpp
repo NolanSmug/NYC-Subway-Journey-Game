@@ -160,3 +160,7 @@ int Train::getNumCars() {
 void Train::setNumCars(int newNumCars) {
     numCars = newNumCars;
 }
+
+string Train::getTextForEnum(int enumVal) {
+    return DirectionEnumStrings[enumVal];
+}

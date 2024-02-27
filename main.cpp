@@ -36,7 +36,8 @@ int main() {
     Train oneLine = Train(ONE_TRAIN, BRONXBOUND, stations, false, 10);
     // startingStation = 8; // testing purposes
     oneLine.setCurrentStation(startingStation);
-    cout << "Your current Station:\n" << oneLine.getCurrentStation();
+    cout << "Your Current Line:\n" << Train::getTextForEnum(oneLine.getDirection()) << " " << Line::getTextForEnum(oneLine.getName()) << " Train" << endl;
+    cout << "\nYour current Station:\n" << oneLine.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
 
     oneLine.setDirection(get_direction_from_user()); // ask user for a direction they want to start going
@@ -44,11 +45,14 @@ int main() {
     // game loop
     while (oneLine.getCurrentStation().getName() != stations[destinationStation].getName()) {
         Station currentStation = oneLine.getCurrentStation();
+        Direction currentDirection = oneLine.getDirection();
 
         if (prompt_transfer(oneLine.getCurrentStation())) {
             ask_user_to_transfer(oneLine);
+            oneLine.setDirection(get_direction_from_user());
             print_all_stations(oneLine.getScheduledStops());
-            cout << "Your current Station:\n" << currentStation;
+            cout << "Your Current Line:\n" << Train::getTextForEnum(currentDirection) << " " << Line::getTextForEnum(oneLine.getName()) << " Train" << endl;
+            cout << "\nYour current Station:\n" << currentStation;
         }
         else {
             cout << advance_station_from_user(oneLine);
@@ -150,7 +154,7 @@ bool ask_user_to_transfer(Train &train) {
 
     bool valid = false;
     while (!valid) {
-        cout << "\nWhich line would you like to transfer to? (e to exit) ";
+        cout << "Which line would you like to transfer to? (e to exit) ";
         getline(cin, input);
 
         if (currentStation.hasTransferLine(input)) {
@@ -210,5 +214,5 @@ void print_all_stations(vector<Station> stations) {
             cout << station.getName() << "\n   |\n";
         }
     }
-    cout << "---------------------------------\n" << endl;
+    cout << "---------------------------------" << endl;
 }

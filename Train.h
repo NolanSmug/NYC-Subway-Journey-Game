@@ -11,7 +11,11 @@
 #include "SubwayMap.h"
 
 using namespace std;
-enum Direction {QUEENSBOUND, MANHATTANBOUND, BRONXBOUND};
+enum Direction {BRONXBOUND, MANHATTANBOUND, QUEENSBOUND, BROOKLYNBOUND};
+
+static const char * DirectionEnumStrings[] = {
+        "Bronx-Bound", "Manhattan-Bound", "Queens-Bound", "Brooklyn-Bound"
+};
 
 class Train {
 public:
@@ -45,6 +49,8 @@ public:
 
     int getNumCars();
     void setNumCars(int newNumCars);
+
+    static string getTextForEnum(int enumVal);
 
 private:
     LineName currentLine;
