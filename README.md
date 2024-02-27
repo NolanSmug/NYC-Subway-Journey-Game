@@ -168,29 +168,34 @@ on the `1 Line`.
 5. User selects yes.
 6. User selects to switch to the `2 Line`, since the `2 Line` can get to `Times Square` in fewer stops.
 ```markdown
-    1 Line:                     2 Line:
-
-   Chambers St <------------> Chambers St
+     1 Line:                     2 Line:
+                   Uptown
+       ʌ                           ʌ
        |                           |
-   Franklin St                     |
+   Times Sq  ------------------ Times Sq
        |                           |
-    Canal St                       |
-       |                           |
-   Houston St                      |
-       |                           |
-  Christopher St                   |
-       |                           |
-     14 St <------------------>  14 St 
-       |                           |
-     18 St                         |
-       |                           |
-     23 St                         |
+     34 St --------------------- 34 St
        |                           |
      28 St                         |
        |                           |
-     34 St  <----------------->  34 St
+     23 St                         |
        |                           |
-   Times Sq <-----------------> Times Sq
+     18 St                         |
+       |                           |
+     14 St --------------------  14 St
+       |                           |
+  Christopher St                   |
+       |                           |
+   Houston St                      |
+       |                           |
+    Canal St                       |
+       |                           |
+   Franklin St                     |
+       |                           |
+   Chambers St -------------- Chambers St
+       |                           |
+       v                           v
+                  Downtown
 ```
 
 > The user is now on a train running on the `2 Line`, at `Chambers St`.
