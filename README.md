@@ -1,6 +1,5 @@
 
-# Nolan Cyr<br padding="-10px">
-****
+# Nolan Cyr
 ## CS 2300 Module 2 Open-Ended Project – Subway Shuffle: A Randomized NYC Journey Pt 2
 
 ## Summary of Program
