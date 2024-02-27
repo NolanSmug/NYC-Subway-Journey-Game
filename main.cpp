@@ -75,6 +75,8 @@ int main() {
     else {
         cout << "UH OH, YOU MISSED/PASSED THE STATION!\nGAME OVER" << endl;
     }
+
+    return 0;
 }
 
 int get_random_station(unsigned int numStations) {
