@@ -4,7 +4,7 @@
 
 ## Summary of Program
 This is a game where a player is placed into a random NYC subway station,
-and the objective is to reach another randomly given station.
+and the goal is to reach another randomly given station.
 
 Upon starting the game, the player is given their current station, and the `destination station`.
 With this information, the player is given a choice between traveling on the uptown or downtown tracks.
@@ -168,30 +168,29 @@ on the `1 Line`.
 5. User selects yes.
 6. User selects to switch to the `2 Line`, since the `2 Line` can get to `Times Square` in fewer stops.
 ```markdown
-    1 Line:            2 Line:
+    1 Line:                     2 Line:
 
-   Chambers St--------Chambers St
-       |                  |
-   Franklin St            |
-       |                  |
-    Canal St              |
-       |                  |
-   Houston St             |
-       |                  |
-  Christopher St          |
-       |                  |
-     14 St--------------14 St
-       |                  |
-     18 St                |
-       |                  |
-     23 St                |
-       |                  |
-     28 St                |
-       |                  |
-     34 St--------------34 St
-       |                  |
-  Times Sq-42 St-----Times Sq-42 St 
-
+   Chambers St -------------- Chambers St
+       |                           |
+   Franklin St                     |
+       |                           |
+    Canal St                       |
+       |                           |
+   Houston St                      |
+       |                           |
+  Christopher St                   |
+       |                           |
+     14 St --------------------- 14 St
+       |                           |
+     18 St                         |
+       |                           |
+     23 St                         |
+       |                           |
+     28 St                         |
+       |                           |
+     34 St  -------------------  34 St
+       |                           |
+   Times Sq ------------------- Times Sq
 ```
 
 > The user is now on a train running on the `2 Line`, at `Chambers St`.
