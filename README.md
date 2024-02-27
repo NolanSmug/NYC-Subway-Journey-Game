@@ -88,10 +88,10 @@ Represents a subway station in the game.
 Handles the different subway lines in the game.
 
 #### Public Methods:  
-| Method                                              | Description                                                              |
-|-----------------------------------------------------|--------------------------------------------------------------------------|
-| `static string getTextForEnum(int enumVal)`         | Retrieves the string representation of a LineName enum.                  |
-| `static string getIDTextForEnum(int enumVal)`       | Retrieves the ID representation of a LineName enum.                      |
+| Method                                              | Description                                                               |
+|-----------------------------------------------------|---------------------------------------------------------------------------|
+| `static string getTextForEnum(int enumVal)`         | Retrieves the string representation of a LineName enum.                   |
+| `static string getIDTextForEnum(int enumVal)`       | Retrieves the ID representation of a LineName enum.                       |
 | `static LineName stringToLineEnum(string& lineStr)` | Retrieves a LineName enum of a string representation for a LineName enum. |
 
 ****
