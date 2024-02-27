@@ -38,20 +38,20 @@ Manages a Train object and its scheduled stops.
 | `Direction getDirection()`                                      | Retrieves the direction of the Train.                                  |
 | `void setDirection(Direction newDirection)`                     | Sets the direction of the Train.                                       |
 | `bool transferToLine(LineName newLine, Station currentStation)` | Attempts to transfer the Train to a different line at a given station. |
-| `void updateScheduledStops(LineName line)`                      | Updates the scheduled stops based on the specified subway line.        |
+| `void updateScheduledStops(LineName line)`                      | Updates the scheduled stops based on a specified subway line.          |
 | `vector<Station> getScheduledStops()`                           | Retrieves the scheduled stops of the Train.                            |
-| `void addScheduledStop(Station newStop)`                        | Adds a station to the scheduled stops of the Train.                    |
+| `void addScheduledStop(Station newStop)`                        | Adds a Station to the scheduled stops of the Train.                    |
 | `Station getCurrentStation()`                                   | Retrieves the current station of the Train.                            |
 | `Station getNextStation()`                                      | Retrieves the next station of the Train.                               |
-| `int getCurrentStationIndex()`                                  | Retrieves the index of the current station.                            |
+| `int getCurrentStationIndex()`                                  | Retrieves the index of the Train's current station.                    |
 | `void setCurrentStation(int stationIndex)`                      | Sets the current station of the Train using an index.                  |
 | `void setCurrentStation(string stationName)`                    | Sets the current station of the Train using a station name.            |
 | `bool advanceStation()`                                         | Advances the Train to the next station.                                |
 | `bool advanceStation(int numStations)`                          | Advances the Train by a specified number of stations.                  |
 | `bool isExpress()`                                              | Checks if the Train is an express train.                               |
-| `void setExpress(bool isExpress)`                               | Sets whether the Train is an express train or not.                     |
-| `int getNumCars()`                                              | Retrieves the number of cars in the Train.                             |
-| `void setNumCars(int newNumCars)`                               | Sets the number of cars in the Train.                                  |
+| `void setExpress(bool isExpress)`                               | Sets whether the Train is express or not.                              |
+| `int getNumCars()`                                              | Retrieves the number of cars on the Train.                             |
+| `void setNumCars(int newNumCars)`                               | Sets the number of cars on the Train.                                  |
 
 ****
 ### Station  
@@ -60,7 +60,7 @@ Represents a subway station in the game.
 #### Private Variables:  
 | Name                         | Description                                                 |
 |------------------------------|-------------------------------------------------------------|
-| `string id`                  | Identifier for the Station.                                 |
+| `string id`                  | ID Number for the Station.                                  |
 | `string name`                | Name of the Station.                                        |
 | `vector<LineName> transfers` | List of subway lines available for transfer at the Station. |
 | `Borough borough`            | Borough where the Station is located.                       |
@@ -88,24 +88,26 @@ Represents a subway station in the game.
 Handles the different subway lines in the game.
 
 #### Public Methods:  
-| Method                                      | Description                                                   |
-|---------------------------------------------|---------------------------------------------------------------|
-| `static string getTextForEnum(int enumVal)` | Retrieves the string representation of a LineName enum value. |
+| Method                                              | Description                                                              |
+|-----------------------------------------------------|--------------------------------------------------------------------------|
+| `static string getTextForEnum(int enumVal)`         | Retrieves the string representation of a LineName enum.                  |
+| `static string getIDTextForEnum(int enumVal)`       | Retrieves the ID representation of a LineName enum.                      |
+| `static LineName stringToLineEnum(string& lineStr)` | Retrieves a LineName enum of a string representation for a LineName enum. |
 
 ****
 ### SubwayMap  
 Reads station data from a CSV file and manages subway stations.
 
 #### Private Variables:  
-| Name           | Description                                         |
-|----------------|-----------------------------------------------------|
-| `allStations`  | Vector containing all subway stations.              |
+| Name           | Description                                        |
+|----------------|----------------------------------------------------|
+| `allStations`  | Vector containing the SubwayMap's subway stations. |
 
 #### Public Methods:  
-| Method                                                                    | Description                                          |
-|---------------------------------------------------------------------------|------------------------------------------------------|
-| `void createAllStations(string filePath, vector<Station>& allStations)`   | Creates all subway stations from a CSV file.         |
-| `void updateStopsForLine(LineName line, vector<Station>& subwayStations)` | Updates scheduled stops for a specified subway line. |
+| Method                                                                    | Description                                                     |
+|---------------------------------------------------------------------------|-----------------------------------------------------------------|
+| `void createAllStations(string filePath, vector<Station>& allStations)`   | Loads all subway station objects into a vector from a CSV file. |
+| `void updateStopsForLine(LineName line, vector<Station>& subwayStations)` | Updates the scheduled stops for a specified subway line.        |
 
 ### Main
 
