@@ -11,6 +11,7 @@ cmake_install.cmake
 CMakeFiles/
 build/
 .idea
+.info
 cmake-build-debug
 
 # Ignore IDE-specific files
