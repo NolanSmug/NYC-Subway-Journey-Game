@@ -208,12 +208,14 @@ Station advance_station_from_user(Train &train) {
 }
 
 void print_all_stations(vector<Station> stations) {
-    for (Station station : stations) {
-        if (station.getId() == "101") { // TODO: refactor to an index based loop to remove this hard-coded conditional
-            cout << station.getName() << endl;
+    unsigned int length = stations.size();
+
+    for (int i = 0; i < length; i++) {
+        if (i == length - 1) {
+            cout << stations[i].getName() << endl;
         }
         else {
-            cout << station.getName() << "\n   |\n";
+            cout << stations[i].getName() << "\n   |\n";
         }
     }
     cout << "---------------------------------" << endl;

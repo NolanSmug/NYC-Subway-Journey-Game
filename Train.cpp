@@ -63,7 +63,7 @@ bool Train::transferToLine(LineName newLine, Station currentStation) {
 }
 
 
-void Train::updateScheduledStops(LineName line) {
+void Train::updateScheduledStops(LineName &line) {
     SubwayMap subwayMap;
     subwayMap.updateStopsForLine(line, scheduledStops);
 }

@@ -29,7 +29,7 @@ public:
     void setDirection(Direction newDirection);
 
     bool transferToLine(LineName newLine, Station currentStation);
-    void updateScheduledStops(LineName line);
+    void updateScheduledStops(LineName &line);
 
     vector<Station> getScheduledStops();
     void addScheduledStop(Station newStop);
