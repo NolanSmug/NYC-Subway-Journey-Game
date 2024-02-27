@@ -181,7 +181,7 @@ Station advance_station_from_user(Train &train) {
         string input_string;
         getline(cin, input_string);
 
-        if (input_string.length() == 0) {
+        if (input_string.empty()) { // advance one Station
             if (train.advanceStation()) {
                 valid = true;
             } else {
@@ -193,7 +193,7 @@ Station advance_station_from_user(Train &train) {
         stringstream ss(input_string);
         bool valid_int = ss >> input_int && to_string(input_int).length() == input_string.length();
 
-        if (valid_int && train.advanceStation(input_int)) {
+        if (valid_int && train.advanceStation(input_int)) { // advance input_int Stations
             valid = true;
         }
         else {
