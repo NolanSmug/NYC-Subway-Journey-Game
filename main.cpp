@@ -18,7 +18,7 @@ void print_all_stations(vector<Station> stations);
 int main() {
     SubwayMap subwayMap = SubwayMap();
     vector<Station> stations;
-    subwayMap.createAllStations("../csv/one_train_stations.csv", stations);
+    subwayMap.createStations("../csv/one_train_stations.csv", stations);
 
     print_all_stations(stations);
 

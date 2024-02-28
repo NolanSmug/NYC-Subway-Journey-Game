@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void SubwayMap::createAllStations(string filePath, vector<Station> &subwayStations) {
+void SubwayMap::createStations(string filePath, vector<Station> &subwayStations) {
     ifstream inFile;
     inFile.open(filePath);
 
@@ -82,5 +82,5 @@ void SubwayMap::updateStopsForLine(LineName line, vector<Station> &subwayStation
     string filePath = "../csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
     stringToLowerCase(filePath); // ensure lowercase
 
-    createAllStations(filePath, subwayStations); // create the Station vector
+    createStations(filePath, subwayStations); // create the Station vector
 }

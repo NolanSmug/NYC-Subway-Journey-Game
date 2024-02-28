@@ -16,7 +16,7 @@ private:
     vector<Station> allStations;
 
 public:
-    void createAllStations(string filePath, vector<Station> &subwayStations);
+    void createStations(string filePath, vector<Station> &subwayStations);
 
     void updateStopsForLine(LineName line, vector<Station> &subwayStations);
 };

@@ -106,7 +106,7 @@ Reads station data from a CSV file and manages subway stations.
 #### Public Methods:  
 | Method                                                                    | Description                                                     |
 |---------------------------------------------------------------------------|-----------------------------------------------------------------|
-| `void createAllStations(string filePath, vector<Station>& allStations)`   | Loads all subway station objects into a vector from a CSV file. |
+| `void createStations(string filePath, vector<Station>& allStations)`   | Loads all subway station objects into a vector from a CSV file. |
 | `void updateStopsForLine(LineName line, vector<Station>& subwayStations)` | Updates the scheduled stops for a specified subway line.        |
 
 ### Main
