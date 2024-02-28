@@ -33,29 +33,29 @@ int main() {
     }
 
     // START GAME
-    Train oneLine = Train(ONE_TRAIN, BRONXBOUND, stations, false, 10);
+    Train train = Train(ONE_TRAIN, BRONXBOUND, stations, false, 10);
     // startingStation = 8; // testing purposes
-    oneLine.setCurrentStation(startingStation);
-    cout << "Your Current Line:\n" << Train::getTextForEnum(oneLine.getDirection()) << " " << Line::getTextForEnum(oneLine.getName()) << " Train" << endl;
-    cout << "\nYour current Station:\n" << oneLine.getCurrentStation();
+    train.setCurrentStation(startingStation);
+    cout << "Your Current Line:\n" << Train::getTextForEnum(train.getDirection()) << " " << Line::getTextForEnum(train.getName()) << " Train" << endl;
+    cout << "\nYour current Station:\n" << train.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
 
-    oneLine.setDirection(get_direction_from_user()); // ask user for a direction they want to start going
+    train.setDirection(get_direction_from_user()); // ask user for a direction they want to start going
 
     // game loop
-    while (oneLine.getCurrentStation().getName() != stations[destinationStation].getName()) {
-        Station currentStation = oneLine.getCurrentStation();
-        Direction currentDirection = oneLine.getDirection();
+    while (train.getCurrentStation().getName() != stations[destinationStation].getName()) {
+        Station currentStation = train.getCurrentStation();
+        Direction currentDirection = train.getDirection();
 
-        if (prompt_transfer(oneLine.getCurrentStation())) {
-            ask_user_to_transfer(oneLine);
-            oneLine.setDirection(get_direction_from_user());
-            print_all_stations(oneLine.getScheduledStops());
+        if (prompt_transfer(train.getCurrentStation())) {
+            ask_user_to_transfer(train);
+            train.setDirection(get_direction_from_user());
+            print_all_stations(train.getScheduledStops());
             cout << "Your Current Line:\n" << Train::getTextForEnum(currentDirection) << " "
-                 << Line::getTextForEnum(oneLine.getName()) << " Train" << endl;
+                 << Line::getTextForEnum(train.getName()) << " Train" << endl;
             cout << "\nYour current Station:\n" << currentStation;
         } else {
-            cout << advance_station_from_user(oneLine);
+            cout << advance_station_from_user(train);
         }
     }
 
@@ -69,7 +69,7 @@ int main() {
 //        }
 
     // game over stuff
-    if (oneLine.getCurrentStation().getName() == stations[destinationStation].getName()) {
+    if (train.getCurrentStation().getName() == stations[destinationStation].getName()) {
         cout << "YOU WIN" << endl;
     }
     else {
