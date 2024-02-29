@@ -106,7 +106,7 @@ Reads station data from a CSV file and manages subway stations.
 #### Public Methods:  
 | Method                                                                    | Description                                                     |
 |---------------------------------------------------------------------------|-----------------------------------------------------------------|
-| `void createStations(string filePath, vector<Station>& allStations)`   | Loads all subway station objects into a vector from a CSV file. |
+| `void createStations(string filePath, vector<Station>& allStations)`      | Loads all subway station objects into a vector from a CSV file. |
 | `void updateStopsForLine(LineName line, vector<Station>& subwayStations)` | Updates the scheduled stops for a specified subway line.        |
 
 ### Main
@@ -133,7 +133,7 @@ It will be interesting to see the game played out when I add the ability to tran
 ### Module 2 Additions
 
 Although I have not implemented it into the main game yet,
-I have added all the necessary methods with logic for verifying, and executing a successful transfer.
+I have added all the necessary methods with logic for verifying and executing a successful transfer.
 
 - `validTransfer()`: returns true or false if the users' requested LineName is at a specified Station
 - `updateScheduledStops()`: calls the `updateStopsForLine()` method in `SubwayMap` to update the current Trains' `scheduledStops`.
