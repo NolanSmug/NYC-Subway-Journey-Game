@@ -53,9 +53,9 @@ bool validTransfer(LineName &newLine, Station &currentStation) {
 
 bool Train::transferToLine(LineName newLine, Station currentStation) {
     if (validTransfer(newLine, currentStation)) { // if the transfer is valid, proceed with the transfer
-        updateScheduledStops(newLine);                      // update the Train's Station vector
+        updateScheduledStops(newLine); // update the Train's Station vector
         setCurrentStation(currentStation.getName()); // update the Train's currentStation
-        currentLine = newLine;
+        currentLine = newLine; // update the Train's currentLine
         return true;
     }
 

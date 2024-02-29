@@ -1,28 +1,27 @@
 import csv
 
-train_line_stations = {
-    "four_train": [],
-    "five_train": [],
-    "six_train": [],
-    "seven_train": [],
-    "a_train": [],
-    "b_train": [],
-    "c_train": [],
-    "d_train": [],
-    "e_train": [],
-    "f_train": [],
-    "g_train": [],
-    "j_train": [],
-    "l_train": [],
-    "m_train": [],
-    "n_train": [],
-    "q_train": [],
-    "r_train": [],
-    "s_train": [],
-    "z_train": [],
+train_stations = {
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": [],
+    "A": [],
+    "B": [],
+    "C": [],
+    "D": [],
+    "E": [],
+    "F": [],
+    "G": [],
+    "J": [],
+    "L": [],
+    "M": [],
+    "N": [],
+    "Q": [],
+    "R": [],
+    "S": [],
+    "Z": [],
 }
 
-# Read the provided data and organize stations by train line
 with open('./csv/all_stations.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
@@ -30,12 +29,12 @@ with open('./csv/all_stations.csv', newline='') as csvfile:
         transfers = row['transfers'].split(',')
         for line in transfers:
             for char in line.split():
-                if char in train_line_stations:
-                    train_line_stations[char].append(row)
+                if char in train_stations:
+                    train_stations[char].append(row)
 
-# Write stations for each train line to separate CSV files
-for line, stations in train_line_stations.items():
-    with open(f'./csv/{line}.csv', mode='w', newline='') as csvfile:
+# Write stations for each train line to separate CSV files in the 'csv' directory
+for line, stations in train_stations.items():
+    with open(f'./csv/{line}_train_stations.csv', mode='w', newline='') as csvfile:
         fieldnames = ['stop_id', 'stop_name', 'transfers', 'borough']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         

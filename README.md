@@ -225,3 +225,19 @@ showing how all the fields we need to update in a Train object to perform a succ
 >`{LineName(str)}_stations.csv`
 
 6. `transferToLine()` returns `true` in main, and we can see that the current Train objects' `scheduledStops<Station>` has been updated with all of the `TWO_TRAIN` station data, and we are at the same station still.
+
+
+```c++
+bool transferToLine(LineName newLine, Station currentStation) {
+    if (validTransfer(newLine, currentStation)) { // if the transfer is valid, proceed with the transfer
+        updateScheduledStops(newLine); // update the Train's Station vector
+        setCurrentStation(currentStation.getName()); // update the Train's currentStation
+        currentLine = newLine; // update the Train's currentLine
+        return true;
+    }
+
+    return false;  // not a valid requested transfer
+}
+```
+
+****
