@@ -33,24 +33,24 @@ Manages a Train object and its scheduled stops.
 #### Public Methods:  
 | Method                                                          | Description                                                            |
 |-----------------------------------------------------------------|------------------------------------------------------------------------|
-| `LineName getName()`                                            | Retrieves the current line of the Train.                               |
+| `LineName getName()`                                            | Gets the current line of the Train.                                    |
 | `void setName(LineName newLineName)`                            | Sets the current line of the Train.                                    |
-| `Direction getDirection()`                                      | Retrieves the direction of the Train.                                  |
+| `Direction getDirection()`                                      | Gets the direction of the Train.                                       |
 | `void setDirection(Direction newDirection)`                     | Sets the direction of the Train.                                       |
 | `bool transferToLine(LineName newLine, Station currentStation)` | Attempts to transfer the Train to a different line at a given station. |
 | `void updateScheduledStops(LineName line)`                      | Updates the scheduled stops based on a specified subway line.          |
-| `vector<Station> getScheduledStops()`                           | Retrieves the scheduled stops of the Train.                            |
+| `vector<Station> getScheduledStops()`                           | Gets the scheduled stops of the Train.                                 |
 | `void addScheduledStop(Station newStop)`                        | Adds a Station to the scheduled stops of the Train.                    |
-| `Station getCurrentStation()`                                   | Retrieves the current station of the Train.                            |
-| `Station getNextStation()`                                      | Retrieves the next station of the Train.                               |
-| `int getCurrentStationIndex()`                                  | Retrieves the index of the Train's current station.                    |
+| `Station getCurrentStation()`                                   | Gets the current station of the Train.                                 |
+| `Station getNextStation()`                                      | Gets the next station of the Train.                                    |
+| `int getCurrentStationIndex()`                                  | Gets the index of the Train's current station.                         |
 | `void setCurrentStation(int stationIndex)`                      | Sets the current station of the Train using an index.                  |
 | `void setCurrentStation(string stationName)`                    | Sets the current station of the Train using a station name.            |
 | `bool advanceStation()`                                         | Advances the Train to the next station.                                |
 | `bool advanceStation(int numStations)`                          | Advances the Train by a specified number of stations.                  |
 | `bool isExpress()`                                              | Checks if the Train is an express train.                               |
 | `void setExpress(bool isExpress)`                               | Sets whether the Train is express or not.                              |
-| `int getNumCars()`                                              | Retrieves the number of cars on the Train.                             |
+| `int getNumCars()`                                              | Gets the number of cars on the Train.                                  |
 | `void setNumCars(int newNumCars)`                               | Sets the number of cars on the Train.                                  |
 
 ****
@@ -66,17 +66,17 @@ Represents a subway station in the game.
 | `Borough borough`            | Borough where the Station is located.                       |
 
 #### Public Methods:  
-| Method                                    | Description                                                                 |
-|-------------------------------------------|-----------------------------------------------------------------------------|
-| `string getId()`                          | Retrieves the ID of the Station.                                            |
-| `void setId(string newId)`                | Sets the ID of the Station.                                                 |
-| `string getName()`                        | Retrieves the name of the Station.                                          |
-| `void setName(string newName)`            | Sets the name of the Station.                                               |
-| `vector<LineName> getTransfers()`         | Retrieves the list of subway lines available to transfer to at the Station. |
-| `void addTransfers(LineName newTransfer)` | Adds a subway line to the list of available transfers at the Station.       |
-| `Borough getBorough()`                    | Retrieves the borough of the Station.                                       |
-| `void setBorough(Borough newBorough)`     | Sets the borough of the Station.                                            |
-| `string getTextForEnum(int enumVal)`      | Retrieves the string representation of a Borough enum value.                |
+| Method                                    | Description                                                            |
+|-------------------------------------------|------------------------------------------------------------------------|
+| `string getId()`                          | Gets the ID of the Station.                                            |
+| `void setId(string newId)`                | Sets the ID of the Station.                                            |
+| `string getName()`                        | Gets the name of the Station.                                          |
+| `void setName(string newName)`            | Sets the name of the Station.                                          |
+| `vector<LineName> getTransfers()`         | Gets the list of subway lines available to transfer to at the Station. |
+| `void addTransfers(LineName newTransfer)` | Adds a subway line to the list of available transfers at the Station.  |
+| `Borough getBorough()`                    | Gets the borough of the Station.                                       |
+| `void setBorough(Borough newBorough)`     | Sets the borough of the Station.                                       |
+| `string getTextForEnum(int enumVal)`      | Gets the string representation of a Borough enum value.                |
 
 #### Friend Overloaded Operator:  
 | Operator                                             | Description                                               |
@@ -88,11 +88,11 @@ Represents a subway station in the game.
 Handles the different subway lines in the game.
 
 #### Public Methods:  
-| Method                                              | Description                                                               |
-|-----------------------------------------------------|---------------------------------------------------------------------------|
-| `static string getTextForEnum(int enumVal)`         | Retrieves the string representation of a LineName enum.                   |
-| `static string getIDTextForEnum(int enumVal)`       | Retrieves the ID representation of a LineName enum.                       |
-| `static LineName stringToLineEnum(string& lineStr)` | Retrieves a LineName enum of a string representation for a LineName enum. |
+| Method                                              | Description                                                          |
+|-----------------------------------------------------|----------------------------------------------------------------------|
+| `static string getTextForEnum(int enumVal)`         | Gets the string representation of a LineName enum.                   |
+| `static string getIDTextForEnum(int enumVal)`       | Gets the ID representation of a LineName enum.                       |
+| `static LineName stringToLineEnum(string& lineStr)` | Gets a LineName enum of a string representation for a LineName enum. |
 
 ****
 ### SubwayMap  
