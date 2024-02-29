@@ -66,17 +66,17 @@ Represents a subway station in the game.
 | `Borough borough`            | Borough where the Station is located.                       |
 
 #### Public Methods:  
-| Method                                    | Description                                                               |
-|-------------------------------------------|---------------------------------------------------------------------------|
-| `string getId()`                          | Retrieves the ID of the Station.                                          |
-| `void setId(string newId)`                | Sets the ID of the Station.                                               |
-| `string getName()`                        | Retrieves the name of the Station.                                        |
-| `void setName(string newName)`            | Sets the name of the Station.                                             |
-| `vector<LineName> getTransfers()`         | Retrieves the list of subway lines available for transfer at the Station. |
-| `void addTransfers(LineName newTransfer)` | Adds a subway line to the list of available transfers at the Station.     |
-| `Borough getBorough()`                    | Retrieves the borough of the Station.                                     |
-| `void setBorough(Borough newBorough)`     | Sets the borough of the Station.                                          |
-| `string getTextForEnum(int enumVal)`      | Retrieves the string representation of a Borough enum value.              |
+| Method                                    | Description                                                                 |
+|-------------------------------------------|-----------------------------------------------------------------------------|
+| `string getId()`                          | Retrieves the ID of the Station.                                            |
+| `void setId(string newId)`                | Sets the ID of the Station.                                                 |
+| `string getName()`                        | Retrieves the name of the Station.                                          |
+| `void setName(string newName)`            | Sets the name of the Station.                                               |
+| `vector<LineName> getTransfers()`         | Retrieves the list of subway lines available to transfer to at the Station. |
+| `void addTransfers(LineName newTransfer)` | Adds a subway line to the list of available transfers at the Station.       |
+| `Borough getBorough()`                    | Retrieves the borough of the Station.                                       |
+| `void setBorough(Borough newBorough)`     | Sets the borough of the Station.                                            |
+| `string getTextForEnum(int enumVal)`      | Retrieves the string representation of a Borough enum value.                |
 
 #### Friend Overloaded Operator:  
 | Operator                                             | Description                                               |
