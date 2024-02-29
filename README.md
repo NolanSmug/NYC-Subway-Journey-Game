@@ -12,7 +12,7 @@ Next, the player is asked how many stations they would like to advance,
 and after a valid input is given, they're notified of the station they have arrived at.
 
 This process is repeated until either:
-1. The player reaches the `destination station`, to which they win the game!
+1. The player reaches the `destination station`, to which they win the game.
 2. The player accidentally passes the `destination station`, to which they lose.
 
 ## Subway Game Classes
