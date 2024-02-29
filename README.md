@@ -200,7 +200,7 @@ on the `1 Line`.
 
 > The user is now on a train running on the `2 Line`, at `Chambers St`.
 
-> Note: the user will always be asked again if they would like to transfer (in case they made a mistake).
+> **Note:** the user will always be asked again if they would like to transfer (in case they made a mistake).
 
 9. User selects to board on the Uptown platform, since we still want to be going uptown.
 
