@@ -79,9 +79,9 @@ Represents a subway station in the game.
 | `string getTextForEnum(int enumVal)`      | Retrieves the string representation of a Borough enum value.              |
 
 #### Friend Overloaded Operator:  
-| Operator                                             | Description                                                         |
-|------------------------------------------------------|---------------------------------------------------------------------|
-| `ostream& operator<<(ostream& str, Station station)` | Overloaded insertion operator to output Station details to ostream. |
+| Operator                                             | Description                                               |
+|------------------------------------------------------|-----------------------------------------------------------|
+| `ostream& operator<<(ostream& str, Station station)` | Overloaded insertion operator (toString() for a Station). |
 
 ****
 ### Line  
