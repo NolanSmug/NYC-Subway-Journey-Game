@@ -1,0 +1,31 @@
+stop_id,stop_name,transfers,borough
+R01,Astoria-Ditmars Blvd,N W,Q
+R03,Astoria Blvd,N W,Q
+R04,30 Av,N W,Q
+R05,Broadway,N W,Q
+R06,36 Av,N W,Q
+R08,39 Av-Dutch Kills,N W,Q
+R11,Lexington Av/59 St,N R W,M
+R13,5 Av/59 St,N R W,M
+R14,57 St-7 Av,N Q R W,M
+R15,49 St,N R W,M
+R16,Times Sq-42 St,N Q R W,M
+R17,34 St-Herald Sq,N Q R W,M
+R20,14 St-Union Sq,N Q R W,M
+Q01,Canal St,N Q,M
+R31,Atlantic Av-Barclays Ctr,D N R,Bk
+R36,36 St,D N R,Bk
+R39,45 St,R N,Bk
+R40,53 St,R N,Bk
+R41,59 St,N R,Bk
+N02,8 Av,N,Bk
+N03,Fort Hamilton Pkwy,N,Bk
+N04,New Utrecht Av,N,Bk
+N05,18 Av,N,Bk
+N06,20 Av,N,Bk
+N07,Bay Pkwy,N,Bk
+N08,Kings Hwy,N,Bk
+N09,Avenue U,N,Bk
+N10,86 St,N,Bk
+D43,Coney Island-Stillwell Av,N,Bk
+R09,Queensboro Plaza,N W,Q
