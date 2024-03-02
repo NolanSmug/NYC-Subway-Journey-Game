@@ -8,7 +8,22 @@
 
 using namespace std;
 
-void SubwayMap::createStations(string filePath, vector<Station> &subwayStations) {
+
+void stringToLowerCase(string &string) {
+    transform(string.begin(), string.end(), string.begin(), ::tolower);
+}
+
+string lineNameToCSV(LineName line) {
+    string lineName = Line::getIDTextForEnum(line);
+    string filePath = "../csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
+    stringToLowerCase(filePath); // ensure lowercase
+
+    return filePath;
+}
+
+void SubwayMap::createStations(LineName line, vector<Station> &subwayStations) {
+    string filePath = lineNameToCSV(line);
+
     ifstream inFile;
     inFile.open(filePath);
 
@@ -72,15 +87,6 @@ void SubwayMap::createStations(string filePath, vector<Station> &subwayStations)
     inFile.close();
 }
 
-void stringToLowerCase(string &string) {
-    transform(string.begin(), string.end(), string.begin(), ::tolower);
-}
-
 void SubwayMap::updateStopsForLine(LineName line, vector<Station> &subwayStations) {
-    string lineName = Line::getIDTextForEnum(line);
-
-    string filePath = "../csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
-    stringToLowerCase(filePath); // ensure lowercase
-
-    createStations(filePath, subwayStations); // create the Station vector
+    createStations(line, subwayStations); // create the Station vector
 }

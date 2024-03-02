@@ -17,11 +17,11 @@ Train::Train(LineName currentLine, Direction direction, vector<Station> schedule
         numCars(numCars) {}
 
 // Name
-LineName Train::getName() {
+LineName Train::getLine() {
     return currentLine;
 }
 
-void Train::setName(LineName newLineName) {
+void Train::setLine(LineName newLineName) {
     currentLine = newLineName;
 }
 

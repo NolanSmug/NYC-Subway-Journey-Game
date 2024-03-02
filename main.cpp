@@ -16,9 +16,11 @@ int get_random_station(unsigned int numStations);
 void print_all_stations(vector<Station> stations);
 
 int main() {
+    // set up the Line the user starts in
     SubwayMap subwayMap = SubwayMap();
     vector<Station> stations;
-    subwayMap.createStations("../csv/one_train_stations.csv", stations);
+    LineName startingLine = Line::getRandomLine();
+    subwayMap.createStations(startingLine, stations);
 
     print_all_stations(stations);
 
@@ -33,10 +35,10 @@ int main() {
     }
 
     // START GAME
-    Train train = Train(ONE_TRAIN, BRONXBOUND, stations, false, 10);
+    Train train = Train(startingLine, BRONXBOUND, stations, false, 10);
     // startingStation = 8; // testing purposes
     train.setCurrentStation(startingStation);
-    cout << "Your Current Line:\n" << Train::getTextForEnum(train.getDirection()) << " " << Line::getTextForEnum(train.getName()) << " Train" << endl;
+    cout << "Your Current Line:\n" << Train::getTextForEnum(train.getDirection()) << " " << Line::getTextForEnum(train.getLine()) << " Train" << endl;
     cout << "\nYour current Station:\n" << train.getCurrentStation();
     cout << "Destination Station:\n" << stations[destinationStation];
 
@@ -52,21 +54,12 @@ int main() {
             train.setDirection(get_direction_from_user());
             print_all_stations(train.getScheduledStops());
             cout << "Your Current Line:\n" << Train::getTextForEnum(currentDirection) << " "
-                 << Line::getTextForEnum(train.getName()) << " Train" << endl;
+                 << Line::getTextForEnum(train.getLine()) << " Train" << endl;
             cout << "\nYour current Station:\n" << currentStation;
         } else {
             cout << advance_station_from_user(train);
         }
     }
-
-// CURRENTLY REMOVED (after the transfer logic was added)
-        // check to see if the user passed the destination station, in which case they lose the game (for now)
-//        const Direction direction = oneLine.getDirection();
-//        const int currentIndex = oneLine.getCurrentStationIndex();
-//        if ((direction == MANHATTANBOUND && currentIndex < destinationStation) ||
-//            (direction == BRONXBOUND && currentIndex > destinationStation)) {
-//            break;
-//        }
 
     // game over stuff
     if (train.getCurrentStation().getName() == stations[destinationStation].getName()) {
@@ -86,6 +79,7 @@ int get_random_station(unsigned int numStations) {
     std::uniform_int_distribution<> distribution(0, numStations - 1);
     return distribution(generator);
 }
+
 
 Direction get_direction_from_user() {
     bool valid = false;
@@ -110,6 +104,7 @@ Direction get_direction_from_user() {
 
     return tolower(input[0]) == 'd' ? MANHATTANBOUND : BRONXBOUND; // TODO: don't forget this needs to be updated soon
 }
+
 
 bool prompt_transfer(Station station) {
     bool alreadyListedTransfers = false;
@@ -136,7 +131,7 @@ bool prompt_transfer(Station station) {
             }
             else if (tolower(input[0]) == 't') {
                 for (LineName line : station.getTransfers()) {
-                    cout << line << " ";
+                    cout << Line::getTextForEnum(line) << " ";
                 }
                 cout << endl;
                 alreadyListedTransfers = true;
@@ -149,6 +144,7 @@ bool prompt_transfer(Station station) {
 
     return false; // no transfers at the station
 }
+
 
 bool ask_user_to_transfer(Train &train) {
     Station currentStation = train.getCurrentStation();
@@ -164,6 +160,7 @@ bool ask_user_to_transfer(Train &train) {
         }
         else if (tolower(input[0]) == 'e') {
             valid = false;
+            break;
         }
         else {
             cout << "Invalid input. ";
@@ -206,6 +203,7 @@ Station advance_station_from_user(Train &train) {
     cout << "\nCurrent Station:\n";
     return train.getCurrentStation();
 }
+
 
 void print_all_stations(vector<Station> stations) {
     unsigned int length = stations.size();

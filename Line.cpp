@@ -3,6 +3,7 @@
 //
 
 #include "Line.h"
+#include "random"
 
 string Line::getTextForEnum(int enumVal) {
     return LineEnumStrings[enumVal];
@@ -36,4 +37,15 @@ LineName Line::stringToLineEnum(string& lineStr) {
     if (lineStr == "G") return G_TRAIN;
     if (lineStr == "L") return L_TRAIN;
     return NULL_TRAIN; // Default value for unknown line strings
+}
+
+LineName Line::getRandomLine() {
+    std::random_device rd;
+    std::mt19937 generator(rd());
+
+    // Define distribution for LineName enum values
+    std::uniform_int_distribution<> distribution(0, L_TRAIN);
+
+    int randomLineIndex = distribution(generator);
+    return static_cast<LineName>(randomLineIndex);
 }

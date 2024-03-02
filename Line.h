@@ -51,6 +51,8 @@ public:
     static string getIDTextForEnum(int enumVal);
 
     static LineName stringToLineEnum(string& lineStr);
+
+    static LineName getRandomLine();
 };
 
 #endif // LINE_H

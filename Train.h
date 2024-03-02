@@ -22,8 +22,8 @@ public:
     Train();
     Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars);
 
-    LineName getName();
-    void setName(LineName newLineName);
+    LineName getLine();
+    void setLine(LineName newLineName);
 
     Direction getDirection();
     void setDirection(Direction newDirection);
