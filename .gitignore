@@ -26,3 +26,4 @@ cmake-build-debug
 # Ignore specific files
 .DS_Store
 LastTest.log
+.gitignore
