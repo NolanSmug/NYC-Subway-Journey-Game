@@ -6,14 +6,14 @@
 This is a game where a player is placed into a random NYC subway station,
 and the goal is to reach another randomly given station.
 
-Upon starting the game, the player is given their current station, and the `destination station`.
+Upon starting the game, the player is given a random `current station`, and a random `destination station`.
 With this information, the player is given a choice between traveling on the uptown or downtown tracks.
-Next, the player is asked how many stations they would like to advance,
-and after a valid input is given, they're notified of the station they have arrived at.
+Next, `if` the `current station` has available transfers,
+the player is given a list of that stations' `transfer line` options.
+Finally, the player is asked how many stations they would like to advance.
+And after a valid input is given, they're notified of the station they have arrived at, ending their turn.
 
-This process is repeated until either:
-1. The player reaches the `destination station`, to which they win the game.
-2. The player accidentally passes the `destination station`, to which they lose.
+
 
 ## Subway Game Classes
 
@@ -229,10 +229,10 @@ showing how all the fields we need to update in a Train object to perform a succ
 
 ```c++
 bool transferToLine(LineName newLine, Station currentStation) {
-    if (validTransfer(newLine, currentStation)) { // if the transfer is valid, proceed with the transfer
-        updateScheduledStops(newLine); // update the Train's Station vector
-        setCurrentStation(currentStation.getName()); // update the Train's currentStation
-        currentLine = newLine; // update the Train's currentLine
+    if (validTransfer(newLine,currentStation)) {        // if the transfer is valid, proceed with the transfer
+        updateScheduledStops(newLine);                  // update the Train's Station vector
+        setCurrentStation(currentStation.getName());    // update the Train's currentStation
+        currentLine = newLine;                          // update the Train's currentLine
         return true;
     }
 
