@@ -14,7 +14,7 @@ R40,53 St,R N,Bk
 R39,45 St,R N,Bk
 R36,36 St,D N R,Bk
 R31,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
-Q01,Canal St,N Q,M
+Q01,Canal St,N Q R W J Z 6,M
 R20,14 St-Union Sq,N Q R W L 4 5 6,M
 R17,34 St-Herald Sq,N Q R W,M
 R16,Times Sq-42 St,N Q R W 1 2 3 7,M

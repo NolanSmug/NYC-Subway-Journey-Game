@@ -20,8 +20,8 @@ R19,23 St,R W,M
 R20,14 St-Union Sq,N Q R W L 4 5 6,M
 R21,8 St-NYU,R W,M
 R22,Prince St,R W,M
-R23,Canal St,R W,M
-Q01,Canal St,N Q,M
+R23,Canal St,N Q R W J Z 6,M
+Q01,Canal St,N Q R W J Z 6,M
 R24,City Hall,R W,M
 R25,Cortlandt St,R W,M
 R26,Rector St,R W,M
@@ -109,7 +109,7 @@ M14,Hewes St,J M,Bk
 M16,Marcy Av,J M Z,Bk
 M18,Delancey St-Essex St,J Z,M
 M19,Bowery,J Z,M
-M20,Canal St,J Z,M
+M20,Canal St,N Q R W J Z 6,M
 M21,Chambers St,J Z,M
 M22,Fulton St,A C J Z 2 3 4 5,M
 M23,Broad St,J Z,M
@@ -437,7 +437,7 @@ F27,Church Av,G,Bk
 636,Astor Pl,6,M
 637,Bleecker St,6,M
 638,Spring St,6,M
-639,Canal St,6,M
+639,Canal St,N Q R W J Z 6,M
 640,Brooklyn Bridge-City Hall,4 5 6 J Z,M
 418,Fulton St,A C J Z 2 3 4 5,M
 419,Wall St,4 5,M

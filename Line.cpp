@@ -36,7 +36,8 @@ LineName Line::stringToLineEnum(string& lineStr) {
     if (lineStr == "Z") return Z_TRAIN;
     if (lineStr == "G") return G_TRAIN;
     if (lineStr == "L") return L_TRAIN;
-    return NULL_TRAIN; // Default value for unknown line strings
+    if (lineStr == "S") return S_TRAIN;
+    if (lineStr == "Null_Train") return NULL_TRAIN;
 }
 
 LineName Line::getRandomLine() {

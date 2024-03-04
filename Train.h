@@ -11,7 +11,7 @@
 #include "SubwayMap.h"
 
 using namespace std;
-enum Direction {BRONXBOUND, MANHATTANBOUND, QUEENSBOUND, BROOKLYNBOUND};
+enum Direction {UPTOWN, DOWNTOWN};
 
 static const char * DirectionEnumStrings[] = {
         "Bronx-Bound", "Manhattan-Bound", "Queens-Bound", "Brooklyn-Bound"

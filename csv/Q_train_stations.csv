@@ -19,7 +19,7 @@ D26,Prospect Park,B Q,Bk
 D25,7 Av,B Q,Bk
 D24,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 R30,DeKalb Av,B Q R,Bk
-Q01,Canal St,N Q,M
+Q01,Canal St,N Q R W J Z 6,M
 R20,14 St-Union Sq,N Q R W L 4 5 6,M
 R17,34 St-Herald Sq,N Q R W,M
 R16,Times Sq-42 St,N Q R W 1 2 3 7,M

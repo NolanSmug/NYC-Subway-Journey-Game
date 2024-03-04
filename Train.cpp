@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Train::Train() : currentLine(NULL_TRAIN), direction(MANHATTANBOUND), scheduledStops(), express(false), numCars(10) {}
+Train::Train() : currentLine(NULL_TRAIN), direction(DOWNTOWN), scheduledStops(), express(false), numCars(10) {}
 
 Train::Train(LineName currentLine, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
         currentLine(currentLine),
@@ -27,6 +27,8 @@ void Train::setLine(LineName newLineName) {
 
 // Direction
 Direction Train::getDirection() {
+//    vector<Direction> directions = lineDirectionsMap[currentLine];
+
     return direction;
 }
 
@@ -100,7 +102,7 @@ void Train::setCurrentStation(string stationName) {
 }
 
 Station Train::getNextStation() {
-    int increment = (direction == BRONXBOUND ? 1 : -1); // choose if we want
+    int increment = (direction == UPTOWN ? 1 : -1); // choose if we want
                                                         // to add or subtract to the index based on direction
 
     return scheduledStops[currentStationIndex == scheduledStops.size() - increment ? currentStationIndex : currentStationIndex + 1];
@@ -109,10 +111,10 @@ Station Train::getNextStation() {
 bool Train::advanceStation() {
     bool valid = currentStationIndex < scheduledStops.size();
 
-    if (direction == BRONXBOUND) {
+    if (direction == UPTOWN) {
         currentStationIndex += (valid ? 1 : 0); // increment if uptown
     }
-    else if (direction == MANHATTANBOUND) {
+    else if (direction == DOWNTOWN) {
         currentStationIndex -= (valid ? 1 : 0); // decrement if downtown
     }
     else {
@@ -127,11 +129,11 @@ bool Train::advanceStation(int numStations) {
     bool valid;
     // valid flag needs to have a little more checks here for if the user enters an integer outside of the range
     // (which is also based on the direction of the train
-    if (direction == BRONXBOUND) {
+    if (direction == UPTOWN) {
         valid = (currentStationIndex + numStations < scheduledStops.size()) && (numStations > 0);
         currentStationIndex += (valid ? numStations : 0);
     }
-    else if (direction == MANHATTANBOUND) {
+    else if (direction == DOWNTOWN) {
         valid = (currentStationIndex - numStations < scheduledStops.size()) && (numStations > 0);
         currentStationIndex -= (valid ? numStations : 0);
     }

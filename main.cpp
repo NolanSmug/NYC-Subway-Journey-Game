@@ -18,41 +18,47 @@ void print_all_stations(vector<Station> stations);
 int main() {
     // set up the Line the user starts in
     SubwayMap subwayMap = SubwayMap();
-    vector<Station> stations;
     LineName startingLine = Line::getRandomLine();
-    subwayMap.createStations(startingLine, stations);
 
-    print_all_stations(stations);
+    vector<Station> currentStations;
+    vector<Station> allStations;
+
+    subwayMap.createStations(startingLine, currentStations);
+    subwayMap.createStations(NULL_TRAIN, allStations); // NULL_TRAIN returns all the NYC stations
+
+//    print_all_stations(currentStations);
 
     // set up starting and ending stations
-    unsigned int numStations = stations.size();
+    unsigned int numStations = currentStations.size();
+    unsigned int const totalNumStations = allStations.size();
+
     int startingStation = get_random_station(numStations);
     int destinationStation = startingStation;
 
     // make sure destination station is at least 4 stops away
     while (destinationStation == startingStation && abs(startingStation - destinationStation) <= 4) {
-        destinationStation = get_random_station(numStations);
+        destinationStation = get_random_station(totalNumStations);
     }
 
     // START GAME
-    Train train = Train(startingLine, BRONXBOUND, stations, false, 10);
+    Train train = Train(startingLine, UPTOWN, currentStations, false, 10);
     // startingStation = 8; // testing purposes
     train.setCurrentStation(startingStation);
     cout << "Your Current Line:\n" << Train::getTextForEnum(train.getDirection()) << " " << Line::getTextForEnum(train.getLine()) << " Train" << endl;
     cout << "\nYour current Station:\n" << train.getCurrentStation();
-    cout << "Destination Station:\n" << stations[destinationStation];
+    cout << "Destination Station:\n" << allStations[destinationStation];
 
     train.setDirection(get_direction_from_user()); // ask user for a direction they want to start going
 
     // game loop
-    while (train.getCurrentStation().getName() != stations[destinationStation].getName()) {
+    while (train.getCurrentStation().getName() != allStations[destinationStation].getName()) {
         Station currentStation = train.getCurrentStation();
         Direction currentDirection = train.getDirection();
 
         if (prompt_transfer(train.getCurrentStation())) {
             ask_user_to_transfer(train);
             train.setDirection(get_direction_from_user());
-            print_all_stations(train.getScheduledStops());
+//            print_all_stations(train.getScheduledStops());
             cout << "Your Current Line:\n" << Train::getTextForEnum(currentDirection) << " "
                  << Line::getTextForEnum(train.getLine()) << " Train" << endl;
             cout << "\nYour current Station:\n" << currentStation;
@@ -62,7 +68,7 @@ int main() {
     }
 
     // game over stuff
-    if (train.getCurrentStation().getName() == stations[destinationStation].getName()) {
+    if (train.getCurrentStation().getName() == allStations[destinationStation].getName()) {
         cout << "YOU WIN" << endl;
     }
     else {
@@ -102,7 +108,7 @@ Direction get_direction_from_user() {
         }
     }
 
-    return tolower(input[0]) == 'd' ? MANHATTANBOUND : BRONXBOUND; // TODO: don't forget this needs to be updated soon
+    return tolower(input[0]) == 'd' ? DOWNTOWN : UPTOWN; // TODO: don't forget this needs to be updated soon
 }
 
 

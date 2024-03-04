@@ -14,6 +14,10 @@ void stringToLowerCase(string &string) {
 }
 
 string lineNameToCSV(LineName line) {
+    if (line == NULL_TRAIN) {
+        return "../csv/all_stations.csv";
+    }
+
     string lineName = Line::getIDTextForEnum(line);
     string filePath = "../csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
     stringToLowerCase(filePath); // ensure lowercase
@@ -53,15 +57,9 @@ void SubwayMap::createStations(LineName line, vector<Station> &subwayStations) {
             if (!isspace(c) && borough != "SI") { // Only process non-space characters
                 string lineStr(1, c);
                 LineName lineEnum = Line::stringToLineEnum(lineStr);
-                if (lineEnum != NULL_TRAIN) {
-                    transfers.push_back(lineEnum);
-                }
+                transfers.push_back(lineEnum);
             }
         }
-        if (borough == "SI") {
-            transfers.push_back(NULL_TRAIN);
-        }
-
 
         // borough
         inFile >> borough;

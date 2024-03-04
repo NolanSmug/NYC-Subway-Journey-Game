@@ -11,6 +11,7 @@ using namespace std;
 
 enum LineName {
     NULL_TRAIN,
+    S_TRAIN,
     ONE_TRAIN, TWO_TRAIN, THREE_TRAIN,
     FOUR_TRAIN, FIVE_TRAIN, SIX_TRAIN, SEVEN_TRAIN,
     A_TRAIN, C_TRAIN, E_TRAIN,
@@ -22,7 +23,8 @@ enum LineName {
 };
 
 static const char * LineEnumIDStrings[] = {
-    "Null_Train",
+        "Null_Train",
+    "S_Train",
     "One_Train", "Two_Train", "Three_Train",
     "Four_Train", "Five_Train", "Six_Train", "Seven_Train",
     "A_Train", "C_Train", "E_Train",
@@ -35,6 +37,7 @@ static const char * LineEnumIDStrings[] = {
 
 static const char * LineEnumStrings[] = {
         "Null_Train",
+        "S",
         "1", "2", "3",
         "4", "5", "6", "7",
         "A", "C", "E",
