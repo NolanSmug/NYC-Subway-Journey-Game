@@ -18,12 +18,7 @@ csv_files = [file for file in os.listdir() if file.endswith('csv')]
 
 # Pattern of files to reverse
 pattern = [
-    'c_train_stations.csv', 'e_train_stations.csv'
-    'b_train_stations.csv', 'd_train_stations.csv', 'f_train_stations.csv', 'm_train_stations.csv',
-    'n_train_stations.csv', 'q_train_stations.csv', 'r_train_stations.csv', 'w_train_stations.csv',
-    'j_train_stations.csv', 'z_train_stations.csv',
-    'g_train_stations.csv',
-    'l_train_stations.csv'
+    'b_train_stations.csv', 'm_train_stations.csv', 'n_train_stations.csv',
 ]
 
 # Filter out files following the specified pattern
