@@ -57,13 +57,14 @@ int main() {
     // game loop
     while (train.getCurrentStation().getName() != allStations[destinationStation].getName()) {
         Station currentStation = train.getCurrentStation();
+        Direction currentDirection = train.getDirection();
 
-        cout << "Your Current Line:\n" <<  Line::getTextForEnum(train.getLine()) << " Train\n" << "↑ " << uptownLabel << "\n↓ " << downtownLabel << endl;
+        cout << "\nYour Current Line:\n" << (currentDirection == DOWNTOWN ? downtownLabel + " " +  Line::getTextForEnum(train.getLine()) + " Train ↓" : uptownLabel + "  "  + Line::getTextForEnum(train.getLine()) + " Train ↑") << endl;
         cout << "\nYour current Station:\n" << currentStation;
 
         while (true) {
             string input;
-            cout << "Enter 't' to transfer, a number to advance that many stations, or nothing to advance one station: ";
+            cout << "Enter 't' to transfer | 'c' to change direction | a number to advance that many stations (nothing advances 1 station)  ";
             getline(cin, input);
 
             if (input.empty()) { // user wants to advance 1 station
@@ -76,6 +77,12 @@ int main() {
 
                 uptownLabel = Train::getTextForDirectionEnum(UPTOWN, train.getLine());
                 downtownLabel = Train::getTextForDirectionEnum(DOWNTOWN, train.getLine());
+                break;
+            }
+            else if (tolower(input[0]) == 'c' && input.length() == 1) { // user wants to change direction
+                train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
+                string trackLabel = Train::getTextForDirectionEnum(train.getDirection(),train.getLine());
+                cout << "You switched to the " << trackLabel << " platform." << endl;
                 break;
             }
             else { // user wants to advance > 1 station
