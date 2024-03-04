@@ -1,38 +1,38 @@
 stop_id,stop_name,transfers,borough
-D03,Bedford Park Blvd,B D,Bx
-D04,Kingsbridge Rd,B D,Bx
-D05,Fordham Rd,B D,Bx
-D06,182-183 Sts,B D,Bx
-D07,Tremont Av,B D,Bx
-D08,174-175 Sts,B D,Bx
-D09,170 St,B D,Bx
-D10,167 St,B D,Bx
-D11,161 St-Yankee Stadium,B D,Bx
-D12,155 St,B D,M
-D13,145 St,B D,M
-A14,135 St,B C,M
-A15,125 St,A B C D,M
-A16,116 St,B C,M
-A17,Cathedral Pkwy (110 St),B C,M
-A18,103 St,B C,M
-A19,96 St,B C,M
-A20,86 St,B C,M
-A21,81 St-Museum of Natural History,B C,M
-A22,72 St,B C,M
-A24,59 St-Columbus Circle,A B C D 1,M
-D14,7 Av,B D,M
-D15,47-50 Sts-Rockefeller Ctr,B D F M,M
-D16,42 St-Bryant Pk,B D F M,M
-D17,34 St-Herald Sq,N Q R W B D F M,M
-D20,W 4 St-Wash Sq,A C E B D F M,M
-D21,Broadway-Lafayette St,B D F M,M
-D22,Grand St,B D,M
-R30,DeKalb Av,B Q R,Bk
-D24,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
-D25,7 Av,B Q,Bk
-D26,Prospect Park,B Q,Bk
-D28,Church Av,B Q,Bk
-D31,Newkirk Plaza,B Q,Bk
-D35,Kings Hwy,B Q,Bk
-D39,Sheepshead Bay,B Q,Bk
 D40,Brighton Beach,B Q,Bk
+D39,Sheepshead Bay,B Q,Bk
+D35,Kings Hwy,B Q,Bk
+D31,Newkirk Plaza,B Q,Bk
+D28,Church Av,B Q,Bk
+D26,Prospect Park,B Q,Bk
+D25,7 Av,B Q,Bk
+D24,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
+R30,DeKalb Av,B Q R,Bk
+D22,Grand St,B D,M
+D21,Broadway-Lafayette St,B D F M,M
+D20,W 4 St-Wash Sq,A C E B D F M,M
+D17,34 St-Herald Sq,N Q R W B D F M,M
+D16,42 St-Bryant Pk,B D F M,M
+D15,47-50 Sts-Rockefeller Ctr,B D F M,M
+D14,7 Av,B D,M
+A24,59 St-Columbus Circle,A B C D 1,M
+A22,72 St,B C,M
+A21,81 St-Museum of Natural History,B C,M
+A20,86 St,B C,M
+A19,96 St,B C,M
+A18,103 St,B C,M
+A17,Cathedral Pkwy (110 St),B C,M
+A16,116 St,B C,M
+A15,125 St,A B C D,M
+A14,135 St,B C,M
+D13,145 St,B D,M
+D12,155 St,B D,M
+D11,161 St-Yankee Stadium,B D,Bx
+D10,167 St,B D,Bx
+D09,170 St,B D,Bx
+D08,174-175 Sts,B D,Bx
+D07,Tremont Av,B D,Bx
+D06,182-183 Sts,B D,Bx
+D05,Fordham Rd,B D,Bx
+D04,Kingsbridge Rd,B D,Bx
+D03,Bedford Park Blvd,B D,Bx
