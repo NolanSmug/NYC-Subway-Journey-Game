@@ -1,9 +1,4 @@
 stop_id,stop_name,transfers,borough
-423,Borough Hall,4 5,Bk
-234,Nevins St,2 3 4 5,Bk
-235,Atlantic Av-Barclays Ctr,2 3 4 5,Bk
-239,Franklin Av-Medgar Evers College,2 3 4 5,Bk
-250,Crown Hts-Utica Av,3 4,Bk
 401,Woodlawn,4,Bx
 402,Mosholu Pkwy,4,Bx
 405,Bedford Park Blvd-Lehman College,4,Bx
@@ -20,10 +15,15 @@ stop_id,stop_name,transfers,borough
 416,138 St-Grand Concourse,4,Bx
 621,125 St,4 5 6,M
 626,86 St,4 5 6,M
-629,59 St,4 5 6,M
-631,Grand Central-42 St,4 5 6,M
-635,14 St-Union Sq,4 5 6,M
-640,Brooklyn Bridge-City Hall,4 5 6,M
-418,Fulton St,4 5,M
+629,59 St,N R W 4 5 6,M
+631,Grand Central-42 St,4 5 6 7,M
+635,14 St-Union Sq,N Q R W L 4 5 6,M
+640,Brooklyn Bridge-City Hall,4 5 6 J Z,M
+418,Fulton St,A C J Z 2 3 4 5,M
 419,Wall St,4 5,M
 420,Bowling Green,4 5,M
+423,Borough Hall,4 5,Bk
+234,Nevins St,2 3 4 5,Bk
+235,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
+239,Franklin Av-Medgar Evers College,2 3 4 5,Bk
+250,Crown Hts-Utica Av,3 4,Bk

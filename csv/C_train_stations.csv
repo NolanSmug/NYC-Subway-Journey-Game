@@ -12,19 +12,19 @@ A19,96 St,B C,M
 A20,86 St,B C,M
 A21,81 St-Museum of Natural History,B C,M
 A22,72 St,B C,M
-A24,59 St-Columbus Circle,A B C D,M
+A24,59 St-Columbus Circle,A B C D 1,M
 A25,50 St,C E,M
 A27,42 St-Port Authority Bus Terminal,A C E,M
-A28,34 St-Penn Station,A C E,M
+A28,34 St-Penn Station,A C E 1 2 3,M
 A30,23 St,C E,M
 A31,14 St,A C E,M
-A32,W 4 St-Wash Sq,A C E,M
+A32,W 4 St-Wash Sq,A C E B D F M,M
 A33,Spring St,C E,M
 A34,Canal St,A C E,M
 A36,Chambers St,A C,M
-A38,Fulton St,A C,M
+A38,Fulton St,A C J Z 2 3 4 5,M
 A40,High St,A C,Bk
-A41,Jay St-MetroTech,A C,Bk
+A41,Jay St-MetroTech,A C F R,Bk,A C,Bk
 A42,Hoyt-Schermerhorn Sts,A C,Bk
 A43,Lafayette Av,C,Bk
 A44,Clinton-Washington Avs,C,Bk

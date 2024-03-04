@@ -1,4 +1,14 @@
 stop_id,stop_name,transfers,borough
+F01,Jamaica-179 St,F,Q
+F02,169 St,F,Q
+F03,Parsons Blvd,F,Q
+F04,Sutphin Blvd,F,Q
+F05,Briarwood,E F,Q
+F06,Kew Gardens-Union Tpke,E F,Q
+F07,75 Av,E F,Q
+G08,Forest Hills-71 Av,E F M R,Q
+G14,Jackson Hts-Roosevelt Av,E F M R,Q
+B04,21 St-Queensbridge,F,Q
 B06,Roosevelt Island,F,M
 B08,Lexington Av/63 St,F,M
 B10,57 St,F,M
@@ -7,13 +17,13 @@ D16,42 St-Bryant Pk,B D F M,M
 D17,34 St-Herald Sq,B D F M,M
 D18,23 St,F M,M
 D19,14 St,F M,M
-D20,W 4 St-Wash Sq,B D F M,M
+D20,W 4 St-Wash Sq,A C E B D F M,M
 D21,Broadway-Lafayette St,B D F M,M
 F14,2 Av,F,M
 F15,Delancey St-Essex St,F,M
 F16,East Broadway,F,M
 F18,York St,F,Bk
-A41,Jay St-MetroTech,F,Bk
+A41,Jay St-MetroTech,A C F R,Bk,F,Bk
 F20,Bergen St,F,Bk
 F21,Carroll St,F,Bk
 F22,Smith-9 Sts,F,Bk
@@ -34,13 +44,3 @@ F38,Avenue X,F,Bk
 F39,Neptune Av,F,Bk
 D42,W 8 St-NY Aquarium,F,Bk
 D43,Coney Island-Stillwell Av,F D,Bk
-F01,Jamaica-179 St,F,Q
-F02,169 St,F,Q
-F03,Parsons Blvd,F,Q
-F04,Sutphin Blvd,F,Q
-F05,Briarwood,E F,Q
-F06,Kew Gardens-Union Tpke,E F,Q
-F07,75 Av,E F,Q
-G08,Forest Hills-71 Av,E F M R,Q
-G14,Jackson Hts-Roosevelt Av,E F M R,Q
-B04,21 St-Queensbridge,F,Q

@@ -5,7 +5,7 @@ R04,30 Av,N W,Q
 R05,Broadway,N W,Q
 R06,36 Av,N W,Q
 R08,39 Av-Dutch Kills,N W,Q
-R11,Lexington Av/59 St,N R W,M
+R11,Lexington Av/59 St,N R W 4 5 6,M
 R13,5 Av/59 St,N R W,M
 Q05,96 St,Q,M
 Q04,86 St,Q,M
@@ -13,11 +13,11 @@ Q03,72 St,Q,M
 B08,Lexington Av/63 St,Q,M
 R14,57 St-7 Av,N Q R W,M
 R15,49 St,N R W,M
-R16,Times Sq-42 St,N Q R W,M
-R17,34 St-Herald Sq,N Q R W,M
+R16,Times Sq-42 St,N Q R W 1 2 3 7,M
+R17,34 St-Herald Sq,N Q R W B D F M,M
 R18,28 St,R W,M
 R19,23 St,R W,M
-R20,14 St-Union Sq,N Q R W,M
+R20,14 St-Union Sq,N Q R W L 4 5 6,M
 R21,8 St-NYU,R W,M
 R22,Prince St,R W,M
 R23,Canal St,R W,M
@@ -27,9 +27,9 @@ R25,Cortlandt St,R W,M
 R26,Rector St,R W,M
 R27,Whitehall St-South Ferry,R W,M
 R28,Court St,R,Bk
-R29,Jay St-MetroTech,R,Bk
+R29,Jay St-MetroTech,A C F R,Bk,R,Bk
 R30,DeKalb Av,B Q R,Bk
-R31,Atlantic Av-Barclays Ctr,D N R,Bk
+R31,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 R32,Union St,R,Bk
 R33,4 Av-9 St,R,Bk
 R34,Prospect Av,R,Bk
@@ -42,7 +42,7 @@ R42,Bay Ridge Av,R,Bk
 R43,77 St,R,Bk
 R44,86 St,R,Bk
 R45,Bay Ridge-95 St,R,Bk
-D24,Atlantic Av-Barclays Ctr,B Q,Bk
+D24,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 D25,7 Av,B Q,Bk
 D26,Prospect Park,B Q,Bk
 D27,Parkside Av,Q,Bk
@@ -111,7 +111,7 @@ M18,Delancey St-Essex St,J Z,M
 M19,Bowery,J Z,M
 M20,Canal St,J Z,M
 M21,Chambers St,J Z,M
-M22,Fulton St,J Z,M
+M22,Fulton St,A C J Z 2 3 4 5,M
 M23,Broad St,J Z,M
 M01,Middle Village-Metropolitan Av,M,Q
 M04,Fresh Pond Rd,M,Q
@@ -122,7 +122,7 @@ M09,Knickerbocker Av,M,Bk
 M10,Central Av,M,Bk
 L01,8 Av,L,M
 L02,6 Av,L,M
-L03,14 St-Union Sq,L,M
+L03,14 St-Union Sq,N Q R W L 4 5 6,M
 L05,3 Av,L,M
 L06,1 Av,L,M
 L08,Bedford Av,L,Bk
@@ -168,23 +168,23 @@ A19,96 St,B C,M
 A20,86 St,B C,M
 A21,81 St-Museum of Natural History,B C,M
 A22,72 St,B C,M
-A24,59 St-Columbus Circle,A B C D,M
+A24,59 St-Columbus Circle,A B C D 1,M
 F11,Lexington Av/53 St,E M,M
 F12,5 Av/53 St,E M,M
 D14,7 Av,E,M
 A25,50 St,C E,M
 A27,42 St-Port Authority Bus Terminal,A C E,M
-A28,34 St-Penn Station,A C E,M
+A28,34 St-Penn Station,A C E 1 2 3,M
 A30,23 St,C E,M
 A31,14 St,A C E,M
-A32,W 4 St-Wash Sq,A C E,M
+A32,W 4 St-Wash Sq,A C E B D F M,M
 A33,Spring St,C E,M
 A34,Canal St,A C E,M
 A36,Chambers St,A C,M
 E01,World Trade Center,E,M
-A38,Fulton St,A C,M
+A38,Fulton St,A C J Z 2 3 4 5,M
 A40,High St,A C,Bk
-A41,Jay St-MetroTech,A C,Bk
+A41,Jay St-MetroTech,A C F R,Bk,A C,Bk
 A42,Hoyt-Schermerhorn Sts,A C,Bk
 A43,Lafayette Av,C,Bk
 A44,Clinton-Washington Avs,C,Bk
@@ -236,10 +236,10 @@ B10,57 St,F,M
 D14,7 Av,B D,M
 D15,47-50 Sts-Rockefeller Ctr,B D F M,M
 D16,42 St-Bryant Pk,B D F M,M
-D17,34 St-Herald Sq,B D F M,M
+D17,34 St-Herald Sq,N Q R W B D F M,M
 D18,23 St,F M,M
 D19,14 St,F M,M
-D20,W 4 St-Wash Sq,B D F M,M
+D20,W 4 St-Wash Sq,A C E B D F M,M
 D21,Broadway-Lafayette St,B D F M,M
 M18,Delancey St-Essex St,M,M
 D22,Grand St,B D,M
@@ -247,7 +247,7 @@ F14,2 Av,F,M
 F15,Delancey St-Essex St,F,M
 F16,East Broadway,F,M
 F18,York St,F,Bk
-A41,Jay St-MetroTech,F,Bk
+A41,Jay St-MetroTech,A C F R,Bk,F,Bk
 F20,Bergen St,F,Bk
 F21,Carroll St,F,Bk
 F22,Smith-9 Sts,F,Bk
@@ -341,10 +341,10 @@ F27,Church Av,G,Bk
 122,79 St,1,M
 123,72 St,1 2 3,M
 124,66 St-Lincoln Center,1,M
-125,59 St-Columbus Circle,1,M
+125,59 St-Columbus Circle,A B C D 1,M
 126,50 St,1,M
-127,Times Sq-42 St,1 2 3,M
-128,34 St-Penn Station,1 2 3,M
+127,Times Sq-42 St,N Q R W 1 2 3 7,M
+128,34 St-Penn Station,A C E 1 2 3,M
 129,28 St,1,M
 130,23 St,1,M
 131,18 St,1,M
@@ -358,14 +358,14 @@ F27,Church Av,G,Bk
 139,Rector St,1,M
 142,South Ferry,1,M
 228,Park Place,2 3,M
-229,Fulton St,2 3,M
+229,Fulton St,A C J Z 2 3 4 5,M
 230,Wall St,2 3,M
 231,Clark St,2 3,Bk
 232,Borough Hall,2 3,Bk
 233,Hoyt St,2 3,Bk
 423,Borough Hall,4 5,Bk
 234,Nevins St,2 3 4 5,Bk
-235,Atlantic Av-Barclays Ctr,2 3 4 5,Bk
+235,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 236,Bergen St,2 3,Bk
 237,Grand Army Plaza,2 3,Bk
 238,Eastern Pkwy-Brooklyn Museum,2 3,Bk
@@ -427,19 +427,19 @@ F27,Church Av,G,Bk
 626,86 St,4 5 6,M
 627,77 St,6,M
 628,68 St-Hunter College,6,M
-629,59 St,4 5 6,M
+629,59 St,N R W 4 5 6,M
 630,51 St,6,M
-631,Grand Central-42 St,4 5 6,M
+631,Grand Central-42 St,4 5 6 7,M
 632,33 St,6,M
 633,28 St,6,M
 634,23 St,6,M
-635,14 St-Union Sq,4 5 6,M
+635,14 St-Union Sq,N Q R W L 4 5 6,M
 636,Astor Pl,6,M
 637,Bleecker St,6,M
 638,Spring St,6,M
 639,Canal St,6,M
-640,Brooklyn Bridge-City Hall,4 5 6,M
-418,Fulton St,4 5,M
+640,Brooklyn Bridge-City Hall,4 5 6 J Z,M
+418,Fulton St,A C J Z 2 3 4 5,M
 419,Wall St,4 5,M
 420,Bowling Green,4 5,M
 201,Wakefield-241 St,2,Bx
@@ -487,11 +487,11 @@ R09,Queensboro Plaza,N W,Q
 719,Court Sq,7,Q
 720,Hunters Point Av,7,Q
 721,Vernon Blvd-Jackson Av,7,Q
-723,Grand Central-42 St,7,M
+723,Grand Central-42 St,4 5 6 7,M
 724,5 Av,7,M
-725,Times Sq-42 St,7,M
+725,Times Sq-42 St,N Q R W 1 2 3 7,M
 902,Times Sq-42 St,S,M
-901,Grand Central-42 St,S,M
+901,Grand Central-42 St,4 5 6 7,M
 726,34 St-Hudson Yards,7,M
 S31,St George,SIR,SI
 S30,Tompkinsville,SIR,SI

@@ -9,10 +9,10 @@ stop_id,name,transfers,borough
 122,79 St,1,M
 123,72 St,1 2 3,M
 124,66 St-Lincoln Center,1,M
-125,59 St-Columbus Circle,1,M
+125,59 St-Columbus Circle,A B C D 1,M
 126,50 St,1,M
-127,Times Sq-42 St,1 2 3,M
-128,34 St-Penn Station,1 2 3,M
+127,Times Sq-42 St,N Q R W 1 2 3 7,M
+128,34 St-Penn Station,A C E 1 2 3,M
 129,28 St,1,M
 130,23 St,1,M
 131,18 St,1,M
@@ -26,14 +26,14 @@ stop_id,name,transfers,borough
 139,Rector St,1,M
 142,South Ferry,1,M
 228,Park Place,2 3,M
-229,Fulton St,2 3,M
+229,Fulton St,A C J Z 2 3 4 5,M
 230,Wall St,2 3,M
 231,Clark St,2 3,Bk
 232,Borough Hall,2 3,Bk
 233,Hoyt St,2 3,Bk
 423,Borough Hall,4 5,Bk
 234,Nevins St,2 3 4 5,Bk
-235,Atlantic Av-Barclays Ctr,2 3 4 5,Bk
+235,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 236,Bergen St,2 3,Bk
 237,Grand Army Plaza,2 3,Bk
 238,Eastern Pkwy-Brooklyn Museum,2 3,Bk

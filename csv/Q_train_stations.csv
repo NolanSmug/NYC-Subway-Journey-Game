@@ -4,12 +4,12 @@ Q04,86 St,Q,M
 Q03,72 St,Q,M
 B08,Lexington Av/63 St,Q,M
 R14,57 St-7 Av,N Q R W,M
-R16,Times Sq-42 St,N Q R W,M
+R16,Times Sq-42 St,N Q R W 1 2 3 7,M
 R17,34 St-Herald Sq,N Q R W,M
-R20,14 St-Union Sq,N Q R W,M
+R20,14 St-Union Sq,N Q R W L 4 5 6,M
 Q01,Canal St,N Q,M
 R30,DeKalb Av,B Q R,Bk
-D24,Atlantic Av-Barclays Ctr,B Q,Bk
+D24,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 D25,7 Av,B Q,Bk
 D26,Prospect Park,B Q,Bk
 D27,Parkside Av,Q,Bk

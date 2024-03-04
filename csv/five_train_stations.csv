@@ -1,24 +1,4 @@
 stop_id,stop_name,transfers,borough
-423,Borough Hall,4 5,Bk
-234,Nevins St,2 3 4 5,Bk
-235,Atlantic Av-Barclays Ctr,2 3 4 5,Bk
-239,Franklin Av-Medgar Evers College,2 3 4 5,Bk
-241,President St-Medgar Evers College,2 5,Bk
-242,Sterling St,2 5,Bk
-243,Winthrop St,2 5,Bk
-244,Church Av,2 5,Bk
-245,Beverly Rd,2 5,Bk
-246,Newkirk Av-Little Haiti,2 5,Bk
-247,Flatbush Av-Brooklyn College,2 5,Bk
-621,125 St,4 5 6,M
-626,86 St,4 5 6,M
-629,59 St,4 5 6,M
-631,Grand Central-42 St,4 5 6,M
-635,14 St-Union Sq,4 5 6,M
-640,Brooklyn Bridge-City Hall,4 5 6,M
-418,Fulton St,4 5,M
-419,Wall St,4 5,M
-420,Bowling Green,4 5,M
 501,Eastchester-Dyre Av,5,Bx
 502,Baychester Av,5,Bx
 503,Gun Hill Rd,5,Bx
@@ -44,3 +24,23 @@ stop_id,stop_name,transfers,borough
 221,3 Av-149 St,2 5,Bx
 222,149 St-Grand Concourse,2 5,Bx
 416,138 St-Grand Concourse,5,Bx
+621,125 St,4 5 6,M
+626,86 St,4 5 6,M
+629,59 St,N R W 4 5 6,M
+631,Grand Central-42 St,4 5 6 7,M
+635,14 St-Union Sq,N Q R W L 4 5 6,M
+640,Brooklyn Bridge-City Hall,4 5 6 J Z,M
+418,Fulton St,A C J Z 2 3 4 5,M
+419,Wall St,4 5,M
+420,Bowling Green,4 5,M
+423,Borough Hall,4 5,Bk
+234,Nevins St,2 3 4 5,Bk
+235,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
+239,Franklin Av-Medgar Evers College,2 3 4 5,Bk
+241,President St-Medgar Evers College,2 5,Bk
+242,Sterling St,2 5,Bk
+243,Winthrop St,2 5,Bk
+244,Church Av,2 5,Bk
+245,Beverly Rd,2 5,Bk
+246,Newkirk Av-Little Haiti,2 5,Bk
+247,Flatbush Av-Brooklyn College,2 5,Bk
