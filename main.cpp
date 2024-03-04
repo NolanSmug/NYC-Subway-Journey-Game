@@ -57,7 +57,6 @@ int main() {
     // game loop
     while (train.getCurrentStation().getName() != allStations[destinationStation].getName()) {
         Station currentStation = train.getCurrentStation();
-        Direction currentDirection = train.getDirection();
 
         if (prompt_transfer(train.getCurrentStation())) {
             ask_user_to_transfer(train);
