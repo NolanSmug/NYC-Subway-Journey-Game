@@ -1,3 +1,4 @@
+stop_id,stop_name,transfers,borough
 250,Crown Hts-Utica Av,3 4,Bk
 239,Franklin Av-Medgar Evers College,2 3 4 5,Bk
 235,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
@@ -26,4 +27,3 @@
 405,Bedford Park Blvd-Lehman College,4,Bx
 402,Mosholu Pkwy,4,Bx
 401,Woodlawn,4,Bx
-stop_id,stop_name,transfers,borough
