@@ -1,5 +1,5 @@
 stop_id,stop_name,transfers,borough
-D43,Coney Island-Stillwell Av,F D,Bk
+D43,Coney Island-Stillwell Av,D F N Q,Bk-Stillwell Av,F D,Bk
 D42,W 8 St-NY Aquarium,F,Bk
 F39,Neptune Av,F,Bk
 F38,Avenue X,F,Bk
