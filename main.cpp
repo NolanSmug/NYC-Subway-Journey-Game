@@ -66,7 +66,7 @@ int main() {
             cout << "Enter 't' to transfer, a number to advance that many stations, or nothing to advance one station: ";
             getline(cin, input);
 
-            if (input.empty()) { // user wants to advance 1 stations
+            if (input.empty()) { // user wants to advance 1 station
                 train.advanceStation();
                 break;
             }
