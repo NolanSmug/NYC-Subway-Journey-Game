@@ -17,6 +17,34 @@ static const char * DirectionEnumStrings[] = {
         "Bronx-Bound", "Manhattan-Bound", "Queens-Bound", "Brooklyn-Bound"
 };
 
+static unordered_map<LineName, pair<string, string>> lineDirections {
+        {ONE_TRAIN, {"Downtown", "Uptown"}},
+        {TWO_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+        {THREE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+        {FOUR_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+        {FIVE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+        {SIX_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+        {SEVEN_TRAIN, {"Manhattan-bound", "Queens-bound"}},
+        {A_TRAIN, {"Downtown", "Uptown"}},
+        {B_TRAIN, {"Manhattan-bound", "Brooklyn-bound"}},
+        {C_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
+        {D_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+        {E_TRAIN, {"Downtown", "Queens-bound"}},
+        {F_TRAIN, {"Queens-bound", "Brooklyn-bound"}},
+        {G_TRAIN, {"Manhattan-bound", "Brooklyn-bound"}},
+        {J_TRAIN, {"Manhattan-bound", "Queens-bound"}},
+        {L_TRAIN, {"Manhattan-bound", "Brooklyn-bound"}},
+        {M_TRAIN, {"Queens-bound", "Brooklyn-bound"}},
+        {N_TRAIN, {"Brooklyn-bound", "Queens-bound"}},
+        {Q_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
+        {R_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
+        {W_TRAIN, {"Manhattan-bound", "Queens-bound"}},
+        {Z_TRAIN, {"Manhattan-bound", "Queens-bound"}},
+        {S_TRAIN, {"Times Sq-bound", "Grand Central-bound"}}
+
+};
+
+
 class Train {
 public:
     Train();
@@ -50,7 +78,7 @@ public:
     int getNumCars();
     void setNumCars(int newNumCars);
 
-    static string getTextForEnum(int enumVal);
+    static string getTextForDirectionEnum(Direction direction, LineName line);
 
 private:
     LineName currentLine;

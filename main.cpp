@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Direction get_direction_from_user();
+Direction get_direction_from_user(string uptownLabel, string downtownLabel);
 bool prompt_transfer(Station station);
 bool ask_user_to_transfer(Train &train);
 Station advance_station_from_user(Train &train);
@@ -44,11 +44,15 @@ int main() {
     Train train = Train(startingLine, UPTOWN, currentStations, false, 10);
     // startingStation = 8; // testing purposes
     train.setCurrentStation(startingStation);
-    cout << "Your Current Line:\n" << Train::getTextForEnum(train.getDirection()) << " " << Line::getTextForEnum(train.getLine()) << " Train" << endl;
+
+    string uptownLabel = Train::getTextForDirectionEnum(UPTOWN,train.getLine());
+    string downtownLabel = Train::getTextForDirectionEnum(DOWNTOWN,train.getLine());
+
+    cout << "Your Current Line:\n" <<  Line::getTextForEnum(train.getLine()) << " Train\n" << "↑ " << uptownLabel << "\n↓ " << downtownLabel << endl;
     cout << "\nYour current Station:\n" << train.getCurrentStation();
     cout << "Destination Station:\n" << allStations[destinationStation];
 
-    train.setDirection(get_direction_from_user()); // ask user for a direction they want to start going
+    train.setDirection(get_direction_from_user(uptownLabel,downtownLabel)); // ask user for a direction they want to start going
 
     // game loop
     while (train.getCurrentStation().getName() != allStations[destinationStation].getName()) {
@@ -57,12 +61,16 @@ int main() {
 
         if (prompt_transfer(train.getCurrentStation())) {
             ask_user_to_transfer(train);
-            train.setDirection(get_direction_from_user());
+            train.setDirection(get_direction_from_user(uptownLabel,downtownLabel));
 //            print_all_stations(train.getScheduledStops());
-            cout << "Your Current Line:\n" << Train::getTextForEnum(currentDirection) << " "
-                 << Line::getTextForEnum(train.getLine()) << " Train" << endl;
+
+            uptownLabel = Train::getTextForDirectionEnum(UPTOWN,train.getLine());
+            downtownLabel = Train::getTextForDirectionEnum(DOWNTOWN,train.getLine());
+
+            cout << "Your Current Line:\n" <<  Line::getTextForEnum(train.getLine()) << " Train\n" << "↑ " << uptownLabel << "\n↓ " << downtownLabel << endl;
             cout << "\nYour current Station:\n" << currentStation;
-        } else {
+        }
+        else {
             cout << advance_station_from_user(train);
         }
     }
@@ -87,12 +95,12 @@ int get_random_station(unsigned int numStations) {
 }
 
 
-Direction get_direction_from_user() {
+Direction get_direction_from_user(string uptownLabel, string downtownLabel) {
     bool valid = false;
     string input = " ";
 
     while (!valid) {
-        cout << "Would you like to enter traveling Uptown (u) or Downtown (d)? ";
+        cout << "Would you like to enter traveling |" << uptownLabel << " ↑| (u), or |"<< downtownLabel << " ↓| (d) ? ";
         getline(cin, input);
 
         uint length = input.length();

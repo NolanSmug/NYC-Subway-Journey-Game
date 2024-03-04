@@ -163,6 +163,8 @@ void Train::setNumCars(int newNumCars) {
     numCars = newNumCars;
 }
 
-string Train::getTextForEnum(int enumVal) {
-    return DirectionEnumStrings[enumVal];
+string Train::getTextForDirectionEnum(Direction direction, LineName line) {
+    if (lineDirections.find(line) != lineDirections.end()) {
+        return direction == DOWNTOWN ? lineDirections[line].first : lineDirections[line].second;
+    }
 }
