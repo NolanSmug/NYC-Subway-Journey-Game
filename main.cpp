@@ -94,6 +94,7 @@ int main() {
 
     // game over stuff
     if (train.getCurrentStation().getId() == allStations[destinationStation].getId()) {
+        cout << "\nYour current Station:\n" << train.getCurrentStation();
         cout << "YOU WIN" << endl;
     }
     else {
