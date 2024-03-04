@@ -76,7 +76,7 @@ int main() {
     }
 
     // game over stuff
-    if (train.getCurrentStation().getName() == allStations[destinationStation].getName()) {
+    if (train.getCurrentStation().getId() == allStations[destinationStation].getId()) {
         cout << "YOU WIN" << endl;
     }
     else {

@@ -31,7 +31,7 @@ static unordered_map<LineName, pair<string, string>> lineDirections {
         {D_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
         {E_TRAIN, {"Downtown", "Queens-bound"}},
         {F_TRAIN, {"Queens-bound", "Brooklyn-bound"}},
-        {G_TRAIN, {"Manhattan-bound", "Brooklyn-bound"}},
+        {G_TRAIN, {"Church Av-bound", "Court Sq-bound"}},
         {J_TRAIN, {"Manhattan-bound", "Queens-bound"}},
         {L_TRAIN, {"Manhattan-bound", "Brooklyn-bound"}},
         {M_TRAIN, {"Queens-bound", "Brooklyn-bound"}},
@@ -41,7 +41,6 @@ static unordered_map<LineName, pair<string, string>> lineDirections {
         {W_TRAIN, {"Manhattan-bound", "Queens-bound"}},
         {Z_TRAIN, {"Manhattan-bound", "Queens-bound"}},
         {S_TRAIN, {"Times Sq-bound", "Grand Central-bound"}}
-
 };
 
 
