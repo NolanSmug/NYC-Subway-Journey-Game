@@ -109,41 +109,52 @@ Station Train::getNextStation() {
 }
 
 bool Train::advanceStation() {
-    bool valid = currentStationIndex < scheduledStops.size();
+    bool valid = false;
 
-    if (direction == UPTOWN) {
-        currentStationIndex += (valid ? 1 : 0); // increment if uptown
+    if (currentStationIndex < scheduledStops.size() - 1) {
+        valid = true;
+
+        if (direction == UPTOWN) {
+            currentStationIndex++;
+        }
+        else if (direction == DOWNTOWN) {
+            currentStationIndex--;
+        }
     }
-    else if (direction == DOWNTOWN) {
-        currentStationIndex -= (valid ? 1 : 0); // decrement if downtown
-    }
-    else {
-        valid = false; // ensure code doesn't break
-    }
+
     setCurrentStation(currentStationIndex);
-
     return valid;
 }
+
 
 bool Train::advanceStation(int numStations) {
-    bool valid;
-    // valid flag needs to have a little more checks here for if the user enters an integer outside of the range
-    // (which is also based on the direction of the train
+    bool valid = false;
+
+    if (numStations <= 0) {
+        return false;
+    }
+
     if (direction == UPTOWN) {
-        valid = (currentStationIndex + numStations < scheduledStops.size()) && (numStations > 0);
-        currentStationIndex += (valid ? numStations : 0);
+        int newStationIndex = currentStationIndex + numStations;
+
+        if (newStationIndex < scheduledStops.size()) {
+            currentStationIndex = newStationIndex;
+            valid = true;
+        }
     }
     else if (direction == DOWNTOWN) {
-        valid = (currentStationIndex - numStations < scheduledStops.size()) && (numStations > 0);
-        currentStationIndex -= (valid ? numStations : 0);
-    }
-    else {
-        valid = false;
-    }
-    setCurrentStation(currentStationIndex);
+        int newStationIndex = currentStationIndex - numStations;
 
+        if (newStationIndex >= 0) {
+            currentStationIndex = newStationIndex;
+            valid = true;
+        }
+    }
+
+    setCurrentStation(currentStationIndex);
     return valid;
 }
+
 
 // Express
 bool Train::isExpress() {

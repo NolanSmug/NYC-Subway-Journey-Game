@@ -67,7 +67,8 @@ int main() {
             downtownLabel = Train::getTextForDirectionEnum(DOWNTOWN,train.getLine());
 
             cout << "Your Current Line:\n" <<  Line::getTextForEnum(train.getLine()) << " Train\n" << "↑ " << uptownLabel << "\n↓ " << downtownLabel << endl;
-            cout << "\nYour current Station:\n" << currentStation;
+            if (!train.getNextStation().getName().empty())
+                cout << "\nYour current Station:\n" << currentStation;
         }
         else {
             cout << advance_station_from_user(train);
