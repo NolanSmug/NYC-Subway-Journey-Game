@@ -1,15 +1,15 @@
 stop_id,stop_name,transfers,borough
-H15,Rockaway Park-Beach 116 St,A S,Q
-H14,Beach 105 St,A S,Q
-H13,Beach 98 St,A S,Q
-H12,Beach 90 St,A S,Q
+H15,Rockaway Park-Beach 116 St,A Sr,Q
+H14,Beach 105 St,A Sr,Q
+H13,Beach 98 St,A Sr,Q
+H12,Beach 90 St,A Sr,Q
 H11,Far Rockaway-Mott Av,A,Q
 H10,Beach 25 St,A,Q
 H09,Beach 36 St,A,Q
 H08,Beach 44 St,A,Q
 H07,Beach 60 St,A,Q
 H06,Beach 67 St,A,Q
-H04,Broad Channel,A S,Q
+H04,Broad Channel,A Sr,Q
 H03,Howard Beach-JFK Airport,A,Q
 H02,Aqueduct-N Conduit Av,A,Q
 H01,Aqueduct Racetrack,A,Q

@@ -13,7 +13,6 @@ string Line::getIDTextForEnum(int enumVal) {
     return LineEnumIDStrings[enumVal];
 }
 
-
 LineName Line::stringToLineEnum(string& lineStr) {
     if (lineStr == "1") return ONE_TRAIN;
     if (lineStr == "2") return TWO_TRAIN;
@@ -38,7 +37,10 @@ LineName Line::stringToLineEnum(string& lineStr) {
     if (lineStr == "G") return G_TRAIN;
     if (lineStr == "L") return L_TRAIN;
     if (lineStr == "S") return S_TRAIN;
+    if (lineStr == "Sf") return S_TRAIN_SHUTTLE;
+    if (lineStr == "Sr") return S_TRAIN_ROCKAWAY;
     if (lineStr == "Null_Train") return NULL_TRAIN;
+    return NULL_TRAIN;
 }
 
 LineName Line::getRandomLine() {
@@ -46,7 +48,7 @@ LineName Line::getRandomLine() {
     std::mt19937 generator(rd());
 
     // Define distribution for LineName enum values
-    std::uniform_int_distribution<> distribution(0, L_TRAIN);
+    std::uniform_int_distribution<> distribution(0, S_TRAIN_ROCKAWAY);
 
     int randomLineIndex = distribution(generator);
     return static_cast<LineName>(randomLineIndex);

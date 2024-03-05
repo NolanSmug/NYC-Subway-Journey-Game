@@ -40,7 +40,9 @@ static unordered_map<LineName, pair<string, string>> lineDirections {
         {R_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
         {W_TRAIN, {"Manhattan-bound", "Queens-bound"}},
         {Z_TRAIN, {"Manhattan-bound", "Queens-bound"}},
-        {S_TRAIN, {"Times Sq-bound", "Grand Central-bound"}}
+        {S_TRAIN, {"Times Sq-bound", "Grand Central-bound"}},
+        {S_TRAIN_SHUTTLE, {"Franklin Av-bound", "Prospect Park-bound"}},
+        {S_TRAIN_ROCKAWAY, {"Broad Channel-bound", "Rockaway Park-Beach 116 St-bound"}}
 };
 
 

@@ -75,6 +75,8 @@ int main() {
                 ask_user_to_transfer(train);
                 train.setDirection(get_direction_from_user(uptownLabel, downtownLabel));
 
+
+
                 uptownLabel = Train::getTextForDirectionEnum(UPTOWN, train.getLine());
                 downtownLabel = Train::getTextForDirectionEnum(DOWNTOWN, train.getLine());
                 break;
@@ -146,7 +148,6 @@ Direction get_direction_from_user(string uptownLabel, string downtownLabel) {
 
 
 bool prompt_transfer(Station station) {
-    if (station.getTransfers().size() >= 1) {
         while (true) {
             cout << "Transfers are available (type 't' to list them). Enter the transfer line or 't': ";
 
@@ -169,7 +170,6 @@ bool prompt_transfer(Station station) {
                 cout << "Invalid input. ";
             }
         }
-    }
 
     return false; // no transfers at the station
 }

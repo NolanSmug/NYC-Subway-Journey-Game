@@ -54,10 +54,20 @@ void SubwayMap::createStations(LineName line, vector<Station> &subwayStations) {
         // read transfers
         getline(inFile, transfersLine, comma);
         for (char c : transfersLine) {
-            if (!isspace(c) && borough != "SI") { // Only process non-space characters
-                string lineStr(1, c);
-                LineName lineEnum = Line::stringToLineEnum(lineStr);
-                transfers.push_back(lineEnum);
+            if (!isspace(c)) { // Only process non-space characters
+                if (c == 'S' && borough == "Bk") {
+                    transfers.push_back(S_TRAIN_SHUTTLE);
+                    break;
+                }
+                if (c == 'S' && borough == "Q") {
+                    transfers.push_back(S_TRAIN_ROCKAWAY);
+                    break;
+                }
+                else {
+                    string lineStr(1, c);
+                    LineName lineEnum = Line::stringToLineEnum(lineStr);
+                    transfers.push_back(lineEnum);
+                }
             }
         }
 

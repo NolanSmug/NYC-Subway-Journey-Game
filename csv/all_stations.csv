@@ -144,10 +144,10 @@ L26,Livonia Av,L,Bk
 L27,New Lots Av,L,Bk
 L28,East 105 St,L,Bk
 L29,Canarsie-Rockaway Pkwy,L,Bk
-S01,Franklin Av,S,Bk
-S03,Park Pl,S,Bk
-S04,Botanic Garden,S,Bk
-D26,Prospect Park,S,Bk
+S01,Franklin Av,Sf,Bk
+S03,Park Pl,Sf,Bk
+S04,Botanic Garden,Sf,Bk
+D26,Prospect Park,Sf,Bk
 A02,Inwood-207 St,A,M
 A03,Dyckman St,A,M
 A05,190 St,A,M
@@ -209,17 +209,17 @@ A65,Ozone Park-Lefferts Blvd,A,Q
 H01,Aqueduct Racetrack,A,Q
 H02,Aqueduct-N Conduit Av,A,Q
 H03,Howard Beach-JFK Airport,A,Q
-H04,Broad Channel,A S,Q
+H04,Broad Channel,A Sr,Q
 H06,Beach 67 St,A,Q
 H07,Beach 60 St,A,Q
 H08,Beach 44 St,A,Q
 H09,Beach 36 St,A,Q
 H10,Beach 25 St,A,Q
 H11,Far Rockaway-Mott Av,A,Q
-H12,Beach 90 St,A S,Q
-H13,Beach 98 St,A S,Q
-H14,Beach 105 St,A S,Q
-H15,Rockaway Park-Beach 116 St,A S,Q
+H12,Beach 90 St,A Sr,Q
+H13,Beach 98 St,A Sr,Q
+H14,Beach 105 St,A Sr,Q
+H15,Rockaway Park-Beach 116 St,A Sr,Q
 D01,Norwood-205 St,D,Bx
 D03,Bedford Park Blvd,B D,Bx
 D04,Kingsbridge Rd,B D,Bx
@@ -343,7 +343,7 @@ F27,Church Av,G,Bk
 124,66 St-Lincoln Center,1,M
 125,59 St-Columbus Circle,A B C D 1,M
 126,50 St,1,M
-127,Times Sq-42 St,N Q R W 1 2 3 7,M
+127,Times Sq-42 St,N Q R W 1 2 3 7 S,M
 128,34 St-Penn Station,A C E 1 2 3,M
 129,28 St,1,M
 130,23 St,1,M
@@ -429,7 +429,7 @@ F27,Church Av,G,Bk
 628,68 St-Hunter College,6,M
 629,59 St,N R W 4 5 6,M
 630,51 St,6,M
-631,Grand Central-42 St,4 5 6 7,M
+631,Grand Central-42 St,4 5 6 7 S,M
 632,33 St,6,M
 633,28 St,6,M
 634,23 St,6,M
@@ -487,9 +487,9 @@ R09,Queensboro Plaza,N W,Q
 719,Court Sq,7,Q
 720,Hunters Point Av,7,Q
 721,Vernon Blvd-Jackson Av,7,Q
-723,Grand Central-42 St,4 5 6 7,M
+723,Grand Central-42 St,4 5 6 7 S,M
 724,5 Av,7,M
-725,Times Sq-42 St,N Q R W 1 2 3 7,M
-902,Times Sq-42 St,S,M
-901,Grand Central-42 St,4 5 6 7,M
+725,Times Sq-42 St,N Q R W 1 2 3 7 S,M
+902,Times Sq-42 St,N Q R W 1 2 3 7 S,M
+901,Grand Central-42 St,4 5 6 7 S,M
 726,34 St-Hudson Yards,7,M
