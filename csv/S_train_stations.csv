@@ -1,7 +1,3 @@
 stop_id,stop_name,transfers,borough
-S01,Franklin Av,S,Bk
-S03,Park Pl,S,Bk
-S04,Botanic Garden,S,Bk
-D26,Prospect Park,S,Bk
-902,Times Sq-42 St,S,M
+902,Times Sq-42 St,N Q R W 1 2 3 7,M
 901,Grand Central-42 St,4 5 6 7 S,M
