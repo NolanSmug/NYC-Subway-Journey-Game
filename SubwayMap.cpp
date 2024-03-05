@@ -63,6 +63,9 @@ void SubwayMap::createStations(LineName line, vector<Station> &subwayStations) {
                     transfers.push_back(S_TRAIN_ROCKAWAY);
                     break;
                 }
+                if (c == 'f' || c == 'r') {
+                    break;
+                }
                 else {
                     string lineStr(1, c);
                     LineName lineEnum = Line::stringToLineEnum(lineStr);

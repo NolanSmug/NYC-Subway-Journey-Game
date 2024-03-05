@@ -5,6 +5,8 @@
 #include "sstream"
 #include "random"
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -58,36 +60,43 @@ int main() {
     while (train.getCurrentStation().getName() != allStations[destinationStation].getName()) {
         Station currentStation = train.getCurrentStation();
         Direction currentDirection = train.getDirection();
+        int currentStationIndex = train.getCurrentStationIndex();
 
-        cout << "\nYour Current Line:\n" << (currentDirection == DOWNTOWN ? downtownLabel + " " +  Line::getTextForEnum(train.getLine()) + " Train ↓" : uptownLabel + "  "  + Line::getTextForEnum(train.getLine()) + " Train ↑") << endl;
+        bool atLastStop = (currentStationIndex == 0 && currentDirection == DOWNTOWN) ||
+                          (currentStationIndex == train.getScheduledStops().size() - 1 && currentDirection == UPTOWN);
+
+        cout << "\nYour Current Line:\n" << (currentDirection == DOWNTOWN ? downtownLabel + " " + Line::getTextForEnum(train.getLine()) + " Train ↓" : uptownLabel + " "  + Line::getTextForEnum(train.getLine()) + " Train ↑") << endl;
         cout << "\nYour current Station:\n" << currentStation;
 
-        while (true) {
+        while (!atLastStop) {
             string input;
             cout << "Enter 't' to transfer | 'c' to change direction | a number to advance that many stations (nothing advances 1 station)  ";
             getline(cin, input);
 
-            if (input.empty()) { // user wants to advance 1 station
+            // user wants to advance 1 station
+            if (input.empty()) {
                 train.advanceStation();
                 break;
             }
-            else if (tolower(input[0]) == 't' && input.length() == 1) {  // user wants to transfer
+            // user wants to transfer
+            else if (tolower(input[0]) == 't' && input.length() == 1) {
                 ask_user_to_transfer(train);
                 train.setDirection(get_direction_from_user(uptownLabel, downtownLabel));
 
-
-
                 uptownLabel = Train::getTextForDirectionEnum(UPTOWN, train.getLine());
                 downtownLabel = Train::getTextForDirectionEnum(DOWNTOWN, train.getLine());
+
                 break;
             }
-            else if (tolower(input[0]) == 'c' && input.length() == 1) { // user wants to change direction
-                train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
-                string trackLabel = Train::getTextForDirectionEnum(train.getDirection(),train.getLine());
+            // user wants to change direction
+            else if (tolower(input[0]) == 'c' && input.length() == 1) {
+                train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
+                string trackLabel = Train::getTextForDirectionEnum(currentDirection,train.getLine());
                 cout << "You switched to the " << trackLabel << " platform." << endl;
                 break;
             }
-            else { // user wants to advance > 1 station
+            // user wants to advance > 1 station
+            else {
                 int numStationsInput;
                 istringstream iss(input);
                 if (iss >> numStationsInput && train.advanceStation(numStationsInput)) {
@@ -99,15 +108,22 @@ int main() {
                 }
             }
         }
+        if (atLastStop && train.getCurrentStation().getName() != allStations[destinationStation].getName() && train.getLine() != S_TRAIN) {
+            cout << "This is the last stop on this train. Please get off." << endl;
+
+            train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
+            string trackLabel = Train::getTextForDirectionEnum(currentDirection,train.getLine());
+
+            cout << "You switched to the " << trackLabel << " platform." << endl;
+            this_thread::sleep_for(chrono::seconds(2));
+            continue;
+        }
     }
 
     // game over stuff
     if (train.getCurrentStation().getId() == allStations[destinationStation].getId()) {
         cout << "\nYour current Station:\n" << train.getCurrentStation();
         cout << "YOU WIN" << endl;
-    }
-    else {
-        cout << "UH OH, YOU MISSED/PASSED THE STATION!\nGAME OVER" << endl;
     }
 
     return 0;
@@ -147,32 +163,6 @@ Direction get_direction_from_user(string uptownLabel, string downtownLabel) {
 }
 
 
-bool prompt_transfer(Station station) {
-        while (true) {
-            cout << "Transfers are available (type 't' to list them). Enter the transfer line or 't': ";
-
-            string input;
-            getline(cin, input);
-
-            if (input.length() > 1) {
-                cout << "Invalid input. ";
-            }
-            else if (tolower(input[0]) == 't') {
-                for (LineName line : station.getTransfers()) {
-                    cout << Line::getTextForEnum(line) << " ";
-                }
-                cout << endl;
-            }
-            else if (station.hasTransferLine(input)) {
-                return true;
-            }
-            else {
-                cout << "Invalid input. ";
-            }
-        }
-
-    return false; // no transfers at the station
-}
 
 
 bool ask_user_to_transfer(Train &train) {
@@ -213,6 +203,26 @@ bool ask_user_to_transfer(Train &train) {
 }
 
 
+
+void print_all_stations(vector<Station> stations) {
+    unsigned int length = stations.size();
+
+    for (int i = 0; i < length; i++) {
+        if (i == length - 1) {
+            cout << stations[i].getName() << endl;
+        }
+        else {
+            cout << stations[i].getName() << "\n   |\n";
+        }
+    }
+    cout << "---------------------------------" << endl;
+}
+
+
+/*
+
+* DEPRECATED *
+
 Station advance_station_from_user(Train &train) {
     bool valid = false;
     int input_int = 0;
@@ -246,17 +256,30 @@ Station advance_station_from_user(Train &train) {
     return train.getCurrentStation();
 }
 
+bool prompt_transfer(Station station) {
+        while (true) {
+            cout << "Transfers are available (type 't' to list them). Enter the transfer line or 't': ";
 
-void print_all_stations(vector<Station> stations) {
-    unsigned int length = stations.size();
+            string input;
+            getline(cin, input);
 
-    for (int i = 0; i < length; i++) {
-        if (i == length - 1) {
-            cout << stations[i].getName() << endl;
+            if (input.length() > 1) {
+                cout << "Invalid input. ";
+            }
+            else if (tolower(input[0]) == 't') {
+                for (LineName line : station.getTransfers()) {
+                    cout << Line::getTextForEnum(line) << " ";
+                }
+                cout << endl;
+            }
+            else if (station.hasTransferLine(input)) {
+                return true;
+            }
+            else {
+                cout << "Invalid input. ";
+            }
         }
-        else {
-            cout << stations[i].getName() << "\n   |\n";
-        }
-    }
-    cout << "---------------------------------" << endl;
+
+    return false; // no transfers at the station
 }
+*/
