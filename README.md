@@ -215,12 +215,20 @@ with open('./csv/all_stations.csv', newline='') as csvfile:
                     train_stations[char].append(row)
 ```
 
-The Python script uses the csv module to parse and extract station data from our `all_stations` csv.
 Once the data is parsed, the Python script:
 1. organizes the station information based on subway lines and available transfers.
-2. constructs a `dictionary` where each key represents a subway line `["1," "2," "A", "B",...]`,
+2. constructs a `dictionary` where each key represents a subway line
    and the corresponding `value` is a list of stations associated with that line.
-    - Each CSV file is named based on the corresponding subway line `"1_train_stations.csv", "2_train_stations.csv",...`
+   - Each CSV file is named based on the corresponding subway line `"1_train_stations.csv", "2_train_stations.csv",...`
+   ```python
+   {
+      "1_train_stations": ["StationA", "StationB", "StationC",...], 
+      "2_train_stations": ["StationA", "StationC", "StationD",...],
+      "A_train_stations": ["StationX", "StationY", "StationZ",...],
+      ...
+   }
+   ```
+
 3. lastly, `csv_reverser.py` ensures that the csv files follow the correct order our `advanceStation()` logic is written.
 
 This organization facilitates easy access to station data for each subway line,
