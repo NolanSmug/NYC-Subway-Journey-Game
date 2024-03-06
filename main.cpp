@@ -79,9 +79,10 @@ int main() {
     while (train.getCurrentStation().getId() != allStations[destinationStation].getId()) {
         displayCurrentStationInfo(train, uptownLabel, downtownLabel);
 
-        int currentStationIndex = train.getCurrentStationIndex();
-        bool atLastStop = (currentStationIndex == 0 && train.getDirection() == DOWNTOWN) ||
-                          (currentStationIndex == train.getScheduledStops().size() - 1 && train.getDirection() == UPTOWN);
+        unsigned int currentStationIndex = train.getCurrentStationIndex();
+        unsigned int lastStationIndex = train.getScheduledStops().size() - 1;
+        bool atLastStop = (currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
+                          (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN);
         if (atLastStop) {
             handleLastStop(train);
         }
@@ -110,11 +111,14 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
 
     if (input.empty()) {
         return handleAdvanceOneStation(train);
-    } else if (tolower(input[0]) == 't' && input.length() == 1) {
+    }
+    else if (tolower(input[0]) == 't' && input.length() == 1) {
         return handleTransfer(train, uptownLabel, downtownLabel);
-    } else if (tolower(input[0]) == 'c' && input.length() == 1) {
+    }
+    else if (tolower(input[0]) == 'c' && input.length() == 1) {
         return handleChangeDirection(train);
-    } else {
+    }
+    else {
         return handleAdvanceMultipleStations(train, input);
     }
 }
