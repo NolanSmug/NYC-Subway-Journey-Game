@@ -10,11 +10,11 @@
 
 using namespace std;
 
-void print_all_stations(vector<Station> stations);
-int get_random_station(unsigned int numStations);
+void printAllStations(vector<Station> stations);
+int getRandomStation(unsigned int numStations);
 
-Direction get_direction_from_user(const string &uptownLabel, string &downtownLabel);
-bool ask_user_to_transfer(Train &train);
+Direction get_direction_from_user(string &uptownLabel, string &downtownLabel);
+bool askUserToTransfer(Train &train);
 
 void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downtownLabel);
 void handleLastStop(Train &train, int destinationStation, vector<Station> &allStations);
@@ -37,23 +37,22 @@ int main() {
     subwayMap.createStations(startingLine, currentStations);
     subwayMap.createStations(NULL_TRAIN, allStations); // NULL_TRAIN returns all the NYC stations
 
-//    print_all_stations(currentStations);
+//    printAllStations(currentStations);
 
     // set up starting and ending stations
     unsigned int numStations = currentStations.size();
     unsigned int const totalNumStations = allStations.size();
 
-    int startingStation = get_random_station(numStations);
+    int startingStation = getRandomStation(numStations);
     int destinationStation = startingStation;
 
-    // make sure destination station is at least 4 stops away
-    while (destinationStation == startingStation && abs(startingStation - destinationStation) <= 4) {
-        destinationStation = get_random_station(totalNumStations);
+    // make sure destination station != starting stations
+    while (allStations[destinationStation].getId() == allStations[startingStation].getId()) {
+        destinationStation = getRandomStation(totalNumStations);
     }
 
     // START GAME
     Train train = Train(startingLine, UPTOWN, currentStations, false, 10);
-    // startingStation = 8; // testing purposes
     train.setCurrentStation(startingStation);
 
     string uptownLabel = Train::getTextForDirectionEnum(UPTOWN,train.getLine());
@@ -99,7 +98,7 @@ void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downto
     cout << "\nYour current Station:\n" << currentStation;
 }
 
-bool handleUserInput(Train& train, string &uptownLabel, string &downtownLabel) {
+bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
@@ -114,7 +113,7 @@ bool handleUserInput(Train& train, string &uptownLabel, string &downtownLabel) {
     }
     // user wants to transfer
     else if (tolower(input[0]) == 't' && input.length() == 1) {
-        ask_user_to_transfer(train);
+        askUserToTransfer(train);
         train.setDirection(get_direction_from_user(uptownLabel, downtownLabel));
 
         uptownLabel = Train::getTextForDirectionEnum(UPTOWN, train.getLine());
@@ -148,19 +147,17 @@ void handleLastStop(Train &train, int destinationStation, vector<Station> &allSt
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
-    if (currentStation.getName() != allStations[destinationStation].getName()) {
-        cout << "This is the last stop on this train. Please get off." << endl;
-        // switch direction
-        train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
-        string trackLabel = Train::getTextForDirectionEnum(currentDirection, train.getLine());
+    cout << "This is the last stop on this train. Please get off." << endl;
+    // switch direction
+    train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
+    string trackLabel = Train::getTextForDirectionEnum(currentDirection, train.getLine());
 
-        cout << "You switched to the " << trackLabel << " platform." << endl;
-        this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes
-    }
+    cout << "You switched to the " << trackLabel << " platform." << endl;
+    this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes
 }
 
 
-int get_random_station(unsigned int numStations) {
+int getRandomStation(unsigned int numStations) {
     std::random_device rd;
     std::mt19937 generator(rd());
 
@@ -196,7 +193,7 @@ Direction get_direction_from_user(string &uptownLabel, string &downtownLabel) {
 
 
 
-bool ask_user_to_transfer(Train &train) {
+bool askUserToTransfer(Train &train) {
     Station currentStation = train.getCurrentStation();
     string input;
 
@@ -235,7 +232,7 @@ bool ask_user_to_transfer(Train &train) {
 
 
 
-void print_all_stations(vector<Station> stations) {
+void printAllStations(vector<Station> stations) {
     unsigned int length = stations.size();
 
     for (int i = 0; i < length; i++) {
