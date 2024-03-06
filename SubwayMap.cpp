@@ -5,6 +5,9 @@
 #include <fstream>
 #include "vector"
 #include "SubwayMap.h"
+#include "Station.h"
+#include <iostream>
+
 
 using namespace std;
 
@@ -21,6 +24,7 @@ string lineNameToCSV(LineName line) {
     string lineName = Line::getIDTextForEnum(line);
     string filePath = "../csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
     stringToLowerCase(filePath); // ensure lowercase
+    cout << filePath << endl;
 
     return filePath;
 }

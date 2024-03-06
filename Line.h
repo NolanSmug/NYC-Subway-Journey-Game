@@ -24,7 +24,7 @@ enum LineName {
     S_TRAIN_ROCKAWAY
 };
 
-static const int TOTAL_NUM_LINES = 26;
+static const int TOTAL_NUM_LINES = 25;
 
 static const char* LineEnumIDStrings[] = {
         "Null_Train",

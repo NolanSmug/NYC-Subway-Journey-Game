@@ -1,5 +1,5 @@
 stop_id,stop_name,transfers,borough
-D43,Coney Island-Stillwell Av,D F N Q,Bk-Stillwell Av,F D,Bk
+D43,Coney Island-Stillwell Av,D F N Q,Bk
 D42,W 8 St-NY Aquarium,F,Bk
 F39,Neptune Av,F,Bk
 F38,Avenue X,F,Bk
@@ -19,7 +19,7 @@ F23,4 Av-9 St,F,Bk
 F22,Smith-9 Sts,F,Bk
 F21,Carroll St,F,Bk
 F20,Bergen St,F,Bk
-A41,Jay St-MetroTech,A C F R,Bk,F,Bk
+A41,Jay St-MetroTech,A C F R,Bk
 F18,York St,F,Bk
 F16,East Broadway,F,M
 F15,Delancey St-Essex St,F,M
