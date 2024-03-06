@@ -98,9 +98,6 @@ void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downto
 }
 
 bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
-    Station currentStation = train.getCurrentStation();
-    Direction currentDirection = train.getDirection();
-
     string input;
     cout << "Enter 't' to transfer | 'c' to change direction | a number to advance that many stations (nothing advances 1 station)  ";
     getline(cin, input);
@@ -122,8 +119,8 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
     }
     // user wants to change direction
     else if (tolower(input[0]) == 'c' && input.length() == 1) {
-        train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
-        string trackLabel = Train::getTextForDirectionEnum(currentDirection, train.getLine());
+        train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
+        string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
         cout << "You switched to the " << trackLabel << " platform." << endl;
         return true;
     }
@@ -143,12 +140,9 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
 }
 
 void handleLastStop(Train &train) {
-    Station currentStation = train.getCurrentStation();
-    Direction currentDirection = train.getDirection();
-
     cout << "This is the last stop on this train. Please get off and turn around." << endl;
     // switch direction
-    train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
+    train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
 
     cout << "You switched to the " << trackLabel << " platform." << endl;
