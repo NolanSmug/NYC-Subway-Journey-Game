@@ -27,7 +27,7 @@ R25,Cortlandt St,R W,M
 R26,Rector St,R W,M
 R27,Whitehall St-South Ferry,R W,M
 R28,Court St,R,Bk
-R29,Jay St-MetroTech,A C F R,Bk,R,Bk
+R29,Jay St-MetroTech,A C F R,Bk
 R30,DeKalb Av,B Q R,Bk
 R31,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 R32,Union St,R,Bk
@@ -60,7 +60,7 @@ D39,Sheepshead Bay,B Q,Bk
 D40,Brighton Beach,B Q,Bk
 D41,Ocean Pkwy,Q,Bk
 D42,W 8 St-NY Aquarium,Q,Bk
-D43,Coney Island-Stillwell Av,D F N Q,Bk-Stillwell Av,D F N Q,Bk
+D43,Coney Island-Stillwell Av,D F N Q,Bk
 B12,9 Av,D,Bk
 B13,Fort Hamilton Pkwy,D,Bk
 B14,50 St,D,Bk
@@ -82,7 +82,7 @@ N07,Bay Pkwy,N,Bk
 N08,Kings Hwy,N,Bk
 N09,Avenue U,N,Bk
 N10,86 St,N,Bk
-D43,Coney Island-Stillwell Av,D F N Q,Bk-Stillwell Av,N,Bk
+D43,Coney Island-Stillwell Av,D F N Q,Bk
 G05,Jamaica Center-Parsons/Archer,J Z,Q
 G06,Sutphin Blvd-Archer Av-JFK Airport,J Z,Q
 J12,121 St,J Z,Q
@@ -184,7 +184,7 @@ A36,Chambers St,A C,M
 E01,World Trade Center,E,M
 A38,Fulton St,A C J Z 2 3 4 5,M
 A40,High St,A C,Bk
-A41,Jay St-MetroTech,A C F R,Bk,A C,Bk
+A41,Jay St-MetroTech,A C F R,Bk
 A42,Hoyt-Schermerhorn Sts,A C,Bk
 A43,Lafayette Av,C,Bk
 A44,Clinton-Washington Avs,C,Bk
@@ -247,7 +247,7 @@ F14,2 Av,F,M
 F15,Delancey St-Essex St,F,M
 F16,East Broadway,F,M
 F18,York St,F,Bk
-A41,Jay St-MetroTech,A C F R,Bk,F,Bk
+A41,Jay St-MetroTech,A C F R,Bk
 F20,Bergen St,F,Bk
 F21,Carroll St,F,Bk
 F22,Smith-9 Sts,F,Bk
@@ -267,7 +267,7 @@ F36,Avenue U,F,Bk
 F38,Avenue X,F,Bk
 F39,Neptune Av,F,Bk
 D42,W 8 St-NY Aquarium,F,Bk
-D43,Coney Island-Stillwell Av,D F N Q,Bk-Stillwell Av,F D,Bk
+D43,Coney Island-Stillwell Av,D F N Q,Bk
 F01,Jamaica-179 St,F,Q
 F02,169 St,F,Q
 F03,Parsons Blvd,F,Q

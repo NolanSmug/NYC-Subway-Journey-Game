@@ -30,6 +30,7 @@ int main() {
     // SET UP STARTING LINE
     SubwayMap subwayMap = SubwayMap();
     LineName startingLine = Line::getRandomLine();
+// TESTING PURPOSES   startingLine = FOUR_TRAIN;
 
     vector<Station> currentStations;
     vector<Station> allStations;
