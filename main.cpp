@@ -17,7 +17,7 @@ Direction get_direction_from_user(string &uptownLabel, string &downtownLabel);
 bool askUserToTransfer(Train &train);
 
 void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downtownLabel);
-void handleLastStop(Train &train, int destinationStation, vector<Station> &allStations);
+void handleLastStop(Train &train, vector<Station> &allStations);
 bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel);
 
 /*
@@ -27,7 +27,7 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel);
  */
 
 int main() {
-    // set up the Line the user starts in
+    // SET UP STARTING LINE
     SubwayMap subwayMap = SubwayMap();
     LineName startingLine = Line::getRandomLine();
 
@@ -39,7 +39,7 @@ int main() {
 
 //    printAllStations(currentStations);
 
-    // set up starting and ending stations
+    // SET UP STATION OBJECTS
     unsigned int numStations = currentStations.size();
     unsigned int const totalNumStations = allStations.size();
 
@@ -51,15 +51,14 @@ int main() {
         destinationStation = getRandomStation(totalNumStations);
     }
 
-    // START GAME
+    // START TRAIN
     Train train = Train(startingLine, UPTOWN, currentStations, false, 10);
     train.setCurrentStation(startingStation);
 
     string uptownLabel = Train::getTextForDirectionEnum(UPTOWN,train.getLine());
     string downtownLabel = Train::getTextForDirectionEnum(DOWNTOWN,train.getLine());
 
-    cout << "Your Current Line:\n" <<  Line::getTextForEnum(train.getLine()) << " Train\n" << "↑ " << uptownLabel << "\n↓ " << downtownLabel << endl;
-    cout << "\nYour current Station:\n" << train.getCurrentStation();
+    displayCurrentStationInfo(train, uptownLabel, downtownLabel);
     cout << "Destination Station:\n" << allStations[destinationStation];
 
     train.setDirection(get_direction_from_user(uptownLabel, downtownLabel)); // ask user for a direction they want to start going
@@ -72,7 +71,7 @@ int main() {
         bool atLastStop = (currentStationIndex == 0 && train.getDirection() == DOWNTOWN) ||
                           (currentStationIndex == train.getScheduledStops().size() - 1 && train.getDirection() == UPTOWN);
         if (atLastStop) {
-            handleLastStop(train, destinationStation, allStations);
+            handleLastStop(train, allStations);
         }
 
         bool validInput = false;
@@ -143,7 +142,7 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
     }
 }
 
-void handleLastStop(Train &train, int destinationStation, vector<Station> &allStations) {
+void handleLastStop(Train &train, vector<Station> &allStations) {
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
