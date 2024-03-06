@@ -166,7 +166,7 @@ bool handleAdvanceMultipleStations(Train &train, string &input) {
 }
 
 void handleLastStop(Train &train) {
-    cout << "This is the last stop on this train. Please get off and turn around." << endl;
+    cout << "This is the last stop on this train. Everyone please leave the train, thank you for riding with MTA New York City Transit" << endl;
     // switch direction
     train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
@@ -174,7 +174,6 @@ void handleLastStop(Train &train) {
     cout << "You switched to the " << trackLabel << " platform." << endl;
     this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes
 }
-
 
 int getRandomStation(unsigned int numStations) {
     std::random_device rd;
