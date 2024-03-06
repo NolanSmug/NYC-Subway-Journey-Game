@@ -151,10 +151,28 @@ to have my classes interact with one another without any circular dependencies.
 
 In Module 3, I have fully integrated the ability for the user to transfer between subway lines during gameplay. This involved several key additions and changes to the codebase:
 
+#### Integration of Python Code
+To enhance the functionality of the project and incorporate additional features,
+Python code was integrated into the system.
+My Python scripts [csv_maker.py](csv/csv_maker.py) and [csv_reverser.py](csv/csv_reverser.py) use
+[all_stations.csv](csv/all_stations.csv) to separate each subway lines' `scheduledStops` into individual csv files
+(see the [csv directory](csv)).
+
+##### csv_maker.py
+
+The Python script uses the csv module to parse and extract station data from our `all_stations` csv.
+Once the data is parsed, the Python script: 
+1. organizes the station information based on subway lines and available transfers.
+2. constructs a `dictionary` where each key represents a subway line `["1," "2," "A", "B",...]`,
+   and the corresponding `value` is a list of stations associated with that line.
+3. lastly, `csv_reverser.py` ensures that the csv files follow the correct order our `advanceStation()` logic is written
+
+This organization facilitates easy access to station data for each subway line,
+enabling efficient retrieval and manipulation when needed.
+
 #### Main Game Loop
 
-The main game loop in `main.cpp` has been updated to handle user input for transferring lines, changing directions,
-and advancing stations.
+`main` has been updated to handle user input for transferring lines, changing directions, and advancing stations.
 The `handleUserInput` function serves as the central hub for processing user commands during each turn.
 
 ```cpp

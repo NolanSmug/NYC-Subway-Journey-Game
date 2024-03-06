@@ -40,7 +40,7 @@ with open('./csv/all_stations.csv', newline='') as csvfile:
 
 # Write stations for each train line to separate CSV files in the 'csv' directory
 for line, stations in train_stations.items():
-    with open(f'./csv/{line}_train_stations.csv', mode='w', newline='') as csvfile:
+    with open(f'./csv/{line.lower()}_train_stations.csv', mode='w', newline='') as csvfile:
         fieldnames = ['stop_id', 'stop_name', 'transfers', 'borough']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         
