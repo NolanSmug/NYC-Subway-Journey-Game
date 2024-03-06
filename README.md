@@ -13,12 +13,12 @@ the player is given a list of that stations' `transfer line` options.
 Finally, the player is asked how many stations they would like to advance.
 And after a valid input is given, they're notified of the station they have arrived at, ending their turn.
 
+****
 
-
-## Subway Game Classes
+## Classes
 
 ### Train  
-Manages a Train object and its scheduled stops.
+Manages a `Train` object and its scheduled stops.
 
 #### Private Variables:  
 | Name                             | Description                                                                              |
@@ -114,9 +114,11 @@ Reads station data from a CSV file and manages subway stations.
 Acts as the "Driver" for the game.
 Includes input validation for all questions, which has been extensively tested.
 
+****
+
 ## Timeline
 
-### Future Work (From Module 1)
+### Future Work (From Module 1):
 
 Obviously, with only one line and two directions,
 the game is very simple assuming you refer to the map or have expert NYC subway knowledge. 
@@ -130,7 +132,7 @@ I realized this thanks to CS 2250 Computability & Complexity, which taught me ho
 
 It will be interesting to see the game played out when I add the ability to transfer to other train lines at each station.
 
-### Module 2 Additions
+### Module 2 Additions:
 
 Although I have not implemented it into the main game yet,
 I have added all the necessary methods with logic for verifying and executing a successful transfer.
@@ -144,6 +146,75 @@ I had to refactor A LOT of my code from Module 1, as it was difficult organizing
 and updating variables that needed to be modified to complete a transfer.
 A big portion of this project was designing the most efficient way
 to have my classes interact with one another without any circular dependencies.
+
+### Module 3 Additions:
+
+In Module 3, I have fully integrated the ability for the user to transfer between subway lines during gameplay. This involved several key additions and changes to the codebase:
+
+#### Main Game Loop
+
+The main game loop in `main.cpp` has been updated to handle user input for transferring lines, changing directions,
+and advancing stations.
+The `handleUserInput` function serves as the central hub for processing user commands during each turn.
+
+```cpp
+bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
+    string input;
+    cout << "Enter 't' to transfer | 'c' to change direction | a number to advance that many stations (nothing advances 1 station)  ";
+    getline(cin, input);
+
+    if (input.empty()) { // advance 1 station
+        return handleAdvanceOneStation(train);
+    } 
+    else if (tolower(input[0]) == 't' && input.length() == 1) {  // transfer
+        return handleTransfer(train, uptownLabel, downtownLabel); 
+    } 
+    else if (tolower(input[0]) == 'c' && input.length() == 1) {  // flip directions
+        return handleChangeDirection(train);
+    } 
+    else {  // advance (int)input stations
+        return handleAdvanceMultipleStations(train, input);
+    }
+}
+```
+
+> **Input Validation** has been implemented for all prompts to the user.
+
+The `handleTransfer()` function prompts the user
+to choose a transfer line from the current station's available transfers,
+and updates the train's line and scheduled stops accordingly.
+
+#### Updating Scheduled Stops
+The `SubwayMap` class now includes the `updateStopsForLine()` method builds the scheduled stops for a given subway line
+by reading the corresponding line-specific CSV file.
+```c++
+void SubwayMap::createStations(LineName line, vector<Station>& subwayStations) {
+    string filePath = "./csv/";
+    
+    if (line == NULL_TRAIN) {
+        filePath += "all_stations.csv";
+    } 
+    else {
+        filePath += Line::getIDTextForEnum(line) + "_train_stations.csv";
+    }
+    createStations(filePath, subwayStations);
+}
+
+void SubwayMap::updateStopsForLine(LineName line, vector<Station>& subwayStations) {
+    subwayStations.clear();
+    createStations(line, subwayStations);
+}
+```
+
+#### User Experience Improvements
+The current station information, including the train line, direction, and station details, is displayed after each user action.
+When a transfer is available, the user is prompted to list the available transfer lines at the current station.
+Input validation has been improved to handle various edge cases and provide meaningful error messages.
+
+With these additions, the game now **accurately simulates the experience of navigating the NYC subway system**,
+allowing players to get from point A to point B infinitely many ways.
+
+****
 
 ## Video Demonstrations
 
