@@ -224,7 +224,7 @@ Once the data is parsed, the Python script:
    {
       "1_train_stations": ["StationA", "StationB", "StationC",...], 
       "2_train_stations": ["StationA", "StationC", "StationD",...],
-      "A_train_stations": ["StationX", "StationY", "StationZ",...],
+      "3_train_stations": ["StationX", "StationY", "StationZ",...],
       ...
    }
    ```
