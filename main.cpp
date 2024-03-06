@@ -35,8 +35,8 @@ int main() {
     vector<Station> currentStations;
     vector<Station> allStations;
 
-    subwayMap.createStations(startingLine, currentStations);
-    subwayMap.createStations(NULL_TRAIN, allStations); // NULL_TRAIN returns all the NYC stations
+    SubwayMap::createStations(startingLine, currentStations);
+    SubwayMap::createStations(NULL_TRAIN, allStations); // NULL_TRAIN returns all the NYC stations
 
 //    printAllStations(currentStations);
 

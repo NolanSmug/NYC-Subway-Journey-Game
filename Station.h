@@ -47,7 +47,7 @@ public:
     Borough getBorough();
     void setBorough(Borough newBorough);
 
-    string getTextForEnum(int enumVal);
+    static string getTextForEnum(int enumVal);
 };
 
 #endif //M1OEP_NCYR1_STATION_H

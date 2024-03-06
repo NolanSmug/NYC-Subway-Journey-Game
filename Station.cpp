@@ -27,7 +27,7 @@ ostream& operator<<(ostream& str, Station station) {
         str << Line::getTextForEnum(line) << (station.getTransfers().size() == 1 ? "" : " ");
     }
     str << endl;
-    str << "Borough: " << station.getTextForEnum(station.getBorough()) << endl;
+    str << "Borough: " << Station::getTextForEnum(station.getBorough()) << endl;
     str << "\n";
 
     return str;

@@ -178,4 +178,5 @@ string Train::getTextForDirectionEnum(Direction direction, LineName line) {
     if (lineDirections.find(line) != lineDirections.end()) {
         return direction == DOWNTOWN ? lineDirections[line].first : lineDirections[line].second;
     }
+    return {};
 }

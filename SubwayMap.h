@@ -16,8 +16,8 @@ private:
     vector<Station> allStations;
 
 public:
-    void createStations(LineName line, vector<Station> &subwayStations);
+    static void createStations(LineName line, vector<Station> &subwayStations);
 
-    void updateStopsForLine(LineName line, vector<Station> &subwayStations);
+    static void updateStopsForLine(LineName line, vector<Station> &subwayStations);
 };
 #endif //M1OEP_NCYR1_SUBWAYMAP_H
