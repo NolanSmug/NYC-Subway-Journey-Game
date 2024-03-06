@@ -43,7 +43,7 @@ void Station::setId(string newId) {
 }
 
 // Name
-string Station::getName() {
+string Station::getName() const {
     return name;
 }
 

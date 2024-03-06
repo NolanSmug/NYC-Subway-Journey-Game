@@ -37,7 +37,7 @@ public:
     string getId();
     void setId(string newId);
 
-    string getName();
+    string getName() const;
     void setName(string newName);
 
     vector<LineName> getTransfers();

@@ -13,10 +13,6 @@
 using namespace std;
 enum Direction {UPTOWN, DOWNTOWN};
 
-static const char * DirectionEnumStrings[] = {
-        "Bronx-Bound", "Manhattan-Bound", "Queens-Bound", "Brooklyn-Bound"
-};
-
 static unordered_map<LineName, pair<string, string>> lineDirections {
         {ONE_TRAIN, {"Downtown", "Uptown"}},
         {TWO_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
