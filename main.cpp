@@ -64,7 +64,7 @@ int main() {
     train.setDirection(get_direction_from_user(uptownLabel, downtownLabel)); // ask user for a direction they want to start going
 
     // game loop
-    while (train.getCurrentStation().getName() != allStations[destinationStation].getName()) {
+    while (train.getCurrentStation().getId() != allStations[destinationStation].getId()) {
         displayCurrentStationInfo(train, uptownLabel, downtownLabel);
 
         int currentStationIndex = train.getCurrentStationIndex();
