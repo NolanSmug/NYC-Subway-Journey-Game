@@ -46,10 +46,11 @@ LineName Line::stringToLineEnum(string& lineStr) {
 LineName Line::getRandomLine() {
     std::random_device rd;
     std::mt19937 generator(rd());
-    std::uniform_int_distribution<> distribution(0, S_TRAIN_ROCKAWAY);
+    std::uniform_int_distribution<> distribution(0, TOTAL_NUM_LINES);
 
     int randomLineIndex = distribution(generator);
-    LineName randomLine = static_cast<LineName>(randomLineIndex);
+    LineName randomLine;
+    randomLine = static_cast<LineName>(randomLineIndex);
     while (randomLine == NULL_TRAIN) {
         randomLineIndex = distribution(generator);
         randomLine = static_cast<LineName>(randomLineIndex);

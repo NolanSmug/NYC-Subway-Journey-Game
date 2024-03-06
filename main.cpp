@@ -146,7 +146,7 @@ void handleLastStop(Train &train) {
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
-    cout << "This is the last stop on this train. Please get off." << endl;
+    cout << "This is the last stop on this train. Please get off and turn around." << endl;
     // switch direction
     train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
