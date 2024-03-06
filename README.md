@@ -151,25 +151,6 @@ to have my classes interact with one another without any circular dependencies.
 
 In Module 3, I have fully integrated the ability for the user to transfer between subway lines during gameplay. This involved several key additions and changes to the codebase:
 
-#### Integration of Python Code
-To enhance the functionality of the project and incorporate additional features,
-Python code was integrated into the system.
-My Python scripts [csv_maker.py](csv/csv_maker.py) and [csv_reverser.py](csv/csv_reverser.py) use
-[all_stations.csv](csv/all_stations.csv) to separate each subway lines' `scheduledStops` into individual csv files
-(see the [csv directory](csv)).
-
-##### csv_maker.py
-
-The Python script uses the csv module to parse and extract station data from our `all_stations` csv.
-Once the data is parsed, the Python script: 
-1. organizes the station information based on subway lines and available transfers.
-2. constructs a `dictionary` where each key represents a subway line `["1," "2," "A", "B",...]`,
-   and the corresponding `value` is a list of stations associated with that line.
-3. lastly, `csv_reverser.py` ensures that the csv files follow the correct order our `advanceStation()` logic is written
-
-This organization facilitates easy access to station data for each subway line,
-enabling efficient retrieval and manipulation when needed.
-
 #### Main Game Loop
 
 `main` has been updated to handle user input for transferring lines, changing directions, and advancing stations.
@@ -202,9 +183,53 @@ The `handleTransfer()` function prompts the user
 to choose a transfer line from the current station's available transfers,
 and updates the train's line and scheduled stops accordingly.
 
+#### Integration of Python Code
+To enhance the functionality of the project and incorporate additional features,
+Python code was integrated into the system.
+My Python scripts [csv_maker.py](csv/csv_maker.py) and [csv_reverser.py](csv/csv_reverser.py) use
+[all_stations.csv](csv/all_stations.csv) to separate each subway lines' `scheduledStops` into individual csv files
+(see the [csv directory](csv)).
+
+```python
+import csv
+
+train_stations = {}
+
+# Open the CSV file containing all station data
+with open('./csv/all_stations.csv', newline='') as csvfile:
+    reader = csv.DictReader(csvfile)
+
+    # Iterate through each row in the CSV
+    for row in reader:
+        # Extract the stop_id and transfers from the current row
+        stop_id = row['stop_id']
+        transfers = row['transfers'].split(',')
+
+        # Iterate through each transfer
+        for line in transfers:
+            # Split the transfer line into individual characters
+            for char in line.split():
+                # Check if the character represents a subway line
+                if char in train_stations:
+                    # Append the current row to the list of stations associated with that subway line
+                    train_stations[char].append(row)
+```
+
+The Python script uses the csv module to parse and extract station data from our `all_stations` csv.
+Once the data is parsed, the Python script:
+1. organizes the station information based on subway lines and available transfers.
+2. constructs a `dictionary` where each key represents a subway line `["1," "2," "A", "B",...]`,
+   and the corresponding `value` is a list of stations associated with that line.
+    - Each CSV file is named based on the corresponding subway line `"1_train_stations.csv", "2_train_stations.csv",...`
+3. lastly, `csv_reverser.py` ensures that the csv files follow the correct order our `advanceStation()` logic is written.
+
+This organization facilitates easy access to station data for each subway line,
+enabling efficient retrieval and manipulation when needed.
+
 #### Updating Scheduled Stops
 The `SubwayMap` class now includes the `updateStopsForLine()` method builds the scheduled stops for a given subway line
 by reading the corresponding line-specific CSV file.
+
 ```c++
 void SubwayMap::createStations(LineName line, vector<Station>& subwayStations) {
     string filePath = "./csv/";
