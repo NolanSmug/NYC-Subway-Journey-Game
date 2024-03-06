@@ -1,6 +1,11 @@
 import os
 import csv
 
+# DO NOT TOUCH OR RUN
+#
+#
+#
+#
 
 # Function to reverse CSV file contents
 def reverse_csv_file(file_path):
@@ -12,13 +17,11 @@ def reverse_csv_file(file_path):
         writer = csv.writer(csvfile)
         writer.writerows(reversed(data))
 
-
-# List all CSV files in the current directory
 csv_files = [file for file in os.listdir() if file.endswith('csv')]
 
 # Pattern of files to reverse
 pattern = [
-    'b_train_stations.csv', 'm_train_stations.csv', 'n_train_stations.csv'
+    # 'b_train_stations.csv', 'm_train_stations.csv', 'n_train_stations.csv'
 ]
 
 # Filter out files following the specified pattern
