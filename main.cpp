@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 int getRandomStation(unsigned int numStations);
 
 Direction handleStartingDirection(string &uptownLabel, string &downtownLabel);
@@ -40,8 +39,6 @@ int main() {
     SubwayMap subwayMap = SubwayMap();
     LineName startingLine = Line::getRandomLine();
 //  startingLine = FOUR_TRAIN; (testing purposes)
-
-
 
     vector<Station> currentStations;
     vector<Station> allStations;
@@ -75,7 +72,7 @@ int main() {
 
     train.setDirection(handleStartingDirection(uptownLabel, downtownLabel)); // ask user for a direction they want to start going
 
-    // game loop
+    // GAME LOOP
     while (train.getCurrentStation().getId() != allStations[destinationStation].getId()) {
         displayCurrentStationInfo(train, uptownLabel, downtownLabel);
 
@@ -93,8 +90,11 @@ int main() {
         }
     }
 
-    // game over stuff
-    if (train.getCurrentStation().getId() == allStations[destinationStation].getId()) {
+    bool test = train.getCurrentStation().getTransfers() == allStations[destinationStation].getTransfers();
+
+    // GAME FINISHED
+    if (train.getCurrentStation().getName() == allStations[destinationStation].getName() &&
+        train.getCurrentStation().getTransfers() == allStations[destinationStation].getTransfers()) {
         cout << "\nYour current Station:\n" << train.getCurrentStation();
         cout << "YOU WIN" << endl;
     }
