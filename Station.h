@@ -19,7 +19,7 @@ enum Borough {
     STATEN_ISLAND
 };
 
-//static const char * BoroughEnumStrings[] = {"Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island" };
+static const char * BoroughEnumStrings[] = {"Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island" };
 
 class Station {
 private:
