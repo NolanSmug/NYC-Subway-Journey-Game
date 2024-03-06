@@ -13,12 +13,12 @@ using namespace std;
 void print_all_stations(vector<Station> stations);
 int get_random_station(unsigned int numStations);
 
-Direction get_direction_from_user(string uptownLabel, string downtownLabel);
+Direction get_direction_from_user(const string &uptownLabel, string &downtownLabel);
 bool ask_user_to_transfer(Train &train);
 
-void displayCurrentStationInfo(Train& train, string& uptownLabel, string& downtownLabel);
-void handleLastStop(Train& train, int destinationStation, vector<Station>& allStations);
-bool handleUserInput(Train& train, string& uptownLabel, string& downtownLabel);
+void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downtownLabel);
+void handleLastStop(Train &train, int destinationStation, vector<Station> &allStations);
+bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel);
 
 /*
  * Deprecated:
@@ -91,7 +91,7 @@ int main() {
     return 0;
 }
 
-void displayCurrentStationInfo(Train& train, string& uptownLabel, string& downtownLabel) {
+void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downtownLabel) {
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
@@ -144,7 +144,7 @@ bool handleUserInput(Train& train, string &uptownLabel, string &downtownLabel) {
     }
 }
 
-void handleLastStop(Train& train, int destinationStation, vector<Station>& allStations) {
+void handleLastStop(Train &train, int destinationStation, vector<Station> &allStations) {
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
@@ -169,7 +169,7 @@ int get_random_station(unsigned int numStations) {
 }
 
 
-Direction get_direction_from_user(string uptownLabel, string downtownLabel) {
+Direction get_direction_from_user(string &uptownLabel, string &downtownLabel) {
     bool valid = false;
     string input = " ";
 
