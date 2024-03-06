@@ -112,7 +112,7 @@ bool handleUserInput(Train& train, string &uptownLabel, string &downtownLabel) {
         train.advanceStation();
         return true;
     }
-        // user wants to transfer
+    // user wants to transfer
     else if (tolower(input[0]) == 't' && input.length() == 1) {
         ask_user_to_transfer(train);
         train.setDirection(get_direction_from_user(uptownLabel, downtownLabel));
@@ -122,14 +122,14 @@ bool handleUserInput(Train& train, string &uptownLabel, string &downtownLabel) {
 
         return true;
     }
-        // user wants to change direction
+    // user wants to change direction
     else if (tolower(input[0]) == 'c' && input.length() == 1) {
         train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
         string trackLabel = Train::getTextForDirectionEnum(currentDirection, train.getLine());
         cout << "You switched to the " << trackLabel << " platform." << endl;
         return true;
     }
-        // user wants to advance > 1 station
+    // user wants to advance > 1 station
     else {
         int numStationsInput;
         istringstream iss(input);
@@ -148,14 +148,14 @@ void handleLastStop(Train& train, const int destinationStation, const vector<Sta
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
-    if (currentStation.getName() != allStations[destinationStation].getName() && train.getLine() != S_TRAIN) {
+    if (currentStation.getName() != allStations[destinationStation].getName()) {
         cout << "This is the last stop on this train. Please get off." << endl;
-
+        // switch direction
         train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
         string trackLabel = Train::getTextForDirectionEnum(currentDirection, train.getLine());
 
         cout << "You switched to the " << trackLabel << " platform." << endl;
-        this_thread::sleep_for(chrono::seconds(2));
+        this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes
     }
 }
 

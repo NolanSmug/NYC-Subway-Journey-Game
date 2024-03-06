@@ -111,7 +111,7 @@ Station Train::getNextStation() {
 bool Train::advanceStation() {
     bool valid = false;
 
-    if (currentStationIndex < scheduledStops.size() - 1) {
+    if (currentStationIndex < scheduledStops.size() - 1 || currentLine == S_TRAIN) {
         valid = true;
 
         if (direction == UPTOWN) {
