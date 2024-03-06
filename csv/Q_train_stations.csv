@@ -22,7 +22,7 @@ R30,DeKalb Av,B Q R,Bk
 Q01,Canal St,N Q R W J Z 6,M
 R20,14 St-Union Sq,N Q R W L 4 5 6,M
 R17,34 St-Herald Sq,N Q R W,M
-R16,Times Sq-42 St,N Q R W 1 2 3 7,M
+R16,Times Sq-42 St,N Q R W 1 2 3 7 S,M
 R14,57 St-7 Av,N Q R W,M
 B08,Lexington Av/63 St,Q,M
 Q03,72 St,Q,M

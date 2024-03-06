@@ -76,12 +76,10 @@ int main() {
             handleLastStop(train, destinationStation, allStations);
         }
 
-        bool validInput;
-        do {
+        bool validInput = false;
+        while (!validInput) {
             validInput = handleUserInput(train, uptownLabel, downtownLabel);
-
-
-        } while (!validInput);
+        }
     }
 
     // game over stuff
