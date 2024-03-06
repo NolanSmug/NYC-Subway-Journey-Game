@@ -17,7 +17,7 @@ Direction get_direction_from_user(string &uptownLabel, string &downtownLabel);
 bool askUserToTransfer(Train &train);
 
 void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downtownLabel);
-void handleLastStop(Train &train, vector<Station> &allStations);
+void handleLastStop(Train &train);
 bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel);
 
 /*
@@ -71,7 +71,7 @@ int main() {
         bool atLastStop = (currentStationIndex == 0 && train.getDirection() == DOWNTOWN) ||
                           (currentStationIndex == train.getScheduledStops().size() - 1 && train.getDirection() == UPTOWN);
         if (atLastStop) {
-            handleLastStop(train, allStations);
+            handleLastStop(train);
         }
 
         bool validInput = false;
@@ -142,14 +142,14 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
     }
 }
 
-void handleLastStop(Train &train, vector<Station> &allStations) {
+void handleLastStop(Train &train) {
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
     cout << "This is the last stop on this train. Please get off." << endl;
     // switch direction
     train.setDirection(currentDirection == DOWNTOWN ? UPTOWN : DOWNTOWN);
-    string trackLabel = Train::getTextForDirectionEnum(currentDirection, train.getLine());
+    string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
 
     cout << "You switched to the " << trackLabel << " platform." << endl;
     this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes
