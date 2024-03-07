@@ -125,6 +125,7 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
     else {
         return handleAdvanceMultipleStations(train, input);
     }
+    return false;
 }
 
 void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downtownLabel) {
@@ -264,7 +265,7 @@ void printAllStations(vector<Station> stations, string currentStationId, Directi
         }
     }
 
-    cout << "---------------------------------" << endl;
+    cout << "------------------------------------------------------------------" << endl;
     if (currentDirection == UPTOWN) {
         for (int i = length - 1; i >= currentStationIndex; i--) {
             int stopsAway = abs(i - currentStationIndex);
@@ -272,29 +273,30 @@ void printAllStations(vector<Station> stations, string currentStationId, Directi
 
             if (stations[i].getId() == currentStationId) {
                 cout << setw(30) << left << stations[i].getName() << "  **  Current Station  **" << endl;
-                cout << "|" << endl;
+                cout << "    |" << endl;
             } else {
                 cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
-                cout << "|" << endl;
+                cout << "    |" << endl;
             }
         }
-        cout << "↑" << endl;
-    } else { // DOWNTOWN
-        cout << "↓" << endl;
+        cout << "    ↑" << endl;
+    }
+    else { // DOWNTOWN
+        cout << "    ↓" << endl;
         for (int i = currentStationIndex; i < length; i++) {
             int stopsAway = abs(i - currentStationIndex);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
             if (stations[i].getId() == currentStationId) {
-                cout << setw(30) << left << stations[i].getName() << "  **  Current Station  **" << endl;
-                cout << "|" << endl;
+                cout << setw(30) << left << stations[i].getName() << " **  Current Station  **" << endl;
+                cout << "    |" << endl;
             } else {
                 cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
-                cout << "|" << endl;
+                cout << "    |" << endl;
             }
         }
     }
-    cout << "---------------------------------" << endl;
+    cout << "------------------------------------------------------------------" << endl;
 }
 
 
