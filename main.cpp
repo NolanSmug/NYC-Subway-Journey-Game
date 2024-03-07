@@ -26,7 +26,7 @@ bool handleAdvanceMultipleStations(Train &train, string &input);
 void handleLastStop(Train &train);
 
 void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downtownLabel);
-void printAllStations(vector<Station> stations);
+void printAllStations(vector<Station> stations, string currentStationId);
 
 /*
  * Deprecated:
@@ -111,6 +111,9 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
 
     if (input.empty()) {
         return handleAdvanceOneStation(train);
+    }
+    else if (input[0] == '0' && input.length() == 1) {
+        printAllStations(train.getScheduledStops(), train.getCurrentStation().getId());
     }
     else if (tolower(input[0]) == 't' && input.length() == 1) {
         return handleTransfer(train, uptownLabel, downtownLabel);
@@ -249,12 +252,15 @@ bool askUserToTransfer(Train &train) {
 }
 
 
+void printAllStations(vector<Station> stations, string currentStationId) {
+    int length = stations.size();
 
-void printAllStations(vector<Station> stations) {
-    unsigned int length = stations.size();
-
-    for (int i = 0; i < length; i++) {
-        if (i == length - 1) {
+    cout << "---------------------------------" << endl;
+    for (int i = length - 1; i >= 0; i--) {
+        if (stations[i].getId() == currentStationId) {
+            cout << stations[i].getName() << "   <-------   Current Station" << "\n   |\n";
+        }
+        else if (i == 0) {
             cout << stations[i].getName() << endl;
         }
         else {
@@ -263,6 +269,7 @@ void printAllStations(vector<Station> stations) {
     }
     cout << "---------------------------------" << endl;
 }
+
 
 
 /*
