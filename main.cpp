@@ -7,6 +7,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <iomanip>
 
 using namespace std;
 
@@ -26,7 +27,7 @@ bool handleAdvanceMultipleStations(Train &train, string &input);
 void handleLastStop(Train &train);
 
 void displayCurrentStationInfo(Train &train, string &uptownLabel, string &downtownLabel);
-void printAllStations(vector<Station> stations, string currentStationId);
+void printAllStations(vector<Station> stations, string currentStationId, Direction currentDirection);
 
 /*
  * Deprecated:
@@ -113,7 +114,7 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
         return handleAdvanceOneStation(train);
     }
     else if (input[0] == '0' && input.length() == 1) {
-        printAllStations(train.getScheduledStops(), train.getCurrentStation().getId());
+        printAllStations(train.getScheduledStops(), train.getCurrentStation().getId(),train.getDirection());
     }
     else if (tolower(input[0]) == 't' && input.length() == 1) {
         return handleTransfer(train, uptownLabel, downtownLabel);
@@ -251,20 +252,46 @@ bool askUserToTransfer(Train &train) {
     return valid;
 }
 
-
-void printAllStations(vector<Station> stations, string currentStationId) {
+void printAllStations(vector<Station> stations, string currentStationId, Direction currentDirection) {
     int length = stations.size();
+    int currentStationIndex = -1;
+
+    // Find the index of the current station
+    for (int i = 0; i < length; i++) {
+        if (stations[i].getId() == currentStationId) {
+            currentStationIndex = i;
+            break;
+        }
+    }
 
     cout << "---------------------------------" << endl;
-    for (int i = length - 1; i >= 0; i--) {
-        if (stations[i].getId() == currentStationId) {
-            cout << stations[i].getName() << "   <-------   Current Station" << "\n   |\n";
+    if (currentDirection == UPTOWN) {
+        cout << "↑" << endl;
+        for (int i = currentStationIndex; i < length; i++) {
+            int stopsAway = i - currentStationIndex;
+            string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
+
+            if (stations[i].getId() == currentStationId) {
+                cout << setw(30) << left << stations[i].getName() << "  **  Current Station  **" << endl;
+                cout << "|" << endl;
+            } else {
+                cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
+                cout << "|" << endl;
+            }
         }
-        else if (i == 0) {
-            cout << stations[i].getName() << endl;
-        }
-        else {
-            cout << stations[i].getName() << "\n   |\n";
+    } else {
+        cout << "↓" << endl;
+        for (int i = currentStationIndex; i >= 0; i--) {
+            int stopsAway = currentStationIndex - i;
+            string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
+
+            if (stations[i].getId() == currentStationId) {
+                cout << setw(30) << left << stations[i].getName() << "  **  Current Station  **" << endl;
+                cout << "|" << endl;
+            } else {
+                cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
+                cout << "|" << endl;
+            }
         }
     }
     cout << "---------------------------------" << endl;
