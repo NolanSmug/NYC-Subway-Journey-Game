@@ -266,9 +266,8 @@ void printAllStations(vector<Station> stations, string currentStationId, Directi
 
     cout << "---------------------------------" << endl;
     if (currentDirection == UPTOWN) {
-        cout << "↑" << endl;
-        for (int i = currentStationIndex; i < length; i++) {
-            int stopsAway = i - currentStationIndex;
+        for (int i = length - 1; i >= currentStationIndex; i--) {
+            int stopsAway = abs(i - currentStationIndex);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
             if (stations[i].getId() == currentStationId) {
@@ -279,10 +278,11 @@ void printAllStations(vector<Station> stations, string currentStationId, Directi
                 cout << "|" << endl;
             }
         }
-    } else {
+        cout << "↑" << endl;
+    } else { // DOWNTOWN
         cout << "↓" << endl;
-        for (int i = currentStationIndex; i >= 0; i--) {
-            int stopsAway = currentStationIndex - i;
+        for (int i = currentStationIndex; i < length; i++) {
+            int stopsAway = abs(i - currentStationIndex);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
             if (stations[i].getId() == currentStationId) {
