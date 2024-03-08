@@ -11,7 +11,7 @@
 #include "SubwayMap.h"
 
 using namespace std;
-enum Direction {UPTOWN, DOWNTOWN};
+enum Direction {UPTOWN,DOWNTOWN,NULL_DIRECTION};
 
 static unordered_map<LineName, pair<string, string>> lineDirections {
         {ONE_TRAIN, {"Downtown", "Uptown"}},
@@ -53,6 +53,12 @@ public:
     Direction getDirection();
     void setDirection(Direction newDirection);
 
+    string getUptownLabel();
+    string getDowntownLabel();
+
+    void setUptownLabel(string newLabel);
+    void setDowntownLabel(string newLabel);
+
     bool transferToLine(LineName newLine, Station currentStation);
     void updateScheduledStops(LineName &line);
 
@@ -80,6 +86,8 @@ public:
 private:
     LineName currentLine;
     Direction direction;
+    string uptownLabel;
+    string downtownLabel;
     vector<Station> scheduledStops;
     int currentStationIndex = 0;
     bool express;

@@ -7,14 +7,13 @@
 
 using namespace std;
 
-Train::Train() : currentLine(NULL_TRAIN), direction(DOWNTOWN), scheduledStops(), express(false), numCars(10) {}
+Train::Train() : currentLine(NULL_TRAIN), direction(NULL_DIRECTION), scheduledStops(), express(false), numCars(10) {}
 
-Train::Train(LineName currentLine, Direction direction, vector<Station> scheduledStops, bool express, int numCars) :
-        currentLine(currentLine),
-        direction(direction),
-        scheduledStops(scheduledStops),
-        express(express),
-        numCars(numCars) {}
+Train::Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars)
+        : currentLine(lineName), direction(direction), scheduledStops(scheduledStops), express(express), numCars(numCars) {
+    uptownLabel = getTextForDirectionEnum(UPTOWN, lineName);
+    downtownLabel = getTextForDirectionEnum(DOWNTOWN, lineName);
+}
 
 // Name
 LineName Train::getLine() {
@@ -27,8 +26,6 @@ void Train::setLine(LineName newLineName) {
 
 // Direction
 Direction Train::getDirection() {
-//    vector<Direction> directions = lineDirectionsMap[currentLine];
-
     return direction;
 }
 
@@ -36,8 +33,27 @@ void Train::setDirection(Direction newDirection) {
     direction = newDirection;
 }
 
-// Transfer
+// Direction Labels (strings)
+string Train::getUptownLabel() {
+    return uptownLabel;
+}
 
+string Train::getDowntownLabel() {
+    return downtownLabel;
+}
+
+void Train::setUptownLabel(string newLabel) {
+    uptownLabel = newLabel;
+}
+
+void Train::setDowntownLabel(string newLabel) {
+    downtownLabel = newLabel;
+}
+
+
+
+
+// Transfer
 // helper method for transferToLine()
 // checks if users' requested LineName is at a specified Station
 bool validTransfer(LineName &newLine, Station &currentStation) {
