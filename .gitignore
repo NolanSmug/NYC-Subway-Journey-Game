@@ -10,9 +10,10 @@ CMakeCache.txt
 cmake_install.cmake
 CMakeFiles/
 build/
-.idea
-.info
-cmake-build-debug
+idea/
+info/
+cmake-build-debug/
+venv/
 
 # Ignore IDE-specific files
 .vscode/
