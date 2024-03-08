@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Project Source Files" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="NYC-Subway-Journey-Game" targetName="tests" />
+      <config projectName="NYC-Subway-Journey-Game" targetName="main" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9e7b8c1a-dee8-48a9-bc2a-b8430f1593f6" name="Changes" comment="fix" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NolanSmug&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="16fb9b35-ae86-4c06-b4f0-e2b138bf9294" />
+        <option name="url" value="https://github.com/NolanSmug/NYC-Subway-Journey-Game.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="3.4" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2cucheveKQZx3zXkZqkMejyA0mz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;CMake Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.csv_reverser.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nolancyr/Desktop/Everything/Personal Coding Projects/C++/NYC-Subway-Journey-Game&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;RainbowCSV.Settings&quot;,
+    &quot;structure.view.defaults.are.configured&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="CMake Application.main">
+    <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="NYC-Subway-Journey-Game" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="NYC-Subway-Journey-Game" RUN_TARGET_NAME="main">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tests" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="NYC-Subway-Journey-Game" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="NYC-Subway-Journey-Game" RUN_TARGET_NAME="tests">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="csv_reverser" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="NYC-Subway-Journey-Game" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (NYC-Subway-Journey-Game)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/csv" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="csv_reverser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.main" />
+      <item itemvalue="CMake Application.tests" />
+      <item itemvalue="Python.csv_reverser" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e7b8c1a-dee8-48a9-bc2a-b8430f1593f6" name="Changes" comment="" />
+      <created>1708965024552</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708965024552</updated>
+      <workItem from="1708965025596" duration="14346000" />
+      <workItem from="1708993426693" duration="12000" />
+      <workItem from="1708993452401" duration="7000" />
+      <workItem from="1708993466408" duration="64000" />
+      <workItem from="1708994088366" duration="3508000" />
+      <workItem from="1709007942323" duration="1338000" />
+      <workItem from="1709018447588" duration="2556000" />
+      <workItem from="1709045011393" duration="4777000" />
+      <workItem from="1709065645289" duration="2699000" />
+      <workItem from="1709143390514" duration="856000" />
+      <workItem from="1709163287235" duration="1478000" />
+      <workItem from="1709166103611" duration="866000" />
+      <workItem from="1709249040750" duration="1705000" />
+      <workItem from="1709272609429" duration="3846000" />
+      <workItem from="1709353724908" duration="1186000" />
+      <workItem from="1709357387347" duration="1315000" />
+      <workItem from="1709391303283" duration="8178000" />
+      <workItem from="1709448566145" duration="579000" />
+      <workItem from="1709496415727" duration="4000" />
+      <workItem from="1709521973737" duration="2962000" />
+      <workItem from="1709570455336" duration="5093000" />
+      <workItem from="1709575748183" duration="91000" />
+      <workItem from="1709575996839" duration="8202000" />
+      <workItem from="1709589882710" duration="3000" />
+      <workItem from="1709589892302" duration="2216000" />
+      <workItem from="1709593637719" duration="2719000" />
+      <workItem from="1709600038636" duration="992000" />
+      <workItem from="1709659814752" duration="9628000" />
+      <workItem from="1709699902039" duration="3699000" />
+      <workItem from="1709735160629" duration="2288000" />
+      <workItem from="1709742520018" duration="391000" />
+      <workItem from="1709742917694" duration="13159000" />
+      <workItem from="1709787409303" duration="1000" />
+      <workItem from="1709920038784" duration="135000" />
+      <workItem from="1709920247301" duration="3080000" />
+      <workItem from="1709931341645" duration="377000" />
+    </task>
+    <task id="LOCAL-00023" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1709249331085</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1709249331085</updated>
+    </task>
+    <task id="LOCAL-00024" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1709249369746</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1709249369747</updated>
+    </task>
+    <task id="LOCAL-00025" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1709249425375</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1709249425375</updated>
+    </task>
+    <task id="LOCAL-00026" summary="update README.md">
+      <option name="closed" value="true" />
+      <created>1709353795296</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1709353795296</updated>
+    </task>
+    <task id="LOCAL-00027" summary="update gitignore">
+      <option name="closed" value="true" />
+      <created>1709353874095</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1709353874095</updated>
+    </task>
+    <task id="LOCAL-00028" summary="support for all train lines">
+      <option name="closed" value="true" />
+      <created>1709410368366</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1709410368366</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fix csvs">
+      <option name="closed" value="true" />
+      <created>1709572061985</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1709572061985</updated>
+    </task>
+    <task id="LOCAL-00030" summary="fix csvs">
+      <option name="closed" value="true" />
+      <created>1709572820953</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1709572820953</updated>
+    </task>
+    <task id="LOCAL-00031" summary="fix csvs">
+      <option name="closed" value="true" />
+      <created>1709572929886</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1709572929886</updated>
+    </task>
+    <task id="LOCAL-00032" summary="fix csvs">
+      <option name="closed" value="true" />
+      <created>1709573271226</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573271226</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fix csvs">
+      <option name="closed" value="true" />
+      <created>1709573317269</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1709573317269</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fix everything">
+      <option name="closed" value="true" />
+      <created>1709574864809</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1709574864809</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fix everything">
+      <option name="closed" value="true" />
+      <created>1709575446109</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1709575446109</updated>
+    </task>
+    <task id="LOCAL-00036" summary="fix everything">
+      <option name="closed" value="true" />
+      <created>1709576657036</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1709576657037</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add direction labels">
+      <option name="closed" value="true" />
+      <created>1709579065995</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1709579065995</updated>
+    </task>
+    <task id="LOCAL-00038" summary="add direction labels">
+      <option name="closed" value="true" />
+      <created>1709581704367</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1709581704367</updated>
+    </task>
+    <task id="LOCAL-00039" summary="add direction labels">
+      <option name="closed" value="true" />
+      <created>1709583382847</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1709583382847</updated>
+    </task>
+    <task id="LOCAL-00040" summary="MAJOR UPDATES!">
+      <option name="closed" value="true" />
+      <created>1709591637299</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1709591637299</updated>
+    </task>
+    <task id="LOCAL-00041" summary="win fix">
+      <option name="closed" value="true" />
+      <created>1709591737118</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1709591737118</updated>
+    </task>
+    <task id="LOCAL-00042" summary="win fix">
+      <option name="closed" value="true" />
+      <created>1709591795738</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1709591795738</updated>
+    </task>
+    <task id="LOCAL-00043" summary="change direction functionality">
+      <option name="closed" value="true" />
+      <created>1709594511659</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1709594511659</updated>
+    </task>
+    <task id="LOCAL-00044" summary="fix">
+      <option name="closed" value="true" />
+      <created>1709668838191</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1709668838191</updated>
+    </task>
+    <task id="LOCAL-00045" summary="logic for last stop">
+      <option name="closed" value="true" />
+      <created>1709679596416</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1709679596416</updated>
+    </task>
+    <task id="LOCAL-00046" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709701187099</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1709701187099</updated>
+    </task>
+    <task id="LOCAL-00047" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709701260882</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1709701260882</updated>
+    </task>
+    <task id="LOCAL-00048" summary="S_TRAIN logic fix">
+      <option name="closed" value="true" />
+      <created>1709701822213</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1709701822213</updated>
+    </task>
+    <task id="LOCAL-00049" summary="S_TRAIN logic fix">
+      <option name="closed" value="true" />
+      <created>1709701927229</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1709701927229</updated>
+    </task>
+    <task id="LOCAL-00050" summary="S_TRAIN logic fix">
+      <option name="closed" value="true" />
+      <created>1709702035695</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1709702035696</updated>
+    </task>
+    <task id="LOCAL-00051" summary="S_TRAIN logic fix">
+      <option name="closed" value="true" />
+      <created>1709702489767</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1709702489767</updated>
+    </task>
+    <task id="LOCAL-00052" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709702622610</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1709702622610</updated>
+    </task>
+    <task id="LOCAL-00053" summary="major null_train bug fix">
+      <option name="closed" value="true" />
+      <created>1709703006767</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1709703006767</updated>
+    </task>
+    <task id="LOCAL-00054" summary="bug fix">
+      <option name="closed" value="true" />
+      <created>1709735490199</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1709735490199</updated>
+    </task>
+    <task id="LOCAL-00055" summary="bug fix">
+      <option name="closed" value="true" />
+      <created>1709735540014</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1709735540014</updated>
+    </task>
+    <task id="LOCAL-00056" summary="don't touch python files">
+      <option name="closed" value="true" />
+      <created>1709735843071</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1709735843071</updated>
+    </task>
+    <task id="LOCAL-00057" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709736337344</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1709736337344</updated>
+    </task>
+    <task id="LOCAL-00058" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709742537601</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1709742537601</updated>
+    </task>
+    <task id="LOCAL-00059" summary="csv fixes (major)">
+      <option name="closed" value="true" />
+      <created>1709743244174</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1709743244174</updated>
+    </task>
+    <task id="LOCAL-00060" summary="csv fixes (major)">
+      <option name="closed" value="true" />
+      <created>1709743781707</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1709743781707</updated>
+    </task>
+    <task id="LOCAL-00061" summary="csv fixes (major)">
+      <option name="closed" value="true" />
+      <created>1709743919135</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1709743919135</updated>
+    </task>
+    <task id="LOCAL-00062" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709756584468</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1709756584468</updated>
+    </task>
+    <task id="LOCAL-00063" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709757968329</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1709757968329</updated>
+    </task>
+    <task id="LOCAL-00064" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709760349820</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1709760349820</updated>
+    </task>
+    <task id="LOCAL-00065" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709761175761</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1709761175761</updated>
+    </task>
+    <task id="LOCAL-00066" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1709761395846</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1709761395846</updated>
+    </task>
+    <task id="LOCAL-00067" summary="fix">
+      <option name="closed" value="true" />
+      <created>1709763126231</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1709763126231</updated>
+    </task>
+    <task id="LOCAL-00068" summary="fix">
+      <option name="closed" value="true" />
+      <created>1709764587852</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1709764587852</updated>
+    </task>
+    <task id="LOCAL-00069" summary="fix">
+      <option name="closed" value="true" />
+      <created>1709764700900</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1709764700900</updated>
+    </task>
+    <task id="LOCAL-00070" summary="fix">
+      <option name="closed" value="true" />
+      <created>1709921161466</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1709921161466</updated>
+    </task>
+    <task id="LOCAL-00071" summary="fix">
+      <option name="closed" value="true" />
+      <created>1709923296209</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1709923296209</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="minor fix" />
+    <MESSAGE value="update .gitignore" />
+    <MESSAGE value="fixed bug" />
+    <MESSAGE value="readme test" />
+    <MESSAGE value="major README.md updates" />
+    <MESSAGE value="README.md updates" />
+    <MESSAGE value="rename createAllStations method" />
+    <MESSAGE value="rename variable" />
+    <MESSAGE value="update README.md" />
+    <MESSAGE value="update gitignore" />
+    <MESSAGE value="support for all train lines" />
+    <MESSAGE value="fix csvs" />
+    <MESSAGE value="fix everything" />
+    <MESSAGE value="add direction labels" />
+    <MESSAGE value="MAJOR UPDATES!" />
+    <MESSAGE value="win fix" />
+    <MESSAGE value="change direction functionality" />
+    <MESSAGE value="logic for last stop" />
+    <MESSAGE value="S_TRAIN logic fix" />
+    <MESSAGE value="major null_train bug fix" />
+    <MESSAGE value="bug fix" />
+    <MESSAGE value="don't touch python files" />
+    <MESSAGE value="csv fixes (major)" />
+    <MESSAGE value="cleanup" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

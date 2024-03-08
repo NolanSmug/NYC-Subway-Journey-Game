@@ -10,7 +10,7 @@ CMakeCache.txt
 cmake_install.cmake
 CMakeFiles/
 build/
-.idea
+idea
 info/
 cmake-build-debug/*
 venv/
@@ -27,9 +27,3 @@ venv/
 # Ignore specific files
 .DS_Store
 LastTest.log
-/.idea/.name
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/NYC-Subway-Journey-Game.iml
-/.idea/vcs.xml
-/.idea/workspace.xml
