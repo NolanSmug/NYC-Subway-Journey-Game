@@ -25,8 +25,8 @@ R21,8 St-NYU,R W,M
 R20,14 St-Union Sq,N Q R W L 4 5 6,M
 R19,23 St,R W,M
 R18,28 St,R W,M
-R17,34 St-Herald Sq,N Q R W,M
-R16,Times Sq-42 St,N Q R W 1 2 3 7 S,M
+R17,34 St-Herald Sq,B D F M N Q R W,M
+R16,Times Sq-42 St,1 2 3 7 N Q R W S,M
 R15,49 St,N R W,M
 R14,57 St-7 Av,N Q R W,M
 R13,5 Av/59 St,N R W,M

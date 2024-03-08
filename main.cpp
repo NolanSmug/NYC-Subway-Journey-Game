@@ -17,7 +17,7 @@ Direction handleStartingDirection(string &uptownLabel, string &downtownLabel);
 
 bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel);
 
-bool askUserToTransfer(Train &train);
+bool askUserToTransfer(Train &train, string &uptownLabel, string &downtownLabel);
 bool handleTransfer(Train &train, string &uptownLabel, string &downtownLabel);
 bool handleAdvanceOneStation(Train &train);
 bool handleChangeDirection(Train &train);
@@ -142,7 +142,7 @@ bool handleAdvanceOneStation(Train &train) {
 }
 
 bool handleTransfer(Train &train, string &uptownLabel, string &downtownLabel) {
-    askUserToTransfer(train);
+    askUserToTransfer(train, uptownLabel, downtownLabel);
     train.setDirection(handleStartingDirection(uptownLabel, downtownLabel));
 
     uptownLabel = Train::getTextForDirectionEnum(UPTOWN, train.getLine());
@@ -216,7 +216,7 @@ Direction handleStartingDirection(string &uptownLabel, string &downtownLabel) {
 
 
 
-bool askUserToTransfer(Train &train) {
+bool askUserToTransfer(Train &train, string &uptownLabel, string &downtownLabel) {
     Station currentStation = train.getCurrentStation();
     string input;
 
@@ -232,6 +232,11 @@ bool askUserToTransfer(Train &train) {
         getline(cin, input);
 
         if (currentStation.hasTransferLine(input)) {
+            LineName requestedLine = Line::stringToLineEnum(input);
+            // update direction labels too
+            uptownLabel = Train::getTextForDirectionEnum(UPTOWN, requestedLine);
+            downtownLabel = Train::getTextForDirectionEnum(DOWNTOWN, requestedLine);
+
             valid = train.transferToLine(Line::stringToLineEnum(input), currentStation);
         }
         else if (tolower(input[0]) == 't') {

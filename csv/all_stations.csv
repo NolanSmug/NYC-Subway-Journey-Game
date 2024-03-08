@@ -13,8 +13,8 @@ Q03,72 St,Q,M
 B08,Lexington Av/63 St,Q,M
 R14,57 St-7 Av,N Q R W,M
 R15,49 St,N R W,M
-R16,Times Sq-42 St,N Q R W 1 2 3 7 S,M
-R17,34 St-Herald Sq,N Q R W B D F M,M
+R16,Times Sq-42 St,1 2 3 7 N Q R W S,M
+R17,34 St-Herald Sq,B D F M N Q R W,M
 R18,28 St,R W,M
 R19,23 St,R W,M
 R20,14 St-Union Sq,N Q R W L 4 5 6,M
@@ -171,12 +171,12 @@ A22,72 St,B C,M
 A24,59 St-Columbus Circle,A B C D 1,M
 F11,Lexington Av/53 St,E M,M
 F12,5 Av/53 St,E M,M
-D14,7 Av,E,M
+D14,7 Av,B D E,M
 A25,50 St,C E,M
 A27,42 St-Port Authority Bus Terminal,A C E,M
 A28,34 St-Penn Station,A C E 1 2 3,M
 A30,23 St,C E,M
-A31,14 St,A C E,M
+A31,14 St (8th Av),A C E L,M
 A32,W 4 St-Wash Sq,A C E B D F M,M
 A33,Spring St,C E,M
 A34,Canal St,A C E,M
@@ -233,12 +233,12 @@ D11,161 St-Yankee Stadium,B D,Bx
 B06,Roosevelt Island,F,M
 B08,Lexington Av/63 St,F,M
 B10,57 St,F,M
-D14,7 Av,B D,M
+D14,7 Av,B D E,M
 D15,47-50 Sts-Rockefeller Ctr,B D F M,M
 D16,42 St-Bryant Pk,B D F M,M
-D17,34 St-Herald Sq,N Q R W B D F M,M
+D17,34 St-Herald Sq,B D F M N Q R W,M
 D18,23 St,F M,M
-D19,14 St,F M,M
+D19,14 St (6th Av),1 2 3 F M L,M
 D20,W 4 St-Wash Sq,A C E B D F M,M
 D21,Broadway-Lafayette St,B D F M,M
 M18,Delancey St-Essex St,M,M
@@ -343,12 +343,12 @@ F27,Church Av,G,Bk
 124,66 St-Lincoln Center,1,M
 125,59 St-Columbus Circle,A B C D 1,M
 126,50 St,1,M
-127,Times Sq-42 St,N Q R W 1 2 3 7 S,M
+127,Times Sq-42 St,1 2 3 7 N Q R W S,M
 128,34 St-Penn Station,A C E 1 2 3,M
 129,28 St,1,M
 130,23 St,1,M
 131,18 St,1,M
-132,14 St,1 2 3,M
+132,14 St (6th Av),1 2 3 F M L,M
 133,Christopher St-Sheridan Sq,1,M
 134,Houston St,1,M
 135,Canal St,1,M
@@ -489,7 +489,7 @@ R09,Queensboro Plaza,N W,Q
 721,Vernon Blvd-Jackson Av,7,Q
 723,Grand Central-42 St,4 5 6 7 S,M
 724,5 Av,7,M
-725,Times Sq-42 St,N Q R W 1 2 3 7 S,M
-902,Times Sq-42 St,N Q R W 1 2 3 7 S,M
+725,Times Sq-42 St,1 2 3 7 N Q R W S,M
+902,Times Sq-42 St,1 2 3 7 N Q R W S,M
 901,Grand Central-42 St,4 5 6 7 S,M
-726,34 St-Hudson Yards,7,M
+726,34 St-Hudson Yards,7 A C E,M

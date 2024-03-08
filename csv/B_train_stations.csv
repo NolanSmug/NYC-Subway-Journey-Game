@@ -11,10 +11,10 @@ R30,DeKalb Av,B Q R,Bk
 D22,Grand St,B D,M
 D21,Broadway-Lafayette St,B D F M,M
 D20,W 4 St-Wash Sq,A C E B D F M,M
-D17,34 St-Herald Sq,N Q R W B D F M,M
+D17,34 St-Herald Sq,B D F M N Q R W,M
 D16,42 St-Bryant Pk,B D F M,M
 D15,47-50 Sts-Rockefeller Ctr,B D F M,M
-D14,7 Av,B D,M
+D14,7 Av,B D E,M
 A24,59 St-Columbus Circle,A B C D 1,M
 A22,72 St,B C,M
 A21,81 St-Museum of Natural History,B C,M
