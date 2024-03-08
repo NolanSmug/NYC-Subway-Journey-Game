@@ -137,11 +137,12 @@ bool handleAdvanceOneStation(Train &train) {
 }
 
 bool handleTransfer(Train &train) {
-    askUserToTransfer(train);
-    train.setDirection(handleNewDirection(train));
+    if (askUserToTransfer(train)) {
+        train.setDirection(handleNewDirection(train));
 
-    train.setUptownLabel(Train::getTextForDirectionEnum(UPTOWN, train.getLine()));
-    train.setDowntownLabel(Train::getTextForDirectionEnum(DOWNTOWN, train.getLine()));
+        train.setUptownLabel(Train::getTextForDirectionEnum(UPTOWN, train.getLine()));
+        train.setDowntownLabel(Train::getTextForDirectionEnum(DOWNTOWN, train.getLine()));
+    }
 
     return true;
 }
@@ -231,8 +232,7 @@ bool askUserToTransfer(Train &train) {
             alreadyListedTransfers = true;
         }
         else if (tolower(input[0]) == 'e') {
-            valid = false;
-            break;
+            return false;
         }
         else {
             cout << "Invalid input. ";
