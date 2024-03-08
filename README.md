@@ -21,14 +21,16 @@ And after a valid input is given, they're notified of the station they have arri
 Manages a `Train` object and its scheduled stops.
 
 #### Private Variables:  
-| Name                             | Description                                                                              |
-|----------------------------------|------------------------------------------------------------------------------------------|
-| `LineName currentLine`           | Current subway line of the Train.                                                        |
-| `Direction direction`            | Direction of the Train (`BRONXBOUND`, `MANHATTANBOUND`, `QUEENSBOUND`, `BROOKLYNBOUND`). |
-| `vector<Station> scheduledStops` | Vector of stations representing scheduled stops.                                         |
-| `int currentStationIndex`        | Index of the current station in the scheduled stops vector.                              |
-| `bool express`                   | Indicates whether the Train is an express train or not.                                  |
-| `int numCars`                    | Number of cars in the Train.                                                             |
+| Name                             | Description                                                 |
+|----------------------------------|-------------------------------------------------------------|
+| `LineName currentLine`           | Current subway line of the Train.                           |
+| `Direction direction`            | Direction of the Train (`UPTOWN`, `DOWNTOWN`).              |
+| `string uptownLabel`             | Label in string format for the uptown-bound track           |
+| `string downtownLabel`           | Label in string format for the downtown-bound track         |
+| `vector<Station> scheduledStops` | Vector of stations representing scheduled stops.            |
+| `int currentStationIndex`        | Index of the current station in the scheduled stops vector. |
+| `bool express`                   | Indicates whether the Train is an express train or not.     |
+| `int numCars`                    | Number of cars in the Train.                                |
 
 #### Public Methods:  
 | Method                                                          | Description                                                            |

@@ -276,11 +276,11 @@ void printTransferLines(vector<LineName> transfers) {
 }
 
 void printAllStations(vector<Station> stations, string currentStationId, Direction currentDirection) {
-    int length = stations.size();
+    unsigned int numStations = stations.size();
     int currentStationIndex = -1;
 
     // Find the index of the current station
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < numStations; i++) {
         if (stations[i].getId() == currentStationId) {
             currentStationIndex = i;
             break;
@@ -289,7 +289,7 @@ void printAllStations(vector<Station> stations, string currentStationId, Directi
 
     cout << "------------------------------------------------------------------" << endl;
     if (currentDirection == UPTOWN) {
-        for (int i = length - 1; i >= currentStationIndex; i--) {
+        for (int i = numStations - 1; i >= currentStationIndex; i--) {
             int stopsAway = abs(i - currentStationIndex);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
@@ -305,7 +305,7 @@ void printAllStations(vector<Station> stations, string currentStationId, Directi
     }
     else { // DOWNTOWN
         cout << "    ↓" << endl;
-        for (int i = currentStationIndex; i < length; i++) {
+        for (int i = currentStationIndex; i < numStations; i++) {
             int stopsAway = abs(i - currentStationIndex);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
