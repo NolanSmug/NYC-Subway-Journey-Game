@@ -18,3 +18,5 @@ for filename in files:
         # Rename the file
         os.rename(original_path, new_path)
         print(f"Renamed {filename} to {new_filename}")
+    else:
+        print(f"{filename} is already in its valid pattern!")
