@@ -1,6 +1,6 @@
 
 # Nolan Cyr
-## Subway Shuffle: A Randomized NYC Journey Pt 2
+## Subway Shuffle: A Randomized NYC Journey
 
 ## Summary of Program
 This is a game where a player is placed into a random NYC subway station,
