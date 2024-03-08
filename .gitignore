@@ -12,7 +12,7 @@ CMakeFiles/
 build/
 idea/
 info/
-cmake-build-debug/
+cmake-build-debug/*
 venv/
 
 # Ignore IDE-specific files
