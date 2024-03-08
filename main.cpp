@@ -27,6 +27,7 @@ void handleLastStop(Train &train);
 
 void displayCurrentStationInfo(Train &train);
 void printAllStations(vector<Station> stations, string currentStationId, Direction currentDirection);
+void printTransferLines(vector<LineName> transfers);
 
 void handleStartingLine(Train &train);
 
@@ -222,13 +223,10 @@ bool askUserToTransfer(Train &train) {
         getline(cin, input);
 
         if (currentStation.hasTransferLine(input)) {
-            LineName requestedLine = Line::stringToLineEnum(input);
             valid = train.transferToLine(Line::stringToLineEnum(input), currentStation);
         }
         else if (tolower(input[0]) == 't') {
-            for (LineName line : currentStation.getTransfers()) {
-                cout << Line::getTextForEnum(line) << " ";
-            }
+            printTransferLines(train.getCurrentStation().getTransfers());
             cout << endl;
             alreadyListedTransfers = true;
         }
@@ -249,15 +247,11 @@ void handleStartingLine(Train &train) {
 
     while (!validLine) {
         cout << "Choose a train line to wait for at " << train.getCurrentStation().getName() << " (";
-        unsigned int numTransfers = train.getCurrentStation().getTransfers().size();
-        for (int i = 0; i < numTransfers; ++i) {
-            cout << Line::getTextForEnum(train.getCurrentStation().getTransfers()[i]);
-            // If it's not the last line, print a space
-            if (i != numTransfers - 1) {
-                cout << " ";
-            }
-        }
+
+        printTransferLines(train.getCurrentStation().getTransfers());
+
         cout << "): ";
+
         string lineChoice;
         getline(cin, lineChoice);
 
@@ -266,6 +260,17 @@ void handleStartingLine(Train &train) {
         }
         else {
             cout << "Invalid line choice. Try again." << endl;
+        }
+    }
+}
+
+void printTransferLines(vector<LineName> transfers) {
+    unsigned int numTransfers = transfers.size();
+
+    for (int i = 0; i < numTransfers; ++i) {
+        cout << Line::getTextForEnum(transfers[i]);
+        if (i != numTransfers - 1) { // If it's not the last line, print a space
+            cout << " ";
         }
     }
 }
