@@ -11,14 +11,14 @@ F32,Bay Pkwy,F,Bk
 F31,Avenue I,F,Bk
 F30,18 Av,F,Bk
 F29,Ditmas Av,F,Bk
-F27,Church Av,F,Bk
-F26,Fort Hamilton Pkwy,F,Bk
-F25,15 St-Prospect Park,F,Bk
-F24,7 Av,F,Bk
-F23,4 Av-9 St,F,Bk
+F27,Church Av,F G,Bk
+F26,Fort Hamilton Pkwy,F G,Bk
+F25,15 St-Prospect Park,F G,Bk
+F24,7 Av,F G,Bk
+F23,4 Av-9 St,F G,Bk
 F22,Smith-9 Sts,F G,Bk
-F21,Carroll St,F,Bk
-F20,Bergen St,F,Bk
+F21,Carroll St,F G,Bk
+F20,Bergen St,F G,Bk
 A41,Jay St-MetroTech,A C F R W,Bk
 F18,York St,F,Bk
 F16,East Broadway,F,M

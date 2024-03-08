@@ -1,12 +1,12 @@
 stop_id,stop_name,transfers,borough
-F27,Church Av,G,FBk
-F26,Fort Hamilton Pkwy,G,FBk
-F25,15 St-Prospect Park,G,FBk
-F24,7 Av,G,FBk
-F23,4 Av-9 St,G,FBk
+F27,Church Av,F G,Bk
+F26,Fort Hamilton Pkwy,F G,Bk
+F25,15 St-Prospect Park,F G,Bk
+F24,7 Av,F G,Bk
+F23,4 Av-9 St,F G,Bk
 F22,Smith-9 Sts,F G,Bk
-F21,Carroll St,G,FBk
-F20,Bergen St,G,FBk
+F21,Carroll St,F G,Bk
+F20,Bergen St,F G,Bk
 A42,Hoyt-Schermerhorn Sts,A C G,Bk
 G36,Fulton St,G,Bk
 G35,Clinton-Washington Avs,G,Bk
