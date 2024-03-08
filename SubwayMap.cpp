@@ -24,7 +24,7 @@ string lineNameToCSV(LineName line) {
     string lineName = Line::getIDTextForEnum(line);
     string filePath = "../csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
     stringToLowerCase(filePath); // ensure lowercase
-    cout << filePath << endl;
+//    cout << filePath << endl; testing purposes
 
     return filePath;
 }
