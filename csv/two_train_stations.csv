@@ -16,7 +16,7 @@ stop_id,stop_name,transfers,borough
 232,Borough Hall,2 3,Bk
 231,Clark St,2 3,Bk
 230,Wall St,2 3,M
-229,Fulton St,A C J Z 2 3 4 5,M
+229,Fulton St,2 3 4 5 A C J Z,M
 228,Park Place,2 3,M
 137,Chambers St,1 2 3,M
 132,14 St (6th Av),1 2 3 F M L,M

@@ -4,10 +4,10 @@ F26,Fort Hamilton Pkwy,G,FBk
 F25,15 St-Prospect Park,G,FBk
 F24,7 Av,G,FBk
 F23,4 Av-9 St,G,FBk
-F22,Smith-9 Sts,G,FBk
+F22,Smith-9 Sts,F G,Bk
 F21,Carroll St,G,FBk
 F20,Bergen St,G,FBk
-A42,Hoyt-Schermerhorn Sts,G,Bk
+A42,Hoyt-Schermerhorn Sts,A C G,Bk
 G36,Fulton St,G,Bk
 G35,Clinton-Washington Avs,G,Bk
 G34,Classon Av,G,Bk
@@ -19,4 +19,4 @@ G29,Metropolitan Av,G,Bk
 G28,Nassau Av,G,Bk
 G26,Greenpoint Av,G,Bk
 G24,21 St,G,Q
-G22,Court Sq,G,Q
+G22,Court Sq,7 E F G,Q

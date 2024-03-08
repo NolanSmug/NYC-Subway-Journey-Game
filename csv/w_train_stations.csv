@@ -7,8 +7,8 @@ W16,Cortlandt St,R W,M
 W15,Rector St,R W,M
 W14,Whitehall St-South Ferry,R W,M
 W13,Court St,R W,M
-W12,Jay St-MetroTech,A C F R,W,Bk
-W11,DeKalb Av,B Q R,W,Bk
+W12,Jay St-MetroTech,A C F R W,Bk
+W11,DeKalb Av,B Q R W,Bk
 W10,Union St,R,W,Bk
 W09,Prospect Av,R,W,Bk
 W08,36 St,D N R,W,Bk
@@ -20,6 +20,6 @@ W03,71 St,D,W,Bk
 W02,79 St,D,W,Bk
 W01,86 St,D,W,Bk
 W00,Bay Pkwy,D,W,Bk
-QBP,Queensboro Plaza,N W,Q
+QBP,Queensboro Plaza,7 N W,Q
 W21,Astoria Blvd,N W,Q
 W22,Astoria-Ditmars Blvd,N W,Q
