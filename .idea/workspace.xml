@@ -25,7 +25,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7b8c1a-dee8-48a9-bc2a-b8430f1593f6" name="Changes" comment="fix" />
+    <list default="true" id="9e7b8c1a-dee8-48a9-bc2a-b8430f1593f6" name="Changes" comment="fix">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,15 +189,7 @@
       <workItem from="1709931341645" duration="377000" />
       <workItem from="1709931771609" duration="150000" />
       <workItem from="1709932488744" duration="70000" />
-      <workItem from="1709932572407" duration="792000" />
-    </task>
-    <task id="LOCAL-00028" summary="support for all train lines">
-      <option name="closed" value="true" />
-      <created>1709410368366</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1709410368366</updated>
+      <workItem from="1709932572407" duration="986000" />
     </task>
     <task id="LOCAL-00029" summary="fix csvs">
       <option name="closed" value="true" />
@@ -580,7 +575,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709932752131</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="fix">
+      <option name="closed" value="true" />
+      <created>1709933741547</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1709933741547</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
