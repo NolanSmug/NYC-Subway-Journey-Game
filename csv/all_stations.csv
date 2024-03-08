@@ -17,7 +17,7 @@ R16,Times Sq-42 St,1 2 3 7 N Q R W S,M
 R17,34 St-Herald Sq,B D F M N Q R W,M
 R18,28 St,R W,M
 R19,23 St,R W,M
-R20,14 St-Union Sq,N Q R W L 4 5 6,M
+R20,14 St-Union Sq,4 5 6 N Q R W L,M
 R21,8 St-NYU,R W,M
 R22,Prince St,R W,M
 R23,Canal St,6 N Q R W J Z,M
@@ -122,7 +122,7 @@ M09,Knickerbocker Av,M,Bk
 M10,Central Av,M,Bk
 L01,8 Av,L,M
 L02,6 Av,L,M
-L03,14 St-Union Sq,N Q R W L 4 5 6,M
+L03,14 St-Union Sq,4 5 6 N Q R W L,M
 L05,3 Av,L,M
 L06,1 Av,L,M
 L08,Bedford Av,L,Bk
@@ -433,7 +433,7 @@ F27,Church Av,G,Bk
 632,33 St,6,M
 633,28 St,6,M
 634,23 St,6,M
-635,14 St-Union Sq,N Q R W L 4 5 6,M
+635,14 St-Union Sq,4 5 6 N Q R W L,M
 636,Astor Pl,6,M
 637,Bway-Lafayette St/Bleecker St,6 B D F M,M
 638,Spring St,6,M
