@@ -28,6 +28,8 @@ void handleLastStop(Train &train);
 void displayCurrentStationInfo(Train &train);
 void printAllStations(vector<Station> stations, string currentStationId, Direction currentDirection);
 
+void handleStartingLine(Train &train);
+
 int main() {
     // SET UP STARTING LINE
     SubwayMap subwayMap = SubwayMap();
@@ -57,6 +59,9 @@ int main() {
 
     displayCurrentStationInfo(train);
     cout << "Destination Station:\n" << allStations[destinationStation];
+
+    handleStartingLine(train);
+
 
     train.setDirection(handleNewDirection(train)); // ask user for a direction they want to start going
 
@@ -237,6 +242,32 @@ bool askUserToTransfer(Train &train) {
     }
 
     return valid;
+}
+
+void handleStartingLine(Train &train) {
+    bool validLine = false;
+
+    while (!validLine) {
+        cout << "Choose a train line to wait for at " << train.getCurrentStation().getName() << " (";
+        unsigned int numTransfers = train.getCurrentStation().getTransfers().size();
+        for (int i = 0; i < numTransfers; ++i) {
+            cout << Line::getTextForEnum(train.getCurrentStation().getTransfers()[i]);
+            // If it's not the last line, print a space
+            if (i != numTransfers - 1) {
+                cout << " ";
+            }
+        }
+        cout << "): ";
+        string lineChoice;
+        getline(cin, lineChoice);
+
+        if (train.transferToLine(Line::stringToLineEnum(lineChoice),train.getCurrentStation())) {
+            validLine = true;
+        }
+        else {
+            cout << "Invalid line choice. Try again." << endl;
+        }
+    }
 }
 
 void printAllStations(vector<Station> stations, string currentStationId, Direction currentDirection) {

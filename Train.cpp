@@ -50,9 +50,6 @@ void Train::setDowntownLabel(string newLabel) {
     downtownLabel = newLabel;
 }
 
-
-
-
 // Transfer
 // helper method for transferToLine()
 // checks if users' requested LineName is at a specified Station
