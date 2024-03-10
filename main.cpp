@@ -305,14 +305,15 @@ void printAllStations(vector<Station> stations, string currentStationId, Directi
     }
     else { // DOWNTOWN
         cout << "    ↓" << endl;
-        for (int i = currentStationIndex; i < numStations; i++) {
+        for (int i = currentStationIndex; i < numStations; i--) {
             int stopsAway = abs(i - currentStationIndex);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
             if (stations[i].getId() == currentStationId) {
                 cout << setw(30) << left << stations[i].getName() << " **  Current Station  **" << endl;
                 cout << "    |" << endl;
-            } else {
+            }
+            else {
                 cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
                 cout << "    |" << endl;
             }

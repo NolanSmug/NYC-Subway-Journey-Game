@@ -25,9 +25,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e7b8c1a-dee8-48a9-bc2a-b8430f1593f6" name="Changes" comment="fix">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9e7b8c1a-dee8-48a9-bc2a-b8430f1593f6" name="Changes" comment="fix README">
+      <change beforePath="$PROJECT_DIR$/csv/L_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/L_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/all_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/all_stations.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,31 +189,7 @@
       <workItem from="1709931341645" duration="377000" />
       <workItem from="1709931771609" duration="150000" />
       <workItem from="1709932488744" duration="70000" />
-      <workItem from="1709932572407" duration="986000" />
-    </task>
-    <task id="LOCAL-00029" summary="fix csvs">
-      <option name="closed" value="true" />
-      <created>1709572061985</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1709572061985</updated>
-    </task>
-    <task id="LOCAL-00030" summary="fix csvs">
-      <option name="closed" value="true" />
-      <created>1709572820953</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1709572820953</updated>
-    </task>
-    <task id="LOCAL-00031" summary="fix csvs">
-      <option name="closed" value="true" />
-      <created>1709572929886</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1709572929886</updated>
+      <workItem from="1709932572407" duration="2306000" />
     </task>
     <task id="LOCAL-00032" summary="fix csvs">
       <option name="closed" value="true" />
@@ -583,7 +559,31 @@
       <option name="project" value="LOCAL" />
       <updated>1709933741547</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="fix">
+      <option name="closed" value="true" />
+      <created>1709933759754</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1709933759754</updated>
+    </task>
+    <task id="LOCAL-00079" summary="fix README">
+      <option name="closed" value="true" />
+      <created>1709933806120</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1709933806120</updated>
+    </task>
+    <task id="LOCAL-00080" summary="fix README">
+      <option name="closed" value="true" />
+      <created>1709933823019</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1709933823019</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +607,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update .gitignore" />
     <MESSAGE value="fixed bug" />
     <MESSAGE value="readme test" />
     <MESSAGE value="major README.md updates" />
@@ -632,7 +631,8 @@
     <MESSAGE value="cleanup" />
     <MESSAGE value="fix?" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="fix README" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix README" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
