@@ -144,9 +144,9 @@ L26,Livonia Av,L,Bk
 L27,New Lots Av,L,Bk
 L28,East 105 St,L,Bk
 L29,Canarsie-Rockaway Pkwy,L,Bk
-S01,Franklin Av,Sf,Bk
+S01,Franklin Avenue/Botanic Garden,2 3 4 5 Sf,Bk
 S03,Park Pl,Sf,Bk
-S04,Botanic Garden,Sf,Bk
+S04,Franklin Avenue/Botanic Garden,2 3 4 5 Sf,Bk
 D26,Prospect Park,B Q Sf,Bk
 A02,Inwood-207 St,A,M
 A03,Dyckman St,A,M
@@ -369,7 +369,7 @@ F27,Church Av,F G,Bk
 236,Bergen St,2 3,Bk
 237,Grand Army Plaza,2 3,Bk
 238,Eastern Pkwy-Brooklyn Museum,2 3,Bk
-239,Franklin Av-Medgar Evers College,2 3 4 5,Bk
+239,Franklin Avenue/Botanic Garden,2 3 4 5 Sf,Bk
 248,Nostrand Av,3,Bk
 249,Kingston Av,3,Bk
 250,Crown Hts-Utica Av,3 4,Bk
