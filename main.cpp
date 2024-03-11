@@ -161,6 +161,7 @@ bool handleAdvanceOneStation(Train &train) {
     if (train.advanceStation()) {
         return true;
     }
+
     return false;
 }
 
@@ -204,10 +205,10 @@ void handleLastStop(Train &train) {
 }
 
 int getRandomStation(unsigned int numStations) {
-    std::random_device rd;
-    std::mt19937 generator(rd());
+    random_device rd;
+    mt19937 generator(rd());
+    uniform_int_distribution<> distribution(0, numStations - 1);
 
-    std::uniform_int_distribution<> distribution(0, numStations - 1);
     return distribution(generator);
 }
 
