@@ -15,7 +15,7 @@ int getRandomStation(unsigned int numStations);
 
 Direction handleNewDirection(Train &train);
 
-bool handleUserInput(Train &train, Station destinationStation);
+bool handleUserInput(Train &train, const Station &destinationStation);
 
 bool askUserToTransfer(Train &train);
 bool handleTransfer(Train &train);
@@ -95,13 +95,19 @@ int main() {
     return 0;
 }
 
-bool handleUserInput(Train &train, const Station destinationStation) {
+bool handleUserInput(Train &train, const Station &destinationStation) {
     string input;
     if (train.getCurrentStation().getTransfers().size() > 1) {
-        cout << "Enter:\n - a number to advance that many stations (nothing advances 1 station)\n - `t` to transfer\n - `c` to change direction\n - `d` to display your Destination Station\n";
-    }
-    else {
-        cout << "Enter:\n - a number to advance that many stations (nothing advances 1 station)\n - `c` to change direction\n - `d` to display your Destination Station\n";
+        cout << "Options:\n";
+        cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
+        cout << " - Enter 't' to transfer\n";
+        cout << " - Enter 'c' to change direction\n";
+        cout << " - Enter 'd' to display your Destination Station\n";
+    } else {
+        cout << "Options:\n";
+        cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
+        cout << " - Enter 'c' to change direction\n";
+        cout << " - Enter 'd' to display your Destination Station\n";
     }
 
     getline(cin, input);
