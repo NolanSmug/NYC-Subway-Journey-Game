@@ -20,8 +20,8 @@ bool handleUserInput(Train &train, const Station &destinationStation);
 bool askUserToTransfer(Train &train);
 bool handleTransfer(Train &train);
 bool handleAdvanceOneStation(Train &train);
-bool handleChangeDirection(Train &train);
 bool handleAdvanceMultipleStations(Train &train, string &input);
+bool handleChangeDirection(Train &train);
 void handleStartingLine(Train &train);
 void handleLastStop(Train &train);
 
@@ -145,8 +145,10 @@ void displayCurrentStationInfo(Train &train) {
 }
 
 bool handleAdvanceOneStation(Train &train) {
-    train.advanceStation();
-    return true;
+    if (train.advanceStation()) {
+        return true;
+    }
+    return false;
 }
 
 bool handleTransfer(Train &train) {
