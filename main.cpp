@@ -22,14 +22,15 @@ bool handleTransfer(Train &train);
 bool handleAdvanceOneStation(Train &train);
 bool handleChangeDirection(Train &train);
 bool handleAdvanceMultipleStations(Train &train, string &input);
-
+void handleStartingLine(Train &train);
 void handleLastStop(Train &train);
 
 void displayCurrentStationInfo(Train &train);
-void printAllStations(vector<Station> stations, string currentStationId, Direction currentDirection);
+
+void printAllStations(Train &train);
 void printTransferLines(vector<LineName> transfers);
 
-void handleStartingLine(Train &train);
+
 
 int main() {
     // SET UP STARTING LINE
@@ -103,7 +104,8 @@ bool handleUserInput(Train &train, const Station &destinationStation) {
         cout << " - Enter 't' to transfer\n";
         cout << " - Enter 'c' to change direction\n";
         cout << " - Enter 'd' to display your Destination Station\n";
-    } else {
+    }
+    else {
         cout << "Options:\n";
         cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
         cout << " - Enter 'c' to change direction\n";
@@ -114,20 +116,15 @@ bool handleUserInput(Train &train, const Station &destinationStation) {
 
     if (input.empty()) {
         return handleAdvanceOneStation(train);
-    }
-    else if (input[0] == '0' && input.length() == 1) {
-        printAllStations(train.getScheduledStops(), train.getCurrentStation().getId(),train.getDirection());
-    }
-    else if (tolower(input[0]) == 't' && input.length() == 1) {
+    } else if (input[0] == '0' && input.length() == 1) {
+        printAllStations(train);
+    } else if (tolower(input[0]) == 't' && input.length() == 1) {
         return handleTransfer(train);
-    }
-    else if (tolower(input[0]) == 'c' && input.length() == 1) {
+    } else if (tolower(input[0]) == 'c' && input.length() == 1) {
         return handleChangeDirection(train);
-    }
-    else if (tolower(input[0]) == 'd' && input.length() == 1) {
+    } else if (tolower(input[0]) == 'd' && input.length() == 1) {
         cout << "Destination Station:\n" << destinationStation;
-    }
-    else {
+    } else {
         return handleAdvanceMultipleStations(train, input);
     }
     return false;
@@ -291,29 +288,30 @@ void printTransferLines(vector<LineName> transfers) {
     }
 }
 
-void printAllStations(vector<Station> stations, string currentStationId, Direction currentDirection) {
-    unsigned int numStations = stations.size();
+void printAllStations(Train &train) {
+    int numStations = train.getScheduledStops().size();
     int currentStationIndex = -1;
 
     // Find the index of the current station
     for (int i = 0; i < numStations; i++) {
-        if (stations[i].getId() == currentStationId) {
+        if (train.getScheduledStops()[i].getId() == train.getCurrentStation().getId()) {
             currentStationIndex = i;
             break;
         }
     }
 
     cout << "------------------------------------------------------------------" << endl;
-    if (currentDirection == UPTOWN) {
+    if (train.getDirection() == UPTOWN) {
         for (int i = numStations - 1; i >= currentStationIndex; i--) {
             int stopsAway = abs(i - currentStationIndex);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
-            if (stations[i].getId() == currentStationId) {
-                cout << setw(30) << left << stations[i].getName() << "  **  Current Station  **" << endl;
+            if (train.getScheduledStops()[i].getId() == train.getCurrentStation().getId()) {
+                cout << setw(30) << left << train.getScheduledStops()[i].getName() << "  **  Current Station  **" << endl;
                 cout << "    |" << endl;
-            } else {
-                cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
+            }
+            else {
+                cout << setw(35) << left << train.getScheduledStops()[i].getName() << stopsAwayText << endl;
                 cout << "    |" << endl;
             }
         }
@@ -325,12 +323,12 @@ void printAllStations(vector<Station> stations, string currentStationId, Directi
             int stopsAway = abs(i - currentStationIndex);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
-            if (stations[i].getId() == currentStationId) {
-                cout << setw(30) << left << stations[i].getName() << " **  Current Station  **" << endl;
+            if (train.getScheduledStops()[i].getId() == train.getCurrentStation().getId()) {
+                cout << setw(30) << left << train.getScheduledStops()[i].getName() << " **  Current Station  **" << endl;
                 cout << "    |" << endl;
             }
             else {
-                cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
+                cout << setw(35) << left << train.getScheduledStops()[i].getName() << stopsAwayText << endl;
                 cout << "    |" << endl;
             }
         }
