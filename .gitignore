@@ -9,8 +9,7 @@ CMakeLists.txt.user
 CMakeCache.txt
 cmake_install.cmake
 CMakeFiles/
-build/
-idea
+.idea/*
 info/
 cmake-build-debug/*
 venv/
@@ -28,3 +27,4 @@ venv/
 .DS_Store
 LastTest.log
 /cmake-build-debug/
+/cmake-build-debug-coverage/

@@ -1,7 +1,0 @@
-# ninja log v5
-0	306	1710130155142397860	CMakeFiles/main.dir/Line.cpp.o	dcb8b84bdeb8f362
-1	388	1710130155224820832	CMakeFiles/main.dir/Train.cpp.o	75366b2cc0bb803
-1	408	1710130155243878358	CMakeFiles/main.dir/Station.cpp.o	e388a60892a9056d
-1	432	1710130155268843796	CMakeFiles/main.dir/SubwayMap.cpp.o	c6c5596aa7625fd
-0	486	1710130155322168710	CMakeFiles/main.dir/main.cpp.o	81b0e6f4407322de
-486	519	1710130155357219431	main	494b08fe988d1607

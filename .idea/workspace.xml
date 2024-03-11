@@ -28,7 +28,23 @@
   <component name="ChangeListManager">
     <list default="true" id="9e7b8c1a-dee8-48a9-bc2a-b8430f1593f6" name="Changes" comment="QOL improvements with user inputs. Optimized.">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/query/cache-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/query/codemodel-v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/query/toolchains-v1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/reply/cache-v2-d57e6ca34b63e3f089f6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/reply/cmakeFiles-v1-226e158715dd54abfc95.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/reply/codemodel-v2-65f2e11c5871e82bc27a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/reply/index-2024-03-11T04-09-12-0594.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/reply/target-main-Debug-c8dcfa9843a9c4bc2765.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/reply/target-tests-Debug-544e450e2659f37f7589.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.cmake/api/v1/reply/toolchains-v1-3dbf56e1c5f59067396a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.ninja_deps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/.ninja_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/build.ninja" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/default.profraw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-coverage/main" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +101,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "CMake Application.main.executor": "Run",
     "CMake Application.tests.executor": "Debug",
+    "CMake Debug.NYC-Subway-Journey-Game.executor": "Debug",
     "Python.csv_reverser.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -111,6 +128,9 @@
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="NYC-Subway-Journey-Game" type="CMakeListConfigurationType" factoryName="CMakeListConfigurationFactory" temporary="true">
+      <method v="2" />
     </configuration>
     <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="NYC-Subway-Journey-Game" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="NYC-Subway-Journey-Game" RUN_TARGET_NAME="main">
       <method v="2">
@@ -148,8 +168,14 @@
     <list>
       <item itemvalue="CMake Application.main" />
       <item itemvalue="CMake Application.tests" />
+      <item itemvalue="CMake Debug.NYC-Subway-Journey-Game" />
       <item itemvalue="Python.csv_reverser" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="CMake Debug.NYC-Subway-Journey-Game" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -199,15 +225,7 @@
       <workItem from="1709932488744" duration="70000" />
       <workItem from="1709932572407" duration="4650000" />
       <workItem from="1710035264921" duration="398000" />
-      <workItem from="1710129242459" duration="908000" />
-    </task>
-    <task id="LOCAL-00033" summary="fix csvs">
-      <option name="closed" value="true" />
-      <created>1709573317269</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1709573317269</updated>
+      <workItem from="1710129242459" duration="1053000" />
     </task>
     <task id="LOCAL-00034" summary="fix everything">
       <option name="closed" value="true" />
@@ -593,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710129952377</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="QOL improvements with user inputs. Optimized.">
+      <option name="closed" value="true" />
+      <created>1710130177115</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1710130177115</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
