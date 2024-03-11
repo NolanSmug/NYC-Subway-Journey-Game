@@ -27,3 +27,4 @@ venv/
 # Ignore specific files
 .DS_Store
 LastTest.log
+/cmake-build-debug/
