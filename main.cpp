@@ -64,7 +64,7 @@ int main() {
     displayCurrentStationInfo(train);
     cout << "Destination Station:\n" << allStations[destinationStation];
 
-    if (train.getCurrentStation().getTransfers().size() > 1) {
+    if (train.getCurrentStation().hasTransferLine()) {
         handleStartingLine(train);
     }
 
@@ -102,7 +102,7 @@ int main() {
 
 bool handleUserInput(Train &train, const Station &destinationStation) {
     string input;
-    if (train.getCurrentStation().getTransfers().size() > 1) {
+    if (train.getCurrentStation().hasTransferLine()) {
         cout << "Options:\n";
         cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
         cout << " - Enter 't' to transfer\n";
@@ -144,10 +144,14 @@ void displayCurrentStationInfo(Train &train) {
     Direction currentDirection = train.getDirection();
 
     if (currentDirection == NULL_DIRECTION) {
-         // skip printing the current line (start of game)
+        cout << "\nYour Current Line: " << Line::getTextForEnum(train.getLine()) + " Train ↕\n";
     }
     else {
-        cout << "\nYour Current Line:\n" << (currentDirection == DOWNTOWN ? train.getDowntownLabel() + " " + Line::getTextForEnum(train.getLine()) + " Train ↓" : train.getUptownLabel() + " "  + Line::getTextForEnum(train.getLine()) + " Train ↑") << endl;
+        cout << "\nYour Current Line:\n";
+        cout << (currentDirection == DOWNTOWN ? // if(?) = downtown, else(:) = uptown
+                 train.getDowntownLabel() + " " + Line::getTextForEnum(train.getLine()) + " Train ↓" :
+                 train.getUptownLabel() + " "  + Line::getTextForEnum(train.getLine()) + " Train ↑");
+        cout << endl;
     }
 
     cout << "\nYour current Station:\n" << currentStation;
@@ -219,7 +223,9 @@ Direction handleNewDirection(Train &train) {
     }
 
     while (!valid) {
-        cout << "Would you like to enter traveling |" << train.getUptownLabel() << " ↑| " << "(" << uptownLabelValidChar << "), or |"<< train.getDowntownLabel() << " ↓| " << "(" << downtownLabelValidChar << ") ";
+        cout << "Would you like to enter traveling |"
+             << train.getUptownLabel()   << " ↑| (" << uptownLabelValidChar << "), or |"
+             << train.getDowntownLabel() << " ↓| (" << downtownLabelValidChar << ") ";
         getline(cin, input);
 
         uint length = input.length();
@@ -309,16 +315,9 @@ void printAllStations(Train &train) {
     string currentStationID = train.getCurrentStation().getId();
     vector<Station> stations =  train.getScheduledStops();
     Direction currentDirection = train.getDirection();
-    int length = stations.size();
-    int currentStationIndex = -1;
+    int length = train.getScheduledStops().size();
+    int currentStationIndex = train.getCurrentStationIndex();
 
-    // Find the index of the current station
-    for (int i = 0; i < length; i++) {
-        if (stations[i].getId() == currentStationID) {
-            currentStationIndex = i;
-            break;
-        }
-    }
 
     cout << "------------------------------------------------------------------" << endl;
     if (currentDirection == UPTOWN) {
@@ -339,14 +338,15 @@ void printAllStations(Train &train) {
     }
     else { // DOWNTOWN
         cout << "    ↓" << endl;
-        for (int i = currentStationIndex; i < length; i++) {
-            int stopsAway = abs(i - currentStationIndex);
+        for (int i = train.getCurrentStationIndex(); i >= 0; i--) {
+            int stopsAway = abs(train.getCurrentStationIndex() - i);
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
             if (stations[i].getId() == currentStationID) {
                 cout << setw(30) << left << stations[i].getName() << " **  Current Station  **" << endl;
                 cout << "    |" << endl;
-            } else {
+            }
+            else {
                 cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
                 cout << "    |" << endl;
             }

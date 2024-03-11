@@ -69,6 +69,10 @@ bool Station::hasTransferLine(string input) {
     return false;
 }
 
+bool Station::hasTransferLine() {
+    return transfers.size() > 1;
+}
+
 
 // Borough
 Borough Station::getBorough() {
