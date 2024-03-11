@@ -31,7 +31,7 @@ R29,Jay St-MetroTech,A C F R W,Bk
 R30,DeKalb Av,B Q R W,Bk
 R31,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 R32,Union St,R,Bk
-R33,4 Av-9 St,R,Bk
+R33,4 Av-9 St,R F G,Bk
 R34,Prospect Av,R,Bk
 R35,25 St,R,Bk
 R36,36 St,D N R,Bk
@@ -251,7 +251,7 @@ A41,Jay St-MetroTech,A C F R W,Bk
 F20,Bergen St,F G,Bk
 F21,Carroll St,F G,Bk
 F22,Smith-9 Sts,F G,Bk
-F23,4 Av-9 St,F G,Bk
+F23,4 Av-9 St,R F G,Bk
 F24,7 Av,F G,Bk
 F25,15 St-Prospect Park,F G,Bk
 F26,Fort Hamilton Pkwy, G,Bk
@@ -309,7 +309,7 @@ A42,Hoyt-Schermerhorn Sts,A C G,Bk
 F20,Bergen St,F G,Bk
 F21,Carroll St,F G,Bk
 F22,Smith-9 Sts,F G,Bk
-F23,4 Av-9 St,F G,Bk
+F23,4 Av-9 St,R F G,Bk
 F24,7 Av,F G,Bk
 F25,15 St-Prospect Park,F G,Bk
 F26,Fort Hamilton Pkwy,F G,Bk

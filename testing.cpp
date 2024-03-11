@@ -37,7 +37,7 @@ bool test_train_class() {
     testingStations.push_back(timesSquare);
     testingStations.push_back(unionSquare);
 
-    Train train = Train(FOUR_TRAIN, BRONXBOUND, testingStations, false, 10);
+    Train train = Train(FOUR_TRAIN, UPTOWN, testingStations, false, 10);
 
     train.setCurrentStation(0);
     if (train.getCurrentStation().getName() != "Times Square 42nd St") {
