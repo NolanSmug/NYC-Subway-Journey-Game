@@ -98,10 +98,10 @@ int main() {
 bool handleUserInput(Train &train) {
     string input;
     if (train.getCurrentStation().getTransfers().size() > 1) {
-        cout << "Enter a number to advance that many stations (nothing advances 1 station)\nEnter `t` to transfer\nEnter `c` to change direction";
+        cout << "Enter:\n - a number to advance that many stations (nothing advances 1 station)\n - `t` to transfer\n - `c` to change direction\n";
     }
     else {
-        cout << "Enter a number to advance that many stations (nothing advances 1 station)\nEnter `c` to change direction";
+        cout << "Enter:\n - a number to advance that many stations (nothing advances 1 station)\n - `c` to change direction\n";
     }
 
     getline(cin, input);
