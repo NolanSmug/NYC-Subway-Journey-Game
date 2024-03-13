@@ -99,7 +99,6 @@ int main() {
 }
 
 // METHODS
-
 bool handleUserInput(Train &train, const Station &destinationStation) {
     string input;
     if (train.getCurrentStation().hasTransferLine()) {
