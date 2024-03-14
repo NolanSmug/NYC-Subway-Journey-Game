@@ -2,6 +2,7 @@
 #include "SubwayMap.h"
 #include "Train.h"
 #include "Line.h"
+#include "Challenge.h"
 #include "sstream"
 #include "random"
 #include <iostream>
@@ -353,4 +354,9 @@ void printAllStations(Train &train) {
         }
     }
     cout << "------------------------------------------------------------------" << endl;
+}
+
+void selectChallenge(Train &train, const vector<Station> &allStations) {
+
+
 }

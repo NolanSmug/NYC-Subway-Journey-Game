@@ -10,7 +10,6 @@ R13,5 Av/59 St,N R W,M
 Q05,96 St,Q,M
 Q04,86 St,Q,M
 Q03,72 St,Q,M
-B08,Lexington Av/63 St,F Q,M
 R14,57 St-7 Av,N Q R W,M
 R15,49 St,N R W,M
 R16,Times Sq-42 St,1 2 3 7 N Q R W S,M
@@ -44,7 +43,6 @@ R44,86 St,R,Bk
 R45,Bay Ridge-95 St,R,Bk
 D24,Atlantic Av-Barclays Ctr,2 3 4 5 B Q D N R,Bk
 D25,7 Av,B Q,Bk
-D26,Prospect Park,B Q Sf,Bk
 D27,Parkside Av,Q,Bk
 D28,Church Av,B Q,Bk
 D29,Beverley Rd,Q,Bk
@@ -60,7 +58,6 @@ D39,Sheepshead Bay,B Q,Bk
 D40,Brighton Beach,B Q,Bk
 D41,Ocean Pkwy,Q,Bk
 D42,W 8 St-NY Aquarium,F Q,Bk
-D43,Coney Island-Stillwell Av,D F N Q,Bk
 B12,9 Av,D,Bk
 B13,Fort Hamilton Pkwy,D,Bk
 B14,50 St,D,Bk
@@ -82,8 +79,6 @@ N07,Bay Pkwy,N,Bk
 N08,Kings Hwy,N,Bk
 N09,Avenue U,N,Bk
 N10,86 St,N,Bk
-D43,Coney Island-Stillwell Av,D F N Q,Bk
-G05,Jamaica Center-Parsons/Archer,J Z,Q
 G06,Sutphin Blvd-Archer Av-JFK Airport,J Z,Q
 J12,121 St,J Z,Q
 J13,111 St,J,Q
@@ -107,7 +102,6 @@ M12,Flushing Av,J M,Bk
 M13,Lorimer St,J M,Bk
 M14,Hewes St,J M,Bk
 M16,Marcy Av,J M Z,Bk
-M18,Delancey St-Essex St,J Z,M
 M19,Bowery,J Z,M
 M20,Canal St,6 N Q R W J Z,M
 M21,Chambers St,J Z,M
@@ -144,7 +138,7 @@ L26,Livonia Av,L,Bk
 L27,New Lots Av,L,Bk
 L28,East 105 St,L,Bk
 L29,Canarsie-Rockaway Pkwy,L,Bk
-S01,Franklin Avenue/Botanic Garden,C Sf,Bk
+S01,Franklin Avenue,C Sf,Bk
 S03,Park Pl,Sf,Bk
 S04,Franklin Avenue/Botanic Garden,2 3 4 5 Sf,Bk
 D26,Prospect Park,B Q Sf,Bk
@@ -171,7 +165,6 @@ A22,72 St,B C,M
 A24,59 St-Columbus Circle,A B C D 1,M
 F11,Lexington Av/53 St,E M 6,M
 F12,5 Av/53 St,E M,M
-D14,7 Av,B D E,M
 A25,50 St,C E,M
 A27,42 St-Port Authority Bus Terminal,A C E,M
 A28,34 St-Penn Station,A C E 1 2 3,M
@@ -241,21 +234,13 @@ D18,23 St,F M,M
 D19,14 St (6th Av),1 2 3 F M L,M
 D20,W 4 St-Wash Sq,A C E B D F M,M
 D21,Bway-Lafayette St/Bleecker St,6 B D F M,M
-M18,Delancey St-Essex St,M,M
+M18,Delancey St-Essex St,J Z F M,M
 D22,Grand St,B D,M
 F14,2 Av,F,M
-F15,Delancey St-Essex St,F,M
+F15,Delancey St-Essex St,J Z F M,M
 F16,East Broadway,F,M
 F18,York St,F,Bk
 A41,Jay St-MetroTech,A C F R W,Bk
-F20,Bergen St,F G,Bk
-F21,Carroll St,F G,Bk
-F22,Smith-9 Sts,F G,Bk
-F23,4 Av-9 St,R F G,Bk
-F24,7 Av,F G,Bk
-F25,15 St-Prospect Park,F G,Bk
-F26,Fort Hamilton Pkwy, G,Bk
-F27,Church Av,F G,Bk
 F29,Ditmas Av,F,Bk
 F30,18 Av,F,Bk
 F31,Avenue I,F,Bk
@@ -418,7 +403,6 @@ F27,Church Av,F G,Bk
 413,167 St,4,Bx
 414,161 St-Yankee Stadium,4,Bx
 415,149 St-Grand Concourse,4,Bx
-416,138 St-Grand Concourse,4,Bx
 621,125 St,4 5 6,M
 622,116 St,6,M
 623,110 St,6,M
@@ -467,7 +451,7 @@ F27,Church Av,F G,Bk
 220,Jackson Av,2 5,Bx
 221,3 Av-149 St,2 5,Bx
 222,149 St-Grand Concourse,2 5,Bx
-416,138 St-Grand Concourse,5,Bx
+416,138 St-Grand Concourse,4 5,Bx
 701,Flushing-Main St,7,Q
 702,Mets-Willets Point,7,Q
 705,111 St,7,Q
