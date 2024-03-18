@@ -21,30 +21,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5eca456-8150-47e8-8fd5-f09d91adbcc3" name="Changes" comment="fix">
-      <change afterPath="$PROJECT_DIR$/Challenge.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Challenge.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+    <list default="true" id="f5eca456-8150-47e8-8fd5-f09d91adbcc3" name="Changes" comment="merge commits from public repository">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Challenge.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Challenge.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Challenge.h" beforeDir="false" afterPath="$PROJECT_DIR$/Challenge.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Station.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Station.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Station.h" beforeDir="false" afterPath="$PROJECT_DIR$/Station.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Train.h" beforeDir="false" afterPath="$PROJECT_DIR$/Train.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/C_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/C_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/F_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/F_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/G_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/G_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/J_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/J_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/L_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/L_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/M_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/M_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/R_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/R_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/Z_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/Z_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/all_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/all_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/five_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/five_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/four_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/four_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/s_train_shuttle_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/s_train_shuttle_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/three_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/three_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv/two_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/two_train_stations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/testing.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +184,7 @@
       <workItem from="1709923389918" duration="1986000" />
       <workItem from="1709931922690" duration="130000" />
       <workItem from="1709932098234" duration="295000" />
-      <workItem from="1710801556133" duration="497000" />
+      <workItem from="1710801556133" duration="2168000" />
     </task>
     <task id="LOCAL-00001" summary="easter egg (type 0 on handle user input)">
       <option name="closed" value="true" />
@@ -341,7 +322,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709932004628</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="merge commits from public repository">
+      <option name="closed" value="true" />
+      <created>1710802086519</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1710802086519</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,6 +363,7 @@
     <MESSAGE value="new uptownLabel and downtownLabel for train object" />
     <MESSAGE value="fixed csv" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="merge commits from public repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge commits from public repository" />
   </component>
 </project>

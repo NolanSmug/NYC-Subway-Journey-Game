@@ -3,15 +3,35 @@
 ## Subway Shuffle: A Randomized NYC Journey
 
 ## Summary of Program
+
 This is a game where a player is placed into a random NYC subway station,
 and the goal is to reach another randomly given station.
 
-Upon starting the game, the player is given a random `current station`, and a random `destination station`.
-With this information, the player is given a choice between traveling on the uptown or downtown tracks.
-Next, `if` the `current station` has available transfers,
-the player is given a list of that stations' `transfer line` options.
-Finally, the player is asked how many stations they would like to advance.
-And after a valid input is given, they're notified of the station they have arrived at, ending their turn.
+Upon starting the game, the player is given a random `current station` and a random `destination station`.
+They are then prompted to choose a train `Line` to board from the available transfer options at the `current station`.
+After selecting a `Line`,
+the player is asked to choose a `Direction` (e.g., `Queens-bound` or `Brooklyn-bound`) to start traveling.
+
+At each station stop, the program displays the following information:
+- `Current Line` and `Direction`
+- `Current Station`
+- Available `Transfer Lines` at the `Current Station`
+
+And the user is then given **4 options**:
+1. Enter a number to advance that many stations (or leave blank to advance one station)
+2. Enter 't' to transfer to a different line
+3. Enter 'c' to change the direction of travel (e.g., from Queens-bound to Brooklyn-bound, or vice versa)
+4. Enter 'd' to display the Destination Station information again
+
+> No worries! There is no "losing" in this game, as the program runs until the player reaches the `destination station`.
+
+If the player types `t` to transfer lines,
+they are prompted to select a new line from the available transfer options at the current station
+and choose a new direction.
+(Input validation is implemented here too)
+
+After a valid input is given, the player is notified of the station they have arrived at,
+and the process repeats until the player reaches the `destination station`.
 
 ****
 
@@ -265,7 +285,7 @@ When a transfer is available, the user is prompted to list the available transfe
 Input validation has been improved to handle various edge cases and provide meaningful error messages.
 
 With these additions, the game now **accurately simulates the experience of navigating the NYC subway system**,
-allowing players to get from point A to point B infinitely many ways.
+allowing players to get from `point A` to `point B` infinitely many ways.
 
 ****
 
