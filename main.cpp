@@ -101,6 +101,7 @@ int main() {
 
 // METHODS
 bool handleUserInput(Train &train, const Station &destinationStation) {
+
     string input;
     if (train.getCurrentStation().hasTransferLine()) {
         cout << "Options:\n";
@@ -144,7 +145,7 @@ void displayCurrentStationInfo(Train &train) {
     Direction currentDirection = train.getDirection();
 
     if (currentDirection == NULL_DIRECTION) {
-        cout << "\nYour Current Line: " << Line::getTextForEnum(train.getLine()) + " Train ↕\n";
+        // do nothing
     }
     else {
         cout << "\nYour Current Line:\n";
