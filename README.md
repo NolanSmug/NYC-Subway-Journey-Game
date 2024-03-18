@@ -154,6 +154,8 @@ I realized this thanks to CS 2250 Computability & Complexity, which taught me ho
 
 It will be interesting to see the game played out when I add the ability to transfer to other train lines at each station.
 
+****
+
 ### Module 2 Additions:
 
 Although I have not implemented it into the main game yet,
@@ -168,6 +170,10 @@ I had to refactor A LOT of my code from Module 1, as it was difficult organizing
 and updating variables that needed to be modified to complete a transfer.
 A big portion of this project was designing the most efficient way
 to have my classes interact with one another without any circular dependencies.
+
+#### Input Validation has been implemented for all prompts to the user.
+
+****
 
 ### Module 3 Additions:
 
@@ -198,8 +204,6 @@ bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
     }
 }
 ```
-
-> **Input Validation** has been implemented for all prompts to the user.
 
 The `handleTransfer()` function prompts the user
 to choose a transfer line from the current station's available transfers,
@@ -287,6 +291,10 @@ Input validation has been improved to handle various edge cases and provide mean
 With these additions, the game now **accurately simulates the experience of navigating the NYC subway system**,
 allowing players to get from `point A` to `point B` infinitely many ways.
 
+#### Start Development for the Challenge Class
+The `Challenge` class will allow me to create custom hard-coded `starting stations` and `destination stations`,
+each categorized based on difficulty.
+
 ****
 
 ## Video Demonstrations
@@ -365,8 +373,10 @@ showing how all the fields we need to update in a Train object to perform a succ
 2. `transferToLine()` is called with the requested transfers' `LineName` and the Train's `currentStation`
 3. `validTransfer()` returns `true`, as it finds the `TWO_LINE` in 14th st's vector of `LineName`s.
 4. `updateScheduledStops()` is called and builds a `SubwayMap` to be passed into the `SubwayMap` class (for `Station` file handling).
-5. `updateStopsForLine()` is called in `SubwayMap` and uses the requested `LineName` enum to build the path to the correct csv file (that holds the station data to that line). The standard pattern for the file names is: 
->`{LineName(str)}_stations.csv`
+5. `updateStopsForLine()` is called in `SubwayMap` and uses the requested `LineName` enum to build the path to the correct csv file
+   (that holds the station data to that line). 
+
+The standard pattern for the file names is: `{LineName(str)}_stations.csv`
 
 6. `transferToLine()` returns `true` in main, and we can see that the current Train objects' `scheduledStops<Station>` has been updated with all of the `TWO_TRAIN` station data, and we are at the same station still.
 
