@@ -9,7 +9,7 @@ CMakeLists.txt.user
 CMakeCache.txt
 cmake_install.cmake
 CMakeFiles/
-.idea/
+idea
 info/
 cmake-build-debug/*
 venv/
