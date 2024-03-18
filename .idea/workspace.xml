@@ -22,8 +22,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5eca456-8150-47e8-8fd5-f09d91adbcc3" name="Changes" comment="fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Challenge.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Challenge.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Station.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Station.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Station.h" beforeDir="false" afterPath="$PROJECT_DIR$/Station.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Train.h" beforeDir="false" afterPath="$PROJECT_DIR$/Train.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/C_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/C_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/F_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/F_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/G_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/G_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/J_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/J_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/L_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/L_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/M_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/M_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/R_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/R_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/Z_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/Z_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/all_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/all_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/five_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/five_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/four_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/four_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/s_train_shuttle_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/s_train_shuttle_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/three_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/three_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/two_train_stations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/two_train_stations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/testing.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +106,16 @@
   }
 }</component>
   <component name="RunManager" selected="CMake Application.main">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="NYC-Subway-Journey-Game" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="NYC-Subway-Journey-Game" RUN_TARGET_NAME="main">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="NYC-Subway-Journey-Game" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="NYC-Subway-Journey-Game" RUN_TARGET_NAME="main">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -94,6 +125,34 @@
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="tests" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="NYC-Subway-Journey-Game" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="NYC-Subway-Journey-Game" RUN_TARGET_NAME="tests">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="csv_renamer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="M3OEP-ncyr1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (M3OEP-ncyr1)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/csv/csv_renamer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="csv_renamer" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="M3OEP-ncyr1" />
@@ -144,7 +203,7 @@
       <workItem from="1709923389918" duration="1986000" />
       <workItem from="1709931922690" duration="130000" />
       <workItem from="1709932098234" duration="295000" />
-      <workItem from="1710801556133" duration="336000" />
+      <workItem from="1710801556133" duration="497000" />
     </task>
     <task id="LOCAL-00001" summary="easter egg (type 0 on handle user input)">
       <option name="closed" value="true" />
