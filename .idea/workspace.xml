@@ -21,7 +21,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5eca456-8150-47e8-8fd5-f09d91adbcc3" name="Changes" comment="fix" />
+    <list default="true" id="f5eca456-8150-47e8-8fd5-f09d91adbcc3" name="Changes" comment="fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,6 +143,8 @@
       <workItem from="1709910191399" duration="9092000" />
       <workItem from="1709923389918" duration="1986000" />
       <workItem from="1709931922690" duration="130000" />
+      <workItem from="1709932098234" duration="295000" />
+      <workItem from="1710801556133" duration="336000" />
     </task>
     <task id="LOCAL-00001" summary="easter egg (type 0 on handle user input)">
       <option name="closed" value="true" />
