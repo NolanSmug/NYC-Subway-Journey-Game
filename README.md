@@ -269,7 +269,8 @@ This organization facilitates easy access to station data for each subway line,
 enabling efficient retrieval and manipulation when needed.
 
 #### Updating Scheduled Stops
-The `SubwayMap` class now includes the `updateStopsForLine()` method builds the scheduled stops for a given subway line
+The `SubwayMap` class now includes the `updateStopsForLine()` method,
+which builds the scheduled stops for a given subway line
 by reading the corresponding line-specific CSV file.
 
 ```c++
@@ -302,9 +303,14 @@ allowing players to get from `point A` to `point B` infinitely many ways.
 #### Small Cheat Code for Testers/Graders
 
 Take a look for my `handleUserInput()` function in `main.cpp`  
-1. Command: `Cmd/Ctrl` + `Shift` + `F` 
+1. Command: `Cmd/Ctrl` + `Shift` + `F`
+2. Copy/Paste: 
+```text
+bool handleUserInput(Train &train, const Station &destinationStation) {
+```
+3. See the secret input you can give at each station. 
 
-2. Copy/Paste: `bool handleUserInput(Train &train, const Station &destinationStation) {`
+_Hint if you can't find it:_ `e^(iπ) + 1 = __`
 
 Example Output:
 ```text
