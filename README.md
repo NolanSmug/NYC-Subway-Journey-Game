@@ -8,24 +8,26 @@ This is a game where a player is placed into a random NYC subway station,
 and the goal is to reach another randomly given station.
 
 Upon starting the game, the player is given a random `current station` and a random `destination station`.
-They are then prompted to choose a train `Line` to board from the available transfer options at the `current station`.
+They are then prompted to choose a train `Line` to board from the available transfer options at their `current station`.
 After selecting a `Line`,
 the player is asked to choose a `Direction` (e.g., `Queens-bound` or `Brooklyn-bound`) to start traveling.
 
-At each station stop, the program displays the following information:
+At each station/stop, the program displays the following information:
 - `Current Line` and `Direction`
 - `Current Station`
 - Available `Transfer Lines` at the `Current Station`
 
 And the user is then given **4 options**:
+```markdown
 1. Enter a number to advance that many stations (or leave blank to advance one station)
 2. Enter 't' to transfer to a different line
 3. Enter 'c' to change the direction of travel (e.g., from Queens-bound to Brooklyn-bound, or vice versa)
 4. Enter 'd' to display the Destination Station information again
+```
 
 > No worries! There is no "losing" in this game, as the program runs until the player reaches the `destination station`.
 
-If the player types `t` to transfer lines,
+If the player types '`t`' to transfer lines,
 they are prompted to select a new line from the available transfer options at the current station
 and choose a new direction.
 (Input validation is implemented here too)
@@ -186,21 +188,27 @@ The `handleUserInput` function serves as the central hub for processing user com
 
 ```cpp
 bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
-    string input;
-    cout << "Enter 't' to transfer | 'c' to change direction | a number to advance that many stations (nothing advances 1 station)  ";
-    getline(cin, input);
-
-    if (input.empty()) { // advance 1 station
+   //        ...
+   //    print options (see above)
+   //        ...
+    
+    if (input.empty()) {    // advance 1 station
         return handleAdvanceOneStation(train);
-    } 
-    else if (tolower(input[0]) == 't' && input.length() == 1) {  // transfer
-        return handleTransfer(train, uptownLabel, downtownLabel); 
-    } 
-    else if (tolower(input[0]) == 'c' && input.length() == 1) {  // flip directions
+    }
+    else if (tolower(input[0]) == 't' && input.length() == 1) {    // transfer
+        return handleTransfer(train);
+    }
+    else if (tolower(input[0]) == 'c' && input.length() == 1) {    // change direction
         return handleChangeDirection(train);
-    } 
-    else {  // advance (int)input stations
-        return handleAdvanceMultipleStations(train, input);
+    }
+    else if (tolower(input[0]) == 'd' && input.length() == 1) {    // reprint destination station
+        cout << "Destination Station:\n" << destinationStation;
+    }
+    else if (input[0] == '0' && input.length() == 1) {             // code secret (cheat code)
+        printAllStations(train);
+    }
+    else {  // advance input(int) stations
+     return handleAdvanceMultipleStations(train, input);
     }
 }
 ```
@@ -290,6 +298,44 @@ Input validation has been improved to handle various edge cases and provide mean
 
 With these additions, the game now **accurately simulates the experience of navigating the NYC subway system**,
 allowing players to get from `point A` to `point B` infinitely many ways.
+
+#### Small Cheat Code for Testers/Graders
+
+Take a look for my `handleUserInput()` function in `main.cpp`  
+1. Command: `Cmd/Ctrl` + `Shift` + `F` 
+
+2. Copy/Paste: `bool handleUserInput(Train &train, const Station &destinationStation) {`
+
+Example Output:
+```text
+------------------------------------------------------------------
+Inwood-207 St                      (11 stops away)
+    |
+Dyckman St                         (10 stops away)
+    |
+190 St                             (9 stops away)
+    |
+181 St                             (8 stops away)
+    |
+175 St                             (7 stops away)
+    |
+168 St                             (6 stops away)
+    |
+145 St                             (5 stops away)
+    |
+125 St                             (4 stops away)
+    |
+59 St-Columbus Circle              (3 stops away)
+    |
+42 St-Port Authority Bus Terminal  (2 stops away)
+    |
+34 St-Penn Station                 (Next Stop)
+    |
+14 St (8th Av)                  **  Current Station  **
+    |
+    ↑
+------------------------------------------------------------------
+```
 
 #### Start Development for the Challenge Class
 The `Challenge` class will allow me to create custom hard-coded `starting stations` and `destination stations`,
