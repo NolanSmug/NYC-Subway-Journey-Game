@@ -299,12 +299,12 @@ each categorized based on difficulty.
 
 ## Video Demonstrations
 
-**[Input Validation](https://www.youtube.com/watch?v=8oJfOjqpsMM)**
+### [Input Validation](https://www.youtube.com/watch?v=8oJfOjqpsMM)
 > **Note:** I set hard coded values to make the demonstration as simple and understandable as possible. In the provided code, the two `Station` Objects are chosen at random.
 
 ****
 
-**[Transferring Lines (Run)](https://youtu.be/w70_YOdGSuk)**
+### [Transferring Lines (Run)](https://youtu.be/w70_YOdGSuk)
 
 In this example, the user is placed at `Rector St`
 on the `1 Line`.  
@@ -364,7 +364,7 @@ The user now reached `Times Square`, the destination station. The game now ends.
 
 ****
 
-**[Transferring Lines (Debugger)](https://www.youtube.com/watch?v=O2yxH51k6xI)**
+### [Transferring Lines (Debugger)](https://www.youtube.com/watch?v=O2yxH51k6xI)
 
 In this demonstration video,
 I step through the CLion debugger
@@ -395,3 +395,57 @@ bool transferToLine(LineName newLine, Station currentStation) {
 ```
 
 ****
+
+### [Subway Adventure: Navigating to Times Square 42nd St](https://youtu.be/Za8aYLOiGR8)  
+
+`Starting Point`: Brooklyn Bridge-City Hall  
+`Destination Station`: Times Sq-42 St
+
+**1. Initial Setup**  
+  User chooses to wait for the `Bronx-bound` `4 Train` at `Brooklyn Bridge-City Hall (4 5 6 J Z)`.
+
+**2. First Move**  
+  User advances `1` station and arrives at `14 St-Union Sq`.
+
+**3. Continuing the Journey**  
+  User decides to advance another station, and reaches `Grand Central-42 St (4 5 6 7 S)`.
+
+**4. Checking the Destination**  
+  User decides to review the `destination station` and confirms they're heading towards `Times Sq-42 St`.
+
+**5. Transfer Opportunity**  
+  Realizing that `Times Square` is more accessible from a different line, the user selects to `transfer`.
+
+**6. Selecting the New Line**  
+  After selecting to switch to the `Times Sq-bound` `S Train`, the user proceeds from `Grand Central-42 St`.
+
+**7. Final Leg**  
+The `S Train` travels back and forth between `Grand Central` and `Times Square`,
+so the user advances `1` station and arrives at the correct `destination station`.
+
+
+### Visual Diagram of The Journey
+
+```text
+             4 Line     (starting line)                      
+           Bronx-bound  (starting direction) 
+               ...
+                ʌ
+                |                          
+                |                           
+42nd St    Grand Central  ––––– (S Line) –––––>  Times Sq-42 St   (destination station)
+                |   (transfer)                          
+                |                                        
+                | 
+                |                          
+         14 St-Union Sq                       
+                |                                                  
+                |                           
+                |     
+                |
+                |                           
+    Brooklyn Bridge-City Hall (starting station)
+                |
+                |
+               ...
+```

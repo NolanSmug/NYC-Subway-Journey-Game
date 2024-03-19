@@ -39,7 +39,6 @@ int main() {
     // SET UP STARTING LINE
     SubwayMap subwayMap = SubwayMap();
     LineName startingLine = Line::getRandomLine();
-//  startingLine = FOUR_TRAIN; (testing purposes)
 
     vector<Station> currentStations;
     vector<Station> allStations;
@@ -72,7 +71,8 @@ int main() {
     train.setDirection(handleNewDirection(train)); // ask user for a direction they want to start going
 
     // GAME LOOP
-    while (train.getCurrentStation().getId() != allStations[destinationStation].getId()) {
+    while (!(train.getCurrentStation().getName() == allStations[destinationStation].getName() &&
+           train.getCurrentStation().getTransfers() == allStations[destinationStation].getTransfers())) {
         displayCurrentStationInfo(train);
 
         unsigned int currentStationIndex = train.getCurrentStationIndex();
@@ -101,7 +101,6 @@ int main() {
 
 // METHODS
 bool handleUserInput(Train &train, const Station &destinationStation) {
-
     string input;
     if (train.getCurrentStation().hasTransferLine()) {
         cout << "Options:\n";
@@ -357,7 +356,8 @@ void printAllStations(Train &train) {
     cout << "------------------------------------------------------------------" << endl;
 }
 
-void selectChallenge(Train &train, const vector<Station> &allStations) {
-
-
-}
+// FUTURE WORK
+//void selectChallenge(Train &train, const vector<Station> &allStations) {
+//
+//
+//}
