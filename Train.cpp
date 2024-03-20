@@ -3,9 +3,6 @@
 //
 #include "Train.h"
 
-#include <utility>
-
-
 Train::Train() : currentLine(NULL_TRAIN), direction(NULL_DIRECTION), scheduledStops(), express(false), numCars(10) {}
 
 Train::Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars)
