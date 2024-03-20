@@ -63,14 +63,12 @@ vector<Challenge> initializeChallenges() {
     allChallenges.emplace_back(B_TRAIN, "81 St-Museum of Natural History", "Delancey St-Essex St", 2);
     allChallenges.emplace_back(M_TRAIN, "Myrtle Av", "Nostrand Av", 2);
 
-
     // Hard challenges
     allChallenges.emplace_back(G_TRAIN, "Court Sq", "Dyckman St", 3);
     allChallenges.emplace_back(SIX_TRAIN, "Pelham Bay Park", "Coney Island-Stillwell Ave", 3);
-    allChallenges.emplace_back(ONE_TRAIN, "Dyckman St", "Metropolitan Av", 3);
-    allChallenges.emplace_back(D_TRAIN, "Norwood-205 St", "Metropolitan Av", 3);
-
-
+    allChallenges.emplace_back(ONE_TRAIN, "Dyckman St", "Greenpoint Av", 3);
+    allChallenges.emplace_back(A_TRAIN, "Far Rockaway-Mott Av", "Jamaica-179 St", 3);
+    // does there exist one that requires 3+ transfers?
 
     return allChallenges;
 }
