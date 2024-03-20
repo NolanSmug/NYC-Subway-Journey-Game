@@ -3,15 +3,37 @@
 ## Subway Shuffle: A Randomized NYC Journey
 
 ## Summary of Program
+
 This is a game where a player is placed into a random NYC subway station,
 and the goal is to reach another randomly given station.
 
-Upon starting the game, the player is given a random `current station`, and a random `destination station`.
-With this information, the player is given a choice between traveling on the uptown or downtown tracks.
-Next, `if` the `current station` has available transfers,
-the player is given a list of that stations' `transfer line` options.
-Finally, the player is asked how many stations they would like to advance.
-And after a valid input is given, they're notified of the station they have arrived at, ending their turn.
+Upon starting the game, the player is given a random `current station` and a random `destination station`.
+They are then prompted to choose a train `Line` to board from the available transfer options at their `current station`.
+After selecting a `Line`,
+the player is asked to choose a `Direction` (e.g., `Queens-bound` or `Brooklyn-bound`) to start traveling.
+
+At each station/stop, the program displays the following information:
+- `Current Line` and `Direction`
+- `Current Station`
+- Available `Transfer Lines` at the `Current Station`
+
+And the user is then given **4 options**:
+```markdown
+1. Enter a number to advance that many stations (or leave blank to advance one station)
+2. Enter 't' to transfer to a different line
+3. Enter 'c' to change the direction of travel (e.g., from Queens-bound to Brooklyn-bound, or vice versa)
+4. Enter 'd' to display the Destination Station information again
+```
+
+> No worries! There is no "losing" in this game, as the program runs until the player reaches the `destination station`.
+
+If the player types '`t`' to transfer lines,
+they are prompted to select a new line from the available transfer options at the current station
+and choose a new direction.
+(Input validation is implemented here too)
+
+After a valid input is given, the player is notified of the station they have arrived at,
+and the process repeats until the player reaches the `destination station`.
 
 ****
 
@@ -134,6 +156,8 @@ I realized this thanks to CS 2250 Computability & Complexity, which taught me ho
 
 It will be interesting to see the game played out when I add the ability to transfer to other train lines at each station.
 
+****
+
 ### Module 2 Additions:
 
 Although I have not implemented it into the main game yet,
@@ -149,6 +173,10 @@ and updating variables that needed to be modified to complete a transfer.
 A big portion of this project was designing the most efficient way
 to have my classes interact with one another without any circular dependencies.
 
+#### Input Validation has been implemented for all prompts to the user.
+
+****
+
 ### Module 3 Additions:
 
 In Module 3, I have fully integrated the ability for the user to transfer between subway lines during gameplay. This involved several key additions and changes to the codebase:
@@ -160,26 +188,30 @@ The `handleUserInput` function serves as the central hub for processing user com
 
 ```cpp
 bool handleUserInput(Train &train, string &uptownLabel, string &downtownLabel) {
-    string input;
-    cout << "Enter 't' to transfer | 'c' to change direction | a number to advance that many stations (nothing advances 1 station)  ";
-    getline(cin, input);
-
-    if (input.empty()) { // advance 1 station
+   //        ...
+   //    print options (see above)
+   //        ...
+    
+    if (input.empty()) {    // advance 1 station
         return handleAdvanceOneStation(train);
-    } 
-    else if (tolower(input[0]) == 't' && input.length() == 1) {  // transfer
-        return handleTransfer(train, uptownLabel, downtownLabel); 
-    } 
-    else if (tolower(input[0]) == 'c' && input.length() == 1) {  // flip directions
+    }
+    else if (tolower(input[0]) == 't' && input.length() == 1) {    // transfer
+        return handleTransfer(train);
+    }
+    else if (tolower(input[0]) == 'c' && input.length() == 1) {    // change direction
         return handleChangeDirection(train);
-    } 
-    else {  // advance (int)input stations
-        return handleAdvanceMultipleStations(train, input);
+    }
+    else if (tolower(input[0]) == 'd' && input.length() == 1) {    // reprint destination station
+        cout << "Destination Station:\n" << destinationStation;
+    }
+    else if (input[0] == '0' && input.length() == 1) {             // code secret (cheat code)
+        printAllStations(train);
+    }
+    else {  // advance input(int) stations
+     return handleAdvanceMultipleStations(train, input);
     }
 }
 ```
-
-> **Input Validation** has been implemented for all prompts to the user.
 
 The `handleTransfer()` function prompts the user
 to choose a transfer line from the current station's available transfers,
@@ -237,7 +269,8 @@ This organization facilitates easy access to station data for each subway line,
 enabling efficient retrieval and manipulation when needed.
 
 #### Updating Scheduled Stops
-The `SubwayMap` class now includes the `updateStopsForLine()` method builds the scheduled stops for a given subway line
+The `SubwayMap` class now includes the `updateStopsForLine()` method,
+which builds the scheduled stops for a given subway line
 by reading the corresponding line-specific CSV file.
 
 ```c++
@@ -265,18 +298,65 @@ When a transfer is available, the user is prompted to list the available transfe
 Input validation has been improved to handle various edge cases and provide meaningful error messages.
 
 With these additions, the game now **accurately simulates the experience of navigating the NYC subway system**,
-allowing players to get from point A to point B infinitely many ways.
+allowing players to get from `point A` to `point B` infinitely many ways.
+
+#### Small Cheat Code for Testers/Graders
+
+Take a look for my `handleUserInput()` function in `main.cpp`  
+1. Command: `Cmd/Ctrl` + `Shift` + `F`
+2. Copy/Paste: 
+```text
+bool handleUserInput(Train &train, const Station &destinationStation) {
+```
+3. See the secret input you can give at each station. 
+
+_Hint if you can't find it:_ `e^(iπ) + 1 = __`
+
+Example Output:
+```text
+------------------------------------------------------------------
+Inwood-207 St                      (11 stops away)
+    |
+Dyckman St                         (10 stops away)
+    |
+190 St                             (9 stops away)
+    |
+181 St                             (8 stops away)
+    |
+175 St                             (7 stops away)
+    |
+168 St                             (6 stops away)
+    |
+145 St                             (5 stops away)
+    |
+125 St                             (4 stops away)
+    |
+59 St-Columbus Circle              (3 stops away)
+    |
+42 St-Port Authority Bus Terminal  (2 stops away)
+    |
+34 St-Penn Station                 (Next Stop)
+    |
+14 St (8th Av)                  **  Current Station  **
+    |
+    ↑
+------------------------------------------------------------------
+```
+
+#### Start Development for the Challenge Class
+The `Challenge` class will allow me to create custom hard-coded `starting stations` and `destination stations`,
+each categorized based on difficulty.
 
 ****
 
 ## Video Demonstrations
 
-**[Input Validation](https://www.youtube.com/watch?v=8oJfOjqpsMM)**
+### [Input Validation](https://www.youtube.com/watch?v=8oJfOjqpsMM)
 > **Note:** I set hard coded values to make the demonstration as simple and understandable as possible. In the provided code, the two `Station` Objects are chosen at random.
 
 ****
 
-**[Transferring Lines (Run)](https://youtu.be/w70_YOdGSuk)**
+### [Transferring Lines (Run)](https://youtu.be/w70_YOdGSuk)
 
 In this example, the user is placed at `Rector St`
 on the `1 Line`.  
@@ -336,7 +416,7 @@ The user now reached `Times Square`, the destination station. The game now ends.
 
 ****
 
-**[Transferring Lines (Debugger)](https://www.youtube.com/watch?v=O2yxH51k6xI)**
+### [Transferring Lines (Debugger)](https://www.youtube.com/watch?v=O2yxH51k6xI)
 
 In this demonstration video,
 I step through the CLion debugger
@@ -345,8 +425,10 @@ showing how all the fields we need to update in a Train object to perform a succ
 2. `transferToLine()` is called with the requested transfers' `LineName` and the Train's `currentStation`
 3. `validTransfer()` returns `true`, as it finds the `TWO_LINE` in 14th st's vector of `LineName`s.
 4. `updateScheduledStops()` is called and builds a `SubwayMap` to be passed into the `SubwayMap` class (for `Station` file handling).
-5. `updateStopsForLine()` is called in `SubwayMap` and uses the requested `LineName` enum to build the path to the correct csv file (that holds the station data to that line). The standard pattern for the file names is: 
->`{LineName(str)}_stations.csv`
+5. `updateStopsForLine()` is called in `SubwayMap` and uses the requested `LineName` enum to build the path to the correct csv file
+   (that holds the station data to that line). 
+
+The standard pattern for the file names is: `{LineName(str)}_stations.csv`
 
 6. `transferToLine()` returns `true` in main, and we can see that the current Train objects' `scheduledStops<Station>` has been updated with all of the `TWO_TRAIN` station data, and we are at the same station still.
 
@@ -363,5 +445,79 @@ bool transferToLine(LineName newLine, Station currentStation) {
     return false;  // not a valid requested transfer
 }
 ```
+
+****
+
+### [Subway Adventure: Navigating to Times Square 42nd St](https://youtu.be/Za8aYLOiGR8)  
+
+`Starting Point`: Brooklyn Bridge-City Hall  
+`Destination Station`: Times Sq-42 St
+
+**1. Initial Setup**  
+  User chooses to wait for the `Bronx-bound` `4 Train` at `Brooklyn Bridge-City Hall (4 5 6 J Z)`.
+
+**2. First Move**  
+  User advances `1` station and arrives at `14 St-Union Sq`.
+
+**3. Continuing the Journey**  
+  User decides to advance another station, and reaches `Grand Central-42 St (4 5 6 7 S)`.
+
+**4. Checking the Destination**  
+  User decides to review the `destination station` and confirms they're heading towards `Times Sq-42 St`.
+
+**5. Transfer Opportunity**  
+  Realizing that `Times Square` is more accessible from a different line, the user selects to `transfer`.
+
+**6. Selecting the New Line**  
+  After selecting to switch to the `Times Sq-bound` `S Train`, the user proceeds from `Grand Central-42 St`.
+
+**7. Final Leg**  
+The `S Train` travels back and forth between `Grand Central` and `Times Square`,
+so the user advances `1` station and arrives at the correct `destination station`.
+
+
+### Visual Diagram of The Journey
+
+```text
+             4 Line     (starting line)                      
+           Bronx-bound  (starting direction) 
+               ...
+                ʌ
+                |                          
+                |                           
+42nd St    Grand Central  ––––– (S Line) –––––>  Times Sq-42 St   (destination station)
+                |   (transfer)                          
+                |                                        
+                | 
+                |                          
+         14 St-Union Sq                       
+                |                                                  
+                |                           
+                |     
+                |
+                |                           
+    Brooklyn Bridge-City Hall (starting station)
+                |
+                |
+               ...
+```
+
+****
+
+## Grade ##
+
+At my Summer internship, they had me document my code on a separate webpage _Confluence_ (similar to Markdown format).
+I decided to do a similar thing in my README above, as I feel like the separation makes the code less cluttered and more readable.
+- Main Program Complexity (40)
+- Use of Multiple Languages (`C++ && Python`) (10)
+- Choice of Languages (20)
+- Command Line Arguments (5?)
+
+**IMPORTANT:** 
+A lot of code for this Module was merged/cloned from a separate public GitHub Repository,
+because I did not want graders to think that I was committing and adding to Module 2 late.
+If you notice anything weird with the commits, this is most likely the reason.
+
+Proposed Grade: **75 points**
 
 ****

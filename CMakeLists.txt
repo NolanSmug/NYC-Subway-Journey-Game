@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.26)
-project(NYC-Subway-Journey-Game)
+project(M3OEP-ncyr1)
 
 set(CMAKE_CXX_STANDARD 17)
 

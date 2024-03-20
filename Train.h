@@ -19,7 +19,7 @@ static unordered_map<LineName, pair<string, string>> lineDirections {
         {THREE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
         {FOUR_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
         {FIVE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
-        {SIX_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+        {SIX_TRAIN, {"Brooklyn-Bridge-bound", "Bronx-bound"}},
         {SEVEN_TRAIN, {"Manhattan-bound", "Queens-bound"}},
         {A_TRAIN, {"Downtown", "Uptown"}},
         {B_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},

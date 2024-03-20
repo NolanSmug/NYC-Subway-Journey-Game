@@ -39,7 +39,6 @@ int main() {
     // SET UP STARTING LINE
     SubwayMap subwayMap = SubwayMap();
     LineName startingLine = Line::getRandomLine();
-//  startingLine = FOUR_TRAIN; (testing purposes)
 
     vector<Station> currentStations;
     vector<Station> allStations;
@@ -72,7 +71,8 @@ int main() {
     train.setDirection(handleNewDirection(train)); // ask user for a direction they want to start going
 
     // GAME LOOP
-    while (train.getCurrentStation().getId() != allStations[destinationStation].getId()) {
+    while (!(train.getCurrentStation().getName() == allStations[destinationStation].getName() &&
+           train.getCurrentStation().getTransfers() == allStations[destinationStation].getTransfers())) {
         displayCurrentStationInfo(train);
 
         unsigned int currentStationIndex = train.getCurrentStationIndex();
@@ -144,7 +144,7 @@ void displayCurrentStationInfo(Train &train) {
     Direction currentDirection = train.getDirection();
 
     if (currentDirection == NULL_DIRECTION) {
-        cout << "\nYour Current Line: " << Line::getTextForEnum(train.getLine()) + " Train ↕\n";
+        // do nothing
     }
     else {
         cout << "\nYour Current Line:\n";
@@ -312,6 +312,24 @@ void printTransferLines(vector<LineName> transfers) {
     }
 }
 
+string printTransferLinesAlternative(vector<LineName> transfers) {
+    unsigned int numTransfers = transfers.size();
+    string transferLinesStr = "";
+
+    if (numTransfers > 0) {
+        transferLinesStr += " (";
+        for (int i = 0; i < numTransfers; ++i) {
+            transferLinesStr += Line::getTextForEnum(transfers[i]);
+            if (i != numTransfers - 1) { // If it's not the last line, add a space
+                transferLinesStr += " ";
+            }
+        }
+        transferLinesStr += ") ";
+    }
+
+    return transferLinesStr;
+}
+
 void printAllStations(Train &train) {
     string currentStationID = train.getCurrentStation().getId();
     vector<Station> stations =  train.getScheduledStops();
@@ -327,11 +345,12 @@ void printAllStations(Train &train) {
             string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
 
             if (stations[i].getId() == currentStationID) {
-                cout << setw(30) << left << stations[i].getName() << "  **  Current Station  **" << endl;
+                cout << setw(30) << left << stations[i].getName() << "      (Current Station)" << endl;
                 cout << "    |" << endl;
             }
             else {
-                cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
+                cout << setw(35) << left << stations[i].getName() << printTransferLinesAlternative(stations[i].getTransfers());
+                cout << " " << stopsAwayText << endl;
                 cout << "    |" << endl;
             }
         }
@@ -348,7 +367,8 @@ void printAllStations(Train &train) {
                 cout << "    |" << endl;
             }
             else {
-                cout << setw(35) << left << stations[i].getName() << stopsAwayText << endl;
+                cout << setw(35) << left << stations[i].getName() << printTransferLinesAlternative(stations[i].getTransfers());
+                cout << " " << stopsAwayText << endl;
                 cout << "    |" << endl;
             }
         }
@@ -356,7 +376,8 @@ void printAllStations(Train &train) {
     cout << "------------------------------------------------------------------" << endl;
 }
 
-void selectChallenge(Train &train, const vector<Station> &allStations) {
-
-
-}
+// FUTURE WORK
+//void selectChallenge(Train &train, const vector<Station> &allStations) {
+//
+//
+//}
