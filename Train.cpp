@@ -5,7 +5,6 @@
 
 #include <utility>
 
-using namespace std;
 
 Train::Train() : currentLine(NULL_TRAIN), direction(NULL_DIRECTION), scheduledStops(), express(false), numCars(10) {}
 

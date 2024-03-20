@@ -10,7 +10,6 @@
 #include <thread>
 #include <iomanip>
 
-using namespace std;
 
 int getRandomStation(unsigned int numStations);
 

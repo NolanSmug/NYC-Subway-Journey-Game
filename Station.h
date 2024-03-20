@@ -5,11 +5,7 @@
 #ifndef M1OEP_NCYR1_STATION_H
 #define M1OEP_NCYR1_STATION_H
 
-#include <string>
-#include <vector>
 #include "Line.h"
-
-using namespace std;
 
 enum Borough {
     MANHATTAN,
