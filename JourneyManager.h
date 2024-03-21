@@ -1,0 +1,14 @@
+//
+// Created by Nolan Cyr on 3/21/24.
+//
+
+#ifndef NYC_SUBWAY_JOURNEY_GAME_JOURNEYMANAGER_H
+#define NYC_SUBWAY_JOURNEY_GAME_JOURNEYMANAGER_H
+
+
+class JourneyManager {
+
+};
+
+
+#endif //NYC_SUBWAY_JOURNEY_GAME_JOURNEYMANAGER_H
