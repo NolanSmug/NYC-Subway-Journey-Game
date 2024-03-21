@@ -4,10 +4,7 @@
 
 #include "Station.h"
 #include "sstream"
-#include <fstream>
-using std::ifstream, std::string, std::vector;
 
-using namespace std;
 
 // Constructors
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
