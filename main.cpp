@@ -36,7 +36,6 @@ void printTransferLines(vector<LineName> transfers);
 
 int main() {
     // SET UP STARTING LINE
-    SubwayMap subwayMap = SubwayMap();
     LineName startingLine = Line::getRandomLine();
 
     vector<Station> currentStations;

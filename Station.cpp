@@ -31,7 +31,7 @@ ostream& operator<<(ostream& str, Station station) {
 }
 
 // ID
-string Station::getId() {
+string Station::getId() const{
     return id;
 }
 

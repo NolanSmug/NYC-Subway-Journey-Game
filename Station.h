@@ -30,7 +30,7 @@ public:
 
     friend ostream& operator<<(ostream& str, Station station);
 
-    string getId();
+    string getId() const;
     void setId(string newId);
 
     string getName() const;
