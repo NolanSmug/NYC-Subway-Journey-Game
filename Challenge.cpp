@@ -7,7 +7,7 @@ Challenge::Challenge(LineName startLine, string startStationName, string destina
     startLine(startLine),
     startStationName(startStationName),
     destinationStationName(destinationStationName),
-    difficulty() {}
+    difficulty(difficulty) {}
 
 
 void Challenge::setStartLine(LineName newStartLine) {
@@ -46,11 +46,11 @@ void Challenge::setDifficulty(int newDifficulty) {
 }
 
 
-vector<Challenge> initializeChallenges() {
+vector<Challenge> Challenge::getAllChallenges() {
     vector<Challenge> allChallenges;
 
     // Easy challenges
-    allChallenges.emplace_back(FOUR_TRAIN, "Grand Central-42 St", "Brooklyn Bridge-City Hall", 1);
+    allChallenges.emplace_back(Challenge(FOUR_TRAIN, "Grand Central-42 St", "Brooklyn Bridge-City Hall", 1));
     allChallenges.emplace_back(TWO_TRAIN, "96th St", "Flatbush Ave-Brooklyn College", 1);
     allChallenges.emplace_back(E_TRAIN, "34 St-Penn Station", "World Trade Center",1);
     allChallenges.emplace_back(G_TRAIN, "Metropolitan Ave", "Court Sq", 1);

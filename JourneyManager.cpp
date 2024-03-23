@@ -8,7 +8,6 @@ JourneyManager::JourneyManager() {
     SubwayMap::createStations(NULL_TRAIN, allStations); // Fill allStations vector
     startingStation = allStations[0];
     destinationStation = allStations[allStations.size()];
-
 }
 
 JourneyManager::JourneyManager(Station startingStation, Station destinationStation) {
@@ -34,7 +33,7 @@ void JourneyManager::setStartingStation(string newStartingStation) { // works fo
 
         if (newStartingStation == id || newStartingStation == name) {
             startingStation = station;
-             break;
+            break;
         }
     }
 }
@@ -59,6 +58,22 @@ void JourneyManager::setDestinationStation(string newDestinationStation) { // wo
         }
     }
 }
+
+vector<Station> JourneyManager::getAllStations() {
+    return allStations;
+}
+
+Station JourneyManager::getRandomStation() {
+    random_device rd;
+    mt19937 generator(rd());
+    uniform_int_distribution<> distribution(0, getAllStations().size() - 1);
+
+    int randomIndex = distribution(generator);
+
+    return getAllStations()[randomIndex];
+}
+
+
 
 
 

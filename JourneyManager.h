@@ -6,7 +6,10 @@
 #define NYC_SUBWAY_JOURNEY_GAME_JOURNEYMANAGER_H
 
 #include "Station.h"
+#include "random"
 #include "SubwayMap.h"
+
+
 
 class JourneyManager {
 public:
@@ -20,6 +23,10 @@ public:
     Station getDestinationStation();
     void setDestinationStation(Station newDestinationStation);
     void setDestinationStation(string newDestinationStation);
+
+    vector<Station> getAllStations();
+
+    Station getRandomStation();
 
 private:
     vector<Station> allStations;

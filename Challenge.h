@@ -25,6 +25,7 @@ public:
     int getDifficulty();
     void setDifficulty(int difficulty);
 
+    vector<Challenge> getAllChallenges();
 
 private:
     LineName startLine;
