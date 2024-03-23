@@ -51,7 +51,7 @@ int main() {
     int destinationStation = startingStation;
 
     // make sure destination station != starting stations
-    while (allStations[destinationStation].getId() == allStations[startingStation].getId()) {
+    while (allStations[destinationStation] == allStations[startingStation]) {
         destinationStation = getRandomStation(totalNumStations);
     }
 
@@ -69,9 +69,7 @@ int main() {
     train.setDirection(handleNewDirection(train)); // ask user for a direction they want to start going
 
     // GAME LOOP
-    while (!(train.getCurrentStation().getName() == allStations[destinationStation].getName() &&
-           train.getCurrentStation().getTransfers() == allStations[destinationStation].getTransfers())) {
-        displayCurrentStationInfo(train);
+    while ((train.getCurrentStation() != allStations[destinationStation])) {
 
         unsigned int currentStationIndex = train.getCurrentStationIndex();
         unsigned int lastStationIndex = train.getScheduledStops().size() - 1;
@@ -88,8 +86,7 @@ int main() {
     }
 
     // GAME FINISHED
-    if (train.getCurrentStation().getName() == allStations[destinationStation].getName() &&
-        train.getCurrentStation().getTransfers() == allStations[destinationStation].getTransfers()) {
+    if (train.getCurrentStation() == allStations[destinationStation]) {
         cout << "\nYour current Station:\n" << train.getCurrentStation();
         cout << "YOU WIN" << endl;
     }

@@ -30,6 +30,15 @@ ostream& operator<<(ostream& str, Station station) {
     return str;
 }
 
+// equals operator
+bool Station::operator==(const Station &rhs) const {
+    return name == rhs.name || transfers == rhs.transfers;
+}
+
+bool Station::operator!=(const Station &rhs) const {
+    return !(rhs == *this);
+}
+
 // ID
 string Station::getId() const{
     return id;

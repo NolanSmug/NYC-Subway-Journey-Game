@@ -30,6 +30,9 @@ public:
 
     friend ostream& operator<<(ostream& str, Station station);
 
+    bool operator==(const Station &rhs) const;
+    bool operator!=(const Station &rhs) const;
+
     string getId() const;
     void setId(string newId);
 
