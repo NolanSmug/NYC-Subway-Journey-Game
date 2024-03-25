@@ -104,6 +104,17 @@ void Train::setCurrentStation(int stationIndex) {
     currentStationIndex = stationIndex;
 }
 
+void Train::setCurrentStation(Station station) {
+    vector<Station> reversedScheduledStops(scheduledStops.rbegin(), scheduledStops.rend());
+
+    for (int i = 0; i < reversedScheduledStops.size(); i++) {
+        if (reversedScheduledStops[i] == station) {
+            currentStationIndex = scheduledStops.size() - i - 1;
+            break;
+        }
+    }
+}
+
 void Train::setCurrentStation(string stationName) {
     for (int i = 0; i < scheduledStops.size(); i++) {
         if (scheduledStops[i].getName() == stationName) {

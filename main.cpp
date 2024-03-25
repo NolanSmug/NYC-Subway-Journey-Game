@@ -68,7 +68,7 @@ int main() {
 
     // START TRAIN
     Train train = Train(startingLine, NULL_DIRECTION, currentStations, false,10);
-    train.setCurrentStation(startingStation.getName());
+    train.setCurrentStation(startingStation);
 
     displayCurrentStationInfo(train);
     cout << "Destination Station:\n" << destinationStation;
@@ -76,6 +76,8 @@ int main() {
     if (train.getCurrentStation().hasTransferLine()) {
         handleStartingLine(train);
     }
+
+    train.setCurrentStation(startingStation.getName());
 
 
 
