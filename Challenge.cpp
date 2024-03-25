@@ -55,7 +55,7 @@ vector<Challenge> Challenge::getAllChallenges() {
     const Station FLATBUSH_AVE_BROOKLYN_COLLEGE = Station("247", "Flatbush Av-Brooklyn College", {TWO_TRAIN, FIVE_TRAIN}, BROOKLYN);
     const Station E42ND_ST_PORT_AUTHORITY = Station("A28", "34 St-Penn Station", {A_TRAIN, C_TRAIN, E_TRAIN, ONE_TRAIN, TWO_TRAIN, THREE_TRAIN}, MANHATTAN);
     const Station WORLD_TRADE_CENTER = Station("E01", "World Trade Center", {E_TRAIN}, MANHATTAN);
-    const Station METROPOLITAN_AVE = Station("G29", "Metropolitan Av", {G_TRAIN}, BROOKLYN);
+    const Station METROPOLITAN_AVE = Station("G29", "21 St", {G_TRAIN}, BROOKLYN);
     const Station COURT_SQ = Station("G22", "Court Sq", {SEVEN_TRAIN, E_TRAIN, G_TRAIN}, QUEENS);
     const Station METS_WILLETS_POINT = Station("702", "Mets-Willets Point", {SEVEN_TRAIN}, QUEENS);
     const Station VAN_CORTLANDT_PARK_242ND_ST = Station("101", "Van Cortlandt Park-242 St", {ONE_TRAIN}, BRONX);

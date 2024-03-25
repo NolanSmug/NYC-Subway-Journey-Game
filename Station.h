@@ -33,10 +33,10 @@ public:
     bool operator==(const Station &rhs) const;
     bool operator!=(const Station &rhs) const;
 
-    string getId() const;
+    string getId();
     void setId(string newId);
 
-    string getName() const;
+    string getName();
     void setName(string newName);
 
     vector<LineName> getTransfers();

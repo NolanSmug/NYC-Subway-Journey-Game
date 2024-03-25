@@ -40,7 +40,7 @@ bool Station::operator!=(const Station &rhs) const {
 }
 
 // ID
-string Station::getId() const{
+string Station::getId(){
     return id;
 }
 
@@ -49,7 +49,7 @@ void Station::setId(string newId) {
 }
 
 // Name
-string Station::getName() const {
+string Station::getName() {
     return name;
 }
 
