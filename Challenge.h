@@ -7,29 +7,32 @@
 
 #include <string>
 #include "Line.h"
+#include "Station.h"
 
 class Challenge {
 public:
     Challenge();
-    Challenge(LineName startLine, string startStationName, string destinationStationName, int difficulty);
+    Challenge(LineName startLine, Station startStation, Station destinationStation, int difficulty);
 
     LineName getStartLine();
     void setStartLine(LineName startLine);
 
-    string getStartStationName();
-    void setStartStationName(string startStationName);
+    Station getStartStation();
+    void setStartStation(Station newStartStation);
 
-    string getDestinationStationName();
-    void setDestinationStationName(string destinationStationName);
+    Station getDestinationStation();
+    void setDestinationStation(Station newDestinationStation);
 
     int getDifficulty();
     void setDifficulty(int difficulty);
 
+    vector<Challenge> getAllChallenges();
+
 
 private:
     LineName startLine;
-    string startStationName;
-    string destinationStationName;
+    Station startStation;
+    Station destinationStation;
     int difficulty;
 };
 
