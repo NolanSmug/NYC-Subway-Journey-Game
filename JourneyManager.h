@@ -35,3 +35,4 @@ private:
 };
 
 #endif //NYC_SUBWAY_JOURNEY_GAME_JOURNEYMANAGER_H
+

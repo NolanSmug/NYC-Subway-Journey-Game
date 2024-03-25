@@ -113,6 +113,7 @@ void Train::setCurrentStation(string stationName) {
     }
 }
 
+
 Station Train::getNextStation() {
     int increment = (direction == UPTOWN ? 1 : -1); // choose if we want
                                                         // to add or subtract to the index based on direction
