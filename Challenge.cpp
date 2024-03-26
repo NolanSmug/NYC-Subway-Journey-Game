@@ -53,15 +53,15 @@ vector<Challenge> Challenge::getAllChallenges() {
     const Station BROOKLYN_BRIDGE_CITY_HALL = Station("640", "Brooklyn Bridge-City Hall", {FOUR_TRAIN, SIX_TRAIN, J_TRAIN, Z_TRAIN}, MANHATTAN);
     const Station N96TH_ST = Station("120", "96 St", {ONE_TRAIN, TWO_TRAIN, THREE_TRAIN}, MANHATTAN);
     const Station FLATBUSH_AVE_BROOKLYN_COLLEGE = Station("247", "Flatbush Av-Brooklyn College", {TWO_TRAIN, FIVE_TRAIN}, BROOKLYN);
-    const Station E42ND_ST_PORT_AUTHORITY = Station("A28", "34 St-Penn Station", {A_TRAIN, C_TRAIN, E_TRAIN, ONE_TRAIN, TWO_TRAIN, THREE_TRAIN}, MANHATTAN);
+    const Station E34TH_ST_PENN_STATION = Station("A28", "34 St-Penn Station", {A_TRAIN, C_TRAIN, E_TRAIN, ONE_TRAIN, TWO_TRAIN, THREE_TRAIN}, MANHATTAN);
     const Station WORLD_TRADE_CENTER = Station("E01", "World Trade Center", {E_TRAIN}, MANHATTAN);
-    const Station METROPOLITAN_AVE = Station("G29", "21 St", {G_TRAIN}, BROOKLYN);
-    const Station COURT_SQ = Station("G22", "Court Sq", {SEVEN_TRAIN, E_TRAIN, G_TRAIN}, QUEENS);
+    const Station METROPOLITAN_AVE = Station("G29", "Metropolitan Av", {G_TRAIN}, BROOKLYN);
+    const Station COURT_SQ = Station("G22", "Court Sq", {SEVEN_TRAIN, E_TRAIN,F_TRAIN, G_TRAIN}, QUEENS);
     const Station METS_WILLETS_POINT = Station("702", "Mets-Willets Point", {SEVEN_TRAIN}, QUEENS);
     const Station VAN_CORTLANDT_PARK_242ND_ST = Station("101", "Van Cortlandt Park-242 St", {ONE_TRAIN}, BRONX);
     const Station ASTORIA_DITMARS_BLVD = Station("R01", "Astoria-Ditmars Blvd", {N_TRAIN, W_TRAIN}, QUEENS);
     const Station PRINCE_ST = Station("R22", "Prince St", {N_TRAIN, R_TRAIN, W_TRAIN}, MANHATTAN);
-    const Station E14TH_ST_UNION_SQ = Station("R20", "14 St-Union Sq", {FOUR_TRAIN, FIVE_TRAIN, SIX_TRAIN, L_TRAIN, N_TRAIN, Q_TRAIN, R_TRAIN}, MANHATTAN);
+    const Station E14TH_ST_UNION_SQ = Station("635", "14 St-Union Sq", {FOUR_TRAIN, FIVE_TRAIN, SIX_TRAIN, N_TRAIN, Q_TRAIN, R_TRAIN, W_TRAIN, L_TRAIN}, MANHATTAN);
     const Station HOWARD_BEACH_JFK_AIRPORT = Station("H03", "Howard Beach-JFK Airport", {A_TRAIN}, QUEENS);
     const Station W81ST_MUSEUM_OF_NATURAL_HISTORY = Station("A21", "81 St-Museum of Natural History", {B_TRAIN, C_TRAIN}, MANHATTAN);
     const Station DELANCEY_ST_ESSEX_ST = Station("M18", "Delancey St-Essex St", {F_TRAIN, J_TRAIN, M_TRAIN, Z_TRAIN}, MANHATTAN);
@@ -77,14 +77,14 @@ vector<Challenge> Challenge::getAllChallenges() {
     // Easy challenges
     allChallenges.emplace_back(FOUR_TRAIN, GRAND_CENTRAL_42, BROOKLYN_BRIDGE_CITY_HALL, 1);
     allChallenges.emplace_back(TWO_TRAIN, N96TH_ST, FLATBUSH_AVE_BROOKLYN_COLLEGE, 1);
-    allChallenges.emplace_back(E_TRAIN, E42ND_ST_PORT_AUTHORITY, WORLD_TRADE_CENTER, 1);
+    allChallenges.emplace_back(E_TRAIN, E34TH_ST_PENN_STATION, WORLD_TRADE_CENTER, 1);
     allChallenges.emplace_back(G_TRAIN, METROPOLITAN_AVE, COURT_SQ, 1);
     allChallenges.emplace_back(SEVEN_TRAIN, GRAND_CENTRAL_42, METS_WILLETS_POINT, 1);
 
     // Medium challenges
     allChallenges.emplace_back(ONE_TRAIN, VAN_CORTLANDT_PARK_242ND_ST, WORLD_TRADE_CENTER, 2);
     allChallenges.emplace_back(N_TRAIN, ASTORIA_DITMARS_BLVD, PRINCE_ST, 2);
-    allChallenges.emplace_back(FIVE_TRAIN, E14TH_ST_UNION_SQ, HOWARD_BEACH_JFK_AIRPORT, 2);
+    allChallenges.emplace_back(FOUR_TRAIN, E14TH_ST_UNION_SQ, HOWARD_BEACH_JFK_AIRPORT, 2);
     allChallenges.emplace_back(C_TRAIN, W81ST_MUSEUM_OF_NATURAL_HISTORY, DELANCEY_ST_ESSEX_ST, 2);
     allChallenges.emplace_back(M_TRAIN, MYRTLE_AVE, NOSTRAND_AVE, 2);
 
