@@ -85,7 +85,7 @@ vector<Challenge> Challenge::getAllChallenges() {
     allChallenges.emplace_back(ONE_TRAIN, VAN_CORTLANDT_PARK_242ND_ST, WORLD_TRADE_CENTER, 2);
     allChallenges.emplace_back(N_TRAIN, ASTORIA_DITMARS_BLVD, PRINCE_ST, 2);
     allChallenges.emplace_back(FIVE_TRAIN, E14TH_ST_UNION_SQ, HOWARD_BEACH_JFK_AIRPORT, 2);
-    allChallenges.emplace_back(B_TRAIN, W81ST_MUSEUM_OF_NATURAL_HISTORY, DELANCEY_ST_ESSEX_ST, 2);
+    allChallenges.emplace_back(C_TRAIN, W81ST_MUSEUM_OF_NATURAL_HISTORY, DELANCEY_ST_ESSEX_ST, 2);
     allChallenges.emplace_back(M_TRAIN, MYRTLE_AVE, NOSTRAND_AVE, 2);
 
     // Hard challenges
