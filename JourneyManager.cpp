@@ -6,20 +6,11 @@
 
 JourneyManager::JourneyManager() {
     SubwayMap::createStations(NULL_TRAIN, allStations); // Fill allStations vector
-
-    // Initialize startingStation and destinationStation with random stations
-    startingStation = getRandomStation();
-    destinationStation = getRandomStation();
-
-    // Ensure startingStation and destinationStation are different
-    while (startingStation == destinationStation) {
-        destinationStation = getRandomStation();
-    }
 }
 
-JourneyManager::JourneyManager(Station startingStation, Station destinationStation) {
-    this->startingStation = startingStation;
-    this->destinationStation = destinationStation;
+JourneyManager::JourneyManager(Station newStartingStation, Station newDestinationStation) {
+    startingStation = newStartingStation;
+    destinationStation = newDestinationStation;
 
     SubwayMap::createStations(NULL_TRAIN, allStations); // Fill allStations vector
 }

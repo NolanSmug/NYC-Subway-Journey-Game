@@ -33,7 +33,7 @@ void displayCurrentStationInfo(Train &train);
 void printAllStations(Train &train);
 void printTransferLines(vector<LineName> transfers);
 
-void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Station &startingStation, Station &destinationStation);
+void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Station &startingStation, Station &destinationStation, vector<Station> &currentStations);
 
 int main() {
 
@@ -57,8 +57,6 @@ int main() {
         destinationStation = journeyManager.getRandomStation();
     }
 
-    journeyManager.setStartingStation(startingStation);
-    journeyManager.setDestinationStation(destinationStation);
 
 
     // SET UP STARTING LINE & CURRENT STATIONS
@@ -66,8 +64,7 @@ int main() {
     vector<Station> currentStations;
     SubwayMap::createStations(startingLine, currentStations);
 
-//    selectChallenge(journeyManager,startingLine,startingStation,destinationStation);
-
+    selectChallenge(journeyManager,startingLine,startingStation,destinationStation, currentStations);
 
     // START TRAIN
     Train train = Train(startingLine, NULL_DIRECTION, currentStations, false,10);
@@ -386,7 +383,7 @@ void printAllStations(Train &train) {
     cout << "------------------------------------------------------------------" << endl;
 }
 
-void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Station &startingStation, Station &destinationStation) {
+void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Station &startingStation, Station &destinationStation, vector<Station> &currentStations) {
     Challenge challenge = Challenge();
 
     vector<Challenge> allChallenges = challenge.getAllChallenges();
@@ -413,6 +410,7 @@ void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Sta
         journeyManager.setDestinationStation(challengeChoice.getDestinationStation());
 
         startingLine = challengeChoice.getStartLine();
+        SubwayMap::createStations(startingLine, currentStations); // remember to fill current stations vector for the train!
 
         startingStation = journeyManager.getStartingStation();
         destinationStation = journeyManager.getDestinationStation();
