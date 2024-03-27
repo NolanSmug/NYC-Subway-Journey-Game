@@ -36,11 +36,8 @@ void printTransferLines(vector<LineName> transfers);
 void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Station &startingStation, Station &destinationStation);
 
 int main() {
-    // SET UP STARTING LINE
-    LineName startingLine = Line::getRandomLine();
 
-    vector<Station> currentStations;
-    SubwayMap::createStations(startingLine, currentStations);
+
 
 
 //    vector<Station> allStations;
@@ -53,7 +50,7 @@ int main() {
     JourneyManager journeyManager = JourneyManager();
 
     Station startingStation = journeyManager.getRandomStation();
-    Station destinationStation = journeyManager.getRandomStation();
+    Station destinationStation = startingStation;
 
     // make sure destination station != starting stations
     while (startingStation == destinationStation) {
@@ -63,8 +60,14 @@ int main() {
     journeyManager.setStartingStation(startingStation);
     journeyManager.setDestinationStation(destinationStation);
 
-    selectChallenge(journeyManager,startingLine,startingStation,destinationStation);
+
+    // SET UP STARTING LINE & CURRENT STATIONS
+    LineName startingLine = startingStation.getTransfers()[0];
+    vector<Station> currentStations;
     SubwayMap::createStations(startingLine, currentStations);
+
+//    selectChallenge(journeyManager,startingLine,startingStation,destinationStation);
+
 
     // START TRAIN
     Train train = Train(startingLine, NULL_DIRECTION, currentStations, false,10);
@@ -76,10 +79,6 @@ int main() {
     if (train.getCurrentStation().hasTransferLine()) {
         handleStartingLine(train);
     }
-
-    train.setCurrentStation(startingStation.getName());
-
-
 
     train.setDirection(handleNewDirection(train)); // ask user for a direction they want to start going
 

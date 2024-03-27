@@ -6,8 +6,15 @@
 
 JourneyManager::JourneyManager() {
     SubwayMap::createStations(NULL_TRAIN, allStations); // Fill allStations vector
-    startingStation = allStations[0];
-    destinationStation = allStations[allStations.size()];
+
+    // Initialize startingStation and destinationStation with random stations
+    startingStation = getRandomStation();
+    destinationStation = getRandomStation();
+
+    // Ensure startingStation and destinationStation are different
+    while (startingStation == destinationStation) {
+        destinationStation = getRandomStation();
+    }
 }
 
 JourneyManager::JourneyManager(Station startingStation, Station destinationStation) {
@@ -63,12 +70,14 @@ vector<Station> JourneyManager::getAllStations() {
     return allStations;
 }
 
-Station JourneyManager::getRandomStation() {
-    random_device rd;
-    mt19937 generator(rd());
-    uniform_int_distribution<> distribution(0, getAllStations().size() - 1);
+Station& JourneyManager::getRandomStation() {
+    static unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
-    int randomIndex = distribution(generator);
+    static std::mt19937_64 generator1(seed);
+    static std::default_random_engine generator2(generator1());
+    static std::uniform_int_distribution<std::size_t> dist(0, allStations.size() - 1);
 
-    return getAllStations()[randomIndex];
+    std::size_t randomIndex = dist(generator2);
+
+    return allStations[randomIndex];
 }

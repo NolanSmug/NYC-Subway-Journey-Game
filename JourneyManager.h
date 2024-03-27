@@ -26,7 +26,7 @@ public:
 
     vector<Station> getAllStations();
 
-    Station getRandomStation();
+    Station& getRandomStation();
 
 private:
     vector<Station> allStations;
