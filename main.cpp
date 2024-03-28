@@ -10,11 +10,31 @@
 #include <chrono>
 #include <thread>
 #include <iomanip>
+#include <cstdlib>
 
+struct GameState {
+    LineName startingLine;
+    Station startingStation;
+    Station destinationStation;
+    vector<Station> currentStations;
+    bool isFirstTurn;
+
+    void resetGameState(JourneyManager& journeyManager) {
+        startingStation = journeyManager.getRandomStation();
+        destinationStation = startingStation;
+        while (startingStation == destinationStation) {
+            destinationStation = journeyManager.getRandomStation();
+        }
+
+        startingLine = startingStation.getTransfers()[0];
+        SubwayMap::createStations(startingLine, currentStations);
+        isFirstTurn = true;
+    }
+};
 
 int getRandomStation(unsigned int numStations);
 
-bool handleUserInput(Train &train, const Station &destinationStation);
+bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager);
 
 bool askUserToTransfer(Train &train);
 bool handleTransfer(Train &train);
@@ -33,25 +53,9 @@ void displayCurrentStationInfo(Train &train);
 void printAllStations(Train &train);
 void printTransferLines(vector<LineName> transfers);
 
-struct GameState {
-    LineName startingLine;
-    Station startingStation;
-    Station destinationStation;
-    vector<Station> currentStations;
-
-    void resetGameState(JourneyManager& journeyManager) {
-        startingStation = journeyManager.getRandomStation();
-        destinationStation = startingStation;
-        while (startingStation == destinationStation) {
-            destinationStation = journeyManager.getRandomStation();
-        }
-
-        startingLine = startingStation.getTransfers()[0];
-        SubwayMap::createStations(startingLine, currentStations);
-    }
-};
-
 void selectChallenge(JourneyManager& journeyManager, GameState& gameState);
+
+void initializeTrain(Train& train, GameState& gameState);
 
 int main() {
     // SET UP JOURNEY MANAGER
@@ -70,16 +74,7 @@ int main() {
 
     // START TRAIN
     Train train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, false, 10);
-    train.setCurrentStation(gameState.startingStation);
-    displayCurrentStationInfo(train);
-
-    cout << "Destination Station:\n" << gameState.destinationStation;
-
-    if (train.getCurrentStation().hasTransferLine()) {
-        handleStartingLine(train);
-    }
-
-    train.setDirection(handleNewDirection(train)); // ask user for a direction they want to start going
+    initializeTrain(train, gameState);
 
     // GAME LOOP
     while (train.getCurrentStation() != gameState.destinationStation) {
@@ -95,7 +90,7 @@ int main() {
 
         bool validInput = false;
         while (!validInput) {
-            validInput = handleUserInput(train, gameState.destinationStation);
+            validInput = handleUserInput(train, gameState.destinationStation, gameState, journeyManager);
         }
     }
 
@@ -109,7 +104,7 @@ int main() {
 }
 
 // METHODS
-bool handleUserInput(Train &train, const Station &destinationStation) {
+bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager) {
     string input;
     if (train.getCurrentStation().hasTransferLine()) {
         cout << "Options:\n";
@@ -117,15 +112,27 @@ bool handleUserInput(Train &train, const Station &destinationStation) {
         cout << " - Enter 't' to transfer\n";
         cout << " - Enter 'c' to change direction\n";
         cout << " - Enter 'd' to display your Destination Station\n";
+        if (gameState.isFirstTurn) {
+            cout << " - Enter 'r' to refresh stations\n";
+        }
     }
     else {
         cout << "Options:\n";
         cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
         cout << " - Enter 'c' to change direction\n";
         cout << " - Enter 'd' to display your Destination Station\n";
+        if (gameState.isFirstTurn) {
+            cout << " - Enter 'r' to refresh stations\n";
+        }
     }
 
     getline(cin, input);
+
+    if (tolower(input[0]) == 'r' && input.length() == 1) {
+        gameState.resetGameState(journeyManager);
+        initializeTrain(train, gameState);
+        return true;
+    }
 
     if (input.empty()) {
         return handleAdvanceOneStation(train);
@@ -312,6 +319,21 @@ void handleStartingLine(Train &train) {
         }
     }
 }
+
+void initializeTrain(Train& train, GameState& gameState) {
+    train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, false, 10);
+    train.setCurrentStation(gameState.startingStation);
+    displayCurrentStationInfo(train);
+
+    cout << "Destination Station:\n" << gameState.destinationStation;
+
+    if (train.getCurrentStation().hasTransferLine()) {
+        handleStartingLine(train);
+    }
+
+    train.setDirection(handleNewDirection(train));
+}
+
 
 void printTransferLines(vector<LineName> transfers) {
     unsigned int numTransfers = transfers.size();
