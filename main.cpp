@@ -228,6 +228,9 @@ Direction handleNewDirection(Train &train) {
 
     if (uptownLabelValidChar == downtownLabelValidChar) {
         downtownLabelValidChar = train.getDowntownLabel()[4];
+        if (uptownLabelValidChar == downtownLabelValidChar) {
+            downtownLabelValidChar = train.getDowntownLabel()[3];
+        }
     }
 
     while (!valid) {
