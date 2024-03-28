@@ -36,41 +36,36 @@ void printTransferLines(vector<LineName> transfers);
 void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Station &startingStation, Station &destinationStation, vector<Station> &currentStations);
 
 int main() {
-
-
-
-
-//    vector<Station> allStations;
-//
-//
-//    SubwayMap::createStations(NULL_TRAIN, allStations); // NULL_TRAIN returns all the NYC stations
-
-
     // SET UP JOURNEY MANAGER
     JourneyManager journeyManager = JourneyManager();
 
     Station startingStation = journeyManager.getRandomStation();
     Station destinationStation = startingStation;
-
     // make sure destination station != starting stations
     while (startingStation == destinationStation) {
         destinationStation = journeyManager.getRandomStation();
     }
-
-
 
     // SET UP STARTING LINE & CURRENT STATIONS
     LineName startingLine = startingStation.getTransfers()[0];
     vector<Station> currentStations;
     SubwayMap::createStations(startingLine, currentStations);
 
-    selectChallenge(journeyManager,startingLine,startingStation,destinationStation, currentStations);
+
+    string mode;
+    cout << "Would you like to play Normal Mode (any key) or Challenge Mode (c)? ";
+    getline(cin, mode);
+
+
+    if (tolower(mode[0]) == 'c') {
+        selectChallenge(journeyManager, startingLine, startingStation, destinationStation, currentStations);
+    }
 
     // START TRAIN
     Train train = Train(startingLine, NULL_DIRECTION, currentStations, false,10);
     train.setCurrentStation(startingStation);
-
     displayCurrentStationInfo(train);
+
     cout << "Destination Station:\n" << destinationStation;
 
     if (train.getCurrentStation().hasTransferLine()) {
