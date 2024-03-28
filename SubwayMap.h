@@ -9,8 +9,6 @@
 #include "Station.h"
 #include "SubwayMap.h"
 
-using namespace std;
-
 class SubwayMap {
 private:
     vector<Station> allStations;

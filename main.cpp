@@ -3,6 +3,7 @@
 #include "Train.h"
 #include "Line.h"
 #include "Challenge.h"
+#include "JourneyManager.h"
 #include "sstream"
 #include "random"
 #include <iostream>
@@ -10,7 +11,6 @@
 #include <thread>
 #include <iomanip>
 
-using namespace std;
 
 int getRandomStation(unsigned int numStations);
 
@@ -33,36 +33,40 @@ void displayCurrentStationInfo(Train &train);
 void printAllStations(Train &train);
 void printTransferLines(vector<LineName> transfers);
 
-
+void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Station &startingStation, Station &destinationStation, vector<Station> &currentStations);
 
 int main() {
-    // SET UP STARTING LINE
-    SubwayMap subwayMap = SubwayMap();
-    LineName startingLine = Line::getRandomLine();
+    // SET UP JOURNEY MANAGER
+    JourneyManager journeyManager = JourneyManager();
 
-    vector<Station> currentStations;
-    vector<Station> allStations;
-
-    SubwayMap::createStations(startingLine, currentStations);
-    SubwayMap::createStations(NULL_TRAIN, allStations); // NULL_TRAIN returns all the NYC stations
-
-    unsigned int numStations = currentStations.size();
-    unsigned int const totalNumStations = allStations.size();
-
-    int startingStation = getRandomStation(numStations);
-    int destinationStation = startingStation;
-
+    Station startingStation = journeyManager.getRandomStation();
+    Station destinationStation = startingStation;
     // make sure destination station != starting stations
-    while (allStations[destinationStation].getId() == allStations[startingStation].getId()) {
-        destinationStation = getRandomStation(totalNumStations);
+    while (startingStation == destinationStation) {
+        destinationStation = journeyManager.getRandomStation();
+    }
+
+    // SET UP STARTING LINE & CURRENT STATIONS
+    LineName startingLine = startingStation.getTransfers()[0];
+    vector<Station> currentStations;
+    SubwayMap::createStations(startingLine, currentStations);
+
+
+    string mode;
+    cout << "Would you like to play Normal Mode (any key) or Challenge Mode (c)? ";
+    getline(cin, mode);
+
+
+    if (tolower(mode[0]) == 'c') {
+        selectChallenge(journeyManager, startingLine, startingStation, destinationStation, currentStations);
     }
 
     // START TRAIN
     Train train = Train(startingLine, NULL_DIRECTION, currentStations, false,10);
     train.setCurrentStation(startingStation);
-
     displayCurrentStationInfo(train);
-    cout << "Destination Station:\n" << allStations[destinationStation];
+
+    cout << "Destination Station:\n" << destinationStation;
 
     if (train.getCurrentStation().hasTransferLine()) {
         handleStartingLine(train);
@@ -71,8 +75,7 @@ int main() {
     train.setDirection(handleNewDirection(train)); // ask user for a direction they want to start going
 
     // GAME LOOP
-    while (!(train.getCurrentStation().getName() == allStations[destinationStation].getName() &&
-           train.getCurrentStation().getTransfers() == allStations[destinationStation].getTransfers())) {
+    while ((train.getCurrentStation() != destinationStation)) {
         displayCurrentStationInfo(train);
 
         unsigned int currentStationIndex = train.getCurrentStationIndex();
@@ -85,13 +88,12 @@ int main() {
 
         bool validInput = false;
         while (!validInput) {
-            validInput = handleUserInput(train, allStations[destinationStation]);
+            validInput = handleUserInput(train, destinationStation);
         }
     }
 
     // GAME FINISHED
-    if (train.getCurrentStation().getName() == allStations[destinationStation].getName() &&
-        train.getCurrentStation().getTransfers() == allStations[destinationStation].getTransfers()) {
+    if (train.getCurrentStation() == destinationStation) {
         cout << "\nYour current Station:\n" << train.getCurrentStation();
         cout << "YOU WIN" << endl;
     }
@@ -221,6 +223,9 @@ Direction handleNewDirection(Train &train) {
 
     if (uptownLabelValidChar == downtownLabelValidChar) {
         downtownLabelValidChar = train.getDowntownLabel()[4];
+        if (uptownLabelValidChar == downtownLabelValidChar) {
+            downtownLabelValidChar = train.getDowntownLabel()[3];
+        }
     }
 
     while (!valid) {
@@ -376,8 +381,38 @@ void printAllStations(Train &train) {
     cout << "------------------------------------------------------------------" << endl;
 }
 
-// FUTURE WORK
-//void selectChallenge(Train &train, const vector<Station> &allStations) {
-//
-//
-//}
+void selectChallenge(JourneyManager &journeyManager, LineName &startingLine, Station &startingStation, Station &destinationStation, vector<Station> &currentStations) {
+    Challenge challenge = Challenge();
+
+    vector<Challenge> allChallenges = challenge.getAllChallenges();
+    int count = 1;
+
+    for (Challenge challenge: allChallenges) {
+        cout << count << ": " << challenge.getStartStation().getName() << " -> " << challenge.getDestinationStation().getName()
+             << endl;
+        count++;
+    }
+
+    cout << "\nSelect a Number Challenge to Complete: ";
+    string challengeChoiceIndex;
+    getline(cin, challengeChoiceIndex); // Read the user's input
+
+    int index;
+    istringstream inputStringStream(challengeChoiceIndex);
+    inputStringStream >> index;
+
+    if (index >= 1 && index <= allChallenges.size()) {
+        Challenge challengeChoice = allChallenges[index - 1];
+
+        journeyManager.setStartingStation(challengeChoice.getStartStation());
+        journeyManager.setDestinationStation(challengeChoice.getDestinationStation());
+
+        startingLine = challengeChoice.getStartLine();
+        SubwayMap::createStations(startingLine, currentStations); // remember to fill current stations vector for the train!
+
+        startingStation = journeyManager.getStartingStation();
+        destinationStation = journeyManager.getDestinationStation();
+    } else {
+        cout << "Invalid challenge index. Please select a valid challenge." << endl;
+    }
+}

@@ -6,11 +6,6 @@
 #include "vector"
 #include "SubwayMap.h"
 #include "Station.h"
-#include <iostream>
-
-
-using namespace std;
-
 
 void stringToLowerCase(string &string) {
     transform(string.begin(), string.end(), string.begin(), ::tolower);

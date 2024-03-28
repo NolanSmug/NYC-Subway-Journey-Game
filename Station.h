@@ -5,11 +5,7 @@
 #ifndef M1OEP_NCYR1_STATION_H
 #define M1OEP_NCYR1_STATION_H
 
-#include <string>
-#include <vector>
 #include "Line.h"
-
-using namespace std;
 
 enum Borough {
     MANHATTAN,
@@ -34,10 +30,13 @@ public:
 
     friend ostream& operator<<(ostream& str, Station station);
 
+    bool operator==(const Station &rhs) const;
+    bool operator!=(const Station &rhs) const;
+
     string getId();
     void setId(string newId);
 
-    string getName() const;
+    string getName();
     void setName(string newName);
 
     vector<LineName> getTransfers();

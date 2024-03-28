@@ -4,10 +4,7 @@
 
 #include "Station.h"
 #include "sstream"
-#include <fstream>
-using std::ifstream, std::string, std::vector;
 
-using namespace std;
 
 // Constructors
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
@@ -33,8 +30,17 @@ ostream& operator<<(ostream& str, Station station) {
     return str;
 }
 
+// equals operator
+bool Station::operator==(const Station &rhs) const {
+    return name == rhs.name && transfers == rhs.transfers;
+}
+
+bool Station::operator!=(const Station &rhs) const {
+    return !(rhs == *this);
+}
+
 // ID
-string Station::getId() {
+string Station::getId(){
     return id;
 }
 
@@ -43,7 +49,7 @@ void Station::setId(string newId) {
 }
 
 // Name
-string Station::getName() const {
+string Station::getName() {
     return name;
 }
 

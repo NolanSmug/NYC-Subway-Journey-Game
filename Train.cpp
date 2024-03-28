@@ -3,10 +3,6 @@
 //
 #include "Train.h"
 
-#include <utility>
-
-using namespace std;
-
 Train::Train() : currentLine(NULL_TRAIN), direction(NULL_DIRECTION), scheduledStops(), express(false), numCars(10) {}
 
 Train::Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars)
@@ -108,6 +104,17 @@ void Train::setCurrentStation(int stationIndex) {
     currentStationIndex = stationIndex;
 }
 
+void Train::setCurrentStation(Station station) {
+    vector<Station> reversedScheduledStops(scheduledStops.rbegin(), scheduledStops.rend());
+
+    for (int i = 0; i < reversedScheduledStops.size(); i++) {
+        if (reversedScheduledStops[i] == station) {
+            currentStationIndex = scheduledStops.size() - i - 1;
+            break;
+        }
+    }
+}
+
 void Train::setCurrentStation(string stationName) {
     for (int i = 0; i < scheduledStops.size(); i++) {
         if (scheduledStops[i].getName() == stationName) {
@@ -116,6 +123,7 @@ void Train::setCurrentStation(string stationName) {
         }
     }
 }
+
 
 Station Train::getNextStation() {
     int increment = (direction == UPTOWN ? 1 : -1); // choose if we want

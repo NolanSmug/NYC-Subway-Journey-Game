@@ -71,6 +71,7 @@ public:
 
     void setCurrentStation(int stationIndex);   // overloaded
     void setCurrentStation(string stationName); // overloaded
+    void setCurrentStation(Station station);    // overloaded
 
     bool advanceStation();                  // overloaded
     bool advanceStation(int numStations);   // overloaded
