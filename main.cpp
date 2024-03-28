@@ -130,6 +130,7 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
 
     if (tolower(input[0]) == 'r' && input.length() == 1) {
         gameState.resetGameState(journeyManager);
+        cout << "\n\n\n\n-----------GAME RESET-----------\n\n\n\n";
         initializeTrain(train, gameState);
         return true;
     }
