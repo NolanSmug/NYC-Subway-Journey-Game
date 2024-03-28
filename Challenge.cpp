@@ -60,7 +60,7 @@ vector<Challenge> Challenge::getAllChallenges() {
     const Station METS_WILLETS_POINT = Station("702", "Mets-Willets Point", {SEVEN_TRAIN}, QUEENS);
     const Station VAN_CORTLANDT_PARK_242ND_ST = Station("101", "Van Cortlandt Park-242 St", {ONE_TRAIN}, BRONX);
     const Station ASTORIA_DITMARS_BLVD = Station("R01", "Astoria-Ditmars Blvd", {N_TRAIN, W_TRAIN}, QUEENS);
-    const Station PRINCE_ST = Station("R22", "Prince St", {N_TRAIN, R_TRAIN, W_TRAIN}, MANHATTAN);
+    const Station PRINCE_ST = Station("R22", "Prince St", {R_TRAIN, W_TRAIN}, MANHATTAN);
     const Station E14TH_ST_UNION_SQ = Station("635", "14 St-Union Sq", {FOUR_TRAIN, FIVE_TRAIN, SIX_TRAIN, N_TRAIN, Q_TRAIN, R_TRAIN, W_TRAIN, L_TRAIN}, MANHATTAN);
     const Station HOWARD_BEACH_JFK_AIRPORT = Station("H03", "Howard Beach-JFK Airport", {A_TRAIN}, QUEENS);
     const Station W81ST_MUSEUM_OF_NATURAL_HISTORY = Station("A21", "81 St-Museum of Natural History", {B_TRAIN, C_TRAIN}, MANHATTAN);
