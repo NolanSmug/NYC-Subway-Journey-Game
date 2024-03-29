@@ -23,7 +23,7 @@ Here's how the game steps flow:
        3. Enter 'c' to change the direction of travel.
        4. Enter 'd' to display information about the destination station.
         
-    >_
+       >_
    ```
 
 3. **Game Loop**:
