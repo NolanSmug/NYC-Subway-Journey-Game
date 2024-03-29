@@ -188,6 +188,8 @@ Manages a `JourneyManager` object responsible for handling journey-related funct
 | `vector<Station> getAllStations()`                          | Gets all the stations in the subway system.                       |
 | `Station& getRandomStation()`                               | Gets a random station from the subway system.                     |
 
+****
+
 ### Main Class
 
 The `main` function serves as the entry point for the `NYC Subway Journey Game Application`.
@@ -197,6 +199,18 @@ It manages the gameplay loop, user input handling, and `GameState` management.
 
 The `GameState` struct encapsulates the current state of the game (it's in the name),
 including the `starting line`, `starting station`, `destination station`, and `current stations`.
+
+```c++
+struct GameState {
+    LineName startingLine;
+    Station startingStation;
+    Station destinationStation;
+    vector<Station> currentStations;
+    bool isFirstTurn;
+
+    void resetGameState(JourneyManager& journeyManager);
+};
+```
 
 | Function                        | Description                                                                                                                                               |
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -218,6 +232,8 @@ including the `starting line`, `starting station`, `destination station`, and `c
 
 
 ****
+
+
 
 ## Timeline
 
