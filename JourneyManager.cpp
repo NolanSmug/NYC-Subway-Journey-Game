@@ -15,7 +15,6 @@ JourneyManager::JourneyManager(Station newStartingStation, Station newDestinatio
     SubwayMap::createStations(NULL_TRAIN, allStations); // Fill allStations vector
 }
 
-
 Station JourneyManager::getStartingStation() {
     return startingStation;
 }

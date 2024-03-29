@@ -26,7 +26,7 @@ public:
     int getDifficulty();
     void setDifficulty(int difficulty);
 
-    vector<Challenge> getAllChallenges();
+    vector<Challenge> initializeAllChallenges();
 
 
 private:

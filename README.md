@@ -2,47 +2,46 @@
 # Nolan Cyr
 ## Subway Shuffle: A Randomized NYC Journey
 
-## Summary of Program
+### Summary of Program
 
-This is a game where a player is placed into a random NYC subway station,
-and the goal is to reach another randomly given station.
+This program is a text-based game set in the New York City subway system.
+The player's goal is
+to navigate from a randomly assigned `starting station` to another randomly assigned `destination station`.
+Here's how the game steps flow:
 
-Upon starting the game, the player is given a random `current station` and a random `destination station`.
-They are then prompted to choose a train `Line` to board from the available transfer options at their `current station`.
-After selecting a `Line`,
-the player is asked to choose a `Direction` (e.g., `Queens-bound` or `Brooklyn-bound`) to start traveling.
+1. **Initialization**:
+    - The player is given a random `starting station` and a random `destination station` within the subway system.
+    - They are prompted to choose a subway line to board from the available transfer options at their `starting station`.
+    - Once a line is chosen, they select a direction (e.g., `Queens-bound` or `Brooklyn-bound`) to start traveling.
 
-At each station/stop, the program displays the following information:
-- `Current Line` and `Direction`
-- `Current Station`
-- Available `Transfer Lines` at the `Current Station`
+2. **Gameplay**:
+    - At each station or stop, the program displays information such as the `current line`, `direction`, `current station`, and `available transfer lines`.
+    - The player is presented with the options below:
+   ```text
+       1. Enter a number to advance a specific number of stations (or leave blank to advance one station).
+       2. Enter 't' to transfer to a different line.
+       3. Enter 'c' to change the direction of travel.
+       4. Enter 'd' to display information about the destination station.
+        
+    >_
+   ```
 
-And the user is then given **4 options**:
-```markdown
-1. Enter a number to advance that many stations (or leave blank to advance one station)
-2. Enter 't' to transfer to a different line
-3. Enter 'c' to change the direction of travel (e.g., from Queens-bound to Brooklyn-bound, or vice versa)
-4. Enter 'd' to display the Destination Station information again
-```
+3. **Game Loop**:
+    - The game continues until the player reaches the `destination station`.
+   >There is no losing condition; the game runs until the player successfully reaches the destination.
 
-> No worries! There is no "losing" in this game, as the program runs until the player reaches the `destination station`.
-
-If the player types '`t`' to transfer lines,
-they are prompted to select a new line from the available transfer options at the current station
-and choose a new direction.
-(Input validation is implemented here too)
-
-After a valid input is given, the player is notified of the station they have arrived at,
-and the process repeats until the player reaches the `destination station`.
+4. **Challenge Mode**:
+    - Optionally, the player can choose to play in `Challenge Mode`, where they are presented with specific challenges to complete.
+    - `Challenges` involve traveling from one `predetermined station` to another, each ranging in `difficulty` (1-3).
 
 ****
 
 ## Classes
 
-### Train  
+### Train
 Manages a `Train` object and its scheduled stops.
 
-#### Private Variables:  
+#### Private Variables:
 | Name                             | Description                                                 |
 |----------------------------------|-------------------------------------------------------------|
 | `LineName currentLine`           | Current subway line of the Train.                           |
@@ -54,11 +53,11 @@ Manages a `Train` object and its scheduled stops.
 | `bool express`                   | Indicates whether the Train is an express train or not.     |
 | `int numCars`                    | Number of cars in the Train.                                |
 
-#### Public Methods:  
+#### Public Methods:
 | Method                                                          | Description                                                            |
 |-----------------------------------------------------------------|------------------------------------------------------------------------|
-| `LineName getName()`                                            | Gets the current line of the Train.                                    |
-| `void setName(LineName newLineName)`                            | Sets the current line of the Train.                                    |
+| `LineName getLine()`                                            | Gets the current line of the Train.                                    |
+| `void setLine(LineName newLineName)`                            | Sets the current line of the Train.                                    |
 | `Direction getDirection()`                                      | Gets the direction of the Train.                                       |
 | `void setDirection(Direction newDirection)`                     | Sets the direction of the Train.                                       |
 | `bool transferToLine(LineName newLine, Station currentStation)` | Attempts to transfer the Train to a different line at a given station. |
@@ -78,10 +77,11 @@ Manages a `Train` object and its scheduled stops.
 | `void setNumCars(int newNumCars)`                               | Sets the number of cars on the Train.                                  |
 
 ****
-### Station  
+
+### Station
 Represents a subway station in the game.
 
-#### Private Variables:  
+#### Private Variables:
 | Name                         | Description                                                 |
 |------------------------------|-------------------------------------------------------------|
 | `string id`                  | ID Number for the Station.                                  |
@@ -89,7 +89,7 @@ Represents a subway station in the game.
 | `vector<LineName> transfers` | List of subway lines available for transfer at the Station. |
 | `Borough borough`            | Borough where the Station is located.                       |
 
-#### Public Methods:  
+#### Public Methods:
 | Method                                    | Description                                                            |
 |-------------------------------------------|------------------------------------------------------------------------|
 | `string getId()`                          | Gets the ID of the Station.                                            |
@@ -102,12 +102,16 @@ Represents a subway station in the game.
 | `void setBorough(Borough newBorough)`     | Sets the borough of the Station.                                       |
 | `string getTextForEnum(int enumVal)`      | Gets the string representation of a Borough enum value.                |
 
-#### Friend Overloaded Operator:  
-| Operator                                             | Description                                               |
-|------------------------------------------------------|-----------------------------------------------------------|
-| `ostream& operator<<(ostream& str, Station station)` | Overloaded insertion operator (toString() for a Station). |
+#### Friend Overloaded Operators:
+| Operator                                                  | Description                                                    |
+|-----------------------------------------------------------|----------------------------------------------------------------|
+| `ostream& operator<<(ostream& str, Station station)`      | Overloaded insertion operator (toString() for a Station).      |
+| `bool operator==(const Station &lhs, const Station &rhs)` | Overloaded equality operator to compare two Station objects.   |
+| `bool operator!=(const Station &lhs, const Station &rhs)` | Overloaded inequality operator to compare two Station objects. |
+
 
 ****
+
 ### Line  
 Handles the different subway lines in the game.
 
@@ -119,6 +123,7 @@ Handles the different subway lines in the game.
 | `static LineName stringToLineEnum(string& lineStr)` | Gets a LineName enum of a string representation for a LineName enum. |
 
 ****
+
 ### SubwayMap  
 Reads station data from a CSV file and manages subway stations.
 
@@ -133,10 +138,84 @@ Reads station data from a CSV file and manages subway stations.
 | `void createStations(string filePath, vector<Station>& allStations)`      | Loads all subway station objects into a vector from a CSV file. |
 | `void updateStopsForLine(LineName line, vector<Station>& subwayStations)` | Updates the scheduled stops for a specified subway line.        |
 
-### Main
+****
 
-Acts as the "Driver" for the game.
-Includes input validation for all questions, which has been extensively tested.
+### Challenge
+Manages a `Challenge` object representing a specific Train journey challenge.
+
+#### Private Variables:
+| Name                         | Description                            |
+|------------------------------|----------------------------------------|
+| `LineName startLine`         | Starting subway line of the Challenge. |
+| `Station startStation`       | Starting station of the Challenge.     |
+| `Station destinationStation` | Destination station of the Challenge.  |
+| `int difficulty`             | Difficulty level of the Challenge.     |
+
+#### Public Methods:
+| Method                                                      | Description                                              |
+|-------------------------------------------------------------|----------------------------------------------------------|
+| `LineName getStartLine()`                                   | Gets the starting subway line of the Challenge.          |
+| `void setStartLine(LineName startLine)`                     | Sets the starting subway line of the Challenge.          |
+| `Station getStartStation()`                                 | Gets the starting station of the Challenge.              |
+| `void setStartStation(Station newStartStation)`             | Sets the starting station of the Challenge.              |
+| `Station getDestinationStation()`                           | Gets the destination station of the Challenge.           |
+| `void setDestinationStation(Station newDestinationStation)` | Sets the destination station of the Challenge.           |
+| `int getDifficulty()`                                       | Gets the difficulty level of the Challenge.              |
+| `void setDifficulty(int difficulty)`                        | Sets the difficulty level of the Challenge.              |
+| `vector<Challenge> initializeAllChallenges()`               | Initializes a collection of all challenges for the game. |
+
+****
+
+### JourneyManager
+Manages a `JourneyManager` object responsible for handling journey-related functionalities in the game.
+
+#### Private Variables:
+| Name                          | Description                                                     |
+|-------------------------------|-----------------------------------------------------------------|
+| `vector<Station> allStations` | Vector containing all stations in the subway system.            |
+| `Station startingStation`     | Starting station of the journey.                                |
+| `Station destinationStation`  | Destination station of the journey.                             |
+
+#### Public Methods:
+| Method                                                      | Description                                                       |
+|-------------------------------------------------------------|-------------------------------------------------------------------|
+| `Station getStartingStation()`                              | Gets the starting station of the journey.                         |
+| `void setStartingStation(Station newStartingStation)`       | Sets the starting station of the journey.                         |
+| `void setStartingStation(string newStartingStation)`        | Sets the starting station of the journey using a station name.    |
+| `Station getDestinationStation()`                           | Gets the destination station of the journey.                      |
+| `void setDestinationStation(Station newDestinationStation)` | Sets the destination station of the journey.                      |
+| `void setDestinationStation(string newDestinationStation)`  | Sets the destination station of the journey using a station name. |
+| `vector<Station> getAllStations()`                          | Gets all the stations in the subway system.                       |
+| `Station& getRandomStation()`                               | Gets a random station from the subway system.                     |
+
+### Main Class
+
+The `main` function serves as the entry point for the `NYC Subway Journey Game Application`.
+It manages the gameplay loop, user input handling, and `GameState` management.
+
+#### GameState Struct:
+
+The `GameState` struct encapsulates the current state of the game (it's in the name),
+including the `starting line`, `starting station`, `destination station`, and `current stations`.
+
+| Function                        | Description                                                                                                                                               |
+|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `main`                          | Entry point of the application. It sets up the game environment, initializes the `Train`, `JourneyManager`, and `GameState`, and enters the game loop.    |
+| `handleUserInput`               | Handles user input during the game. It interprets user commands to advance the train, change direction, transfer to another line, or display information. |
+| `displayCurrentStationInfo`     | Displays information about the current station, including the line and direction of the train.                                                            |
+| `handleAdvanceOneStation`       | Handles the command to advance the train by one station.                                                                                                  |
+| `handleTransfer`                | Handles the command to transfer to another line at the current station.                                                                                   |
+| `handleChangeDirection`         | Handles the command to change the direction of the train.                                                                                                 |
+| `handleAdvanceMultipleStations` | Handles the command to advance the train by multiple stations specified by the user.                                                                      |
+| `handleLastStop`                | Handles the situation when the train reaches the last stop on its current line. It prompts the user to switch direction and continue the journey.         |
+| `getRandomStation`              | Generates a random station index within the specified range.                                                                                              |
+| `handleNewDirection`            | Prompts the user to choose a new direction for the train when transferring to another line.                                                               |
+| `askUserToTransfer`             | Prompts the user to choose a line for transferring at the current station.                                                                                |
+| `handleStartingLine`            | Prompts the user to choose a train line to wait for at the current station.                                                                               |
+| `initializeTrain`               | Initializes the train with the starting line, current station, and destination station based on the game state.                                           |
+| `printTransferLines`            | Prints the available transfer lines at a station.                                                                                                         |
+| `selectChallenge`               | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge.                     |
+
 
 ****
 

@@ -46,7 +46,7 @@ void Challenge::setDifficulty(int newDifficulty) {
 }
 
 
-vector<Challenge> Challenge::getAllChallenges() {
+vector<Challenge> Challenge::initializeAllChallenges() {
     vector<Challenge> allChallenges;
 
     const Station GRAND_CENTRAL_42 = Station("631", "Grand Central-42 St", {FOUR_TRAIN, FIVE_TRAIN, SIX_TRAIN, SEVEN_TRAIN, S_TRAIN}, MANHATTAN);

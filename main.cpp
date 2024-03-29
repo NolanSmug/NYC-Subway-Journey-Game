@@ -416,7 +416,7 @@ void printAllStations(Train &train) {
 void selectChallenge(JourneyManager& journeyManager, GameState& gameState) {
     Challenge challenge = Challenge();
 
-    vector<Challenge> allChallenges = challenge.getAllChallenges();
+    vector<Challenge> allChallenges = challenge.initializeAllChallenges();
     int count = 1;
 
     for (Challenge challenge : allChallenges) {

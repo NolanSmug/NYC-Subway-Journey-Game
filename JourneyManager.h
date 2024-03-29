@@ -10,11 +10,10 @@
 #include "SubwayMap.h"
 
 
-
 class JourneyManager {
 public:
     JourneyManager();
-    JourneyManager(Station startingStation, Station destinationStation);
+    JourneyManager(Station newStartingStation, Station newDestinationStation);
 
     Station getStartingStation();
     void setStartingStation(Station newStartingStation);
