@@ -32,7 +32,7 @@ Here's how the game steps flow:
 
 4. **Challenge Mode**:
     - Optionally, the player can choose to play in `Challenge Mode`, where they are presented with specific challenges to complete.
-    - `Challenges` involve traveling from one `predetermined station` to another, each ranging in `difficulty` (1-3).
+    - `Challenges` involve traveling from one `predetermined station` to another, each ranging in `difficulty (1-3)`.
 
 ****
 
