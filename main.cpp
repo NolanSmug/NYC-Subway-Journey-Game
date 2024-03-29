@@ -22,12 +22,14 @@ struct GameState {
     void resetGameState(JourneyManager& journeyManager) {
         startingStation = journeyManager.getRandomStation();
         destinationStation = startingStation;
+
         while (startingStation == destinationStation) {
             destinationStation = journeyManager.getRandomStation();
         }
 
         startingLine = startingStation.getTransfers()[0];
         SubwayMap::createStations(startingLine, currentStations);
+
         isFirstTurn = true;
     }
 };
@@ -442,7 +444,8 @@ void selectChallenge(JourneyManager& journeyManager, GameState& gameState) {
 
         gameState.startingStation = journeyManager.getStartingStation();
         gameState.destinationStation = journeyManager.getDestinationStation();
-    } else {
+    }
+    else {
         cout << "Invalid challenge index. Please select a valid challenge." << endl;
     }
 }

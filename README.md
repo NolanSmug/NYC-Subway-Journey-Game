@@ -503,21 +503,3 @@ so the user advances `1` station and arrives at the correct `destination station
 ```
 
 ****
-
-## Grade ##
-
-At my Summer internship, they had me document my code on a separate webpage _Confluence_ (similar to Markdown format).
-I decided to do a similar thing in my README above, as I feel like the separation makes the code less cluttered and more readable.
-- Main Program Complexity (40)
-- Use of Multiple Languages (`C++ && Python`) (10)
-- Choice of Languages (20)
-- Command Line Arguments (5?)
-
-**IMPORTANT:** 
-A lot of code for this Module was merged/cloned from a separate public GitHub Repository,
-because I did not want graders to think that I was committing and adding to Module 2 late.
-If you notice anything weird with the commits, this is most likely the reason.
-
-Proposed Grade: **75 points**
-
-****
