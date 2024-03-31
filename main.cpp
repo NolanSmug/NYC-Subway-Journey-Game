@@ -19,7 +19,7 @@ struct GameState {
     vector<Station> currentStations;
     bool isFirstTurn;
 
-    void resetGameState(JourneyManager& journeyManager) {
+    void resetGameState(JourneyManager& journeyManager) { // if user wants to re-shuffle their stations
         startingStation = journeyManager.getRandomStation();
         destinationStation = startingStation;
 

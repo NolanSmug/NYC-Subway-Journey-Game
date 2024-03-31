@@ -67,7 +67,7 @@ vector<Challenge> Challenge::initializeAllChallenges() {
     const Station DELANCEY_ST_ESSEX_ST = Station("M18", "Delancey St-Essex St", {F_TRAIN, J_TRAIN, M_TRAIN, Z_TRAIN}, MANHATTAN);
     const Station MYRTLE_AVE = Station("M11", "Myrtle Av", {J_TRAIN, M_TRAIN, Z_TRAIN}, BROOKLYN);
     const Station NOSTRAND_AVE = Station("M28", "Nostrand Av", {M_TRAIN}, BROOKLYN);
-    const Station DYCKMAN_ST = Station("A03", "Dyckman St", {A_TRAIN}, MANHATTAN);
+    const Station DYCKMAN_ST = Station("109", "Dyckman St", {ONE_TRAIN}, MANHATTAN);
     const Station PELHAM_BAY_PARK = Station("601", "Pelham Bay Park", {SIX_TRAIN}, BRONX);
     const Station CONEY_ISLAND_STILLWELL_AVE = Station("D43", "Coney Island-Stillwell Av", {D_TRAIN, F_TRAIN, N_TRAIN, Q_TRAIN}, BROOKLYN);
     const Station GREENPOINT_AVE = Station("G26", "Greenpoint Av", {G_TRAIN, SEVEN_TRAIN}, BROOKLYN);
@@ -91,7 +91,7 @@ vector<Challenge> Challenge::initializeAllChallenges() {
     // Hard challenges
     allChallenges.emplace_back(G_TRAIN, COURT_SQ, DYCKMAN_ST, 3);
     allChallenges.emplace_back(SIX_TRAIN, PELHAM_BAY_PARK, CONEY_ISLAND_STILLWELL_AVE, 3);
-    allChallenges.emplace_back(A_TRAIN, DYCKMAN_ST, GREENPOINT_AVE, 3);
+    allChallenges.emplace_back(ONE_TRAIN, DYCKMAN_ST, GREENPOINT_AVE, 3);
     allChallenges.emplace_back(A_TRAIN, FAR_ROCKAWAY_MOTT_AVE, JAMAICA_179TH_ST, 3);
 
     return allChallenges;
