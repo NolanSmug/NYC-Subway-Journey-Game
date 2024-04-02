@@ -574,23 +574,23 @@ so the user advances `1` station and arrives at the correct `destination station
 ### Visual Diagram of The Journey
 
 ```text
-             4 Line     (starting line)                      
+             4 Line     (starting line)
            Bronx-bound  (starting direction) 
                ...
                 ʌ
-                |                          
-                |                           
-42nd St    Grand Central  ––––– (S Line) –––––>  Times Sq-42 St   (destination station)
-                |   (transfer)                          
-                |                                        
-                | 
-                |                          
-         14 St-Union Sq                       
-                |                                                  
-                |                           
-                |     
                 |
-                |                           
+                |
+42nd St    Grand Central  ––––– (S Line) –––––>  Times Sq-42 St   (destination station)
+                |   (transfer)
+                |
+                |
+                |
+         14 St-Union Sq
+                |
+                |
+                |
+                |
+                |
     Brooklyn Bridge-City Hall (starting station)
                 |
                 |
