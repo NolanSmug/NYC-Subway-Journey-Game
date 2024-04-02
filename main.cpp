@@ -63,7 +63,7 @@ int main() {
     // SET UP JOURNEY MANAGER
     JourneyManager journeyManager = JourneyManager();
 
-    GameState gameState;
+    GameState gameState; // holds data for the current game's parameters
     gameState.resetGameState(journeyManager);
 
     string gameMode;
@@ -137,22 +137,22 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
         return true;
     }
 
-    if (input.empty()) {
+    if (input.empty()) {                                             // advance 1 station
         return handleAdvanceOneStation(train);
     }
-    else if (tolower(input[0]) == 't' && input.length() == 1) {
+    else if (tolower(input[0]) == 't' && input.length() == 1) {  // prompt transfer
         return handleTransfer(train);
     }
-    else if (tolower(input[0]) == 'c' && input.length() == 1) {
+    else if (tolower(input[0]) == 'c' && input.length() == 1) {  // change direction
         return handleChangeDirection(train);
     }
-    else if (tolower(input[0]) == 'd' && input.length() == 1) {
+    else if (tolower(input[0]) == 'd' && input.length() == 1) {  // show destination station
         cout << "Destination Station:\n" << destinationStation;
     }
-    else if (input[0] == '0' && input.length() == 1) {
+    else if (input[0] == '0' && input.length() == 1) {              // secret
         printAllStations(train);
     }
-    else {
+    else {                                                          // advance input<int> stations
         return handleAdvanceMultipleStations(train, input);
     }
     return false;

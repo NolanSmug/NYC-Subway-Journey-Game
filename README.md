@@ -349,14 +349,14 @@ Once the data is parsed, the Python script:
 2. constructs a `dictionary` where each key represents a subway line
    and the corresponding `value` is a list of stations associated with that line.
    - Each CSV file is named based on the corresponding subway line `"1_train_stations.csv", "2_train_stations.csv",...`
-   ```python
-   {
-      "1_train_stations": ["StationA", "StationB", "StationC",...], 
-      "2_train_stations": ["StationA", "StationC", "StationD",...],
-      "3_train_stations": ["StationX", "StationY", "StationZ",...],
-      ...
-   }
-   ```
+```python
+stations = {
+    "1_train_stations": ["StationA", "StationB", "StationC",...], 
+    "2_train_stations": ["StationA", "StationC", "StationD",...],
+    "3_train_stations": ["StationX", "StationY", "StationZ",...],
+    ...
+}
+```
 
 3. lastly, `csv_reverser.py` ensures that the csv files follow the correct order our `advanceStation()` logic is written.
 
