@@ -34,6 +34,7 @@ struct GameState {
     }
 };
 
+
 int getRandomStation(unsigned int numStations);
 
 bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager);
@@ -51,13 +52,12 @@ void handleStartingLine(Train &train);
 void handleLastStop(Train &train);
 
 void displayCurrentStationInfo(Train &train);
-
 void printAllStations(Train &train);
-void printTransferLines(vector<LineName> transfers);
 
 void selectChallenge(JourneyManager& journeyManager, GameState& gameState);
 
 void initializeTrain(Train& train, GameState& gameState);
+
 
 int main() {
     // SET UP JOURNEY MANAGER
@@ -66,6 +66,7 @@ int main() {
     GameState gameState; // holds data for the current game's parameters
     gameState.resetGameState(journeyManager);
 
+    // SELECT GAME MODE
     string gameMode;
     cout << "Would you like to play Normal Mode (any key) or Challenge Mode (c)? ";
     getline(cin, gameMode);
@@ -104,6 +105,7 @@ int main() {
 
     return 0;
 }
+
 
 // METHODS
 bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager) {
@@ -156,6 +158,20 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
         return handleAdvanceMultipleStations(train, input);
     }
     return false;
+}
+
+void initializeTrain(Train& train, GameState& gameState) {
+    train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, false, 10);
+    train.setCurrentStation(gameState.startingStation);
+    displayCurrentStationInfo(train);
+
+    cout << "Destination Station:\n" << gameState.destinationStation;
+
+    if (train.getCurrentStation().hasTransferLine()) {
+        handleStartingLine(train);
+    }
+
+    train.setDirection(handleNewDirection(train));
 }
 
 void displayCurrentStationInfo(Train &train) {
@@ -318,21 +334,6 @@ void handleStartingLine(Train &train) {
         }
     }
 }
-
-void initializeTrain(Train& train, GameState& gameState) {
-    train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, false, 10);
-    train.setCurrentStation(gameState.startingStation);
-    displayCurrentStationInfo(train);
-
-    cout << "Destination Station:\n" << gameState.destinationStation;
-
-    if (train.getCurrentStation().hasTransferLine()) {
-        handleStartingLine(train);
-    }
-
-    train.setDirection(handleNewDirection(train));
-}
-
 
 void printAllStations(Train &train) {
     string currentStationID = train.getCurrentStation().getId();
