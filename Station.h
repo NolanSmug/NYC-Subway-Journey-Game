@@ -43,6 +43,7 @@ public:
     void addTransfers(LineName newTransfer);
     bool hasTransferLine(string input);
     bool hasTransferLine();
+    string printTransferLinesAlternative();
 
     Borough getBorough();
     void setBorough(Borough newBorough);

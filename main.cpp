@@ -286,7 +286,7 @@ bool askUserToTransfer(Train &train) {
             valid = train.transferToLine(Line::stringToLineEnum(input), currentStation);
         }
         else if (tolower(input[0]) == 't') {
-            printTransferLines(train.getCurrentStation().getTransfers());
+            train.getCurrentStation().printTransferLinesAlternative();
             cout << endl;
             alreadyListedTransfers = true;
         }
@@ -305,11 +305,7 @@ void handleStartingLine(Train &train) {
     bool validLine = false;
 
     while (!validLine) {
-        cout << "Choose a train line to wait for at " << train.getCurrentStation().getName() << " (";
-
-        printTransferLines(train.getCurrentStation().getTransfers());
-
-        cout << "): ";
+        cout << "Choose a train line to wait for at " << train.getCurrentStation().getName() << train.getCurrentStation().printTransferLinesAlternative();
 
         string lineChoice;
         getline(cin, lineChoice);
@@ -338,35 +334,6 @@ void initializeTrain(Train& train, GameState& gameState) {
 }
 
 
-void printTransferLines(vector<LineName> transfers) {
-    unsigned int numTransfers = transfers.size();
-
-    for (int i = 0; i < numTransfers; ++i) {
-        cout << Line::getTextForEnum(transfers[i]);
-        if (i != numTransfers - 1) { // If it's not the last line, print a space
-            cout << " ";
-        }
-    }
-}
-
-string printTransferLinesAlternative(vector<LineName> transfers) {
-    unsigned int numTransfers = transfers.size();
-    string transferLinesStr = "";
-
-    if (numTransfers > 0) {
-        transferLinesStr += " (";
-        for (int i = 0; i < numTransfers; ++i) {
-            transferLinesStr += Line::getTextForEnum(transfers[i]);
-            if (i != numTransfers - 1) { // If it's not the last line, add a space
-                transferLinesStr += " ";
-            }
-        }
-        transferLinesStr += ") ";
-    }
-
-    return transferLinesStr;
-}
-
 void printAllStations(Train &train) {
     string currentStationID = train.getCurrentStation().getId();
     vector<Station> stations =  train.getScheduledStops();
@@ -386,7 +353,7 @@ void printAllStations(Train &train) {
                 cout << "    |" << endl;
             }
             else {
-                cout << setw(35) << left << stations[i].getName() << printTransferLinesAlternative(stations[i].getTransfers());
+                cout << setw(35) << left << stations[i].getName() << stations[i].printTransferLinesAlternative();
                 cout << " " << stopsAwayText << endl;
                 cout << "    |" << endl;
             }
@@ -404,7 +371,7 @@ void printAllStations(Train &train) {
                 cout << "    |" << endl;
             }
             else {
-                cout << setw(35) << left << stations[i].getName() << printTransferLinesAlternative(stations[i].getTransfers());
+                cout << setw(35) << left << stations[i].getName() << stations[i].printTransferLinesAlternative();
                 cout << " " << stopsAwayText << endl;
                 cout << "    |" << endl;
             }
@@ -420,9 +387,8 @@ void selectChallenge(JourneyManager& journeyManager, GameState& gameState) {
     int count = 1;
 
     for (Challenge challenge : allChallenges) {
-        cout << count << ": " << challenge.getStartStation().getName() << " -> " << challenge.getDestinationStation().getName()
-             << endl;
-        count++;
+        cout << count << (count < 10 ? ":  " : ": ") << challenge << endl;
+        ++count;
     }
 
     cout << "\nSelect a Number Challenge to Complete: ";

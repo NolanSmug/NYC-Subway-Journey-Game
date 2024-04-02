@@ -46,6 +46,8 @@ void Challenge::setDifficulty(int newDifficulty) {
 }
 
 
+
+
 vector<Challenge> Challenge::initializeAllChallenges() {
     vector<Challenge> allChallenges;
 
@@ -95,6 +97,25 @@ vector<Challenge> Challenge::initializeAllChallenges() {
     allChallenges.emplace_back(A_TRAIN, FAR_ROCKAWAY_MOTT_AVE, JAMAICA_179TH_ST, 3);
 
     return allChallenges;
+}
+
+// overloaded cout operator
+ostream& operator<<(ostream& str, Challenge challenge) {
+    Station startStation = challenge.getStartStation();
+    Station destiStation = challenge.getDestinationStation();
+
+    int minStationNameWidth = 32;
+    int minTransferLineWidth = 20;
+
+    str << left << setw(minStationNameWidth) << startStation.getName();
+    str << "  " << setw(minTransferLineWidth) << left << startStation.printTransferLinesAlternative();
+
+    str << setw(10) << left << "----->" << "   ";
+
+    str << left << setw(minStationNameWidth) << destiStation.getName();
+    str << "  " << setw(minTransferLineWidth) << left << destiStation.printTransferLinesAlternative();
+
+    return str;
 }
 
 

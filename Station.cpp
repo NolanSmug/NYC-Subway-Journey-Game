@@ -19,10 +19,8 @@ Station::Station(string id, string name, vector<LineName> transfers, Borough bor
 ostream& operator<<(ostream& str, Station station) {
     str << "Name: " << station.getName() << endl;
 //  str << "ID: " << station.getId() << endl; // should I bother printing the ID?
-    str << "Transfer Available to the: ";
-    for (LineName line : station.getTransfers()) {
-        str << Line::getTextForEnum(line) << (station.getTransfers().size() == 1 ? "" : " ");
-    }
+    str << "Transfer Available to the:";
+    str << station.printTransferLinesAlternative();
     str << endl;
     str << "Borough: " << Station::getTextForEnum(station.getBorough()) << endl;
     str << "\n";
@@ -77,6 +75,24 @@ bool Station::hasTransferLine(string input) {
 
 bool Station::hasTransferLine() {
     return transfers.size() > 1;
+}
+
+string Station::printTransferLinesAlternative() {
+    unsigned int numTransfers = transfers.size();
+    string transferLinesStr = "";
+
+    if (numTransfers > 0) {
+        transferLinesStr += " (";
+        for (int i = 0; i < numTransfers; ++i) {
+            transferLinesStr += Line::getTextForEnum(transfers[i]);
+            if (i != numTransfers - 1) { // If it's not the last line, add a space
+                transferLinesStr += " ";
+            }
+        }
+        transferLinesStr += ") ";
+    }
+
+    return transferLinesStr;
 }
 
 

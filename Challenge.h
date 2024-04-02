@@ -8,6 +8,8 @@
 #include <string>
 #include "Line.h"
 #include "Station.h"
+#include "sstream"
+#include <iomanip>
 
 class Challenge {
 public:
@@ -27,6 +29,8 @@ public:
     void setDifficulty(int difficulty);
 
     vector<Challenge> initializeAllChallenges();
+
+    friend ostream& operator<<(ostream& str, Challenge challenge);
 
 
 private:
