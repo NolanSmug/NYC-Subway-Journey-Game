@@ -580,7 +580,7 @@ so the user advances `1` station and arrives at the correct `destination station
                 ʌ
                 |
                 |
-42nd St    Grand Central  ––––– (S Line) –––––>  Times Sq-42 St   (destination station)
+42nd St    Grand Central  –––––(S Line)–––––>  Times Sq-42 St   (destination station)
                 |   (transfer)
                 |
                 |
