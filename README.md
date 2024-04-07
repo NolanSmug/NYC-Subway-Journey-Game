@@ -216,7 +216,7 @@ struct GameState {
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `main`                          | Entry point of the application. It sets up the game environment, initializes the `Train`, `JourneyManager`, and `GameState`, and enters the game loop.    |
 | `handleUserInput`               | Handles user input during the game. It interprets user commands to advance the train, change direction, transfer to another line, or display information. |
-| `displayCurrentStationInfo`     | Displays information about the current station, including the line and direction of the train.                                                            |
+| `printCurrentStationInfo`       | Displays information about the current station, including the line and direction of the train.                                                            |
 | `handleAdvanceOneStation`       | Handles the command to advance the train by one station.                                                                                                  |
 | `handleTransfer`                | Handles the command to transfer to another line at the current station.                                                                                   |
 | `handleChangeDirection`         | Handles the command to change the direction of the train.                                                                                                 |
