@@ -58,6 +58,8 @@ void selectChallenge(JourneyManager& journeyManager, GameState& gameState);
 
 void initializeTrain(Train& train, GameState& gameState);
 
+bool challengeModeFlag = false; // set to false to skip first input
+bool easyModeFlag = true;      // set to true to print the current lines' scheduled stops after each turn
 
 int main() {
     // SET UP JOURNEY MANAGER
@@ -67,12 +69,14 @@ int main() {
     gameState.resetGameState(journeyManager);
 
     // SELECT GAME MODE
-    string gameMode;
-    cout << "Would you like to play Normal Mode (any key) or Challenge Mode (c)? ";
-    getline(cin, gameMode);
+    if (challengeModeFlag) {
+        string gameMode;
+        cout << "Would you like to play Normal Mode (any key) or Challenge Mode (c)? ";
+        getline(cin, gameMode);
 
-    if (tolower(gameMode[0]) == 'c') {
-        selectChallenge(journeyManager, gameState);
+        if (tolower(gameMode[0]) == 'c') {
+            selectChallenge(journeyManager, gameState);
+        }
     }
 
     // START TRAIN
@@ -157,6 +161,9 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
     else {                                                          // advance input<int> stations
         return handleAdvanceMultipleStations(train, input);
     }
+
+
+
     return false;
 }
 
@@ -174,6 +181,24 @@ void initializeTrain(Train& train, GameState& gameState) {
     train.setDirection(handleNewDirection(train));
 }
 
+void displayCurrentLineInfo(Train &train) {
+    bool isCrosstownTrain = train.getLine() == L_TRAIN || train.getLine() == S_TRAIN;
+    Direction currentDirection = train.getDirection();
+
+    cout << "\nYour Current Line:\n";
+    if (isCrosstownTrain) {
+        cout << (currentDirection == DOWNTOWN ? // if(?) = downtown, else(:) = uptown
+                 train.getDowntownLabel() + " " + Line::getTextForEnum(train.getLine()) + " Train →" :
+                 train.getUptownLabel()   + " " + Line::getTextForEnum(train.getLine()) + " Train ←");
+    }
+    else {
+        cout << (currentDirection == DOWNTOWN ? // if(?) = downtown, else(:) = uptown
+                 train.getDowntownLabel() + " " + Line::getTextForEnum(train.getLine()) + " Train ↓" :
+                 train.getUptownLabel()   + " " + Line::getTextForEnum(train.getLine()) + " Train ↑");
+    }
+    cout << endl;
+}
+
 void displayCurrentStationInfo(Train &train) {
     Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
@@ -182,11 +207,7 @@ void displayCurrentStationInfo(Train &train) {
         // do nothing
     }
     else {
-        cout << "\nYour Current Line:\n";
-        cout << (currentDirection == DOWNTOWN ? // if(?) = downtown, else(:) = uptown
-                 train.getDowntownLabel() + " " + Line::getTextForEnum(train.getLine()) + " Train ↓" :
-                 train.getUptownLabel() + " "  + Line::getTextForEnum(train.getLine()) + " Train ↑");
-        cout << endl;
+        displayCurrentLineInfo(train);
     }
 
     cout << "\nYour current Station:\n" << currentStation;
@@ -230,13 +251,21 @@ bool handleAdvanceMultipleStations(Train &train, string &input) {
 }
 
 void handleLastStop(Train &train) {
+    cout << "-------------------------------------------------------------------------------------------------------------------------" << endl;
     cout << "This is the last stop on this train. Everyone please leave the train, thank you for riding with MTA New York City Transit" << endl;
+    cout << "-------------------------------------------------------------------------------------------------------------------------" << endl;
+
     // switch direction
     train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
 
-    cout << "You switched to the " << trackLabel << " platform." << endl;
-    this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes
+    this_thread::sleep_for(chrono::seconds(3)); // wait so user realizes
+    cout << "You switched to the " << trackLabel << " platform.\n";
+
+    this_thread::sleep_for(chrono::seconds(2));
+
+    displayCurrentLineInfo(train);
+    cout << endl;
 }
 
 int getRandomStation(unsigned int numStations) {
@@ -262,11 +291,20 @@ Direction handleNewDirection(Train &train) {
     }
 
     while (!valid) {
-        cout << "Would you like to enter traveling |"
-             << train.getUptownLabel()   << " ↑| (" << uptownLabelValidChar << "), or |"
-             << train.getDowntownLabel() << " ↓| (" << downtownLabelValidChar << ") ";
-        getline(cin, input);
+        bool isCrosstownTrain = train.getLine() == L_TRAIN || train.getLine() == S_TRAIN;
 
+        if (isCrosstownTrain) { // special case for crosstown trains
+            cout << "Would you like to enter traveling |"
+                 << train.getUptownLabel()   << " ←| (" << uptownLabelValidChar   << "), or |"
+                 << train.getDowntownLabel() << " →| (" << downtownLabelValidChar << ") ";
+        }
+        else {
+            cout << "Would you like to enter traveling |"
+                 << train.getUptownLabel()   << " ↑| (" << uptownLabelValidChar   << "), or |"
+                 << train.getDowntownLabel() << " ↓| (" << downtownLabelValidChar << ") ";
+        }
+
+        getline(cin, input);
         uint length = input.length();
 
         if (length == 0) {
