@@ -4,6 +4,8 @@
 
 #include "JourneyManager.h"
 
+vector<Station> JourneyManager::allStations;
+
 JourneyManager::JourneyManager() {
     SubwayMap::createStations(NULL_TRAIN, allStations); // Fill allStations vector
 }

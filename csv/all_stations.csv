@@ -77,7 +77,6 @@ N07,Bay Pkwy,N,Bk
 N08,Kings Hwy,N,Bk
 N09,Avenue U,N,Bk
 N10,86 St,N,Bk
-G06,Sutphin Blvd-Archer Av-JFK Airport,J Z,Q
 J12,121 St,J Z,Q
 J13,111 St,J,Q
 J14,104 St,J Z,Q
@@ -244,7 +243,7 @@ F02,169 St,F,Q
 F03,Parsons Blvd,F,Q
 F04,Sutphin Blvd,F,Q
 G05,Jamaica Center-Parsons/Archer,E,Q
-G06,Sutphin Blvd-Archer Av-JFK Airport,E,Q
+G06,Sutphin Blvd-Archer Av-JFK Airport,J Z E,Q
 G07,Jamaica-Van Wyck,E,Q
 F05,Briarwood,E F,Q
 F06,Kew Gardens-Union Tpke,E F,Q

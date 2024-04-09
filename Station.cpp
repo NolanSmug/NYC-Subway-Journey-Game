@@ -3,6 +3,7 @@
 //
 
 #include "Station.h"
+#include "JourneyManager.h"
 #include "sstream"
 
 
@@ -109,4 +110,15 @@ void Station::setBorough(Borough newborough) {
 // https://stackoverflow.com/a/6281535
 string Station::getTextForEnum(int enumVal) {
     return BoroughEnumStrings[enumVal];
+}
+
+Station Station::getStation(string stationName, string stationID) {
+
+    for (Station station : JourneyManager::getAllStations()) {
+        if (station.getId() == stationID) {
+            return station;
+        }
+    }
+
+    return Station("000", "NULL_STATION", {NULL_TRAIN});
 }

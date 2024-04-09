@@ -23,12 +23,12 @@ public:
     void setDestinationStation(Station newDestinationStation);
     void setDestinationStation(string newDestinationStation);
 
-    vector<Station> getAllStations();
+    static vector<Station> getAllStations();
 
     Station& getRandomStation();
 
 private:
-    vector<Station> allStations;
+    static vector<Station> allStations;
     Station startingStation;
     Station destinationStation;
 };

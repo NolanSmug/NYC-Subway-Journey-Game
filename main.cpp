@@ -37,9 +37,9 @@ struct GameState {
 void initializeTrain(Train& train, GameState& gameState);
 void selectChallenge(JourneyManager& journeyManager, GameState& gameState);
 
+bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager);
 Direction handleNewDirection(Train &train);
 void handleStartingLine(Train &train);
-bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager);
 
 bool handleAdvanceOneStation(Train &train);
 bool handleAdvanceMultipleStations(Train &train, string &input);
@@ -55,15 +55,16 @@ void handleLastStop(Train &train);
 
 int getRandomStation(unsigned int numStations);
 
-bool challengeModeFlag = false; // set to false to skip first input
-bool easyModeFlag = true;      // set to true to print the current lines' scheduled stops after each turn
+
+bool challengeModeFlag = true; // set to false to skip first input
+bool easyModeFlag = false;      // set to true to print the current lines' scheduled stops after each turn
 
 int main() {
     // SET UP JOURNEY MANAGER
     JourneyManager journeyManager = JourneyManager();
 
-    GameState gameState; // holds data for the current game's parameters
-    gameState.resetGameState(journeyManager);
+    GameState gameState; // holds data for the current game's parameters.
+    gameState.resetGameState(journeyManager); //
 
     // SELECT GAME MODE
     if (challengeModeFlag) {
@@ -224,6 +225,11 @@ Direction handleNewDirection(Train &train) {
 }
 
 bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager) {
+
+    if (easyModeFlag) {
+        printAllStations(train); // FOR EASY MODE (ignore otherwise)
+    }
+
     string input;
     if (train.getCurrentStation().hasTransferLine()) {
         cout << "Options:\n";
