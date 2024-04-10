@@ -250,32 +250,38 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
             cout << " - Enter 'r' to reset game/stations\n";
         }
     }
-
     getline(cin, input);
 
-    if (tolower(input[0]) == 'r' && input.length() == 1) {
+    if (!input.empty() && input.length() != 1) {
+        return false;
+    }
+
+    char inputChar = tolower(input[0]);
+
+    // RESET game
+    if (tolower(input[0]) == 'r') {
         gameState.resetGameState(journeyManager);
         cout << "\n\n\n\n-----------GAME RESET-----------\n\n\n\n";
         initializeTrain(train, gameState);
         return true;
     }
 
-    if (input.empty()) {                                             // advance 1 station
+    if (input.empty()) {                                // advance 1 station
         return handleAdvanceOneStation(train);
     }
-    else if (tolower(input[0]) == 't' && input.length() == 1) {  // prompt transfer
+    else if (inputChar == 't') {                        // prompt transfer
         return handleTransfer(train);
     }
-    else if (tolower(input[0]) == 'c' && input.length() == 1) {  // change direction
+    else if (inputChar == 'c') {                        // change direction
         return handleChangeDirection(train);
     }
-    else if (tolower(input[0]) == 'd' && input.length() == 1) {  // show destination station
+    else if (inputChar == 'd') {                        // show destination station
         cout << "Destination Station:\n" << destinationStation;
     }
-    else if (input[0] == '0' && input.length() == 1) {              // secret
+    else if (inputChar == '0') {                        // secret
         printAllStations(train);
     }
-    else {                                                          // advance input<int> stations
+    else {                                              // advance input<int> stations
         return handleAdvanceMultipleStations(train, input);
     }
 
@@ -339,8 +345,7 @@ bool askUserToTransfer(Train &train) {
             valid = train.transferToLine(Line::stringToLineEnum(input), currentStation);
         }
         else if (tolower(input[0]) == 't') {
-            train.getCurrentStation().printTransferLinesAlternative();
-            cout << endl;
+            cout << train.getCurrentStation().printTransferLinesAlternative().substr(1) << endl; // need substr to strip leading space
             alreadyListedTransfers = true;
         }
         else if (tolower(input[0]) == 'e') {
