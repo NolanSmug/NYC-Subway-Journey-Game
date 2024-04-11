@@ -13,6 +13,10 @@ string Line::getIDTextForEnum(int enumVal) {
     return LineEnumIDStrings[enumVal];
 }
 
+string Line::getLineTypeString(int enumVal) {
+    return LineTypeEnumStrings[enumVal];
+}
+
 LineName Line::stringToLineEnum(string& lineStr) {
     if (lineStr == "1") return ONE_TRAIN;
     if (lineStr == "2") return TWO_TRAIN;

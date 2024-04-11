@@ -66,7 +66,7 @@ int main() {
     }
 
     // START TRAIN
-    Train train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, false, 10);
+    Train train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, NONE, 10);
     initializeTrain(train, gameState);
 
     // GAME LOOP
@@ -99,8 +99,9 @@ int main() {
 
 // METHODS
 void initializeTrain(Train& train, GameState& gameState) {
-    train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, false, 10);
+    train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, NONE, 10);
     train.setCurrentStation(gameState.startingStation);
+    train.setLineType();
     printCurrentStationInfo(train);
 
     cout << "Destination Station:\n"
@@ -358,17 +359,19 @@ bool askUserToTransfer(Train &train) {
 void displayCurrentLineInfo(Train &train) {
     bool isCrosstownTrain = train.getLine() == L_TRAIN || train.getLine() == S_TRAIN;
     Direction currentDirection = train.getDirection();
+    LineName currentLine = train.getLine();
+    LineType currentLineType = train.setLineType();
 
-    cout << "\nYour Current Line:\n";
+    cout << "\nCurrent Line: ";
     if (isCrosstownTrain) {
-        cout << (currentDirection == DOWNTOWN ? // if(?) = downtown, else(:) = uptown
-                 train.getDowntownLabel() + " " + Line::getTextForEnum(train.getLine()) + " Train →" :
-                 train.getUptownLabel()   + " " + Line::getTextForEnum(train.getLine()) + " Train ←");
+        cout << (currentDirection == DOWNTOWN ?
+                 train.getDowntownLabel() + " " + Line::getLineTypeString(currentLineType) + " " + Line::getTextForEnum(currentLine) + " Train →" :
+                 train.getUptownLabel()   + " " + Line::getLineTypeString(currentLineType) + " " + Line::getTextForEnum(currentLine) + " Train ←");
     }
     else {
-        cout << (currentDirection == DOWNTOWN ? // if(?) = downtown, else(:) = uptown
-                 train.getDowntownLabel() + " " + Line::getTextForEnum(train.getLine()) + " Train ↓" :
-                 train.getUptownLabel()   + " " + Line::getTextForEnum(train.getLine()) + " Train ↑");
+        cout << (currentDirection == DOWNTOWN ?
+                 train.getDowntownLabel() + " " + Line::getLineTypeString(currentLineType)+ " " + Line::getTextForEnum(currentLine) + " Train ↓" :
+                 train.getUptownLabel()   + " " + Line::getLineTypeString(currentLineType)+ " " + Line::getTextForEnum(currentLine) + " Train ↑");
     }
     cout << endl;
 }

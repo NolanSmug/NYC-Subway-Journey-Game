@@ -11,7 +11,13 @@
 #include "SubwayMap.h"
 
 using namespace std;
-enum Direction {UPTOWN,DOWNTOWN,NULL_DIRECTION};
+
+enum Direction {
+    UPTOWN,
+    DOWNTOWN,
+    NULL_DIRECTION
+};
+
 
 static unordered_map<LineName, pair<string, string>> lineDirections {
         {ONE_TRAIN, {"Downtown", "Uptown"}},
@@ -41,11 +47,38 @@ static unordered_map<LineName, pair<string, string>> lineDirections {
         {S_TRAIN_ROCKAWAY, {"Broad Channel-bound", "Rockaway Park-Beach 116 St-bound"}}
 };
 
+static std::unordered_map<LineName, LineType> lineTypes {
+        {ONE_TRAIN,LOCAL},
+        {TWO_TRAIN,EXPRESS},
+        {THREE_TRAIN,EXPRESS},
+        {FOUR_TRAIN,EXPRESS},
+        {FIVE_TRAIN,EXPRESS},
+        {SIX_TRAIN,LOCAL},
+        {SEVEN_TRAIN,LOCAL},
+        {A_TRAIN,EXPRESS},
+        {B_TRAIN,EXPRESS},
+        {C_TRAIN,LOCAL},
+        {D_TRAIN,EXPRESS},
+        {E_TRAIN,EXPRESS},
+        {F_TRAIN,LOCAL},
+        {G_TRAIN,LOCAL},
+        {J_TRAIN,LOCAL},
+        {L_TRAIN,LOCAL},
+        {M_TRAIN,LOCAL},
+        {N_TRAIN,EXPRESS},
+        {Q_TRAIN,EXPRESS},
+        {R_TRAIN,LOCAL},
+        {W_TRAIN,LOCAL},
+        {Z_TRAIN,LOCAL},
+        {S_TRAIN,NONE},
+        {S_TRAIN_SHUTTLE,NONE},
+        {S_TRAIN_ROCKAWAY,NONE}
+};
 
 class Train {
 public:
     Train();
-    Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars);
+    Train(LineName lineName, Direction direction, vector<Station> scheduledStops, LineType lineType, int numCars);
 
     LineName getLine();
     void setLine(LineName newLineName);
@@ -76,8 +109,7 @@ public:
     bool advanceStation();                  // overloaded
     bool advanceStation(int numStations);   // overloaded
 
-    bool isExpress();
-    void setExpress(bool isExpress);
+    LineType setLineType();
 
     int getNumCars();
     void setNumCars(int newNumCars);
@@ -91,7 +123,7 @@ private:
     string downtownLabel;
     vector<Station> scheduledStops;
     int currentStationIndex = 0;
-    bool express;
+    LineType lineType;
     int numCars; // not sure if this could be useful ever
 };
 

@@ -3,10 +3,10 @@
 //
 #include "Train.h"
 
-Train::Train() : currentLine(NULL_TRAIN), direction(NULL_DIRECTION), scheduledStops(), express(false), numCars(10) {}
+Train::Train() : currentLine(NULL_TRAIN), direction(NULL_DIRECTION), scheduledStops(), lineType(NONE), numCars(10) {}
 
-Train::Train(LineName lineName, Direction direction, vector<Station> scheduledStops, bool express, int numCars)
-        : currentLine(lineName), direction(direction), scheduledStops(scheduledStops), express(express), numCars(numCars) {
+Train::Train(LineName lineName, Direction direction, vector<Station> scheduledStops, LineType lineType, int numCars)
+        : currentLine(lineName), direction(direction), scheduledStops(scheduledStops), lineType(lineType), numCars(numCars) {
     uptownLabel = getTextForDirectionEnum(UPTOWN, lineName);
     downtownLabel = getTextForDirectionEnum(DOWNTOWN, lineName);
 }
@@ -179,15 +179,17 @@ bool Train::advanceStation(int numStations) {
     return valid;
 }
 
-
-// Express
-bool Train::isExpress() {
-    return express;
+LineType Train::setLineType() {
+    auto lineTypeIter = lineTypes.find(currentLine);
+    if (lineTypeIter != lineTypes.end()) {
+        return lineTypeIter->second;
+    }
+    else {
+        return NONE;
+    }
 }
 
-void Train::setExpress(bool isExpress) {
-    express = isExpress;
-}
+
 
 // Number of Cars
 int Train::getNumCars() {
