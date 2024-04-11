@@ -19,19 +19,7 @@ struct GameState {
     vector<Station> currentStations;
     bool isFirstTurn;
 
-    void resetGameState(JourneyManager& journeyManager) { // if user wants to re-shuffle their stations
-        startingStation = journeyManager.getRandomStation();
-        destinationStation = startingStation;
-
-        while (startingStation == destinationStation) {
-            destinationStation = journeyManager.getRandomStation();
-        }
-
-        startingLine = startingStation.getTransfers()[0];
-        SubwayMap::createStations(startingLine, currentStations);
-
-        isFirstTurn = true;
-    }
+    void resetGameState(JourneyManager& journeyManager); // resets starting && destination stations
 };
 
 void initializeTrain(Train& train, GameState& gameState);
@@ -57,7 +45,7 @@ int getRandomStation(unsigned int numStations);
 
 
 bool challengeModeFlag = true; // set to false to skip first input
-bool easyModeFlag = false;      // set to true to print the current lines' scheduled stops after each turn
+bool easyModeFlag = false;     // set to true to print the current lines' scheduled stops after each turn
 
 int main() {
     // SET UP JOURNEY MANAGER
@@ -115,7 +103,8 @@ void initializeTrain(Train& train, GameState& gameState) {
     train.setCurrentStation(gameState.startingStation);
     printCurrentStationInfo(train);
 
-    cout << "Destination Station:\n" << gameState.destinationStation;
+    cout << "Destination Station:\n"
+         << gameState.destinationStation;
 
     if (train.getCurrentStation().hasTransferLine()) {
         handleStartingLine(train);
@@ -165,7 +154,9 @@ void handleStartingLine(Train &train) {
     bool validLine = false;
 
     while (!validLine) {
-        cout << "Choose a train line to wait for at " << train.getCurrentStation().getName() << train.getCurrentStation().printTransferLinesAlternative();
+        cout << "Choose a train line to wait for at "
+             << train.getCurrentStation().getName()
+             << train.getCurrentStation().getTransferLinesString();
 
         string lineChoice;
         getline(cin, lineChoice);
@@ -237,6 +228,7 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
         cout << " - Enter 't' to transfer\n";
         cout << " - Enter 'c' to change direction\n";
         cout << " - Enter 'd' to display your Destination Station\n";
+
         if (gameState.isFirstTurn) {
             cout << " - Enter 'r' to refresh stations\n";
         }
@@ -246,6 +238,7 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
         cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
         cout << " - Enter 'c' to change direction\n";
         cout << " - Enter 'd' to display your Destination Station\n";
+
         if (gameState.isFirstTurn) {
             cout << " - Enter 'r' to reset game/stations\n";
         }
@@ -300,7 +293,9 @@ bool handleAdvanceOneStation(Train &train) {
 bool handleChangeDirection(Train &train) {
     train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
-    cout << "\nYou switched to the " << trackLabel << " platform." << endl;
+    cout << "\nYou switched to the "
+         << trackLabel
+         << " platform." << endl;
 
     return true;
 }
@@ -345,7 +340,7 @@ bool askUserToTransfer(Train &train) {
             valid = train.transferToLine(Line::stringToLineEnum(input), currentStation);
         }
         else if (tolower(input[0]) == 't') {
-            cout << train.getCurrentStation().printTransferLinesAlternative().substr(1) << endl; // need substr to strip leading space
+            cout << train.getCurrentStation().getTransferLinesString().substr(1) << endl; // need substr to strip leading space
             alreadyListedTransfers = true;
         }
         else if (tolower(input[0]) == 'e') {
@@ -402,7 +397,10 @@ void handleLastStop(Train &train) {
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
 
     this_thread::sleep_for(chrono::seconds(3)); // wait so user realizes
-    cout << "You switched to the " << trackLabel << " platform.\n";
+
+    cout << "You switched to the "
+         << trackLabel
+         << " platform.\n";
 
     this_thread::sleep_for(chrono::seconds(2));
 
@@ -413,25 +411,28 @@ void handleLastStop(Train &train) {
 
 void printAllStations(Train &train) {
     string currentStationID = train.getCurrentStation().getId();
-    vector<Station> stations =  train.getScheduledStops();
+    vector<Station> stations = train.getScheduledStops();
     Direction currentDirection = train.getDirection();
     int length = train.getScheduledStops().size();
     int currentStationIndex = train.getCurrentStationIndex();
 
-
     cout << "------------------------------------------------------------------" << endl;
+
     if (currentDirection == UPTOWN) {
         for (int i = length - 1; i >= currentStationIndex; i--) {
             int stopsAway = abs(i - currentStationIndex);
-            string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
+            string stopsAwayText = (stopsAway == 0) ? ""
+                                                    : (stopsAway == 1) ? "(Next Stop)"
+                                                                       : "(" + to_string(stopsAway) + " stops away)";
 
             if (stations[i].getId() == currentStationID) {
                 cout << setw(30) << left << stations[i].getName() << "      (Current Station)" << endl;
                 cout << "    |" << endl;
             }
             else {
-                cout << setw(35) << left << stations[i].getName() << stations[i].printTransferLinesAlternative();
-                cout << " " << stopsAwayText << endl;
+                cout << setw(35) << left << stations[i].getName()
+                     << stations[i].getTransferLinesString()
+                     << " " << stopsAwayText << endl;
                 cout << "    |" << endl;
             }
         }
@@ -441,19 +442,23 @@ void printAllStations(Train &train) {
         cout << "    ↓" << endl;
         for (int i = train.getCurrentStationIndex(); i >= 0; i--) {
             int stopsAway = abs(train.getCurrentStationIndex() - i);
-            string stopsAwayText = stopsAway == 0 ? "" : (stopsAway == 1 ? "(Next Stop)" : "(" + to_string(stopsAway) + " stops away)");
+            string stopsAwayText = (stopsAway == 0) ? ""
+                                                    : (stopsAway == 1) ? "(Next Stop)"
+                                                                       : "(" + to_string(stopsAway) + " stops away)";
 
             if (stations[i].getId() == currentStationID) {
                 cout << setw(30) << left << stations[i].getName() << " **  Current Station  **" << endl;
                 cout << "    |" << endl;
             }
             else {
-                cout << setw(35) << left << stations[i].getName() << stations[i].printTransferLinesAlternative();
-                cout << " " << stopsAwayText << endl;
+                cout << setw(35) << left << stations[i].getName()
+                     << stations[i].getTransferLinesString()
+                     << " " << stopsAwayText << endl;
                 cout << "    |" << endl;
             }
         }
     }
+
     cout << "------------------------------------------------------------------" << endl;
 }
 
@@ -463,4 +468,18 @@ int getRandomStation(unsigned int numStations) {
     uniform_int_distribution<> distribution(0, numStations - 1);
 
     return distribution(generator);
+}
+
+void GameState::resetGameState(JourneyManager& journeyManager) { // if user wants to re-shuffle their stations
+    startingStation = journeyManager.getRandomStation();
+    destinationStation = startingStation;
+
+    while (startingStation == destinationStation) {
+    destinationStation = journeyManager.getRandomStation();
+    }
+
+    startingLine = startingStation.getTransfers()[0];
+    SubwayMap::createStations(startingLine, currentStations);
+
+    isFirstTurn = true;
 }

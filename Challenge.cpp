@@ -107,12 +107,12 @@ ostream& operator<<(ostream& str, Challenge challenge) {
     int minTransferLineWidth = 20;
 
     str << left << setw(minStationNameWidth) << startStation.getName();
-    str << "  " << setw(minTransferLineWidth) << left << startStation.printTransferLinesAlternative();
+    str << "  " << setw(minTransferLineWidth) << left << startStation.getTransferLinesString();
 
     str << setw(10) << left << "----->" << "   ";
 
     str << left << setw(minStationNameWidth) << destiStation.getName();
-    str << "  " << setw(minTransferLineWidth) << left << destiStation.printTransferLinesAlternative();
+    str << "  " << setw(minTransferLineWidth) << left << destiStation.getTransferLinesString();
 
     return str;
 }
