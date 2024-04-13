@@ -24,14 +24,6 @@ enum LineName {
     S_TRAIN_ROCKAWAY
 };
 
-enum LineType {
-    NONE,
-    EXPRESS,
-    LOCAL
-};
-
-static const int TOTAL_NUM_LINES = 25;
-
 static const char* LineEnumIDStrings[] = {
         "Null_Train",
         "One_Train", "Two_Train", "Three_Train",
@@ -46,6 +38,7 @@ static const char* LineEnumIDStrings[] = {
         "S_Train_Shuttle",
         "S_Train_Rockaway"
 };
+
 
 static const char * LineEnumStrings[] = {
         "Null_Train",
@@ -62,13 +55,19 @@ static const char * LineEnumStrings[] = {
         "Sr"
 };
 
+enum LineType {
+    NONE,
+    EXPRESS,
+    LOCAL
+};
+
 static const char * LineTypeEnumStrings[] = {
         "",
         "Express",
         "Local"
 };
 
-
+static const int TOTAL_NUM_LINES = 25;
 
 class Line {
 public:

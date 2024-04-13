@@ -357,23 +357,27 @@ bool askUserToTransfer(Train &train) {
 
 
 void displayCurrentLineInfo(Train &train) {
-    bool isCrosstownTrain = train.getLine() == L_TRAIN || train.getLine() == S_TRAIN;
     Direction currentDirection = train.getDirection();
     LineName currentLine = train.getLine();
     LineType currentLineType = train.setLineType();
 
-    cout << "\nCurrent Line: ";
-    if (isCrosstownTrain) {
-        cout << (currentDirection == DOWNTOWN ?
-                 train.getDowntownLabel() + " " + Line::getLineTypeString(currentLineType) + " " + Line::getTextForEnum(currentLine) + " Train →" :
-                 train.getUptownLabel()   + " " + Line::getLineTypeString(currentLineType) + " " + Line::getTextForEnum(currentLine) + " Train ←");
+    string currentLineStr = Line::getTextForEnum(currentLine);
+    string currentLineTypeStr = Line::getLineTypeString(currentLineType);
+    string currentDirectionLabel = currentDirection == DOWNTOWN ? train.getDowntownLabel() : train.getUptownLabel();
+    string currentLineInfo;
+
+    bool isCrosstownTrain = train.getLine() == L_TRAIN || train.getLine() == S_TRAIN;
+
+    if (currentLineType == NONE) {
+        currentLineInfo = currentDirectionLabel + " " + currentLineStr + " Train " + (currentDirection == DOWNTOWN ? "↓" : "↑");
     }
     else {
-        cout << (currentDirection == DOWNTOWN ?
-                 train.getDowntownLabel() + " " + Line::getLineTypeString(currentLineType)+ " " + Line::getTextForEnum(currentLine) + " Train ↓" :
-                 train.getUptownLabel()   + " " + Line::getLineTypeString(currentLineType)+ " " + Line::getTextForEnum(currentLine) + " Train ↑");
+        currentLineInfo = isCrosstownTrain
+                          ? (currentDirectionLabel + " " + currentLineStr + " " + currentLineTypeStr + " Train " + (currentDirection == DOWNTOWN ? "→" : "←"))
+                          : (currentDirectionLabel + " " + currentLineStr + " " + currentLineTypeStr + " Train " + (currentDirection == DOWNTOWN ? "↓" : "↑"));
     }
-    cout << endl;
+
+    cout << "\nCurrent Line: " << currentLineInfo << endl;
 }
 
 void printCurrentStationInfo(Train &train) {
@@ -478,7 +482,7 @@ void GameState::resetGameState(JourneyManager& journeyManager) { // if user want
     destinationStation = startingStation;
 
     while (startingStation == destinationStation) {
-    destinationStation = journeyManager.getRandomStation();
+        destinationStation = journeyManager.getRandomStation();
     }
 
     startingLine = startingStation.getTransfers()[0];
