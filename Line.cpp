@@ -55,7 +55,7 @@ LineName Line::getRandomLine() {
     int randomLineIndex = distribution(generator);
     LineName randomLine;
     randomLine = static_cast<LineName>(randomLineIndex);
-    while (randomLine == NULL_TRAIN) {
+    while (randomLine == NULL_TRAIN) { // ensure it doesn't select NULL_TRAIN
         randomLineIndex = distribution(generator);
         randomLine = static_cast<LineName>(randomLineIndex);
     }

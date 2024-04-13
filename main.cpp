@@ -43,8 +43,9 @@ void handleLastStop(Train &train);
 
 int getRandomStation(unsigned int numStations);
 
+static bool isnumber(const string &s);
 
-bool challengeModeFlag = true; // set to false to skip first input
+bool challengeModeFlag = false; // set to false to skip first input
 bool easyModeFlag = false;     // set to true to print the current lines' scheduled stops after each turn
 
 int main() {
@@ -75,7 +76,7 @@ int main() {
 
         unsigned int currentStationIndex = train.getCurrentStationIndex();
         unsigned int lastStationIndex = train.getScheduledStops().size() - 1;
-        bool atLastStop = (currentStationIndex == 0 && train.getDirection() == DOWNTOWN) ||
+        bool atLastStop = (currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
                           (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN);
         if (atLastStop) {
             handleLastStop(train);
@@ -161,12 +162,13 @@ void handleStartingLine(Train &train) {
 
         string lineChoice;
         getline(cin, lineChoice);
+        transform(lineChoice.begin(), lineChoice.end(), lineChoice.begin(), ::toupper);
 
         if (train.transferToLine(Line::stringToLineEnum(lineChoice),train.getCurrentStation())) {
             validLine = true;
         }
         else {
-            cout << "Invalid line choice. Try again." << endl;
+            cout << "Invalid line choice. " << endl;
         }
     }
 }
@@ -180,7 +182,7 @@ Direction handleNewDirection(Train &train) {
 
     if (uptownLabelValidChar == downtownLabelValidChar) {
         downtownLabelValidChar = train.getDowntownLabel()[4];
-        if (uptownLabelValidChar == downtownLabelValidChar) {
+        if (uptownLabelValidChar == downtownLabelValidChar) {  // just ignore this mess it won't need to be changed
             downtownLabelValidChar = train.getDowntownLabel()[3];
         }
     }
@@ -246,7 +248,11 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
     }
     getline(cin, input);
 
-    if (!input.empty() && input.length() != 1) {
+    // remove any whitespaces in input
+    // (https://stackoverflow.com/a/16011109/23352980)
+    input.erase(remove(input.begin(), input.end(), ' '), input.end());
+
+    if (!input.empty() && input.length() != 1 && !isnumber(input)) { // input is not empty, not 1 char, and NaN
         return false;
     }
 
@@ -326,33 +332,34 @@ bool askUserToTransfer(Train &train) {
     Station currentStation = train.getCurrentStation();
     string input;
 
-    bool valid = false;
     bool alreadyListedTransfers = false;
-    while (!valid) {
+    while (true) {
         if (alreadyListedTransfers) {
             cout << "Which line would you like to transfer to? (e to exit) ";
         }
         else {
-            cout << "Which line would you like to transfer to? (t to list them) | (e to exit) ";
+            cout << "Which line would you like to transfer to? (t to list them) | (x to exit) ";
         }
         getline(cin, input);
+        transform(input.begin(), input.end(), input.begin(), ::toupper);
 
-        if (currentStation.hasTransferLine(input)) {
-            valid = train.transferToLine(Line::stringToLineEnum(input), currentStation);
-        }
-        else if (tolower(input[0]) == 't') {
-            cout << train.getCurrentStation().getTransferLinesString().substr(1) << endl; // need substr to strip leading space
+        if (tolower(input[0]) == 't') {
+            cout << currentStation.getTransferLinesString().substr(1) << endl; // need substr to strip leading space
             alreadyListedTransfers = true;
         }
-        else if (tolower(input[0]) == 'e') {
+        else if (input[0] == 'x') {
             return false;
         }
+        else if (train.transferToLine(Line::stringToLineEnum(input), currentStation)) {
+            cout << endl;
+            return true;
+        }
         else {
-            cout << "Invalid input. ";
+            cout << "The " << input << " Train does not stop at "
+                 << currentStation.getName()
+                 << currentStation.getTransferLinesString() << endl;
         }
     }
-
-    return valid;
 }
 
 
@@ -361,23 +368,27 @@ void displayCurrentLineInfo(Train &train) {
     LineName currentLine = train.getLine();
     LineType currentLineType = train.setLineType();
 
-    string currentLineStr = Line::getTextForEnum(currentLine);
-    string currentLineTypeStr = Line::getLineTypeString(currentLineType);
-    string currentDirectionLabel = currentDirection == DOWNTOWN ? train.getDowntownLabel() : train.getUptownLabel();
-    string currentLineInfo;
-
     bool isCrosstownTrain = train.getLine() == L_TRAIN || train.getLine() == S_TRAIN;
 
+    string currentLineStr = Line::getTextForEnum(currentLine);
+    string currentLineTypeStr = Line::getLineTypeString(currentLineType);
+    string currentDirectionLabel = currentDirection == DOWNTOWN
+                                 ? train.getDowntownLabel()
+                                 : train.getUptownLabel();
+    string directionArrowSymbol = isCrosstownTrain
+                                ? (currentDirection == DOWNTOWN ? "→" : "←") // second conditional for correct direction
+                                : (currentDirection == DOWNTOWN ? "↓" : "↑");
+
+    string currentLineInfo; // string to be filled
+
     if (currentLineType == NONE) {
-        currentLineInfo = currentDirectionLabel + " " + currentLineStr + " Train " + (currentDirection == DOWNTOWN ? "↓" : "↑");
+        currentLineInfo = currentDirectionLabel + " " + currentLineStr +                            " Train " + directionArrowSymbol;
     }
     else {
-        currentLineInfo = isCrosstownTrain
-                          ? (currentDirectionLabel + " " + currentLineStr + " " + currentLineTypeStr + " Train " + (currentDirection == DOWNTOWN ? "→" : "←"))
-                          : (currentDirectionLabel + " " + currentLineStr + " " + currentLineTypeStr + " Train " + (currentDirection == DOWNTOWN ? "↓" : "↑"));
+        currentLineInfo = currentDirectionLabel + " " + currentLineStr + " " + currentLineTypeStr + " Train " + directionArrowSymbol;
     }
 
-    cout << "\nCurrent Line: " << currentLineInfo << endl;
+    cout << "\n\nCurrent Line:\n" << currentLineInfo << endl;
 }
 
 void printCurrentStationInfo(Train &train) {
@@ -385,13 +396,13 @@ void printCurrentStationInfo(Train &train) {
     Direction currentDirection = train.getDirection();
 
     if (currentDirection == NULL_DIRECTION) {
-        // do nothing
+        // do nothing (the user is not currently on a line)
     }
     else {
         displayCurrentLineInfo(train);
     }
 
-    cout << "\nYour current Station:\n" << currentStation;
+    cout << "\nCurrent Station:\n" << currentStation;
 }
 
 void handleLastStop(Train &train) {
@@ -489,4 +500,8 @@ void GameState::resetGameState(JourneyManager& journeyManager) { // if user want
     SubwayMap::createStations(startingLine, currentStations);
 
     isFirstTurn = true;
+}
+
+static bool isnumber(const string &s) {
+    return all_of(s.begin(), s.end(), ::isdigit);
 }

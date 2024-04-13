@@ -6,7 +6,6 @@
 #include "JourneyManager.h"
 #include "sstream"
 
-
 // Constructors
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
 
