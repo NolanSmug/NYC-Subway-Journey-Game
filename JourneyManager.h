@@ -9,7 +9,6 @@
 #include "random"
 #include "SubwayMap.h"
 
-
 class JourneyManager {
 public:
     JourneyManager();
