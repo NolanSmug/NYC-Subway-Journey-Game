@@ -112,9 +112,8 @@ string Station::getTextForEnum(int enumVal) {
 }
 
 Station Station::getStation(string stationName, string stationID) {
-
     for (Station station : JourneyManager::getAllStations()) {
-        if (station.getId() == stationID) {
+        if (station.getId() == stationID || station.getName() == stationName) {
             return station;
         }
     }
