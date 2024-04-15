@@ -41,18 +41,6 @@ Here's how the game steps flow:
 ### Train
 Manages a `Train` object and its scheduled stops.
 
-#### Private Variables:
-| Name                             | Description                                                 |
-|----------------------------------|-------------------------------------------------------------|
-| `LineName currentLine`           | Current subway line of the Train.                           |
-| `Direction direction`            | Direction of the Train (`UPTOWN`, `DOWNTOWN`).              |
-| `string uptownLabel`             | Label in string format for the uptown-bound track           |
-| `string downtownLabel`           | Label in string format for the downtown-bound track         |
-| `vector<Station> scheduledStops` | Vector of stations representing scheduled stops.            |
-| `int currentStationIndex`        | Index of the current station in the scheduled stops vector. |
-| `bool express`                   | Indicates whether the Train is an express train or not.     |
-| `int numCars`                    | Number of cars in the Train.                                |
-
 #### Public Methods:
 | Method                                                          | Description                                                            |
 |-----------------------------------------------------------------|------------------------------------------------------------------------|
@@ -62,32 +50,17 @@ Manages a `Train` object and its scheduled stops.
 | `void setDirection(Direction newDirection)`                     | Sets the direction of the Train.                                       |
 | `bool transferToLine(LineName newLine, Station currentStation)` | Attempts to transfer the Train to a different line at a given station. |
 | `void updateScheduledStops(LineName line)`                      | Updates the scheduled stops based on a specified subway line.          |
-| `vector<Station> getScheduledStops()`                           | Gets the scheduled stops of the Train.                                 |
-| `void addScheduledStop(Station newStop)`                        | Adds a Station to the scheduled stops of the Train.                    |
-| `Station getCurrentStation()`                                   | Gets the current station of the Train.                                 |
 | `Station getNextStation()`                                      | Gets the next station of the Train.                                    |
-| `int getCurrentStationIndex()`                                  | Gets the index of the Train's current station.                         |
 | `void setCurrentStation(int stationIndex)`                      | Sets the current station of the Train using an index.                  |
 | `void setCurrentStation(string stationName)`                    | Sets the current station of the Train using a station name.            |
-| `bool advanceStation()`                                         | Advances the Train to the next station.                                |
 | `bool advanceStation(int numStations)`                          | Advances the Train by a specified number of stations.                  |
 | `bool isExpress()`                                              | Checks if the Train is an express train.                               |
 | `void setExpress(bool isExpress)`                               | Sets whether the Train is express or not.                              |
 | `int getNumCars()`                                              | Gets the number of cars on the Train.                                  |
 | `void setNumCars(int newNumCars)`                               | Sets the number of cars on the Train.                                  |
 
-****
-
 ### Station
 Represents a subway station in the game.
-
-#### Private Variables:
-| Name                         | Description                                                 |
-|------------------------------|-------------------------------------------------------------|
-| `string id`                  | ID Number for the Station.                                  |
-| `string name`                | Name of the Station.                                        |
-| `vector<LineName> transfers` | List of subway lines available for transfer at the Station. |
-| `Borough borough`            | Borough where the Station is located.                       |
 
 #### Public Methods:
 | Method                                    | Description                                                            |
@@ -212,28 +185,26 @@ struct GameState {
 };
 ```
 
-| Function                        | Description                                                                                                                                               |
-|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `main`                          | Entry point of the application. It sets up the game environment, initializes the `Train`, `JourneyManager`, and `GameState`, and enters the game loop.    |
-| `handleUserInput`               | Handles user input during the game. It interprets user commands to advance the train, change direction, transfer to another line, or display information. |
-| `printCurrentStationInfo`       | Displays information about the current station, including the line and direction of the train.                                                            |
-| `handleAdvanceOneStation`       | Handles the command to advance the train by one station.                                                                                                  |
-| `handleTransfer`                | Handles the command to transfer to another line at the current station.                                                                                   |
-| `handleChangeDirection`         | Handles the command to change the direction of the train.                                                                                                 |
-| `handleAdvanceMultipleStations` | Handles the command to advance the train by multiple stations specified by the user.                                                                      |
-| `handleLastStop`                | Handles the situation when the train reaches the last stop on its current line. It prompts the user to switch direction and continue the journey.         |
-| `getRandomStation`              | Generates a random station index within the specified range.                                                                                              |
-| `handleNewDirection`            | Prompts the user to choose a new direction for the train when transferring to another line.                                                               |
-| `askUserToTransfer`             | Prompts the user to choose a line for transferring at the current station.                                                                                |
-| `handleStartingLine`            | Prompts the user to choose a train line to wait for at the current station.                                                                               |
-| `initializeTrain`               | Initializes the train with the starting line, current station, and destination station based on the game state.                                           |
-| `printTransferLines`            | Prints the available transfer lines at a station.                                                                                                         |
-| `selectChallenge`               | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge.                     |
-
+| Function                        | Description                                                                                                                                                     |
+|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `main`                          | Entry point of the application. It sets up the game environment, initializes the `Train`, `JourneyManager`, and `GameState`, and enters the game loop.          |
+| `initializeTrain`               | Initializes the train with the starting line, current station, and destination station based on the game state.                                                 |
+| `selectChallenge`               | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge.                           |
+| `handleUserInput`               | Handles user input during the game. It interprets user commands to `advance` the train, `change direction`, `transfer` to another line, or display information. |
+| `promptForNewDirection`            | Prompts the user to choose a new direction for the train when transferring to another line.                                                                     |
+| `promptForStartingLine`            | Prompts the user to choose a train line to wait for at the current station.                                                                                     |
+| `handleAdvanceOneStation`       | Handles the input to advance the train by one station.                                                                                                          |
+| `handleAdvanceMultipleStations` | Handles the input to advance the train by multiple stations specified by the user.                                                                              |
+| `handleChangeDirection`         | Handles the input to change the direction of the train.                                                                                                         |
+| `handleTransfer`                | Handles the input to transfer to another line at the current station.                                                                                           |
+| `askUserToTransfer`             | Prompts the user to choose a line for transferring at the current station.                                                                                      |
+| `printCurrentStationInfo`       | Displays information about the current station, including the line and direction of the train.                                                                  |
+| `printAllStations`              | Prints information about all stations along the train's route.                                                                                                  |
+| `announceLastStop`                | Handles the situation when the train reaches the last stop on its current line. It prompts the user to switch direction and continue the journey.               |
+| `getRandomStation`              | Generates a random station index within the specified range.                                                                                                    |
+| `isnumber`                      | Checks if a string represents a numeric value.                                                                                                                  |
 
 ****
-
-
 
 ## Timeline
 
