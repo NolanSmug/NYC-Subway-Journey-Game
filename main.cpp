@@ -113,7 +113,7 @@ void initializeTrain(Train& train, GameState& gameState) {
          << gameState.destinationStation;
 
     if (train.getCurrentStation().hasTransferLine()) {
-        promptForStartingLine(train); // if startingStation has multiple line options
+        promptForStartingLine(train); // if startingStation has transfer line options
     }
 
     promptForNewDirection(train);
