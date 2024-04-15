@@ -19,13 +19,13 @@ struct GameState {
     vector<Station> currentStations;
     bool isFirstTurn;
 
-    void resetGameState(JourneyManager& journeyManager); // resets starting && destination stations
+    void resetGameState(JourneyManager &journeyManager); // resets starting && destination stations
 };
 
-void initializeTrain(Train& train, GameState& gameState);
-void selectChallenge(JourneyManager& journeyManager, GameState& gameState);
+void initializeTrain(Train &train, GameState &gameState);
+void selectChallenge(JourneyManager &journeyManager, GameState &gameState);
 
-bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager);
+bool handleUserInput(Train &train, const Station &destinationStation, GameState &gameState, JourneyManager &journeyManager);
 void promptForNewDirection(Train &train);
 void promptForStartingLine(Train &train);
 
@@ -42,7 +42,7 @@ void displayUpcomingStations(Train &train);
 void announceLastStop(Train &train);
 
 static bool isnumber(const string &s);
-static void initializeArgs(int argc, char* argv[]);
+static void initializeArgs(int argc, char *argv[]);
 
 
 bool challengeModeFlag = true; // -c in args to set to false
