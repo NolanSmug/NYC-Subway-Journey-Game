@@ -12,10 +12,12 @@
 #include "sstream"
 #include <iomanip>
 
+enum Difficulty {EASY, MEDIUM, HARD};
+
 class Challenge {
 public:
     Challenge();
-    Challenge(LineName startLine, Station startStation, Station destinationStation, int difficulty);
+    Challenge(LineName startLine, Station startStation, Station destinationStation, Difficulty difficulty);
 
     LineName getStartLine();
     void setStartLine(LineName startLine);
@@ -26,8 +28,8 @@ public:
     Station getDestinationStation();
     void setDestinationStation(Station newDestinationStation);
 
-    int getDifficulty();
-    void setDifficulty(int difficulty);
+    Difficulty getDifficulty();
+    void setDifficulty(Difficulty difficulty);
 
     vector<Challenge> initializeAllChallenges();
 
@@ -38,7 +40,7 @@ private:
     LineName startLine;
     Station startStation;
     Station destinationStation;
-    int difficulty;
+    Difficulty difficulty;
 };
 
 

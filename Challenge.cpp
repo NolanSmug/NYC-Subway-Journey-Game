@@ -3,7 +3,7 @@
 
 Challenge::Challenge() = default;
 
-Challenge::Challenge(LineName startLine, Station startStation, Station destinationStation, int difficulty) :
+Challenge::Challenge(LineName startLine, Station startStation, Station destinationStation, Difficulty difficulty) :
     startLine(startLine),
     startStation(startStation),
     destinationStation(destinationStation),
@@ -37,11 +37,11 @@ Station Challenge::getDestinationStation() {
 }
 
 
-int Challenge::getDifficulty() {
+Difficulty Challenge::getDifficulty() {
     return difficulty;
 }
 
-void Challenge::setDifficulty(int newDifficulty) {
+void Challenge::setDifficulty(Difficulty newDifficulty) {
     difficulty = newDifficulty;
 }
 
@@ -76,24 +76,24 @@ vector<Challenge> Challenge::initializeAllChallenges() {
     const Station JAMAICA_179TH_ST = Station("F01", "Jamaica-179 St", {F_TRAIN}, QUEENS);
 
     // Easy challenges
-    allChallenges.emplace_back(FOUR_TRAIN, GRAND_CENTRAL_42, BROOKLYN_BRIDGE_CITY_HALL, 1);
-    allChallenges.emplace_back(TWO_TRAIN, N96TH_ST, FLATBUSH_AVE_BROOKLYN_COLLEGE, 1);
-    allChallenges.emplace_back(E_TRAIN, E34TH_ST_PENN_STATION, WORLD_TRADE_CENTER, 1);
-    allChallenges.emplace_back(G_TRAIN, METROPOLITAN_AVE, COURT_SQ, 1);
-    allChallenges.emplace_back(SEVEN_TRAIN, GRAND_CENTRAL_42, METS_WILLETS_POINT, 1);
+    allChallenges.emplace_back(FOUR_TRAIN, GRAND_CENTRAL_42, BROOKLYN_BRIDGE_CITY_HALL, EASY);
+    allChallenges.emplace_back(TWO_TRAIN, N96TH_ST, FLATBUSH_AVE_BROOKLYN_COLLEGE, EASY);
+    allChallenges.emplace_back(E_TRAIN, E34TH_ST_PENN_STATION, WORLD_TRADE_CENTER, EASY);
+    allChallenges.emplace_back(G_TRAIN, METROPOLITAN_AVE, COURT_SQ, EASY);
+    allChallenges.emplace_back(SEVEN_TRAIN, GRAND_CENTRAL_42, METS_WILLETS_POINT, EASY);
 
     // Medium challenges
-    allChallenges.emplace_back(ONE_TRAIN, VAN_CORTLANDT_PARK_242ND_ST, WORLD_TRADE_CENTER, 2);
-    allChallenges.emplace_back(N_TRAIN, ASTORIA_DITMARS_BLVD, PRINCE_ST, 2);
-    allChallenges.emplace_back(FOUR_TRAIN, E14TH_ST_UNION_SQ, HOWARD_BEACH_JFK_AIRPORT, 2);
-    allChallenges.emplace_back(C_TRAIN, W81ST_MUSEUM_OF_NATURAL_HISTORY, DELANCEY_ST_ESSEX_ST, 2);
-    allChallenges.emplace_back(M_TRAIN, MYRTLE_AVE, NOSTRAND_AVE, 2);
+    allChallenges.emplace_back(ONE_TRAIN, VAN_CORTLANDT_PARK_242ND_ST, WORLD_TRADE_CENTER, MEDIUM);
+    allChallenges.emplace_back(N_TRAIN, ASTORIA_DITMARS_BLVD, PRINCE_ST, MEDIUM);
+    allChallenges.emplace_back(FOUR_TRAIN, E14TH_ST_UNION_SQ, HOWARD_BEACH_JFK_AIRPORT, MEDIUM);
+    allChallenges.emplace_back(C_TRAIN, W81ST_MUSEUM_OF_NATURAL_HISTORY, DELANCEY_ST_ESSEX_ST, MEDIUM);
+    allChallenges.emplace_back(M_TRAIN, MYRTLE_AVE, NOSTRAND_AVE, MEDIUM);
 
     // Hard challenges
-    allChallenges.emplace_back(G_TRAIN, COURT_SQ, DYCKMAN_ST, 3);
-    allChallenges.emplace_back(SIX_TRAIN, PELHAM_BAY_PARK, CONEY_ISLAND_STILLWELL_AVE, 3);
-    allChallenges.emplace_back(ONE_TRAIN, DYCKMAN_ST, GREENPOINT_AVE, 3);
-    allChallenges.emplace_back(A_TRAIN, FAR_ROCKAWAY_MOTT_AVE, JAMAICA_179TH_ST, 3);
+    allChallenges.emplace_back(G_TRAIN, COURT_SQ, DYCKMAN_ST, HARD);
+    allChallenges.emplace_back(SIX_TRAIN, PELHAM_BAY_PARK, CONEY_ISLAND_STILLWELL_AVE, HARD);
+    allChallenges.emplace_back(ONE_TRAIN, DYCKMAN_ST, GREENPOINT_AVE, HARD);
+    allChallenges.emplace_back(A_TRAIN, FAR_ROCKAWAY_MOTT_AVE, JAMAICA_179TH_ST, HARD);
 
     return allChallenges;
 }
