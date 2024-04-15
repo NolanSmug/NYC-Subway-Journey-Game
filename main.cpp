@@ -81,6 +81,7 @@ int main(int argc, char* argv[]) {
         unsigned int lastStationIndex = train.getScheduledStops().size() - 1;
         bool atLastStop = (currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
                           (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN);
+
         if (atLastStop) {
             announceLastStop(train);
         }
@@ -105,7 +106,7 @@ int main(int argc, char* argv[]) {
 void initializeTrain(Train& train, GameState& gameState) {
     train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, NONE, 10);
     train.setCurrentStation(gameState.startingStation);
-    train.setLineType();
+    train.setLineType(); // ex: Local, Express, None
 
     displayCurrentStationInfo(train);
 
@@ -131,7 +132,7 @@ void selectChallenge(JourneyManager& journeyManager, GameState& gameState) {
 
     cout << "\nSelect a Number Challenge to Complete: ";
     string challengeChoiceIndex;
-    getline(cin, challengeChoiceIndex); // Read the user's input
+    getline(cin, challengeChoiceIndex);
 
     int index;
     istringstream inputStringStream(challengeChoiceIndex);
@@ -144,12 +145,12 @@ void selectChallenge(JourneyManager& journeyManager, GameState& gameState) {
         journeyManager.setStartingStation(challengeChoice.getStartStation());
         journeyManager.setDestinationStation(challengeChoice.getDestinationStation());
 
-        // update GameState Object
+        // update GameState Object for Game functionality
         gameState.startingLine = challengeChoice.getStartLine();
         gameState.startingStation = journeyManager.getStartingStation();
         gameState.destinationStation = journeyManager.getDestinationStation();
 
-        // update currentStations vector depending on startingLine
+        // update currentStations vector based on the Challenge's startingLine
         SubwayMap::createStations(gameState.startingLine, gameState.currentStations);
     }
     else {
@@ -275,6 +276,7 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
     else {                                              // advance input<int> stations
         return advanceMultipleStations(train, input);
     }
+    input.clear();
 
     return false;
 }

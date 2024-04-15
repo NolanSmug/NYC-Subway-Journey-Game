@@ -133,21 +133,18 @@ Station Train::getNextStation() {
 }
 
 bool Train::advanceStation() {
-    bool valid = false;
-
-    if (currentStationIndex < scheduledStops.size() - 1 || currentLine == S_TRAIN) {
-        valid = true;
-
-        if (direction == UPTOWN) {
-            currentStationIndex++;
-        }
-        else if (direction == DOWNTOWN) {
-            currentStationIndex--;
-        }
+    if (direction == UPTOWN) {
+        currentStationIndex++;
+    }
+    else if (direction == DOWNTOWN) {
+        currentStationIndex--;
+    }
+    else {
+        return false;
     }
 
     setCurrentStation(currentStationIndex);
-    return valid;
+    return true;
 }
 
 
