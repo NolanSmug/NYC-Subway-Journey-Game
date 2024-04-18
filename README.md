@@ -113,55 +113,7 @@ Reads station data from a CSV file and manages subway stations.
 
 ****
 
-### Challenge
-Manages a `Challenge` object representing a specific Train journey challenge.
 
-#### Private Variables:
-| Name                         | Description                            |
-|------------------------------|----------------------------------------|
-| `LineName startLine`         | Starting subway line of the Challenge. |
-| `Station startStation`       | Starting station of the Challenge.     |
-| `Station destinationStation` | Destination station of the Challenge.  |
-| `int difficulty`             | Difficulty level of the Challenge.     |
-
-#### Public Methods:
-| Method                                                      | Description                                              |
-|-------------------------------------------------------------|----------------------------------------------------------|
-| `LineName getStartLine()`                                   | Gets the starting subway line of the Challenge.          |
-| `void setStartLine(LineName startLine)`                     | Sets the starting subway line of the Challenge.          |
-| `Station getStartStation()`                                 | Gets the starting station of the Challenge.              |
-| `void setStartStation(Station newStartStation)`             | Sets the starting station of the Challenge.              |
-| `Station getDestinationStation()`                           | Gets the destination station of the Challenge.           |
-| `void setDestinationStation(Station newDestinationStation)` | Sets the destination station of the Challenge.           |
-| `int getDifficulty()`                                       | Gets the difficulty level of the Challenge.              |
-| `void setDifficulty(int difficulty)`                        | Sets the difficulty level of the Challenge.              |
-| `vector<Challenge> initializeAllChallenges()`               | Initializes a collection of all challenges for the game. |
-
-****
-
-### JourneyManager
-Manages a `JourneyManager` object responsible for handling journey-related functionalities in the game.
-
-#### Private Variables:
-| Name                          | Description                                                     |
-|-------------------------------|-----------------------------------------------------------------|
-| `vector<Station> allStations` | Vector containing all stations in the subway system.            |
-| `Station startingStation`     | Starting station of the journey.                                |
-| `Station destinationStation`  | Destination station of the journey.                             |
-
-#### Public Methods:
-| Method                                                      | Description                                                       |
-|-------------------------------------------------------------|-------------------------------------------------------------------|
-| `Station getStartingStation()`                              | Gets the starting station of the journey.                         |
-| `void setStartingStation(Station newStartingStation)`       | Sets the starting station of the journey.                         |
-| `void setStartingStation(string newStartingStation)`        | Sets the starting station of the journey using a station name.    |
-| `Station getDestinationStation()`                           | Gets the destination station of the journey.                      |
-| `void setDestinationStation(Station newDestinationStation)` | Sets the destination station of the journey.                      |
-| `void setDestinationStation(string newDestinationStation)`  | Sets the destination station of the journey using a station name. |
-| `vector<Station> getAllStations()`                          | Gets all the stations in the subway system.                       |
-| `Station& getRandomStation()`                               | Gets a random station from the subway system.                     |
-
-****
 
 ### Main Class
 
@@ -325,7 +277,6 @@ stations = {
     "1_train_stations": ["StationA", "StationB", "StationC",...], 
     "2_train_stations": ["StationA", "StationC", "StationD",...],
     "3_train_stations": ["StationX", "StationY", "StationZ",...],
-    ...
 }
 ```
 
@@ -366,7 +317,7 @@ Input validation has been improved to handle various edge cases and provide mean
 With these additions, the game now **accurately simulates the experience of navigating the NYC subway system**,
 allowing players to get from `point A` to `point B` infinitely many ways.
 
-#### Small Cheat Code for Testers/Graders
+#### Small Cheat Code for Testers
 
 Take a look for my `handleUserInput()` function in `main.cpp`  
 1. Command: `Cmd/Ctrl` + `Shift` + `F`
@@ -415,7 +366,114 @@ each categorized based on difficulty.
 
 ****
 
-## Video Demonstrations
+## Personal Time Additions
+
+### Challenge Class
+Manages a `Challenge` object representing a specific Train journey challenge.
+
+#### Private Variables:
+| Name                         | Description                            |
+|------------------------------|----------------------------------------|
+| `LineName startLine`         | Starting subway line of the Challenge. |
+| `Station startStation`       | Starting station of the Challenge.     |
+| `Station destinationStation` | Destination station of the Challenge.  |
+| `int difficulty`             | Difficulty level of the Challenge.     |
+
+#### Public Methods:
+| Method                                                      | Description                                              |
+|-------------------------------------------------------------|----------------------------------------------------------|
+| `LineName getStartLine()`                                   | Gets the starting subway line of the Challenge.          |
+| `void setStartLine(LineName startLine)`                     | Sets the starting subway line of the Challenge.          |
+| `Station getStartStation()`                                 | Gets the starting station of the Challenge.              |
+| `void setStartStation(Station newStartStation)`             | Sets the starting station of the Challenge.              |
+| `Station getDestinationStation()`                           | Gets the destination station of the Challenge.           |
+| `void setDestinationStation(Station newDestinationStation)` | Sets the destination station of the Challenge.           |
+| `int getDifficulty()`                                       | Gets the difficulty level of the Challenge.              |
+| `void setDifficulty(int difficulty)`                        | Sets the difficulty level of the Challenge.              |
+| `vector<Challenge> initializeAllChallenges()`               | Initializes a collection of all challenges for the game. |
+
+****
+
+### JourneyManager Class
+Manages a `JourneyManager` object responsible for handling journey-related functionalities in the game.
+
+#### Private Variables:
+| Name                          | Description                                                     |
+|-------------------------------|-----------------------------------------------------------------|
+| `vector<Station> allStations` | Vector containing all stations in the subway system.            |
+| `Station startingStation`     | Starting station of the journey.                                |
+| `Station destinationStation`  | Destination station of the journey.                             |
+
+#### Public Methods:
+| Method                                                      | Description                                                       |
+|-------------------------------------------------------------|-------------------------------------------------------------------|
+| `Station getStartingStation()`                              | Gets the starting station of the journey.                         |
+| `void setStartingStation(Station newStartingStation)`       | Sets the starting station of the journey.                         |
+| `void setStartingStation(string newStartingStation)`        | Sets the starting station of the journey using a station name.    |
+| `Station getDestinationStation()`                           | Gets the destination station of the journey.                      |
+| `void setDestinationStation(Station newDestinationStation)` | Sets the destination station of the journey.                      |
+| `void setDestinationStation(string newDestinationStation)`  | Sets the destination station of the journey using a station name. |
+| `vector<Station> getAllStations()`                          | Gets all the stations in the subway system.                       |
+| `Station& getRandomStation()`                               | Gets a random station from the subway system.                     |
+
+****
+
+#### A Train Junction Logic
+
+In NYC, the A train actually has a unique junction at `Rockaway Blvd`,
+where the track splits into two branches, each headed to a different destination.
+
+```text
+                      /----- (8 stops) ---- Far Rockaway–Mott Av
+Rockaway Blvd ------ {
+                      \----- (2 stops) ---- Lefferts Blvd
+                   
+```
+
+This is why
+it is sometimes important to check which A train you are getting on
+if your destination station is along one of these branches
+(Especially if you are trying to get to JFK-Airport).
+
+How?
+```c++
+void promptForATrainDestination(Train &train, GameState &gameState) {
+    // Note: this is a simplified/modified version of the actual method in main.cpp 
+    // If user is at Rockaway Blvd and is traveling Downtown, prompt for which
+    // A train they would like to board:
+    cout << " - Far Rockaway–Mott Av (F)" << endl;
+    cout << " - Lefferts Boulevard   (L)" << endl;
+    
+    // Let the users selected A train be represented as {SELECTED_LINE}:
+    updateStopsForLine(SELECTED_LINE, gameState.currentStations); // update current stations vector properly
+    train.setLine(SELECTED_LINE);                                 // update train object's current line
+    train.setScheduledStops(gameState.currentStations);           // update train object's scheduled stops
+}
+```
+
+> More modifications had to be made in the SubwayMap and Line classes too.
+
+****
+
+#### Command Line Argument Initialization  
+When running the program, users can pass command-line arguments to customize its behavior.
+The `initializeArgs()` function in main handles them.
+
+**Purpose:**  
+The function evaluates the command-line arguments to set specific flags.
+It checks for two main flags:
+- `-c`: Disables challenge mode if present.
+- `-e`: Enables easy mode if present.
+
+**Usage:**
+- Using `-c` **disables** challenge mode, skipping the initial prompt for challenge mode.
+- Using `-e` **enables** easy mode, which prints the users' scheduled stops after each turn.
+
+Users can now control how the game is run without needing to modify the source code.
+
+****
+
+#### Video Demonstrations
 
 ### [Input Validation](https://www.youtube.com/watch?v=8oJfOjqpsMM)
 > **Note:** I set hard coded values to make the demonstration as simple and understandable as possible. In the provided code, the two `Station` Objects are chosen at random.

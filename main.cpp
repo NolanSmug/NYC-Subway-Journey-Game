@@ -249,6 +249,7 @@ void promptForATrainDestination(Train &train, GameState &gameState) {
          << "destination from the following options:" << endl;
     cout << " - Far Rockaway–Mott Av (F)" << endl;
     cout << " - Lefferts Boulevard   (L)" << endl;
+    cout << " - I'm confused!        (H)\n" << endl;
 
     while (!validInput) {
         cout << "Enter a destination: ";
@@ -259,22 +260,29 @@ void promptForATrainDestination(Train &train, GameState &gameState) {
 
         char inputChar = toupper(input[0]);
         if (inputChar == 'F') {
+            SubwayMap::updateStopsForLine(A_ROCKAWAY_MOTT_TRAIN,gameState.currentStations);
             train.setLine(A_ROCKAWAY_MOTT_TRAIN);
 
-            SubwayMap::updateStopsForLine(A_ROCKAWAY_MOTT_TRAIN,gameState.currentStations);
             train.setScheduledStops(gameState.currentStations);
             train.setCurrentStation(rockawayBlvd);
 
             validInput = true;
         }
         else if (inputChar == 'L') {
+            SubwayMap::updateStopsForLine(A_LEFFERTS_TRAIN,gameState.currentStations);
             train.setLine(A_LEFFERTS_TRAIN);
 
-            SubwayMap::updateStopsForLine(A_LEFFERTS_TRAIN,gameState.currentStations);
             train.setScheduledStops(gameState.currentStations);
             train.setCurrentStation(rockawayBlvd);
 
             validInput = true;
+        }
+        else if (inputChar == 'H') {
+            cout << "\nIn NYC, the A train actually has a unique junction at Rockaway Blvd, where the track splits into two branches, each headed to a different destination.\n\n";
+            cout << "                      /----- (8 stops) ---- Far Rockaway–Mott Av\n";
+            cout << "Rockaway Blvd ------ {\n";
+            cout << "                      \\----- (2 stops) ---- Lefferts Blvd\n\n";
+            cout << "it is important to check which A train you are getting on if your destination station is along one of these branches.\n\n\n";
         }
         else {
             // ask again;
