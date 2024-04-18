@@ -462,12 +462,12 @@ The `initializeArgs()` function in main handles them.
 **Purpose:**  
 The function evaluates the command-line arguments to set specific flags.
 It checks for two main flags:
-- `-c`: Disables challenge mode if present.
-- `-e`: Enables easy mode if present.
+- `-c`: **Disables** challenge mode if present.
+- `-e`: **Enables** easy mode if present.
 
 **Usage:**
-- Using `-c` **disables** challenge mode, skipping the initial prompt for challenge mode.
-- Using `-e` **enables** easy mode, which prints the users' scheduled stops after each turn.
+- `-c` **Disables** `challenge mode`, skipping the initial prompt for challenge mode.
+- `-e` **Enables** &nbsp;`easy mode`, which prints the users' scheduled stops after each turn.
 
 Users can now control how the game is run without needing to modify the source code.
 
