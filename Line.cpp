@@ -25,6 +25,8 @@ LineName Line::stringToLineEnum(string& lineStr) {
     if (lineStr == "5") return FIVE_TRAIN;
     if (lineStr == "6") return SIX_TRAIN;
     if (lineStr == "7") return SEVEN_TRAIN;
+    if (lineStr == "A (Rockaway–Mott)") return A_ROCKAWAY_MOTT_TRAIN;
+    if (lineStr == "A (Lefferts Blvd)") return A_LEFFERTS_TRAIN;
     if (lineStr == "A") return A_TRAIN;
     if (lineStr == "C") return C_TRAIN;
     if (lineStr == "E") return E_TRAIN;
@@ -50,15 +52,13 @@ LineName Line::stringToLineEnum(string& lineStr) {
 LineName Line::getRandomLine() {
     std::random_device rd;
     std::mt19937 generator(rd());
-    std::uniform_int_distribution<> distribution(0, TOTAL_NUM_LINES);
+    std::uniform_int_distribution<> distribution(0, TOTAL_NUM_LINES - 1); // Adjust the range to exclude the unwanted lines
 
-    int randomLineIndex = distribution(generator);
     LineName randomLine;
-    randomLine = static_cast<LineName>(randomLineIndex);
-    while (randomLine == NULL_TRAIN) { // ensure it doesn't select NULL_TRAIN
-        randomLineIndex = distribution(generator);
+    do {
+        int randomLineIndex = distribution(generator);
         randomLine = static_cast<LineName>(randomLineIndex);
-    }
+    } while (randomLine == NULL_TRAIN || randomLine == A_LEFFERTS_TRAIN || randomLine == A_ROCKAWAY_MOTT_TRAIN);
 
     return randomLine;
 }

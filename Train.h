@@ -28,6 +28,8 @@ static unordered_map<LineName, pair<string, string>> lineDirections {
         {SIX_TRAIN, {"Brooklyn-Bridge-bound", "Bronx-bound"}},
         {SEVEN_TRAIN, {"Manhattan-bound", "Queens-bound"}},
         {A_TRAIN, {"Downtown", "Uptown"}},
+        {A_ROCKAWAY_MOTT_TRAIN, {"Far Rockaway–Mott Av", "Inwood 207-St"}},
+        {A_LEFFERTS_TRAIN, {"Ozone Park–Lefferts Blvd",  "Inwood 207-St"}},
         {B_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
         {C_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
         {D_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
@@ -97,6 +99,7 @@ public:
 
     vector<Station> getScheduledStops();
     void addScheduledStop(Station newStop);
+    void setScheduledStops(vector<Station> newScheduledStops);
 
     Station getCurrentStation();
     Station getNextStation();

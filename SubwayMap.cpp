@@ -12,8 +12,15 @@ void stringToLowerCase(string &string) {
 }
 
 string lineNameToCSV(LineName line) {
+    // special cases (ignore)
     if (line == NULL_TRAIN) {
         return "../csv/all_stations.csv";
+    }
+    if (line == A_ROCKAWAY_MOTT_TRAIN) {
+        return "../csv/A_train_rockaway–mott_stations.csv";
+    }
+    if (line == A_LEFFERTS_TRAIN) {
+        return "../csv/A_train_lefferts_stations.csv";
     }
 
     string lineName = Line::getIDTextForEnum(line);

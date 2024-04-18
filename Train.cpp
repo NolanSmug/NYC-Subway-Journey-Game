@@ -91,6 +91,10 @@ void Train::addScheduledStop(Station newStop) {
     scheduledStops.push_back(newStop);
 }
 
+void Train::setScheduledStops(vector<Station> newScheduledStops) {
+    scheduledStops = newScheduledStops;
+}
+
 // Current Stations
 Station Train::getCurrentStation() {
     return scheduledStops[currentStationIndex];

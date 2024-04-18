@@ -28,6 +28,9 @@ void selectChallenge(JourneyManager &journeyManager, GameState &gameState);
 bool handleUserInput(Train &train, const Station &destinationStation, GameState &gameState, JourneyManager &journeyManager);
 void promptForNewDirection(Train &train);
 void promptForStartingLine(Train &train);
+void promptForGameMode(JourneyManager &journeyManager, GameState &gameState);
+
+void promptForATrainDestination(Train &train, GameState &gameState);
 
 bool advanceToNextStation(Train &train);
 bool advanceMultipleStations(Train &train, string &input);
@@ -36,6 +39,7 @@ bool initializeTransfer(Train &train);
 
 bool askUserToTransfer(Train &train);
 
+void displayCurrentLineInfo(Train &train);
 void displayCurrentStationInfo(Train &train);
 void displayUpcomingStations(Train &train);
 
@@ -58,16 +62,8 @@ int main(int argc, char* argv[]) {
     GameState gameState; // holds data for the current game's parameters.
     gameState.resetGameState(journeyManager);
 
-    // SELECT GAME MODE
-    if (challengeModeFlag) {
-        string gameMode;
-        cout << "Would you like to play Normal Mode (any key) or Challenge Mode (c)? ";
-        getline(cin, gameMode);
-
-        if (tolower(gameMode[0]) == 'c') {
-            selectChallenge(journeyManager, gameState);
-        }
-    }
+    // SELECT GAME MODE (as long as `-c` is not in args)
+    promptForGameMode(journeyManager, gameState);
 
     // START TRAIN
     Train train;
@@ -81,13 +77,18 @@ int main(int argc, char* argv[]) {
         unsigned int lastStationIndex = train.getScheduledStops().size() - 1;
         bool atLastStop = (currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
                           (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN);
+        bool isAtATrainJunction = train.getCurrentStation().getName() == "Rockaway Blvd" &&
+                                  train.getDirection() == DOWNTOWN;
 
-        if (atLastStop) {
+        if (atLastStop && !isAtATrainJunction) {
             announceLastStop(train);
         }
 
         bool validInput = false;
         while (!validInput) {
+            if (isAtATrainJunction) {
+                promptForATrainDestination(train, gameState);
+            }
             validInput = handleUserInput(train, gameState.destinationStation, gameState, journeyManager);
         }
     }
@@ -222,6 +223,66 @@ void promptForNewDirection(Train &train) {
             cout << "Invalid input. ";
         }
     }
+}
+
+void promptForGameMode(JourneyManager &journeyManager, GameState &gameState) {
+
+    if (challengeModeFlag) {
+        string gameMode;
+        cout << "Would you like to play Normal Mode (any key) or Challenge Mode (c)? ";
+
+        getline(cin, gameMode);
+
+        if (tolower(gameMode[0]) == 'c') {
+            selectChallenge(journeyManager, gameState);
+        }
+    }
+}
+
+void promptForATrainDestination(Train &train, GameState &gameState) {
+    string input;
+    bool validInput = false;
+
+    Station rockawayBlvd = train.getCurrentStation();
+
+    cout << "\nYou have reached a junction on the A train line. Please choose your desired "
+         << "destination from the following options:" << endl;
+    cout << " - Far Rockaway–Mott Av (F)" << endl;
+    cout << " - Lefferts Boulevard   (L)" << endl;
+
+    while (!validInput) {
+        cout << "Enter a destination: ";
+        getline(cin, input);
+        if (input.length() > 1) {
+            continue;
+        }
+
+        char inputChar = toupper(input[0]);
+        if (inputChar == 'F') {
+            train.setLine(A_ROCKAWAY_MOTT_TRAIN);
+
+            SubwayMap::updateStopsForLine(A_ROCKAWAY_MOTT_TRAIN,gameState.currentStations);
+            train.setScheduledStops(gameState.currentStations);
+            train.setCurrentStation(rockawayBlvd);
+
+            validInput = true;
+        }
+        else if (inputChar == 'L') {
+            train.setLine(A_LEFFERTS_TRAIN);
+
+            SubwayMap::updateStopsForLine(A_LEFFERTS_TRAIN,gameState.currentStations);
+            train.setScheduledStops(gameState.currentStations);
+            train.setCurrentStation(rockawayBlvd);
+
+            validInput = true;
+        }
+        else {
+            // ask again;
+        }
+    }
+
+    displayCurrentLineInfo(train);
+    cout << endl;
 }
 
 bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager) {
@@ -407,6 +468,11 @@ void announceLastStop(Train &train) {
     cout << "-------------------------------------------------------------------------------------------------------------------------" << endl;
     cout << "This is the last stop on this train. Everyone please leave the train, thank you for riding with MTA New York City Transit" << endl;
     cout << "-------------------------------------------------------------------------------------------------------------------------" << endl;
+
+    // special case for last stop on the different A train types
+    if (train.getLine() == A_ROCKAWAY_MOTT_TRAIN || train.getLine() == A_LEFFERTS_TRAIN) {
+        train.setLine(A_TRAIN);
+    }
 
     // switch direction
     train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);

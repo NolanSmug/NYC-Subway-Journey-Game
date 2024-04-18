@@ -93,7 +93,7 @@ vector<Challenge> Challenge::initializeAllChallenges() {
     allChallenges.emplace_back(G_TRAIN, COURT_SQ, DYCKMAN_ST, HARD);
     allChallenges.emplace_back(SIX_TRAIN, PELHAM_BAY_PARK, CONEY_ISLAND_STILLWELL_AVE, HARD);
     allChallenges.emplace_back(ONE_TRAIN, DYCKMAN_ST, GREENPOINT_AVE, HARD);
-    allChallenges.emplace_back(A_TRAIN, FAR_ROCKAWAY_MOTT_AVE, JAMAICA_179TH_ST, HARD);
+    allChallenges.emplace_back(A_ROCKAWAY_MOTT_TRAIN, FAR_ROCKAWAY_MOTT_AVE, JAMAICA_179TH_ST, HARD);
 
     return allChallenges;
 }

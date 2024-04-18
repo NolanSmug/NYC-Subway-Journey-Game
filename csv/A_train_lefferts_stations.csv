@@ -1,4 +1,7 @@
 stop_id,stop_name,transfers,borough
+A65,Ozone Park-Lefferts Blvd,A,Q
+A64,111 St,A,Q
+A63,104 St,A,Q
 A61,Rockaway Blvd,A,Q
 A60,88 St,A,Q
 A59,80 St,A,Q
