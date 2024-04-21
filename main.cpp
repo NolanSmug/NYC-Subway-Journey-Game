@@ -19,13 +19,13 @@ struct GameState {
     vector<Station> currentStations;
     bool isFirstTurn;
 
-    void resetGameState(JourneyManager &journeyManager); // resets starting && destination stations
+    void resetGameState(); // resets starting && destination stations
 };
 
 void initializeTrain(Train &train, GameState &gameState);
 void selectChallenge(JourneyManager &journeyManager, GameState &gameState);
 
-bool handleUserInput(Train &train, const Station &destinationStation, GameState &gameState, JourneyManager &journeyManager);
+bool handleUserInput(Train &train, const Station &destinationStation, GameState &gameState);
 void promptForNewDirection(Train &train);
 void promptForStartingLine(Train &train);
 void promptForGameMode(JourneyManager &journeyManager, GameState &gameState);
@@ -45,6 +45,8 @@ void displayUpcomingStations(Train &train);
 
 void announceLastStop(Train &train);
 
+Station getRandomStation(vector<Station> &allStations);
+
 static bool isnumber(const string &s);
 static void initializeArgs(int argc, char *argv[]);
 
@@ -60,7 +62,7 @@ int main(int argc, char* argv[]) {
     JourneyManager journeyManager = JourneyManager();
 
     GameState gameState; // holds data for the current game's parameters.
-    gameState.resetGameState(journeyManager);
+    gameState.resetGameState();
 
     // SELECT GAME MODE (as long as `-c` is not in args)
     promptForGameMode(journeyManager, gameState);
@@ -89,7 +91,7 @@ int main(int argc, char* argv[]) {
             if (isAtATrainJunction) {
                 promptForATrainDestination(train, gameState);
             }
-            validInput = handleUserInput(train, gameState.destinationStation, gameState, journeyManager);
+            validInput = handleUserInput(train, gameState.destinationStation, gameState);
         }
     }
 
@@ -249,10 +251,10 @@ void promptForATrainDestination(Train &train, GameState &gameState) {
          << "destination from the following options:" << endl;
     cout << " - Far Rockaway–Mott Av (F)" << endl;
     cout << " - Lefferts Boulevard   (L)" << endl;
-    cout << " - I'm confused!        (H)\n" << endl;
+    cout << " - I'm confused! Help?  (H)\n" << endl;
 
     while (!validInput) {
-        cout << "Enter a destination: ";
+        cout << "Enter a destination (F or L): ";
         getline(cin, input);
         if (input.length() > 1) {
             continue;
@@ -285,7 +287,7 @@ void promptForATrainDestination(Train &train, GameState &gameState) {
             cout << "it is important to check which A train you are getting on if your destination station is along one of these branches.\n\n\n";
         }
         else {
-            // ask again;
+            cout << "Invalid input. ";
         }
     }
 
@@ -293,7 +295,7 @@ void promptForATrainDestination(Train &train, GameState &gameState) {
     cout << endl;
 }
 
-bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState, JourneyManager& journeyManager) {
+bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState) {
     string input;
     cout << "Options:\n";
     cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
@@ -321,7 +323,7 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
 
     // RESET GAME
     if (inputChar == 'r') {
-        gameState.resetGameState(journeyManager);
+        gameState.resetGameState();
         cout << "\n\n\n\n-----------GAME RESET-----------\n\n\n\n";
         initializeTrain(train, gameState);
         return true;
@@ -485,13 +487,13 @@ void announceLastStop(Train &train) {
     train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
 
-    this_thread::sleep_for(chrono::seconds(3)); // wait so user realizes
+    this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes
 
     cout << "You switched to the "
          << trackLabel
          << " platform.\n";
 
-    this_thread::sleep_for(chrono::seconds(2));
+    this_thread::sleep_for(chrono::seconds(1));
 
     displayCurrentLineInfo(train);
     cout << endl;
@@ -559,16 +561,28 @@ int getRandomStation(unsigned int numStations) {
     return distribution(generator);
 }
 
-void GameState::resetGameState(JourneyManager& journeyManager) { // if user wants to re-shuffle their stations
-    startingStation = journeyManager.getRandomStation();
+Station getRandomStation(vector<Station> &allStations) {
+    static unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+
+    static std::mt19937_64 generator1(seed);
+    static std::default_random_engine generator2(generator1());
+    static std::uniform_int_distribution<std::size_t> dist(0, allStations.size() - 1);
+
+    std::size_t randomIndex = dist(generator2);
+
+    return allStations[randomIndex];
+}
+
+void GameState::resetGameState() { // if user wants to re-shuffle their stations
+    startingLine = Line::getRandomLine();
+    SubwayMap::createStations(startingLine, currentStations);
+
+    startingStation = getRandomStation(currentStations);
     destinationStation = startingStation;
 
     while (startingStation == destinationStation) {
-        destinationStation = journeyManager.getRandomStation();
+        destinationStation = getRandomStation(currentStations);
     }
-
-    startingLine = startingStation.getTransfers()[0];
-    SubwayMap::createStations(startingLine, currentStations);
 
     isFirstTurn = true;
 }
