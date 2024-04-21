@@ -459,7 +459,6 @@ void displayCurrentLineInfo(Train &train) {
 }
 
 void displayCurrentStationInfo(Train &train) {
-    Station currentStation = train.getCurrentStation();
     Direction currentDirection = train.getDirection();
 
     if (currentDirection == NULL_DIRECTION) {
@@ -469,7 +468,7 @@ void displayCurrentStationInfo(Train &train) {
         displayCurrentLineInfo(train);
     }
 
-    cout << "\nCurrent Station:\n" << currentStation;
+    cout << "\nCurrent Station:\n" << train.getCurrentStation();
 }
 
 void announceLastStop(Train &train) {

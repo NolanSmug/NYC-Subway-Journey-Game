@@ -58,7 +58,7 @@ LineName Line::getRandomLine() {
     do {
         int randomLineIndex = distribution(generator);
         randomLine = static_cast<LineName>(randomLineIndex);
-    } while (randomLine == NULL_TRAIN || randomLine == A_LEFFERTS_TRAIN || randomLine == A_ROCKAWAY_MOTT_TRAIN);
+    } while (randomLine != NULL_TRAIN && randomLine != A_LEFFERTS_TRAIN && randomLine != A_ROCKAWAY_MOTT_TRAIN);
 
     return randomLine;
 }
