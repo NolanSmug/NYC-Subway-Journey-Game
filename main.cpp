@@ -46,7 +46,6 @@ void displayUpcomingStations(Train &train);
 void announceLastStop(Train &train);
 
 Station getRandomStation(vector<Station> &allStations);
-
 static bool isnumber(const string &s);
 static void initializeArgs(int argc, char *argv[]);
 
@@ -349,6 +348,10 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
     }
     input.clear();
 
+    if (gameState.isFirstTurn) {
+        gameState.isFirstTurn = false;
+    }
+
     return false;
 }
 
@@ -553,14 +556,6 @@ void displayUpcomingStations(Train &train) {
     cout << "------------------------------------------------------------------" << endl;
 }
 
-int getRandomStation(unsigned int numStations) {
-    random_device rd;
-    mt19937 generator(rd());
-    uniform_int_distribution<> distribution(0, numStations - 1);
-
-    return distribution(generator);
-}
-
 Station getRandomStation(vector<Station> &allStations) {
     static unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
@@ -575,17 +570,15 @@ Station getRandomStation(vector<Station> &allStations) {
 
 void GameState::resetGameState() { // if user wants to re-shuffle their stations
     vector<Station> allStations;
-    SubwayMap::createStations(NULL_TRAIN, allStations);
+    SubwayMap::createStations(NULL_TRAIN, allStations); // fill allStations vector
 
     startingLine = Line::getRandomLine();
-    SubwayMap::createStations(startingLine, currentStations);
+    SubwayMap::createStations(startingLine, currentStations); // fill currentStations vector for currentLine
 
     startingStation = getRandomStation(currentStations);
-
-    destinationStation = startingStation;
-    while (startingStation == destinationStation) {
+    do {
         destinationStation = getRandomStation(allStations);
-    }
+    } while (startingStation == destinationStation);
 
     isFirstTurn = true;
 }
