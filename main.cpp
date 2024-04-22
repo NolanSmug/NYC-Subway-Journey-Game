@@ -85,12 +85,12 @@ int main(int argc, char* argv[]) {
         if (atLastStop && !isAtATrainJunction) {
             announceLastStop(train);
         }
+        if (isAtATrainJunction) {
+            promptForATrainDestination(train, gameState);
+        }
 
         bool validInput = false;
         while (!validInput) {
-            if (isAtATrainJunction) {
-                promptForATrainDestination(train, gameState);
-            }
             validInput = handleUserInput(train, gameState.destinationStation, gameState);
         }
     }
