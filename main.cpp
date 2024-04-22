@@ -23,29 +23,31 @@ struct GameState {
     void resetGameState(); // resets starting && destination stations
 };
 
+// Start of Game
 void initializeTrain(Train &train, GameState &gameState);
-void selectChallenge(JourneyManager &journeyManager, GameState &gameState);
+void selectChallenge(GameState &gameState);
 
-bool handleUserInput(Train &train, const Station &destinationStation, GameState &gameState);
-void promptForNewDirection(Train &train);
+// Prompting User
+bool handleUserInput(Train &train, GameState &gameState);
+void promptForDirection(Train &train);
 void promptForStartingLine(Train &train);
-void promptForGameMode(JourneyManager &journeyManager, GameState &gameState);
-
+void promptForGameMode(GameState &gameState);
+bool promptForTransfer(Train &train);
 void promptForATrainDestination(Train &train, GameState &gameState);
 
+// Handling Train Actions
 bool advanceToNextStation(Train &train);
 bool advanceMultipleStations(Train &train, string &input);
 bool changeDirection(Train &train);
 bool initializeTransfer(Train &train);
 
-bool askUserToTransfer(Train &train);
-
+// Printing Game Information
 void displayCurrentLineInfo(Train &train);
 void displayCurrentStationInfo(Train &train);
 void displayUpcomingStations(Train &train);
-
 void announceLastStop(Train &train);
 
+// Other Helper Methods
 Station getRandomStation(vector<Station> &allStations);
 static bool isnumber(const string &s);
 static void initializeArgs(int argc, char *argv[]);
@@ -58,14 +60,12 @@ int main(int argc, char* argv[]) {
     // SET FLAGS FROM ARGS
     initializeArgs(argc, argv);
 
-    // SET UP JOURNEY MANAGER
-    JourneyManager journeyManager = JourneyManager();
-
-    GameState gameState; // holds data for the current game's parameters.
+    // SET UP GAME STATE (holds data for the current game's parameters)
+    GameState gameState;
     gameState.resetGameState();
 
     // SELECT GAME MODE (as long as `-c` is not in args)
-    promptForGameMode(journeyManager, gameState);
+    promptForGameMode(gameState);
 
     // START TRAIN
     Train train;
@@ -91,7 +91,7 @@ int main(int argc, char* argv[]) {
 
         bool validInput = false;
         while (!validInput) {
-            validInput = handleUserInput(train, gameState.destinationStation, gameState);
+            validInput = handleUserInput(train,gameState);
         }
     }
 
@@ -120,10 +120,11 @@ void initializeTrain(Train& train, GameState& gameState) {
         promptForStartingLine(train); // if startingStation has transfer line options
     }
 
-    promptForNewDirection(train);
+    promptForDirection(train);
 }
 
-void selectChallenge(JourneyManager& journeyManager, GameState& gameState) {
+void selectChallenge(GameState& gameState) {
+    JourneyManager journeyManager = JourneyManager();
     Challenge challenge = Challenge();
     vector<Challenge> allChallenges = challenge.initializeAllChallenges();
 
@@ -183,7 +184,7 @@ void promptForStartingLine(Train &train) {
     }
 }
 
-void promptForNewDirection(Train &train) {
+void promptForDirection(Train &train) {
     bool valid = false;
     string input = " ";
 
@@ -227,7 +228,7 @@ void promptForNewDirection(Train &train) {
     }
 }
 
-void promptForGameMode(JourneyManager &journeyManager, GameState &gameState) {
+void promptForGameMode(GameState &gameState) {
 
     if (challengeModeFlag) {
         string gameMode;
@@ -236,7 +237,7 @@ void promptForGameMode(JourneyManager &journeyManager, GameState &gameState) {
         getline(cin, gameMode);
 
         if (tolower(gameMode[0]) == 'c') {
-            selectChallenge(journeyManager, gameState);
+            selectChallenge(gameState);
         }
     }
 }
@@ -295,7 +296,7 @@ void promptForATrainDestination(Train &train, GameState &gameState) {
     cout << endl;
 }
 
-bool handleUserInput(Train &train, const Station &destinationStation, GameState& gameState) {
+bool handleUserInput(Train &train, GameState& gameState) {
     string input;
     cout << "Options:\n";
     cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
@@ -339,7 +340,7 @@ bool handleUserInput(Train &train, const Station &destinationStation, GameState&
         return changeDirection(train);
     }
     else if (inputChar == 'd') {                        // show destination station
-        cout << "Destination Station:\n" << destinationStation;
+        cout << "Destination Station:\n" << gameState.destinationStation;
     }
     else if (inputChar == '0') {                        // secret
         displayUpcomingStations(train);
@@ -387,8 +388,8 @@ bool advanceMultipleStations(Train &train, string &input) {
 }
 
 bool initializeTransfer(Train &train) {
-    if (askUserToTransfer(train)) { // if user has chosen a valid transfer line
-        promptForNewDirection(train);
+    if (promptForTransfer(train)) { // if user has chosen a valid transfer line
+        promptForDirection(train);
 
         train.setUptownLabel(Train::getTextForDirectionEnum(UPTOWN, train.getLine()));
         train.setDowntownLabel(Train::getTextForDirectionEnum(DOWNTOWN, train.getLine()));
@@ -397,7 +398,7 @@ bool initializeTransfer(Train &train) {
     return true;
 }
 
-bool askUserToTransfer(Train &train) {
+bool promptForTransfer(Train &train) {
     Station currentStation = train.getCurrentStation();
     string input;
 

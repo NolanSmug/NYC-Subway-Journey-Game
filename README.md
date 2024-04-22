@@ -143,13 +143,13 @@ struct GameState {
 | `initializeTrain`               | Initializes the train with the starting line, current station, and destination station based on the game state.                                                 |
 | `selectChallenge`               | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge.                           |
 | `handleUserInput`               | Handles user input during the game. It interprets user commands to `advance` the train, `change direction`, `transfer` to another line, or display information. |
-| `promptForNewDirection`            | Prompts the user to choose a new direction for the train when transferring to another line.                                                                     |
+| `promptForDirection`            | Prompts the user to choose a new direction for the train when transferring to another line.                                                                     |
 | `promptForStartingLine`            | Prompts the user to choose a train line to wait for at the current station.                                                                                     |
 | `handleAdvanceOneStation`       | Handles the input to advance the train by one station.                                                                                                          |
 | `handleAdvanceMultipleStations` | Handles the input to advance the train by multiple stations specified by the user.                                                                              |
 | `handleChangeDirection`         | Handles the input to change the direction of the train.                                                                                                         |
 | `handleTransfer`                | Handles the input to transfer to another line at the current station.                                                                                           |
-| `askUserToTransfer`             | Prompts the user to choose a line for transferring at the current station.                                                                                      |
+| `promptForTransfer`             | Prompts the user to choose a line for transferring at the current station.                                                                                      |
 | `printCurrentStationInfo`       | Displays information about the current station, including the line and direction of the train.                                                                  |
 | `printAllStations`              | Prints information about all stations along the train's route.                                                                                                  |
 | `announceLastStop`                | Handles the situation when the train reaches the last stop on its current line. It prompts the user to switch direction and continue the journey.               |
