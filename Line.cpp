@@ -50,15 +50,25 @@ LineName Line::stringToLineEnum(string& lineStr) {
 }
 
 LineName Line::getRandomLine() {
-    std::random_device rd;
-    std::mt19937 generator(rd());
-    std::uniform_int_distribution<> distribution(0, TOTAL_NUM_LINES - 1); // Adjust the range to exclude the unwanted lines
+    random_device rd;
+    mt19937 generator(rd());
 
-    LineName randomLine;
-    do {
-        int randomLineIndex = distribution(generator);
-        randomLine = static_cast<LineName>(randomLineIndex);
-    } while (randomLine != NULL_TRAIN && randomLine != A_LEFFERTS_TRAIN && randomLine != A_ROCKAWAY_MOTT_TRAIN);
+    vector<LineName> desiredLines = {
+            ONE_TRAIN, TWO_TRAIN, THREE_TRAIN,
+            FOUR_TRAIN, FIVE_TRAIN, SIX_TRAIN, SEVEN_TRAIN,
+            A_TRAIN, C_TRAIN, E_TRAIN,
+            B_TRAIN, D_TRAIN, F_TRAIN, M_TRAIN,
+            N_TRAIN, Q_TRAIN, R_TRAIN, W_TRAIN,
+            J_TRAIN, Z_TRAIN,
+            G_TRAIN,
+            L_TRAIN,
+            S_TRAIN, // Times Sq-42 St to Grand Central-42 St
+            S_TRAIN_SHUTTLE, // Franklin Av Shuttle
+            S_TRAIN_ROCKAWAY
+    };
 
-    return randomLine;
+    uniform_int_distribution<> distribution(0, desiredLines.size() - 1);
+    int randomIndex = distribution(generator);
+
+    return desiredLines[randomIndex];
 }

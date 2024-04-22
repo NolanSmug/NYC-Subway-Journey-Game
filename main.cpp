@@ -574,14 +574,17 @@ Station getRandomStation(vector<Station> &allStations) {
 }
 
 void GameState::resetGameState() { // if user wants to re-shuffle their stations
+    vector<Station> allStations;
+    SubwayMap::createStations(NULL_TRAIN, allStations);
+
     startingLine = Line::getRandomLine();
     SubwayMap::createStations(startingLine, currentStations);
 
     startingStation = getRandomStation(currentStations);
-    destinationStation = startingStation;
 
+    destinationStation = startingStation;
     while (startingStation == destinationStation) {
-        destinationStation = getRandomStation(currentStations);
+        destinationStation = getRandomStation(allStations);
     }
 
     isFirstTurn = true;

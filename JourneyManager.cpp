@@ -61,15 +61,3 @@ void JourneyManager::setDestinationStation(string newDestinationStation) { // wo
 vector<Station> JourneyManager::getAllStations() {
     return allStations;
 }
-
-Station& JourneyManager::getRandomStation() {
-    static unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-
-    static std::mt19937_64 generator1(seed);
-    static std::default_random_engine generator2(generator1());
-    static std::uniform_int_distribution<std::size_t> dist(0, allStations.size() - 1);
-
-    std::size_t randomIndex = dist(generator2);
-
-    return allStations[randomIndex];
-}
