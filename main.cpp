@@ -565,17 +565,16 @@ Station getRandomStation(vector<Station> &allStations) {
 }
 
 void GameState::resetGameState() { // if user wants to re-shuffle their stations
-    SubwayMap::createStations(NULL_TRAIN, allNycStations); // fill allStations vector
-
     startingLine = Line::getRandomLine();
+    isFirstTurn = true;
+
     SubwayMap::createStations(startingLine, currentStations); // fill currentStations vector for currentLine
+    SubwayMap::createStations(NULL_TRAIN, allNycStations);    // fill allNycStations vector
 
     startingStation = getRandomStation(currentStations);
     do {
         destinationStation = getRandomStation(allNycStations);
     } while (startingStation == destinationStation);
-
-    isFirstTurn = true;
 }
 
 static bool isnumber(const string &s) {
