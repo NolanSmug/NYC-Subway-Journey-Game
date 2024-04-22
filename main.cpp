@@ -16,6 +16,7 @@ struct GameState {
     LineName startingLine;
     Station startingStation;
     Station destinationStation;
+    vector<Station> allNycStations;
     vector<Station> currentStations;
     bool isFirstTurn;
 
@@ -447,9 +448,6 @@ void displayCurrentLineInfo(Train &train) {
 
     string currentLineInfo; // string to be filled
 
-
-
-
     if (currentLineType == NONE) {
         currentLineInfo = currentDirectionLabel + " " + currentLineStr +                            " Train " + directionArrowSymbol;
     }
@@ -457,9 +455,7 @@ void displayCurrentLineInfo(Train &train) {
         currentLineInfo = currentDirectionLabel + " " + currentLineStr + " " + currentLineTypeStr + " Train " + directionArrowSymbol;
     }
 
-
     easyModeFlag ? displayUpcomingStations(train) : void(); // easy mode flag (ignore otherwise)
-
     cout << "\n\nCurrent Line:\n" << currentLineInfo << endl;
 }
 
@@ -569,15 +565,14 @@ Station getRandomStation(vector<Station> &allStations) {
 }
 
 void GameState::resetGameState() { // if user wants to re-shuffle their stations
-    vector<Station> allStations;
-    SubwayMap::createStations(NULL_TRAIN, allStations); // fill allStations vector
+    SubwayMap::createStations(NULL_TRAIN, allNycStations); // fill allStations vector
 
     startingLine = Line::getRandomLine();
     SubwayMap::createStations(startingLine, currentStations); // fill currentStations vector for currentLine
 
     startingStation = getRandomStation(currentStations);
     do {
-        destinationStation = getRandomStation(allStations);
+        destinationStation = getRandomStation(allNycStations);
     } while (startingStation == destinationStation);
 
     isFirstTurn = true;
