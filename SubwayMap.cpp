@@ -95,7 +95,7 @@ void SubwayMap::createStations(LineName line, vector<Station> &subwayStations) {
             boroughEnum = STATEN_ISLAND;
         }
 
-        Station newStation = Station(id, name, transfers, boroughEnum);
+        Station newStation = Station(id, name, transfers,boroughEnum);
         subwayStations.push_back(newStation);
 
         transfers.clear(); // clear transfer vector before building the next station

@@ -10,9 +10,6 @@
 #include "SubwayMap.h"
 
 class SubwayMap {
-private:
-    vector<Station> allStations;
-
 public:
     static void createStations(LineName line, vector<Station> &subwayStations);
 
