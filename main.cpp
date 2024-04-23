@@ -3,7 +3,6 @@
 #include "Train.h"
 #include "Line.h"
 #include "Challenge.h"
-#include "JourneyManager.h"
 #include "sstream"
 #include "random"
 #include <iostream>
@@ -124,7 +123,6 @@ void initializeTrain(Train& train, GameState& gameState) {
 }
 
 void selectChallenge(GameState& gameState) {
-    JourneyManager journeyManager = JourneyManager();
     Challenge challenge = Challenge();
     vector<Challenge> allChallenges = challenge.initializeAllChallenges();
 
@@ -145,14 +143,10 @@ void selectChallenge(GameState& gameState) {
     if (index >= 1 && index <= allChallenges.size()) {
         Challenge challengeChoice = allChallenges[index - 1]; // retrieve selected challenge
 
-        // update JourneyManager Object for Challenge functionality
-        journeyManager.setStartingStation(challengeChoice.getStartStation());
-        journeyManager.setDestinationStation(challengeChoice.getDestinationStation());
-
-        // update GameState Object for Game functionality
+        // update GameState parameters for Game functionality
         gameState.startingLine = challengeChoice.getStartLine();
-        gameState.startingStation = journeyManager.getStartingStation();
-        gameState.destinationStation = journeyManager.getDestinationStation();
+        gameState.startingStation = challengeChoice.getStartStation();
+        gameState.destinationStation = challengeChoice.getDestinationStation();
 
         // update currentStations vector based on the Challenge's startingLine
         SubwayMap::createStations(gameState.startingLine, gameState.currentStations);

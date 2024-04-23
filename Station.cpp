@@ -3,7 +3,7 @@
 //
 
 #include "Station.h"
-#include "JourneyManager.h"
+#include "SubwayMap.h"
 #include "sstream"
 
 // Constructors
@@ -111,8 +111,14 @@ string Station::getTextForEnum(int enumVal) {
     return BoroughEnumStrings[enumVal];
 }
 
+vector<Station> getAllStations() {
+    vector<Station> allStations;
+    SubwayMap::createStations(NULL_TRAIN,allStations);
+    return allStations;
+}
+
 Station Station::getStation(string stationName, string stationID) {
-    for (Station station : JourneyManager::getAllStations()) {
+    for (Station station : getAllStations()) {
         if (station.getId() == stationID || station.getName() == stationName) {
             return station;
         }

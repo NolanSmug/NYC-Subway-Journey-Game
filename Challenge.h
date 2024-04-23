@@ -8,7 +8,6 @@
 #include <string>
 #include "Line.h"
 #include "Station.h"
-#include "JourneyManager.h"
 #include "sstream"
 #include <iomanip>
 
