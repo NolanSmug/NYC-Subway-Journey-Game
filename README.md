@@ -133,18 +133,18 @@ struct GameState {
     vector<Station> currentStations;
     bool isFirstTurn;
 
-    void resetGameState(JourneyManager& journeyManager); // if user wants to re-shuffle their stations
+    void resetGameState(); // if user wants to re-shuffle their stations
 };
 ```
 
 | Function                        | Description                                                                                                                                                     |
 |---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `main`                          | Entry point of the application. It sets up the game environment, initializes the `Train`, `JourneyManager`, and `GameState`, and enters the game loop.          |
+| `main`                          | Entry point of the application. It sets up the game environment, initializes the `Train` and `GameState` and enters the game loop.                              |
 | `initializeTrain`               | Initializes the train with the starting line, current station, and destination station based on the game state.                                                 |
 | `selectChallenge`               | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge.                           |
 | `handleUserInput`               | Handles user input during the game. It interprets user commands to `advance` the train, `change direction`, `transfer` to another line, or display information. |
 | `promptForDirection`            | Prompts the user to choose a new direction for the train when transferring to another line.                                                                     |
-| `promptForStartingLine`            | Prompts the user to choose a train line to wait for at the current station.                                                                                     |
+| `promptForStartingLine`         | Prompts the user to choose a train line to wait for at the current station.                                                                                     |
 | `handleAdvanceOneStation`       | Handles the input to advance the train by one station.                                                                                                          |
 | `handleAdvanceMultipleStations` | Handles the input to advance the train by multiple stations specified by the user.                                                                              |
 | `handleChangeDirection`         | Handles the input to change the direction of the train.                                                                                                         |
@@ -152,7 +152,7 @@ struct GameState {
 | `promptForTransfer`             | Prompts the user to choose a line for transferring at the current station.                                                                                      |
 | `printCurrentStationInfo`       | Displays information about the current station, including the line and direction of the train.                                                                  |
 | `printAllStations`              | Prints information about all stations along the train's route.                                                                                                  |
-| `announceLastStop`                | Handles the situation when the train reaches the last stop on its current line. It prompts the user to switch direction and continue the journey.               |
+| `announceLastStop`              | Handles the situation when the train reaches the last stop on its current line. It prompts the user to switch direction and continue the journey.               |
 | `getRandomStation`              | Generates a random station index within the specified range.                                                                                                    |
 | `isnumber`                      | Checks if a string represents a numeric value.                                                                                                                  |
 
@@ -391,30 +391,6 @@ Manages a `Challenge` object representing a specific Train journey challenge.
 | `int getDifficulty()`                                       | Gets the difficulty level of the Challenge.              |
 | `void setDifficulty(int difficulty)`                        | Sets the difficulty level of the Challenge.              |
 | `vector<Challenge> initializeAllChallenges()`               | Initializes a collection of all challenges for the game. |
-
-****
-
-### JourneyManager Class
-Manages a `JourneyManager` object responsible for handling journey-related functionalities in the game.
-
-#### Private Variables:
-| Name                          | Description                                                     |
-|-------------------------------|-----------------------------------------------------------------|
-| `vector<Station> allStations` | Vector containing all stations in the subway system.            |
-| `Station startingStation`     | Starting station of the journey.                                |
-| `Station destinationStation`  | Destination station of the journey.                             |
-
-#### Public Methods:
-| Method                                                      | Description                                                       |
-|-------------------------------------------------------------|-------------------------------------------------------------------|
-| `Station getStartingStation()`                              | Gets the starting station of the journey.                         |
-| `void setStartingStation(Station newStartingStation)`       | Sets the starting station of the journey.                         |
-| `void setStartingStation(string newStartingStation)`        | Sets the starting station of the journey using a station name.    |
-| `Station getDestinationStation()`                           | Gets the destination station of the journey.                      |
-| `void setDestinationStation(Station newDestinationStation)` | Sets the destination station of the journey.                      |
-| `void setDestinationStation(string newDestinationStation)`  | Sets the destination station of the journey using a station name. |
-| `vector<Station> getAllStations()`                          | Gets all the stations in the subway system.                       |
-| `Station& getRandomStation()`                               | Gets a random station from the subway system.                     |
 
 ****
 
