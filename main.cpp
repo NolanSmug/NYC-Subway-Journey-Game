@@ -25,6 +25,7 @@ struct GameState {
 // Start of Game
 void initializeTrain(Train &train, GameState &gameState);
 void selectChallenge(GameState &gameState);
+void selectCustomChallenge(GameState &gameState);
 
 // Prompting User
 bool handleUserInput(Train &train, GameState &gameState);
@@ -122,38 +123,102 @@ void initializeTrain(Train& train, GameState& gameState) {
     promptForDirection(train);
 }
 
-void selectChallenge(GameState& gameState) {
+void selectChallenge(GameState &gameState) {
     Challenge challenge = Challenge();
-    vector<Challenge> allChallenges = challenge.initializeAllChallenges();
+    challenge.initializeAllChallenges();
 
+    bool validChoice = false;
     int count = 1;
-    for (Challenge challenge : allChallenges) {
+    for (Challenge challenge : challenge.getAllChallenges()) {
         cout << count << (count < 10 ? ":  " : ": ") << challenge << endl;
         ++count;
     }
+    cout << count << ": Custom Journey" << endl;
 
-    cout << "\nSelect a Number Challenge to Complete: ";
-    string challengeChoiceIndex;
-    getline(cin, challengeChoiceIndex);
+    while (!validChoice) {
+        cout << "\nSelect a Number Challenge to Complete: ";
+        string challengeChoiceIndex;
+        getline(cin, challengeChoiceIndex);
 
-    int index;
-    istringstream inputStringStream(challengeChoiceIndex);
-    inputStringStream >> index; // parse input string as integer
+        int index;
+        istringstream inputStringStream(challengeChoiceIndex);
+        if (inputStringStream >> index && index >= 1 && index <= challenge.getAllChallenges().size()) {
+            Challenge challengeChoice = challenge.getAllChallenges()[index - 1]; // retrieve selected challenge
 
-    if (index >= 1 && index <= allChallenges.size()) {
-        Challenge challengeChoice = allChallenges[index - 1]; // retrieve selected challenge
+            // update GameState parameters for Game functionality
+            if (!challengeChoice.getStartStation().hasTransferLine()) {
+                gameState.startingLine = challengeChoice.getStartStation().getTransfers()[0];
+            } else {
+                gameState.startingLine = challengeChoice.getStartLine();
+            }
+            gameState.startingStation = challengeChoice.getStartStation();
+            gameState.destinationStation = challengeChoice.getDestinationStation();
 
-        // update GameState parameters for Game functionality
-        gameState.startingLine = challengeChoice.getStartLine();
-        gameState.startingStation = challengeChoice.getStartStation();
-        gameState.destinationStation = challengeChoice.getDestinationStation();
+            // update currentStations vector based on the Challenge's startingLine
+            SubwayMap::createStations(gameState.startingLine, gameState.currentStations);
 
-        // update currentStations vector based on the Challenge's startingLine
-        SubwayMap::createStations(gameState.startingLine, gameState.currentStations);
+            validChoice = true;
+        }
+        else if (index == count) {
+            selectCustomChallenge(gameState);
+            validChoice = true;
+        }
+        else {
+            cout << "Invalid challenge index. Please select a valid challenge." << endl;
+        }
     }
-    else {
-        cout << "Invalid challenge index. Please select a valid challenge." << endl;
+}
+
+void selectCustomChallenge(GameState &gameState) {
+    cout << "ID  | Station Name  " << endl;
+    for (Station station : gameState.allNycStations) {
+        cout << station.getId() << " | " << station.getName() << endl;
     }
+
+    cout << "Select a Starting Station by ID: ";
+    string startingStationId;
+    getline(cin, startingStationId);
+
+    Station selectedStartingStation;
+    bool found = false;
+    for (Station station : gameState.allNycStations) {
+        if (station.getId() == startingStationId) {
+            selectedStartingStation = station;
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Invalid station ID. Please try again." << endl;
+        return;
+    }
+
+    cout << "Select a Destination Station by ID: ";
+    string destinationStationId;
+    getline(cin, destinationStationId);
+
+    Station selectedDestinationStation;
+    found = false; // Reset 'found' flag here
+    for (Station station : gameState.allNycStations) {
+        if (station.getId() == destinationStationId) {
+            selectedDestinationStation = station;
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        cout << "Invalid station ID. Please try again." << endl;
+        return;
+    }
+
+
+    gameState.startingLine = selectedStartingStation.getTransfers()[0];
+    gameState.startingStation = selectedStartingStation;
+    gameState.destinationStation = selectedDestinationStation;
+
+    SubwayMap::createStations(gameState.startingLine, gameState.currentStations);
 }
 
 
@@ -450,7 +515,9 @@ void displayCurrentLineInfo(Train &train) {
         currentLineInfo = currentDirectionLabel + " " + currentLineStr + " " + currentLineTypeStr + " Train " + directionArrowSymbol;
     }
 
-    easyModeFlag ? displayUpcomingStations(train) : void(); // easy mode flag (ignore otherwise)
+    if (easyModeFlag) {
+        displayCurrentLineInfo(train);
+    }
     cout << "\n\nCurrent Line:\n" << currentLineInfo << endl;
 }
 
@@ -568,8 +635,8 @@ void GameState::resetGameState() { // if user wants to re-shuffle their stations
 
     startingStation = getRandomStation(currentStations);
     do {
-        destinationStation = getRandomStation(allNycStations);
-    } while (startingStation == destinationStation);
+        destinationStation = getRandomStation(allNycStations); // select random destination station
+    } while (startingStation == destinationStation); // ensure starting != destination
 }
 
 static bool isnumber(const string &s) {

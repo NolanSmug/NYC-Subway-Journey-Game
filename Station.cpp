@@ -112,14 +112,14 @@ string Station::getTextForEnum(int enumVal) {
 }
 
 vector<Station> getAllStations() {
-    vector<Station> allStations;
+    vector<Station> allStations; //TODO: how do I make this a constant and how can I initialize it only once
     SubwayMap::createStations(NULL_TRAIN,allStations);
     return allStations;
 }
 
 Station Station::getStation(string stationName, string stationID) {
     for (Station station : getAllStations()) {
-        if (station.getId() == stationID || station.getName() == stationName) {
+        if (station.getId() == stationID || station.getName() == stationName) { //TODO: || or &&?
             return station;
         }
     }

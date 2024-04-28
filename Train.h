@@ -121,12 +121,12 @@ public:
 
 private:
     LineName currentLine;
+    LineType lineType;
     Direction direction;
     string uptownLabel;
     string downtownLabel;
     vector<Station> scheduledStops;
     int currentStationIndex = 0;
-    LineType lineType;
     int numCars; // not sure if this could be useful ever
 };
 

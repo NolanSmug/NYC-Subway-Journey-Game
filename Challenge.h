@@ -16,7 +16,7 @@ enum Difficulty {EASY, MEDIUM, HARD};
 class Challenge {
 public:
     Challenge();
-    Challenge(LineName startLine, Station startStation, Station destinationStation, Difficulty difficulty);
+    Challenge(Station startStation, Station destinationStation, Difficulty difficulty);
 
     LineName getStartLine();
     void setStartLine(LineName startLine);
@@ -30,7 +30,10 @@ public:
     Difficulty getDifficulty();
     void setDifficulty(Difficulty difficulty);
 
-    vector<Challenge> initializeAllChallenges();
+    vector<Challenge> getAllChallenges();
+
+    void initializeAllChallenges();
+    void addNewChallenge(Challenge newChallenge);
 
     friend ostream& operator<<(ostream& str, Challenge challenge);
 
@@ -40,6 +43,7 @@ private:
     Station startStation;
     Station destinationStation;
     Difficulty difficulty;
+    vector<Challenge> allChallenges;
 };
 
 
