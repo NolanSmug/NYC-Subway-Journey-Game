@@ -51,6 +51,7 @@ public:
     static string getTextForEnum(int enumVal);
 
     static Station getStation(string stationName, string stationID);
+    static Station getStation(string stationID);
 };
 
 #endif //M1OEP_NCYR1_STATION_H

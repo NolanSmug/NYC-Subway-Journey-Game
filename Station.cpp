@@ -126,3 +126,13 @@ Station Station::getStation(string stationName, string stationID) {
 
     return Station("000", "NULL_STATION", {NULL_TRAIN});
 }
+
+Station Station::getStation(string stationID) {
+    for (Station station : getAllStations()) {
+        if (station.getId() == stationID) {
+            return station;
+        }
+    }
+
+    return Station("000", "NULL_STATION", {NULL_TRAIN});
+}
