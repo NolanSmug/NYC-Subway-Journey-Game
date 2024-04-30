@@ -161,6 +161,7 @@ void selectChallenge(GameState &gameState) {
         }
         else if (index == count) {
             selectCustomChallenge(gameState);
+            challenge.wrtieNewChallenge(Challenge(gameState.startingStation,gameState.destinationStation,EASY));
             validChoice = true;
         }
         else {

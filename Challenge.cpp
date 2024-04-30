@@ -59,36 +59,36 @@ void Challenge::initializeAllChallenges() {
     }
 
     // Build variables
-    string start_id, dest_id, difficulty_str,emptyString;
+    string startId, destId, difficultyStr, emptyString;
     char comma = ',';
     Difficulty difficulty;
 
     while (file && file.peek() != EOF) {
-        // read start_id
-        getline(file, start_id, comma);
+        // read startId
+        getline(file, startId, comma);
 
-        // read dest_id
-        getline(file, dest_id, comma);
+        // read destId
+        getline(file, destId, comma);
 
         // read difficulty
-        file >> difficulty_str;
+        file >> difficultyStr;
         getline(file, emptyString);
-        if (difficulty_str == "0") {
+        if (difficultyStr == "0") {
             difficulty = EASY;
         }
-        else if (difficulty_str == "1") {
+        else if (difficultyStr == "1") {
             difficulty = MEDIUM;
         }
-        else if (difficulty_str == "2") {
+        else if (difficultyStr == "2") {
             difficulty = HARD;
         }
 
         // Create stations
-        Station start_station = Station::getStation(start_id);
-        Station dest_station = Station::getStation(dest_id);
+        Station startStation = Station::getStation(startId);
+        Station destStation = Station::getStation(destId);
 
         // Create and add challenge
-        addNewChallenge(Challenge(start_station, dest_station, difficulty));
+        addNewChallenge(Challenge(startStation, destStation, difficulty));
     }
 
     file.close();
@@ -101,6 +101,14 @@ void Challenge::addNewChallenge(Challenge newChallenge) {
 
 void Challenge::wrtieNewChallenge(Challenge newChallenge) {
     // do stuff
+    string startStationId = newChallenge.getStartStation().getId();
+    string destStationId = newChallenge.getDestinationStation().getId();
+    Difficulty difficulty = newChallenge.getDifficulty();
+    char comma = ',';
+
+    ofstream outputFile("../challenges/challenge_data.csv", ios::app); // ::app to keep exising contents
+
+    outputFile << startStationId << comma << destStationId << comma << difficulty << endl;
 }
 
 
