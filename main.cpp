@@ -51,6 +51,7 @@ void announceLastStop(Train &train);
 // Other Helper Methods
 Station getRandomStation(vector<Station> &allStations);
 Station promptStationFromLine(LineName line, bool isStartingStation);
+LineName promptLineSelection(bool isStartingStation);
 static bool isnumber(const string &s);
 static void initializeArgs(int argc, char *argv[]);
 
@@ -180,52 +181,13 @@ void selectChallenge(GameState &gameState) {
 }
 
 void addCustomChallenge(Challenge &challenge) {
-    LineName chosenStartLine;
-    LineName chosenDestinationLine;
+    LineName chosenStartLine = promptLineSelection(true); // prompt for s line
+    Station startStation = promptStationFromLine(chosenStartLine, true); // prompt for s station
 
-    // Choose the start line/station
-    bool validLine = false;
-    while (!validLine) {
-        cout << "Choose a train line to list stations for STARTING STATION selection (i to list them): ";
+    LineName chosenDestinationLine = promptLineSelection(false); // prompt for d line
+    Station destStation = promptStationFromLine(chosenDestinationLine, false); // prompt for d station
 
-        string lineChoice;
-        getline(cin, lineChoice);
-
-        if (Line::isValidAvaliableLine(lineChoice)) {
-            chosenStartLine = Line::stringToLineEnum(lineChoice);
-            validLine = true;
-        }
-        else if (tolower(lineChoice[0]) == 'i') {
-            cout << AvaliableLines << endl;
-        }
-        else {
-            cout << "Invalid line choice. ";
-        }
-    }
-    Station startStation = promptStationFromLine(chosenStartLine, true);
-
-
-    // Choose the destination line/station
-    validLine = false;
-    while (!validLine) {
-        cout << "Choose a train line to list stations for DESTINATION STATION selection (i to list them): ";
-
-        string lineChoice;
-        getline(cin, lineChoice);
-
-        if (Line::isValidAvaliableLine(lineChoice)) {
-            chosenDestinationLine = Line::stringToLineEnum(lineChoice);
-            validLine = true;
-        }
-        else if (lineChoice[0] == 'I' || lineChoice[0] == 'i') {
-            cout << AvaliableLines << endl;
-        }
-        else {
-            cout << "Invalid line choice. ";
-        }
-    }
-    Station destStation = promptStationFromLine(chosenDestinationLine, false);
-
+    // create and add the challenge
     Challenge newChallenge = Challenge(startStation, destStation, EASY);
     challenge.addNewChallenge(newChallenge);
     challenge.wrtieNewChallenge(newChallenge);
@@ -635,6 +597,34 @@ Station getRandomStation(vector<Station> &allStations) {
     size_t randomIndex = dist(generator2);
 
     return allStations[randomIndex];
+}
+
+LineName promptLineSelection(bool isStartingStation) {
+    LineName chosenLine;
+    bool validLine = false;
+
+    string stationType = isStartingStation ? "STARTING" : "DESTINATION";
+    string promptMessage = "Choose a train line to list stations for " + stationType + " STATION selection (i to list them): ";
+
+    while (!validLine) {
+        cout << promptMessage;
+
+        string userInput;
+        getline(cin, userInput);
+
+        if (Line::isValidAvaliableLine(userInput)) {
+            chosenLine = Line::stringToLineEnum(userInput);
+            validLine = true;
+        }
+        else if (tolower(userInput[0]) == 'i') {
+            cout << AvaliableLines << endl;
+        }
+        else {
+            cout << "Invalid line choice. ";
+        }
+    }
+
+    return chosenLine;
 }
 
 Station promptStationFromLine(LineName line, bool isStartingStation) {
