@@ -649,7 +649,7 @@ Station promptStationFromLine(LineName line, bool isStartingStation) {
 }
 
 Difficulty promptDifficultySelection() {
-    cout << "Select difficlty\n"
+    cout << "Assign difficlty to this challenge:\n"
             " - 'e'         EASY\n"
             " - 'm'         MEDIUM\n"
             " - 'h'         HARD\n\n"
