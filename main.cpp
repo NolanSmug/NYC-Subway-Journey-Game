@@ -15,6 +15,7 @@ struct GameState {
     LineName startingLine;
     Station startingStation;
     Station destinationStation;
+    Station currentStation;
     vector<Station> allNycStations;
     vector<Station> currentStations;
     bool isFirstTurn;
@@ -31,7 +32,7 @@ void addCustomChallenge(Challenge &challenge);
 bool handleUserInput(Train &train, GameState &gameState);
 void promptForDirection(Train &train);
 void promptForStartingLine(Train &train);
-void promptForGameMode(Train &train, GameState &gameState);
+void promptForGameMode(GameState &gameState);
 bool promptForTransfer(Train &train);
 void promptForATrainDestination(Train &train, GameState &gameState);
 
@@ -64,12 +65,11 @@ int main(int argc, char* argv[]) {
     GameState gameState;
     gameState.resetGameState();
 
+    // SELECT GAME MODE (as long as `-c` is not in args)
+    promptForGameMode(gameState);
+
     // START TRAIN
     Train train;
-
-    // SELECT GAME MODE (as long as `-c` is not in args)
-    promptForGameMode(train, gameState);
-
     initializeTrain(train, gameState);
 
     // GAME LOOP
@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
 // METHODS
 void initializeTrain(Train& train, GameState& gameState) {
     train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, NONE, 10);
-    train.setCurrentStation(gameState.startingStation);
+    train.setCurrentStation(gameState.currentStation);
     train.setLineType(); // ex: Local, Express, None
 
     displayCurrentStationInfo(train);
@@ -124,7 +124,7 @@ void initializeTrain(Train& train, GameState& gameState) {
     promptForDirection(train);
 }
 
-void selectChallenge(Train &train, GameState &gameState) {
+void selectChallenge(GameState &gameState) {
     Challenge challenge = Challenge();
     challenge.initializeAllChallenges();
 
@@ -155,6 +155,7 @@ void selectChallenge(Train &train, GameState &gameState) {
             }
             gameState.startingStation = challengeChoice.getStartStation();
             gameState.destinationStation = challengeChoice.getDestinationStation();
+            gameState.currentStation = gameState.startingStation;
 
             // update currentStations vector based on the Challenge's startingLine
             SubwayMap::createStations(gameState.startingLine, gameState.currentStations);
@@ -186,7 +187,6 @@ void addCustomChallenge(Challenge &challenge) {
 
     Station chosenStartStation;
     Station chosenDestinationStation;
-
 
     while (!validLine1) {
         cout << "Choose a train line to list stations for STARTING STATION selection (i to list them): ";
@@ -325,7 +325,7 @@ void promptForDirection(Train &train) {
     }
 }
 
-void promptForGameMode(Train &train, GameState &gameState) {
+void promptForGameMode(GameState &gameState) {
 
     if (challengeModeFlag) {
         string gameMode;
@@ -334,7 +334,7 @@ void promptForGameMode(Train &train, GameState &gameState) {
         getline(cin, gameMode);
 
         if (tolower(gameMode[0]) == 'c') {
-            selectChallenge(train, gameState);
+            selectChallenge(gameState);
         }
     }
 }
@@ -568,6 +568,7 @@ void displayCurrentStationInfo(Train &train) {
     else {
         displayCurrentLineInfo(train);
     }
+    train.getCurrentStation();
 
     cout << "\nCurrent Station:\n" << train.getCurrentStation();
 }
@@ -675,6 +676,8 @@ void GameState::resetGameState() { // if user wants to re-shuffle their stations
     do {
         destinationStation = getRandomStation(allNycStations); // select random destination station
     } while (startingStation == destinationStation); // ensure starting != destination
+
+    currentStation = startingStation;
 }
 
 static bool isnumber(const string &s) {

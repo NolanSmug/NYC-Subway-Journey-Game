@@ -88,7 +88,7 @@ void Challenge::initializeAllChallenges() {
         Station destStation = Station::getStation(destId);
 
         // Create and add challenge
-        addNewChallenge(Challenge(startStation, destStation, difficulty));
+        addNewChallenge(Challenge(startStation,destStation, difficulty));
     }
 
     file.close();
