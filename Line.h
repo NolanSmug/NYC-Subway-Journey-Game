@@ -58,6 +58,16 @@ static const char * LineEnumStrings[] = {
         "Sr"
 };
 
+static const string AvaliableLines = "1 2 3\n"
+                                        "4 5 6 7\n"
+                                        "A C E\n"
+                                        "B D F M\n"
+                                        "N Q R W\n"
+                                        "J Z\n"
+                                        "G\n"
+                                        "L\n"
+                                        "S Sf Sr";
+
 enum LineType {
     NONE,
     EXPRESS,

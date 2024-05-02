@@ -119,12 +119,12 @@ ostream& operator<<(ostream& str, Challenge challenge) {
     Station destiStation = challenge.getDestinationStation();
 
     int minStationNameWidth = 32;
-    int minTransferLineWidth = 20;
+    int minTransferLineWidth = 22;
 
     str << left << setw(minStationNameWidth) << startStation.getName();
     str << "  " << setw(minTransferLineWidth) << left << startStation.getTransferLinesString();
 
-    str << setw(10) << left << "----->" << "   ";
+    str << setw(12) << left << "----->" << "   ";
 
     str << left << setw(minStationNameWidth) << destiStation.getName();
     str << "  " << setw(minTransferLineWidth) << left << destiStation.getTransferLinesString();
