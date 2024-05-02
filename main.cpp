@@ -36,6 +36,10 @@ void promptForGameMode(GameState &gameState);
 bool promptForTransfer(Train &train);
 void promptForATrainDestination(Train &train, GameState &gameState);
 
+Station promptStationFromLine(LineName line, bool isStartingStation);
+LineName promptLineSelection(bool isStartingStation);
+Difficulty promptDifficultySelection();
+
 // Handling Train Actions
 bool advanceToNextStation(Train &train);
 bool advanceMultipleStations(Train &train, string &input);
@@ -46,13 +50,11 @@ bool initializeTransfer(Train &train);
 void displayCurrentLineInfo(Train &train);
 void displayCurrentStationInfo(Train &train);
 void displayUpcomingStations(Train &train);
+void displayAllChallenges(Challenge challenge);
 void announceLastStop(Train &train);
 
 // Other Helper Methods
 Station getRandomStation(vector<Station> &allStations);
-Station promptStationFromLine(LineName line, bool isStartingStation);
-LineName promptLineSelection(bool isStartingStation);
-Difficulty promptDifficultySelection();
 static bool isnumber(const string &s);
 static void initializeArgs(int argc, char *argv[]);
 
@@ -131,14 +133,9 @@ void selectChallenge(GameState &gameState) {
     Challenge challenge = Challenge();
     challenge.initializeAllChallenges();
 
-    bool validChoice = false;
-    int count = 1;
-    for (Challenge challenge : challenge.getAllChallenges()) {
-        cout << count << (count < 10 ? ":  " : ": ") << challenge << endl;
-        ++count;
-    }
-    cout << count << ": New Custom Journey" << endl;
+    displayAllChallenges(challenge);
 
+    bool validChoice = false;
     while (!validChoice) {
         cout << "\nSelect a Number Challenge to Complete: ";
         string challengeChoiceIndex;
@@ -165,15 +162,9 @@ void selectChallenge(GameState &gameState) {
 
             validChoice = true;
         }
-        else if (index == count) {
+        else if (index == challenge.getAllChallenges().size() + 1) {
             addCustomChallenge(challenge);
-
-            int count = 1;
-            for (Challenge challenge : challenge.getAllChallenges()) {
-                cout << count << (count < 10 ? ":  " : ": ") << challenge << endl;
-                ++count;
-            }
-            cout << count << ": New Custom Journey" << endl;
+            displayAllChallenges(challenge);
         }
         else {
             cout << "Invalid challenge index. Please select a valid challenge." << endl;
@@ -588,6 +579,15 @@ void displayUpcomingStations(Train &train) {
     }
 
     cout << "------------------------------------------------------------------" << endl;
+}
+
+void displayAllChallenges(Challenge challenge) {
+    int count = 1;
+    for (Challenge challenge : challenge.getAllChallenges()) {
+        cout << count << (count < 10 ? ":  " : ": ") << challenge << endl;
+        ++count;
+    }
+    cout << count << ": New Custom Journey" << endl;
 }
 
 Station getRandomStation(vector<Station> &allStations) {
