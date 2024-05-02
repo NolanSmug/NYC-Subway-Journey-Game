@@ -99,7 +99,7 @@ void Challenge::addNewChallenge(Challenge newChallenge) {
     allChallenges.emplace_back(newChallenge);
 }
 
-void Challenge::wrtieNewChallenge(Challenge newChallenge) {
+void Challenge::writeNewChallenge(Challenge newChallenge) {
     // do stuff
     string startStationId = newChallenge.getStartStation().getId();
     string destStationId = newChallenge.getDestinationStation().getId();

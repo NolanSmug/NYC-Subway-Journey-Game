@@ -190,7 +190,7 @@ void addCustomChallenge(Challenge &challenge) {
     // create and add the challenge
     Challenge newChallenge = Challenge(startStation, destStation, EASY);
     challenge.addNewChallenge(newChallenge);
-    challenge.wrtieNewChallenge(newChallenge);
+    challenge.writeNewChallenge(newChallenge);
 }
 
 

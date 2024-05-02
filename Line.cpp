@@ -43,8 +43,8 @@ LineName Line::stringToLineEnum(string& lineStr) {
     if (lineStr == "G") return G_TRAIN;
     if (lineStr == "L") return L_TRAIN;
     if (lineStr == "S") return S_TRAIN;
-    if (lineStr == "Sf") return S_TRAIN_SHUTTLE;
-    if (lineStr == "Sr") return S_TRAIN_ROCKAWAY;
+    if (lineStr == "SF") return S_TRAIN_SHUTTLE;
+    if (lineStr == "SR") return S_TRAIN_ROCKAWAY;
     if (lineStr == "Null_Train") return NULL_TRAIN;
     return NULL_TRAIN;
 }

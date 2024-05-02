@@ -54,8 +54,8 @@ static const char * LineEnumStrings[] = {
         "G",
         "L",
         "S",
-        "Sf",
-        "Sr"
+        "SF",
+        "SR"
 };
 
 static const string AvaliableLines = "1 2 3\n"

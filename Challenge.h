@@ -34,7 +34,7 @@ public:
 
     void initializeAllChallenges();
     void addNewChallenge(Challenge newChallenge);
-    void wrtieNewChallenge(Challenge newChallenge);
+    void writeNewChallenge(Challenge newChallenge);
 
     friend ostream& operator<<(ostream& str, Challenge challenge);
 
