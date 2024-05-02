@@ -89,8 +89,9 @@ public:
     static string getLineTypeString(int enumVal);
 
     static LineName stringToLineEnum(string& lineStr);
-
     static LineName getRandomLine();
+
+    static bool isValidAvaliableLine(string input);
 };
 
 #endif // LINE_H

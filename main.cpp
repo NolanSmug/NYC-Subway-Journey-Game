@@ -50,6 +50,7 @@ void announceLastStop(Train &train);
 
 // Other Helper Methods
 Station getRandomStation(vector<Station> &allStations);
+Station promptStationFromLine(LineName line, bool isStartingStation);
 static bool isnumber(const string &s);
 static void initializeArgs(int argc, char *argv[]);
 
@@ -179,82 +180,53 @@ void selectChallenge(GameState &gameState) {
 }
 
 void addCustomChallenge(Challenge &challenge) {
-    bool validLine1 = false;
-    const int numOptions = sizeof(LineEnumStrings) / sizeof(LineEnumStrings[0]);
-
     LineName chosenStartLine;
     LineName chosenDestinationLine;
 
-    Station chosenStartStation;
-    Station chosenDestinationStation;
-
-    while (!validLine1) {
+    // Choose the start line/station
+    bool validLine = false;
+    while (!validLine) {
         cout << "Choose a train line to list stations for STARTING STATION selection (i to list them): ";
 
         string lineChoice;
         getline(cin, lineChoice);
-        transform(lineChoice.begin(), lineChoice.end(), lineChoice.begin(), ::toupper);
 
-        if (find(LineEnumStrings, LineEnumStrings + numOptions, lineChoice) != LineEnumStrings + numOptions) {
+        if (Line::isValidAvaliableLine(lineChoice)) {
             chosenStartLine = Line::stringToLineEnum(lineChoice);
-            validLine1 = true;
+            validLine = true;
         }
-        else if (lineChoice[0] == 'I') {
+        else if (tolower(lineChoice[0]) == 'i') {
             cout << AvaliableLines << endl;
         }
         else {
             cout << "Invalid line choice. ";
         }
     }
+    Station startStation = promptStationFromLine(chosenStartLine, true);
 
-    vector<Station> startingStations;
-    SubwayMap::createStations(chosenStartLine,startingStations);
-    cout << "  ID  |         Station Name         |\n";
-    cout << "------|------------------------------|\n";
-    for (Station station : startingStations) {
-        cout << " " << station.getId() << "  |  " << station.getName() << endl;
-    }
 
-    string chosenStartId;
-    cout << "Enter an ID for the STARTING STATION: ";
-    getline(cin, chosenStartId);
-
-    bool validLine2 = false;
-    while (!validLine2) {
+    // Choose the destination line/station
+    validLine = false;
+    while (!validLine) {
         cout << "Choose a train line to list stations for DESTINATION STATION selection (i to list them): ";
 
         string lineChoice;
         getline(cin, lineChoice);
-        transform(lineChoice.begin(), lineChoice.end(), lineChoice.begin(), ::toupper);
 
-        if (find(LineEnumStrings, LineEnumStrings + numOptions, lineChoice) != LineEnumStrings + numOptions) {
+        if (Line::isValidAvaliableLine(lineChoice)) {
             chosenDestinationLine = Line::stringToLineEnum(lineChoice);
-            validLine2 = true;
+            validLine = true;
         }
-        else if (lineChoice[0] == 'I') {
+        else if (lineChoice[0] == 'I' || lineChoice[0] == 'i') {
             cout << AvaliableLines << endl;
         }
         else {
             cout << "Invalid line choice. ";
         }
     }
+    Station destStation = promptStationFromLine(chosenDestinationLine, false);
 
-    vector<Station> destinationStations;
-    SubwayMap::createStations(chosenDestinationLine, destinationStations);
-    cout << "  ID  |         Station Name         |\n";
-    cout << "------|------------------------------|\n";
-    for (Station station : destinationStations) {
-        cout << " " << station.getId() << "  |  " << station.getName() << endl;
-    }
-
-    string chosenDestinationId;
-    cout << "Enter an ID for the DESTINATION STATION: ";
-    getline(cin, chosenDestinationId);
-
-    Station startStation = Station::getStation(chosenStartId);
-    Station destStation = Station::getStation(chosenDestinationId);
-    Challenge newChallenge = Challenge(startStation,destStation,EASY);
-
+    Challenge newChallenge = Challenge(startStation, destStation, EASY);
     challenge.addNewChallenge(newChallenge);
     challenge.wrtieNewChallenge(newChallenge);
 }
@@ -654,15 +626,33 @@ void displayUpcomingStations(Train &train) {
 }
 
 Station getRandomStation(vector<Station> &allStations) {
-    static unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    static unsigned seed = chrono::system_clock::now().time_since_epoch().count();
 
-    static std::mt19937_64 generator1(seed);
-    static std::default_random_engine generator2(generator1());
-    static std::uniform_int_distribution<std::size_t> dist(0, allStations.size() - 1);
+    static mt19937_64 generator1(seed);
+    static default_random_engine generator2(generator1());
+    static uniform_int_distribution<size_t> dist(0, allStations.size() - 1);
 
-    std::size_t randomIndex = dist(generator2);
+    size_t randomIndex = dist(generator2);
 
     return allStations[randomIndex];
+}
+
+Station promptStationFromLine(LineName line, bool isStartingStation) {
+    vector<Station> stations;
+    SubwayMap::createStations(line, stations);
+
+    cout << "  ID  |         Station Name         |\n";
+    cout << "------|------------------------------|\n";
+    for (Station station : stations) {
+        cout << " " << station.getId() << "  |  " << station.getName() << endl;
+    }
+
+    string prompt = "Enter an ID for your desired " + string(isStartingStation ? "STARTING" : "DESTINATION") + " station: ";
+    string chosenId;
+    cout << prompt;
+    getline(cin, chosenId);
+
+    return Station::getStation(chosenId);
 }
 
 void GameState::resetGameState() { // if user wants to re-shuffle their stations

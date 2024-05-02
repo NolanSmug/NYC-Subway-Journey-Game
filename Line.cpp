@@ -72,3 +72,10 @@ LineName Line::getRandomLine() {
 
     return desiredLines[randomIndex];
 }
+
+bool Line::isValidAvaliableLine(string input) {
+    std::transform(input.begin(), input.end(), input.begin(), ::toupper);
+    const int numOptions = sizeof(LineEnumStrings) / sizeof(LineEnumStrings[0]);
+
+    return find(LineEnumStrings, LineEnumStrings + numOptions, input) != LineEnumStrings + numOptions;
+}
