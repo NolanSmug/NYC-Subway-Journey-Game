@@ -52,6 +52,7 @@ void announceLastStop(Train &train);
 Station getRandomStation(vector<Station> &allStations);
 Station promptStationFromLine(LineName line, bool isStartingStation);
 LineName promptLineSelection(bool isStartingStation);
+Difficulty promptDifficultySelection();
 static bool isnumber(const string &s);
 static void initializeArgs(int argc, char *argv[]);
 
@@ -187,8 +188,10 @@ void addCustomChallenge(Challenge &challenge) {
     LineName chosenDestinationLine = promptLineSelection(false); // prompt for d line
     Station destStation = promptStationFromLine(chosenDestinationLine, false); // prompt for d station
 
+    Difficulty chosenDifficulty = promptDifficultySelection();
+
     // create and add the challenge
-    Challenge newChallenge = Challenge(startStation, destStation, EASY);
+    Challenge newChallenge = Challenge(startStation, destStation, chosenDifficulty);
     challenge.addNewChallenge(newChallenge);
     challenge.writeNewChallenge(newChallenge);
 }
@@ -643,6 +646,32 @@ Station promptStationFromLine(LineName line, bool isStartingStation) {
     getline(cin, chosenId);
 
     return Station::getStation(chosenId);
+}
+
+Difficulty promptDifficultySelection() {
+    cout << "Select difficlty\n"
+            " - 'e'         EASY\n"
+            " - 'm'         MEDIUM\n"
+            " - 'h'         HARD\n\n"
+            " - 'anything'  SKIP\n";
+
+    string chosenDifficulty;
+    getline(cin,chosenDifficulty);
+
+    while(true) {
+        if (chosenDifficulty[0] == 'e') {
+            return EASY;
+        }
+        else if (chosenDifficulty[0] == 'm') {
+            return MEDIUM;
+        }
+        else if (chosenDifficulty[0] == 'h') {
+            return HARD;
+        }
+        else {
+            return EASY; // default
+        }
+    }
 }
 
 void GameState::resetGameState() { // if user wants to re-shuffle their stations
