@@ -168,10 +168,31 @@ void selectChallenge(GameState &gameState) {
 }
 
 void addCustomChallenge(Challenge &challenge) {
-    LineName chosenStartLine = promptLineSelection(true); // prompt for s line
-    Station startStation = promptStationFromLine(chosenStartLine, true); // prompt for s station
+    // prompt for s line
+    LineName chosenStartLine = promptLineSelection(true);
 
-    LineName chosenDestinationLine = promptLineSelection(false); // prompt for d line
+    // user wants to go back
+    if (chosenStartLine == NULL_TRAIN) {
+        return;
+    }
+    // prompt for start station
+    Station startStation = promptStationFromLine(chosenStartLine, true);
+
+    LineName chosenDestinationLine;
+    bool validDestinationLine = false;
+
+    while (!validDestinationLine) {
+        // prompt for destination line
+        chosenDestinationLine = promptLineSelection(false);
+
+        // user wants to go back
+        if (chosenDestinationLine == NULL_TRAIN) {
+            return;
+        }
+
+        validDestinationLine = true;
+    }
+
     Station destStation = promptStationFromLine(chosenDestinationLine, false); // prompt for d station
 
     // create and add the challenge
@@ -595,6 +616,7 @@ void displayStationsFor(vector<Station> stations) {
 LineName promptLineSelection(bool isStartingStation) {
     LineName chosenLine;
     bool validLine = false;
+    string BACK_INPUT_MATCH = "9";
 
     string stationType = isStartingStation ? "STARTING" : "DESTINATION";
     string promptMessage = "Choose a train line to list stations for " + stationType + " STATION selection (i to list them): ";
@@ -602,14 +624,28 @@ LineName promptLineSelection(bool isStartingStation) {
     while (!validLine) {
         cout << promptMessage;
 
-        string userInput;
-        getline(cin, userInput);
+        string input;
+        getline(cin, input);
+        transform(input.begin(), input.end(), input.begin(), ::toupper);
 
-        if (Line::isValidAvaliableLine(userInput)) {
-            chosenLine = Line::stringToLineEnum(userInput);
-            validLine = true;
+        if (Line::isValidAvaliableLine(input)) {
+            chosenLine = Line::stringToLineEnum(input);
+            cout << "You chose the (" << Line::getTextForEnum(chosenLine) << " Train). ('9' to go back), ('valid_line' to change line) or any other key to continue with selection: ";
+            string input2;
+            getline(cin, input2);
+            transform(input.begin(), input.end(), input.begin(), ::toupper);
+
+            if (input2 == BACK_INPUT_MATCH) {
+                return NULL_TRAIN; // or any other default value you prefer
+            }
+            else if (Line::isValidAvaliableLine(input2)) {
+                return Line::stringToLineEnum(input2);
+            }
+            else {
+                validLine = true;
+            }
         }
-        else if (tolower(userInput[0]) == 'i') {
+        else if (tolower(input[0]) == 'i') {
             cout << AvaliableLines << endl;
         }
         else {

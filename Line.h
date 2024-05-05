@@ -54,11 +54,11 @@ static const char * LineEnumStrings[] = {
         "G",
         "L",
         "S",
-        "SF",
-        "SR"
+        "Sf",
+        "Sr"
 };
 
-static const string AvaliableLines = "1 2 3\n"
+static const string AvaliableLines =    "1 2 3\n"
                                         "4 5 6 7\n"
                                         "A C E\n"
                                         "B D F M\n"
@@ -66,7 +66,9 @@ static const string AvaliableLines = "1 2 3\n"
                                         "J Z\n"
                                         "G\n"
                                         "L\n"
-                                        "S Sf Sr";
+                                        "S\n"
+                                        "Sf (Franklin)\n"
+                                        "Sr (Rockaway)";
 
 enum LineType {
     NONE,
