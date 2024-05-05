@@ -1,6 +1,3 @@
-//
-// Created by Nolan Cyr on 1/25/24.
-//
 #ifndef TRAIN_H
 #define TRAIN_H
 
@@ -19,62 +16,65 @@ enum Direction {
 };
 
 
-static unordered_map<LineName, pair<string, string>> lineDirections {
-        {ONE_TRAIN, {"Downtown", "Uptown"}},
-        {TWO_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
-        {THREE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
-        {FOUR_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
-        {FIVE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
-        {SIX_TRAIN, {"Brooklyn-Bridge-bound", "Bronx-bound"}},
-        {SEVEN_TRAIN, {"Manhattan-bound", "Queens-bound"}},
-        {A_TRAIN, {"Downtown", "Uptown"}},
-        {A_ROCKAWAY_MOTT_TRAIN, {"Far Rockaway–Mott Av", "Inwood 207-St"}},
-        {A_LEFFERTS_TRAIN, {"Ozone Park–Lefferts Blvd",  "Inwood 207-St"}},
-        {B_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
-        {C_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
-        {D_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
-        {E_TRAIN, {"Downtown", "Queens-bound"}},
-        {F_TRAIN, {"Brooklyn-bound", "Queens-bound"}},
-        {G_TRAIN, {"Church Av-bound", "Court Sq-bound"}},
-        {J_TRAIN, {"Manhattan-bound", "Queens-bound"}},
-        {L_TRAIN, {"Canarsie-Rockaway Pkwy-bound", "8 Av-bound"}},
-        {M_TRAIN, {"Brooklyn-bound", "Queens-bound"}},
-        {N_TRAIN, {"Brooklyn-bound", "Queens-bound"}},
-        {Q_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
-        {R_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
-        {W_TRAIN, {"Manhattan-bound", "Queens-bound"}},
-        {Z_TRAIN, {"Manhattan-bound", "Queens-bound"}},
-        {S_TRAIN, {"Times Sq-bound", "Grand Central-bound"}},
-        {S_TRAIN_SHUTTLE, {"Franklin Av-bound", "Prospect Park-bound"}},
-        {S_TRAIN_ROCKAWAY, {"Broad Channel-bound", "Rockaway Park-Beach 116 St-bound"}}
+static std::unordered_map<LineName, pair<string, string> >
+        lineDirections = {
+            {ONE_TRAIN, {"Downtown", "Uptown"}},
+            {TWO_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+            {THREE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+            {FOUR_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+            {FIVE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+            {SIX_TRAIN, {"Brooklyn-Bridge-bound", "Bronx-bound"}},
+            {SEVEN_TRAIN, {"Manhattan-bound", "Queens-bound"}},
+            {A_TRAIN, {"Downtown", "Uptown"}},
+            {A_ROCKAWAY_MOTT_TRAIN, {"Far Rockaway–Mott Av", "Inwood 207-St"}},
+            {A_LEFFERTS_TRAIN, {"Ozone Park–Lefferts Blvd", "Inwood 207-St"}},
+            {B_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
+            {C_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
+            {D_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
+            {E_TRAIN, {"Downtown", "Queens-bound"}},
+            {F_TRAIN, {"Brooklyn-bound", "Queens-bound"}},
+            {G_TRAIN, {"Church Av-bound", "Court Sq-bound"}},
+            {J_TRAIN, {"Manhattan-bound", "Queens-bound"}},
+            {L_TRAIN, {"Canarsie-Rockaway Pkwy-bound", "8 Av-bound"}},
+            {M_TRAIN, {"Brooklyn-bound", "Queens-bound"}},
+            {N_TRAIN, {"Brooklyn-bound", "Queens-bound"}},
+            {Q_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
+            {R_TRAIN, {"Brooklyn-bound", "Manhattan-bound"}},
+            {W_TRAIN, {"Manhattan-bound", "Queens-bound"}},
+            {Z_TRAIN, {"Manhattan-bound", "Queens-bound"}},
+            {S_TRAIN, {"Times Sq-bound", "Grand Central-bound"}},
+            {S_TRAIN_SHUTTLE, {"Franklin Av-bound", "Prospect Park-bound"}},
+            {S_TRAIN_ROCKAWAY, {"Broad Channel-bound", "Rockaway Park-Beach 116 St-bound"}
+        }
 };
 
-static std::unordered_map<LineName, LineType> lineTypes {
-        {ONE_TRAIN,LOCAL},
-        {TWO_TRAIN,EXPRESS},
-        {THREE_TRAIN,EXPRESS},
-        {FOUR_TRAIN,EXPRESS},
-        {FIVE_TRAIN,EXPRESS},
-        {SIX_TRAIN,LOCAL},
-        {SEVEN_TRAIN,LOCAL},
-        {A_TRAIN,EXPRESS},
-        {B_TRAIN,EXPRESS},
-        {C_TRAIN,LOCAL},
-        {D_TRAIN,EXPRESS},
-        {E_TRAIN,EXPRESS},
-        {F_TRAIN,LOCAL},
-        {G_TRAIN,LOCAL},
-        {J_TRAIN,LOCAL},
-        {L_TRAIN,LOCAL},
-        {M_TRAIN,LOCAL},
-        {N_TRAIN,EXPRESS},
-        {Q_TRAIN,EXPRESS},
-        {R_TRAIN,LOCAL},
-        {W_TRAIN,LOCAL},
-        {Z_TRAIN,LOCAL},
-        {S_TRAIN,NONE},
-        {S_TRAIN_SHUTTLE,NONE},
-        {S_TRAIN_ROCKAWAY,NONE}
+static const std::unordered_map<LineName, LineType>
+lineTypes = {
+        {ONE_TRAIN, LOCAL},
+        {TWO_TRAIN, EXPRESS},
+        {THREE_TRAIN, EXPRESS},
+        {FOUR_TRAIN, EXPRESS},
+        {FIVE_TRAIN, EXPRESS},
+        {SIX_TRAIN, LOCAL},
+        {SEVEN_TRAIN, LOCAL},
+        {A_TRAIN, EXPRESS},
+        {B_TRAIN, EXPRESS},
+        {C_TRAIN, LOCAL},
+        {D_TRAIN, EXPRESS},
+        {E_TRAIN, EXPRESS},
+        {F_TRAIN, LOCAL},
+        {G_TRAIN, LOCAL},
+        {J_TRAIN, LOCAL},
+        {L_TRAIN, LOCAL},
+        {M_TRAIN, LOCAL},
+        {N_TRAIN, EXPRESS},
+        {Q_TRAIN, EXPRESS},
+        {R_TRAIN, LOCAL},
+        {W_TRAIN, LOCAL},
+        {Z_TRAIN, LOCAL},
+        {S_TRAIN, NONE},
+        {S_TRAIN_SHUTTLE, NONE},
+        {S_TRAIN_ROCKAWAY, NONE}
 };
 
 class Train {
@@ -126,7 +126,7 @@ private:
     string uptownLabel;
     string downtownLabel;
     vector<Station> scheduledStops;
-    int currentStationIndex = 0;
+    int currentStationIndex;
     int numCars; // not sure if this could be useful ever
 };
 

@@ -137,7 +137,7 @@ Station Station::getStation(string stationID) {
         }
     }
 
-    return Station("000", "NULL_STATION", {NULL_TRAIN});
+    return Station("000", "NULL_STATION", {NULL_TRAIN},MANHATTAN);
 }
 
 Station Station::getRandomStation(vector<Station> &stations) {

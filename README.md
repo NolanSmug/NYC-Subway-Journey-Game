@@ -142,8 +142,8 @@ struct GameState {
 | Function                     | Description                                                                                                                           |
 |------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | `initializeTrain`            | Initializes the train with the starting line, current station, and destination station based on the game state.                       |
-| `selectChallenge`            | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge. |
-| `addCustomChallenge`         | Allows adding a custom challenge to the game.                                                                                         |
+| `promptForChallengeSelection`            | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge. |
+| `promptsForCustomChallenge`         | Allows adding a custom challenge to the game.                                                                                         |
 | `promptForGameMode`          | Prompts the user to select the game mode (ex: Challenge Mode)                                                                         |
 | `promptForStartingLine`      | Prompts the user to choose a train line to wait for at the current station.                                                           |
 | `promptForDirection`         | Prompts the user to choose a new direction for the train.                                                                             |

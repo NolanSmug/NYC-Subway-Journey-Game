@@ -86,6 +86,7 @@ static const int TOTAL_NUM_LINES = 25;
 
 class Line {
 public:
+
     static string getTextForEnum(int enumVal);
     static string getIDTextForEnum(int enumVal);
     static string getLineTypeString(int enumVal);

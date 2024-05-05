@@ -27,7 +27,7 @@ private:
 
 public:
     Station();
-    Station(string id, string name, vector<LineName> transfers = {}, Borough borough = MANHATTAN);
+    Station(string id, string name, vector<LineName> transfers, Borough borough);
 
     static vector<Station> allNycStations;
     static void initializeAllStations();
