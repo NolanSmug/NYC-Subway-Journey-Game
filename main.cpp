@@ -18,42 +18,43 @@ struct GameState {
     vector<Station> currentStations;
     bool isFirstTurn;
 
-    void resetGameState(); // resets starting && destination stations
+    void resetGameState();
 };
 
-// Start of Game
-void initializeTrain(Train &train, GameState &gameState);
-void selectChallenge(Train &train, GameState &gameState);
-void addCustomChallenge(Challenge &challenge);
+/********************** Initialize the Game *********************/
+    void initializeTrain(Train &train, GameState &gameState);
 
-// Prompting User
-bool handleUserInput(Train &train, GameState &gameState);
-void promptForDirection(Train &train);
-void promptForStartingLine(Train &train);
-void promptForGameMode(GameState &gameState);
-bool promptForTransfer(Train &train);
-void promptForATrainDestination(Train &train, GameState &gameState);
+/******************** Prompting for Game Setup ********************/
+    void selectChallenge(GameState &gameState);
+    void addCustomChallenge(Challenge &challenge);
+    void promptForGameMode(GameState &gameState);
 
-Station promptStationFromLine(LineName line, bool isStartingStation);
-LineName promptLineSelection(bool isStartingStation);
+/******************* Prompting for Train Actions ********************/
+    void promptForStartingLine(Train &train);
+    void promptForDirection(Train &train);
+    void promptForATrainDestination(Train &train, GameState &gameState);
+    bool handleUserInput(Train &train, GameState &gameState);
 
-// Handling Train Actions
-bool advanceToNextStation(Train &train);
-bool advanceMultipleStations(Train &train, string &input);
-bool changeDirection(Train &train);
-bool initializeTransfer(Train &train);
+/******************* Performing Train Actions ********************/
+    bool advanceToNextStation(Train &train);
+    bool changeDirection(Train &train);
+    bool advanceMultipleStations(Train &train, string &input);
+    bool initializeTransfer(Train &train);
+    bool promptForTransfer(Train &train);
 
-// Printing Game Information
-void displayCurrentLineInfo(Train &train);
-void displayCurrentStationInfo(Train &train);
-void displayUpcomingStations(Train &train);
-void displayAllChallenges(Challenge challenge);
-void displayStationsFor(vector<Station> stations);
-void announceLastStop(Train &train);
+/**************** Displaying Game Information *******************/
+    void displayCurrentLineInfo(Train &train);
+    void displayCurrentStationInfo(Train &train);
+    void announceLastStop(Train &train);
+    void displayUpcomingStations(Train &train);
+    void displayAllChallenges(Challenge challenge);
+    void displayStationsFor(vector<Station> stations);
 
-// Other Helper Methods
-static bool isnumber(const string &s);
-static void initializeArgs(int argc, char *argv[]);
+/********************** Helper Methods **********************/
+    LineName promptLineSelection(bool isStartingStation);
+    Station promptStationFromLine(LineName line, bool isStartingStation);
+    static bool isnumber(const string &s);
+    void initializeArgs(int argc, char *argv[]);
 
 
 bool challengeModeFlag = true; // -c in args to set to false
@@ -168,34 +169,25 @@ void selectChallenge(GameState &gameState) {
 }
 
 void addCustomChallenge(Challenge &challenge) {
-    // prompt for s line
-    LineName chosenStartLine = promptLineSelection(true);
-
-    // user wants to go back
+    LineName chosenStartLine = promptLineSelection(true); // prompt for start line
     if (chosenStartLine == NULL_TRAIN) {
-        return;
+        return; // user wants to go back
     }
-    // prompt for start station
-    Station startStation = promptStationFromLine(chosenStartLine, true);
+    Station startStation = promptStationFromLine(chosenStartLine, true); // prompt for s station
 
     LineName chosenDestinationLine;
     bool validDestinationLine = false;
 
     while (!validDestinationLine) {
-        // prompt for destination line
-        chosenDestinationLine = promptLineSelection(false);
-
-        // user wants to go back
+        chosenDestinationLine = promptLineSelection(false); // prompt for destination line
         if (chosenDestinationLine == NULL_TRAIN) {
-            return;
+            return; // user wants to go back
         }
-
         validDestinationLine = true;
     }
-
     Station destStation = promptStationFromLine(chosenDestinationLine, false); // prompt for d station
 
-    // create and add the challenge
+    // create and save the challenge csv
     Challenge newChallenge = Challenge(startStation, destStation, CUSTOM);
     challenge.addNewChallenge(newChallenge);
     challenge.writeNewChallenge(newChallenge);
@@ -352,7 +344,7 @@ bool handleUserInput(Train &train, GameState& gameState) {
     getline(cin, input);
 
     // remove any whitespaces in input
-    // (https://stackoverflow.com/a/16011109/23352980)
+    /// (https://stackoverflow.com/a/16011109/23352980)
     input.erase(remove(input.begin(), input.end(), ' '), input.end());
 
     // exit if input is known to be immediately invalid
@@ -541,7 +533,9 @@ void announceLastStop(Train &train) {
     cout << endl;
 }
 
-
+/** This method would not have been made possible without assistance from Claude,
+    an AI assistant created by Anthropic (https://www.anthropic.com)
+ */
 void displayUpcomingStations(Train &train) {
     string currentStationID = train.getCurrentStation().getId();
     vector<Station> stations = train.getScheduledStops();

@@ -130,31 +130,40 @@ struct GameState {
     LineName startingLine;
     Station startingStation;
     Station destinationStation;
+    Station currentStation;
     vector<Station> currentStations;
     bool isFirstTurn;
 
     void resetGameState(); // if user wants to re-shuffle their stations
 };
+
 ```
 
-| Function                        | Description                                                                                                                                                     |
-|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `main`                          | Entry point of the application. It sets up the game environment, initializes the `Train` and `GameState` and enters the game loop.                              |
-| `initializeTrain`               | Initializes the train with the starting line, current station, and destination station based on the game state.                                                 |
-| `selectChallenge`               | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge.                           |
-| `handleUserInput`               | Handles user input during the game. It interprets user commands to `advance` the train, `change direction`, `transfer` to another line, or display information. |
-| `promptForDirection`            | Prompts the user to choose a new direction for the train when transferring to another line.                                                                     |
-| `promptForStartingLine`         | Prompts the user to choose a train line to wait for at the current station.                                                                                     |
-| `handleAdvanceOneStation`       | Handles the input to advance the train by one station.                                                                                                          |
-| `handleAdvanceMultipleStations` | Handles the input to advance the train by multiple stations specified by the user.                                                                              |
-| `handleChangeDirection`         | Handles the input to change the direction of the train.                                                                                                         |
-| `handleTransfer`                | Handles the input to transfer to another line at the current station.                                                                                           |
-| `promptForTransfer`             | Prompts the user to choose a line for transferring at the current station.                                                                                      |
-| `printCurrentStationInfo`       | Displays information about the current station, including the line and direction of the train.                                                                  |
-| `printAllStations`              | Prints information about all stations along the train's route.                                                                                                  |
-| `announceLastStop`              | Handles the situation when the train reaches the last stop on its current line. It prompts the user to switch direction and continue the journey.               |
-| `getRandomStation`              | Generates a random station index within the specified range.                                                                                                    |
-| `isnumber`                      | Checks if a string represents a numeric value.                                                                                                                  |
+| Function                     | Description                                                                                                                           |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `initializeTrain`            | Initializes the train with the starting line, current station, and destination station based on the game state.                       |
+| `selectChallenge`            | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge. |
+| `addCustomChallenge`         | Allows adding a custom challenge to the game.                                                                                         |
+| `promptForGameMode`          | Prompts the user to select the game mode (ex: Challenge Mode)                                                                         |
+| `promptForStartingLine`      | Prompts the user to choose a train line to wait for at the current station.                                                           |
+| `promptForDirection`         | Prompts the user to choose a new direction for the train.                                                                             |
+| `promptForATrainDestination` | Prompts the user to select a destination for the train.                                                                               |
+| `handleUserInput`            | Handles user input during the game, such as advancing the train, changing direction, or transferring to another line.                 |
+| `advanceToNextStation`       | Advances the train to the next station.                                                                                               |
+| `changeDirection`            | Changes the direction of the train.                                                                                                   |
+| `advanceMultipleStations`    | Advances the train by multiple stations based on user input.                                                                          |
+| `initializeTransfer`         | Initializes the transfer process to another line.                                                                                     |
+| `promptForTransfer`          | Prompts the user to choose a line for transferring at the current station.                                                            |
+| `displayCurrentLineInfo`     | Displays information about the current line.                                                                                          |
+| `displayCurrentStationInfo`  | Displays information about the current station, including the line and direction of the train.                                        |
+| `announceLastStop`           | Announces when the train reaches the last stop on its current line.                                                                   |
+| `displayUpcomingStations`    | Displays information about upcoming stations along the train's route.                                                                 |
+| `displayAllChallenges`       | Displays information about all challenges available in the game.                                                                      |
+| `displayStationsFor`         | Displays information about stations for a specified set of stations.                                                                  |
+| `promptLineSelection`        | Prompts the user to select a line, either for the starting or destination station.                                                    |
+| `promptStationFromLine`      | Prompts the user to select a station from a specified line.                                                                           |
+| `isnumber`                   | Checks if a string represents a numeric value.                                                                                        |
+| `initializeArgs`             | Initializes the arguments for the game, (options listed in `Command Line Argument` Section).                                          |
 
 ****
 
