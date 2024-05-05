@@ -4,7 +4,11 @@
 
 #include "Station.h"
 #include "SubwayMap.h"
-#include "sstream"
+#include "Line.h"
+#include "random"
+#include <iostream>
+#include <chrono>
+#include <cstdlib>
 
 // Constructors
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
@@ -14,6 +18,15 @@ Station::Station(string id, string name, vector<LineName> transfers, Borough bor
         name(name),
         transfers(transfers),
         borough(borough) {}
+
+
+vector<Station> Station::allNycStations;
+// In Station.cpp
+void Station::initializeAllStations() {
+    if (allNycStations.empty()) {
+        SubwayMap::createStations(NULL_TRAIN, allNycStations);
+    }
+}
 
 // overloaded cout operator
 ostream& operator<<(ostream& str, Station station) {
@@ -58,6 +71,10 @@ void Station::setName(string newName) {
 // Transfers
 vector<LineName> Station::getTransfers() {
     return transfers;
+}
+
+vector<Station> Station::getAllStations() {
+    return allNycStations;
 }
 
 void Station::addTransfers(LineName newTransfer) {
@@ -111,28 +128,26 @@ string Station::getTextForEnum(int enumVal) {
     return BoroughEnumStrings[enumVal];
 }
 
-vector<Station> getAllStations() {
-    vector<Station> allStations; //TODO: how do I make this a constant and how can I initialize it only once
-    SubwayMap::createStations(NULL_TRAIN,allStations);
-    return allStations;
-}
-
-Station Station::getStation(string stationName, string stationID) {
-    for (Station station : getAllStations()) {
-        if (station.getId() == stationID || station.getName() == stationName) { //TODO: || or &&?
-            return station;
-        }
-    }
-
-    return Station("000", "NULL_STATION", {NULL_TRAIN});
-}
+/// DELETED SOMETHING HERE
 
 Station Station::getStation(string stationID) {
-    for (Station station : getAllStations()) {
+    for (Station station : allNycStations) {
         if (station.getId() == stationID) {
             return station;
         }
     }
 
     return Station("000", "NULL_STATION", {NULL_TRAIN});
+}
+
+Station Station::getRandomStation(vector<Station> &stations) {
+    static unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+
+    static mt19937_64 generator1(seed);
+    static default_random_engine generator2(generator1());
+    static uniform_int_distribution<size_t> dist(0, stations.size() - 1);
+
+    size_t randomIndex = dist(generator2);
+
+    return stations[randomIndex];
 }

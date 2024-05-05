@@ -11,7 +11,10 @@
 #include "sstream"
 #include <iomanip>
 
-enum Difficulty {EASY, MEDIUM, HARD};
+enum Difficulty {EASY, MEDIUM, HARD, CUSTOM};
+
+static const char * DifficultyStrings[] = {"(Easy)","(Medium)","(Hard)", "(Custom)"};
+
 
 class Challenge {
 public:
@@ -28,6 +31,7 @@ public:
     void setDestinationStation(Station newDestinationStation);
 
     Difficulty getDifficulty();
+    string getDifficultyString();
     void setDifficulty(Difficulty difficulty);
 
     vector<Challenge> getAllChallenges();

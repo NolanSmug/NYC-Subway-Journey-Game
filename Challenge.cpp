@@ -42,6 +42,10 @@ Difficulty Challenge::getDifficulty() {
     return difficulty;
 }
 
+string Challenge::getDifficultyString() {
+    return DifficultyStrings[difficulty];
+}
+
 void Challenge::setDifficulty(Difficulty newDifficulty) {
     difficulty = newDifficulty;
 }
@@ -82,6 +86,9 @@ void Challenge::initializeAllChallenges() {
         else if (difficultyStr == "2") {
             difficulty = HARD;
         }
+        else if (difficultyStr == "3") {
+            difficulty = CUSTOM;
+        }
 
         // Create stations
         Station startStation = Station::getStation(startId);
@@ -113,21 +120,21 @@ void Challenge::writeNewChallenge(Challenge newChallenge) {
 
 
 
-// overloaded cout operator
 ostream& operator<<(ostream& str, Challenge challenge) {
-    Station startStation = challenge.getStartStation();
-    Station destiStation = challenge.getDestinationStation();
+    const string startStationStr     = challenge.getStartStation().getName();
+    const string startStationTrfrStr = challenge.getStartStation().getTransferLinesString();
+    const string destiStationStr     = challenge.getDestinationStation().getName();
+    const string destiStationTrfrStr = challenge.getDestinationStation().getTransferLinesString();
+    const string difficultyStr       = challenge.getDifficultyString();
 
-    int minStationNameWidth = 32;
-    int minTransferLineWidth = 22;
-
-    str << left << setw(minStationNameWidth) << startStation.getName();
-    str << "  " << setw(minTransferLineWidth) << left << startStation.getTransferLinesString();
+    str << left << setw(32) << startStationStr;
+    str << "  " << setw(22) << left << startStationTrfrStr;
 
     str << setw(12) << left << "----->" << "   ";
 
-    str << left << setw(minStationNameWidth) << destiStation.getName();
-    str << "  " << setw(minTransferLineWidth) << left << destiStation.getTransferLinesString();
+    str << left << setw(32) << destiStationStr;
+    str << "  " << setw(22) << left << destiStationTrfrStr;
+    str << "  " << setw(10) << left << difficultyStr;
 
     return str;
 }

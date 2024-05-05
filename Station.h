@@ -24,9 +24,13 @@ private:
     vector<LineName> transfers;
     Borough borough;
 
+
 public:
     Station();
     Station(string id, string name, vector<LineName> transfers = {}, Borough borough = MANHATTAN);
+
+    static vector<Station> allNycStations;
+    static void initializeAllStations();
 
     friend ostream& operator<<(ostream& str, Station station);
 
@@ -45,13 +49,15 @@ public:
     bool hasTransferLine();
     string getTransferLinesString();
 
+    vector<Station> getAllStations();
+
     Borough getBorough();
     void setBorough(Borough newBorough);
 
     static string getTextForEnum(int enumVal);
 
-    static Station getStation(string stationName, string stationID);
     static Station getStation(string stationID);
+    static Station getRandomStation(vector<Station> &allStations);
 };
 
 #endif //M1OEP_NCYR1_STATION_H

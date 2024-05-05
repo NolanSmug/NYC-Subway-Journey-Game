@@ -4,7 +4,6 @@
 #include "Line.h"
 #include "Challenge.h"
 #include "sstream"
-#include "random"
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -16,7 +15,6 @@ struct GameState {
     Station startingStation;
     Station destinationStation;
     Station currentStation;
-    vector<Station> allNycStations;
     vector<Station> currentStations;
     bool isFirstTurn;
 
@@ -38,7 +36,6 @@ void promptForATrainDestination(Train &train, GameState &gameState);
 
 Station promptStationFromLine(LineName line, bool isStartingStation);
 LineName promptLineSelection(bool isStartingStation);
-Difficulty promptDifficultySelection();
 
 // Handling Train Actions
 bool advanceToNextStation(Train &train);
@@ -51,10 +48,10 @@ void displayCurrentLineInfo(Train &train);
 void displayCurrentStationInfo(Train &train);
 void displayUpcomingStations(Train &train);
 void displayAllChallenges(Challenge challenge);
+void displayStationsFor(vector<Station> stations);
 void announceLastStop(Train &train);
 
 // Other Helper Methods
-Station getRandomStation(vector<Station> &allStations);
 static bool isnumber(const string &s);
 static void initializeArgs(int argc, char *argv[]);
 
@@ -65,6 +62,9 @@ bool easyModeFlag = false;     // -e in args to set to true
 int main(int argc, char* argv[]) {
     // SET FLAGS FROM ARGS
     initializeArgs(argc, argv);
+
+    // INITIALIZE ALL NYC STATIONS
+    Station::initializeAllStations();
 
     // SET UP GAME STATE (holds data for the current game's parameters)
     GameState gameState;
@@ -147,12 +147,7 @@ void selectChallenge(GameState &gameState) {
             Challenge challengeChoice = challenge.getAllChallenges()[index - 1]; // retrieve selected challenge
 
             // update GameState parameters for Game functionality
-            if (!challengeChoice.getStartStation().hasTransferLine()) {
-                gameState.startingLine = challengeChoice.getStartStation().getTransfers()[0];
-            }
-            else {
-                gameState.startingLine = challengeChoice.getStartLine();
-            }
+            gameState.startingLine = challengeChoice.getStartLine();
             gameState.startingStation = challengeChoice.getStartStation();
             gameState.destinationStation = challengeChoice.getDestinationStation();
             gameState.currentStation = gameState.startingStation;
@@ -179,10 +174,8 @@ void addCustomChallenge(Challenge &challenge) {
     LineName chosenDestinationLine = promptLineSelection(false); // prompt for d line
     Station destStation = promptStationFromLine(chosenDestinationLine, false); // prompt for d station
 
-    Difficulty chosenDifficulty = promptDifficultySelection();
-
     // create and add the challenge
-    Challenge newChallenge = Challenge(startStation, destStation, chosenDifficulty);
+    Challenge newChallenge = Challenge(startStation, destStation, CUSTOM);
     challenge.addNewChallenge(newChallenge);
     challenge.writeNewChallenge(newChallenge);
 }
@@ -590,16 +583,13 @@ void displayAllChallenges(Challenge challenge) {
     cout << count << ": New Custom Journey" << endl;
 }
 
-Station getRandomStation(vector<Station> &allStations) {
-    static unsigned seed = chrono::system_clock::now().time_since_epoch().count();
-
-    static mt19937_64 generator1(seed);
-    static default_random_engine generator2(generator1());
-    static uniform_int_distribution<size_t> dist(0, allStations.size() - 1);
-
-    size_t randomIndex = dist(generator2);
-
-    return allStations[randomIndex];
+void displayStationsFor(vector<Station> stations) {
+    cout << "  ID  |         Station Name         |\n";
+    cout << "------|------------------------------|\n";
+    for (auto it = stations.rbegin(); it != stations.rend(); ++it) {
+        Station station = *it;
+        cout << " " << station.getId() << "  |  " << station.getName() << endl;
+    }
 }
 
 LineName promptLineSelection(bool isStartingStation) {
@@ -632,13 +622,9 @@ LineName promptLineSelection(bool isStartingStation) {
 
 Station promptStationFromLine(LineName line, bool isStartingStation) {
     vector<Station> stations;
-    SubwayMap::createStations(line, stations);
+    SubwayMap::createStations(line,stations);
 
-    cout << "  ID  |         Station Name         |\n";
-    cout << "------|------------------------------|\n";
-    for (Station station : stations) {
-        cout << " " << station.getId() << "  |  " << station.getName() << endl;
-    }
+    displayStationsFor(stations);
 
     string prompt = "Enter an ID for your desired " + string(isStartingStation ? "STARTING" : "DESTINATION") + " station: ";
     string chosenId;
@@ -648,43 +634,16 @@ Station promptStationFromLine(LineName line, bool isStartingStation) {
     return Station::getStation(chosenId);
 }
 
-Difficulty promptDifficultySelection() {
-    cout << "Assign difficlty to this challenge:\n"
-            " - 'e'         EASY\n"
-            " - 'm'         MEDIUM\n"
-            " - 'h'         HARD\n\n"
-            " - 'anything'  SKIP\n";
-
-    string chosenDifficulty;
-    getline(cin,chosenDifficulty);
-
-    while(true) {
-        if (chosenDifficulty[0] == 'e') {
-            return EASY;
-        }
-        else if (chosenDifficulty[0] == 'm') {
-            return MEDIUM;
-        }
-        else if (chosenDifficulty[0] == 'h') {
-            return HARD;
-        }
-        else {
-            return EASY; // default
-        }
-    }
-}
-
 void GameState::resetGameState() { // if user wants to re-shuffle their stations
     startingLine = Line::getRandomLine();
     isFirstTurn = true;
 
     SubwayMap::createStations(startingLine, currentStations); // fill currentStations vector for currentLine
-    SubwayMap::createStations(NULL_TRAIN, allNycStations);    // fill allNycStations vector
 
-    startingStation = getRandomStation(currentStations);
+    startingStation = Station::getRandomStation(currentStations);
     do {
-        destinationStation = getRandomStation(allNycStations); // select random destination station
-    } while (startingStation == destinationStation); // ensure starting != destination
+        destinationStation = Station::getRandomStation(Station::allNycStations); // select random destination station
+    } while (startingStation == destinationStation); // ensure starting != destinatio            n
 
     currentStation = startingStation;
 }
