@@ -6,8 +6,9 @@
 #include "Station.h"
 #include "Line.h"
 #include "SubwayMap.h"
+#include <unordered_map>
+#include <utility>
 
-using namespace std;
 
 enum Direction {
     UPTOWN,
@@ -16,8 +17,7 @@ enum Direction {
 };
 
 
-static std::unordered_map<LineName, pair<string, string> >
-        lineDirections = {
+static unordered_map<LineName, pair<string, string> > lineDirections = {
             {ONE_TRAIN, {"Downtown", "Uptown"}},
             {TWO_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
             {THREE_TRAIN, {"Brooklyn-bound", "Bronx-bound"}},
@@ -48,8 +48,7 @@ static std::unordered_map<LineName, pair<string, string> >
         }
 };
 
-static const std::unordered_map<LineName, LineType>
-lineTypes = {
+static const unordered_map<LineName, LineType> lineTypes = {
         {ONE_TRAIN, LOCAL},
         {TWO_TRAIN, EXPRESS},
         {THREE_TRAIN, EXPRESS},

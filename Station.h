@@ -6,6 +6,7 @@
 #define M1OEP_NCYR1_STATION_H
 
 #include "Line.h"
+#include <vector>
 
 enum Borough {
     MANHATTAN,
