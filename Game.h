@@ -7,10 +7,9 @@
 
 #include "Station.h"
 #include "SubwayMap.h"
-#include "Train.h"
 #include "Line.h"
 #include "Challenge.h"
-
+#include "Train.h"
 #include <iostream>
 #include "sstream"
 #include <iostream>
@@ -19,7 +18,6 @@
 #include <iomanip>
 #include <cstdlib>
 #include <unordered_map>
-
 
 /// basically is the reason the game works
 struct GameState {

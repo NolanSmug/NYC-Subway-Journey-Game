@@ -2,8 +2,8 @@
 // Created by Nolan Cyr on 1/31/24.
 //
 
-#ifndef M1OEP_NCYR1_STATION_H
-#define M1OEP_NCYR1_STATION_H
+#ifndef NYC_SUBWAY_JOURNEY_GAME_STATION_H
+#define NYC_SUBWAY_JOURNEY_GAME_STATION_H
 
 #include "Line.h"
 #include <vector>
@@ -61,4 +61,4 @@ public:
     static Station getRandomStation(vector<Station> &allStations);
 };
 
-#endif //M1OEP_NCYR1_STATION_H
+#endif // NYC_SUBWAY_JOURNEY_GAME_STATION_H

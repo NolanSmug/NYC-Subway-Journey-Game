@@ -2,8 +2,8 @@
 // Created by Nolan Cyr on 2/21/24.
 //
 
-#ifndef LINE_H
-#define LINE_H
+#ifndef NYC_SUBWAY_JOURNEY_GAME_LINE_H
+#define NYC_SUBWAY_JOURNEY_GAME_LINE_H
 
 #include <string>
 
@@ -97,4 +97,4 @@ public:
     static bool isValidAvaliableLine(string input);
 };
 
-#endif // LINE_H
+#endif // NYC_SUBWAY_JOURNEY_GAME_LINE_H

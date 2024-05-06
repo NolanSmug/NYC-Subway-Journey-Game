@@ -1,8 +1,8 @@
 //
 // Created by Nolan Cyr on 2/1/24.
 //
-#ifndef M1OEP_NCYR1_SUBWAYMAP_H
-#define M1OEP_NCYR1_SUBWAYMAP_H
+#ifndef NYC_SUBWAY_JOURNEY_GAME_SUBWAYMAP_H
+#define NYC_SUBWAY_JOURNEY_GAME_SUBWAYMAP_H
 
 #include <string>
 #include <vector>
@@ -15,4 +15,4 @@ public:
 
     static void updateStopsForLine(LineName line, vector<Station> &subwayStations);
 };
-#endif //M1OEP_NCYR1_SUBWAYMAP_H
+#endif //NYC_SUBWAY_JOURNEY_GAME_SUBWAYMAP_H
