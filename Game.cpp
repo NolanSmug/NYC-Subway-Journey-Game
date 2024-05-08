@@ -436,7 +436,7 @@ void Game::displayCurrentLineInfo(Train &train) {
     if (easyModeFlag) {
         displayCurrentLineInfo(train);
     }
-    cout << "\n\nCurrent Line:\n" << currentLineInfo << endl;
+    cout << "\n\nCurrent Line:\n\t" << currentLineInfo << endl;
 }
 
 void Game::displayCurrentStationInfo(Train &train) {

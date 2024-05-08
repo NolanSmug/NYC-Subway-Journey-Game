@@ -30,12 +30,12 @@ void Station::initializeAllStations() {
 
 // overloaded cout operator
 ostream& operator<<(ostream& str, Station station) {
-    str << "Name: " << station.getName() << endl;
+    str << "\t" << station.getName() << endl;
 //  str << "ID: " << station.getId() << endl; // should I bother printing the ID?
-    str << "Transfer Available to the:";
+    str << "\tTransfer Available to the:";
     str << station.getTransferLinesString();
     str << endl;
-    str << "Borough: " << Station::getTextForEnum(station.getBorough()) << endl;
+    str << "\tBorough: " << Station::getTextForEnum(station.getBorough()) << endl;
     str << "\n";
 
     return str;

@@ -16,18 +16,29 @@ Here's how the game steps flow:
 
 2. **Gameplay**:
     - At each station or stop, the program displays information such as the `current line`, `direction`, `current station`, and `available transfer lines`.
-    - The player is presented with the options below:
-   ```text
-       1. Enter a number to advance a specific number of stations (or leave blank to advance one station).
-       2. Enter 't' to transfer to a different line.
-       3. Enter 'c' to change the direction of travel.
-       4. Enter 'd' to display information about the destination station.
-        
-       >_
-   ```
+      
+    **Sample Line & Station Info:**
+    ```text
+     Current Line:
+         Manhattan-bound 7 Local Train ↓
+    
+     Current Station:
+         Name: Times Sq-42 St
+         Transfer Available to the: (1 2 3 7 N Q R W S) 
+         Borough: Manhattan
+      
+     Options:
+      1. Enter a number to advance a specific number of stations (or leave blank to advance one station).
+      2. Enter 't' to transfer to a different line.
+      3. Enter 'c' to change the direction of travel.
+      4. Enter 'd' to display information about the destination station.
+      
+      
+    >_
+     ```
 
 3. **Game Loop**:
-    - The game continues until the player reaches the `destination station`.
+    - The gae continues until the player reaches the `destination station`.
    >There is no losing condition; the game runs until the player successfully reaches the destination.
 
 4. **Challenge Mode**:
