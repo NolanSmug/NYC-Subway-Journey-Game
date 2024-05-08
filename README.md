@@ -14,31 +14,43 @@ Here's how the game steps flow:
     - They are prompted to choose a subway line to board from the available transfer options at their `starting station`.
     - Once a line is chosen, they select a direction (e.g., `Queens-bound` or `Brooklyn-bound`) to start traveling.
 
+    ```text
+    Current Station:
+        Times Sq-42 St
+        Transfer Available to the: (1 2 3 7 N Q R W S) 
+        Borough: Manhattan
+    
+    Destination Station:
+        14 St (6th Av)
+        Transfer Available to the: (1 2 3 F M L)
+        Borough: Manhattan
+    
+    Choose a train line to wait for at Times Sq-42 St (1 2 3 7 N Q R W S) >_
+    ```
+
 2. **Gameplay**:
     - At each station or stop, the program displays information such as the `current line`, `direction`, `current station`, and `available transfer lines`.
-      
-    **Sample Line & Station Info:**
+
     ```text
      Current Line:
-         Manhattan-bound 7 Local Train ↓
+         Manhattan-bound 7 Local Train ↓  // assuming user inputs '7' and 'm' for Manhattan-bound
     
      Current Station:
-         Name: Times Sq-42 St
+         Times Sq-42 St
          Transfer Available to the: (1 2 3 7 N Q R W S) 
          Borough: Manhattan
       
      Options:
-      1. Enter a number to advance a specific number of stations (or leave blank to advance one station).
-      2. Enter 't' to transfer to a different line.
-      3. Enter 'c' to change the direction of travel.
-      4. Enter 'd' to display information about the destination station.
-      
+      - Enter a number to advance a specific number of stations (or leave blank to advance one station).
+      - Enter 't' to transfer to a different line.
+      - Enter 'c' to change the direction of travel.
+      - Enter 'd' to display information about the destination station.
       
     >_
      ```
 
 3. **Game Loop**:
-    - The gae continues until the player reaches the `destination station`.
+    - The game continues until the player reaches the `destination station`.
    >There is no losing condition; the game runs until the player successfully reaches the destination.
 
 4. **Challenge Mode**:
