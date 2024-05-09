@@ -40,7 +40,7 @@ void Game::startGame(int argc, char* argv[]) {
             announceLastStop(train);
         }
         if (isAtATrainJunction) {
-            promptForATrainDestination(train, gameState);
+            promptForAtRockawayBranch(train, gameState);
         }
 
         bool validInput = false;
@@ -219,7 +219,7 @@ void Game::promptForGameMode(GameState &gameState) {
     }
 }
 
-void Game::promptForATrainDestination(Train &train, GameState &gameState) {
+void Game::promptForAtRockawayBranch(Train &train, GameState &gameState) {
     string input;
     bool validInput = false;
 
@@ -541,7 +541,7 @@ void Game::displayAllChallenges(Challenge challenge) {
         cout << count << (count < 10 ? ":  " : ": ") << challenge << endl;
         ++count;
     }
-    cout << count << ": New Custom Journey" << endl;
+    cout << endl << count << ": New Custom Journey" << endl;
 }
 
 void Game::displayStationsFor(vector<Station> stations) {
@@ -559,7 +559,7 @@ LineName Game::promptLineSelection(bool isStartingStation) {
     string BACK_INPUT_MATCH = "9";
 
     string stationType = isStartingStation ? "STARTING" : "DESTINATION";
-    string promptMessage = "Choose a train line to list stations for " + stationType + " STATION selection (i to list them): ";
+    string promptMessage = "Choose a train line to list stations for " + stationType + " STATION selection (i to list lines): ";
 
     while (!validLine) {
         cout << promptMessage;

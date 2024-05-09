@@ -55,8 +55,33 @@ Here's how the game steps flow:
 
 4. **Challenge Mode**:
     - Optionally, the player can choose to play in `Challenge Mode`, where they are presented with specific challenges to complete.
-    - `Challenges` involve traveling from one `predetermined station` to another, each ranging in `difficulty (1-3)`.
+    - Challenges involve traveling from one `predetermined station` to another, each ranging in `difficulty (EASY,MEDIUM,HARD)`.
+    - Users also have the options to create their own `CUSTOM` Challenge that gets added to [challenge_data.csv](./challenges/challenge_data.csv).
 
+    ```text
+   Challange Selection Screen:
+      
+    1:  Grand Central-42 St                (4 5 6 7 Sr)         ----->       Brooklyn Bridge-City Hall          (4 5 6 J Z)            (Easy)    
+    2:  96 St                              (1 2 3)              ----->       Flatbush Av-Brooklyn College       (2 5)                  (Easy)    
+    3:  34 St-Penn Station                 (A C E 1 2 3)        ----->       World Trade Center                 (E)                    (Easy)    
+    4:  Metropolitan Av                    (G)                  ----->       Court Sq                           (7 E F G)              (Easy)    
+    5:  Grand Central-42 St                (4 5 6 7 Sr)         ----->       Mets-Willets Point                 (7)                    (Easy)    
+    6:  Van Cortlandt Park-242 St          (1)                  ----->       World Trade Center                 (E)                    (Medium)  
+    7:  Astoria-Ditmars Blvd               (N W)                ----->       Prince St                          (R W)                  (Medium)  
+    8:  14 St-Union Sq                     (4 5 6 N Q R W L)    ----->       Howard Beach-JFK Airport           (A)                    (Medium)  
+    9:  81 St-Museum of Natural History    (B C)                ----->       Delancey St-Essex St               (J Z F M)              (Medium)  
+    10: Myrtle Av                          (J M Z)              ----->       Nostrand Av                        (3)                    (Medium)  
+    11: Court Sq                           (7 E F G)            ----->       Dyckman St                         (1)                    (Hard)    
+    12: Pelham Bay Park                    (6)                  ----->       Coney Island-Stillwell Av          (D F N Q)              (Hard)    
+    13: Dyckman St                         (1)                  ----->       Greenpoint Av                      (G 7)                  (Hard)    
+    14: Rockaway Blvd                      (A)                  ----->       Jamaica-179 St                     (F)                    (Hard)    
+    15: Times Sq-42 St                     (1 2 3 7 N Q R W S)  ----->       Fulton St                          (2 3 4 5 A C J Z)      (Custom)  
+    16: Canal St                           (A C E)              ----->       33 St                              (6)                    (Custom)  
+    17: Church Av                          (2 5)                ----->       47-50 Sts-Rockefeller Ctr          (B D F M)              (Custom)  
+    18: Times Sq-42 St                     (1 2 3 7 N Q R W S)  ----->       14 St-Union Sq                     (4 5 6 N Q R W L)      (Custom)  
+   
+    19: New Custom Journey
+     ```
 ****
 
 ## Classes
@@ -162,31 +187,31 @@ struct GameState {
 
 ```
 
-| Function                     | Description                                                                                                                           |
-|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| `initializeTrain`            | Initializes the train with the starting line, current station, and destination station based on the game state.                       |
-| `promptForChallengeSelection`            | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge. |
-| `promptsForCustomChallenge`         | Allows adding a custom challenge to the game.                                                                                         |
-| `promptForGameMode`          | Prompts the user to select the game mode (ex: Challenge Mode)                                                                         |
-| `promptForStartingLine`      | Prompts the user to choose a train line to wait for at the current station.                                                           |
-| `promptForDirection`         | Prompts the user to choose a new direction for the train.                                                                             |
-| `promptForATrainDestination` | Prompts the user to select a destination for the train.                                                                               |
-| `handleUserInput`            | Handles user input during the game, such as advancing the train, changing direction, or transferring to another line.                 |
-| `advanceToNextStation`       | Advances the train to the next station.                                                                                               |
-| `changeDirection`            | Changes the direction of the train.                                                                                                   |
-| `advanceMultipleStations`    | Advances the train by multiple stations based on user input.                                                                          |
-| `initializeTransfer`         | Initializes the transfer process to another line.                                                                                     |
-| `promptForTransfer`          | Prompts the user to choose a line for transferring at the current station.                                                            |
-| `displayCurrentLineInfo`     | Displays information about the current line.                                                                                          |
-| `displayCurrentStationInfo`  | Displays information about the current station, including the line and direction of the train.                                        |
-| `announceLastStop`           | Announces when the train reaches the last stop on its current line.                                                                   |
-| `displayUpcomingStations`    | Displays information about upcoming stations along the train's route.                                                                 |
-| `displayAllChallenges`       | Displays information about all challenges available in the game.                                                                      |
-| `displayStationsFor`         | Displays information about stations for a specified set of stations.                                                                  |
-| `promptLineSelection`        | Prompts the user to select a line, either for the starting or destination station.                                                    |
-| `promptStationFromLine`      | Prompts the user to select a station from a specified line.                                                                           |
-| `isnumber`                   | Checks if a string represents a numeric value.                                                                                        |
-| `initializeArgs`             | Initializes the arguments for the game, (options listed in `Command Line Argument` Section).                                          |
+| Function                      | Description                                                                                                                           |
+|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `initializeTrain`             | Initializes the train with the starting line, current station, and destination station based on the game state.                       |
+| `promptForChallengeSelection` | Prompts the user to select a challenge for the game in Challenge Mode. It initializes the game state based on the selected challenge. |
+| `promptsForCustomChallenge`   | Allows adding a custom challenge to the game.                                                                                         |
+| `promptForGameMode`           | Prompts the user to select the game mode (ex: Challenge Mode)                                                                         |
+| `promptForStartingLine`       | Prompts the user to choose a train line to wait for at the current station.                                                           |
+| `promptForDirection`          | Prompts the user to choose a new direction for the train.                                                                             |
+| `promptForAtRockawayBranch`   | Prompts the user to select a destination for the train.                                                                               |
+| `handleUserInput`             | Handles user input during the game, such as advancing the train, changing direction, or transferring to another line.                 |
+| `advanceToNextStation`        | Advances the train to the next station.                                                                                               |
+| `changeDirection`             | Changes the direction of the train.                                                                                                   |
+| `advanceMultipleStations`     | Advances the train by multiple stations based on user input.                                                                          |
+| `initializeTransfer`          | Initializes the transfer process to another line.                                                                                     |
+| `promptForTransfer`           | Prompts the user to choose a line for transferring at the current station.                                                            |
+| `displayCurrentLineInfo`      | Displays information about the current line.                                                                                          |
+| `displayCurrentStationInfo`   | Displays information about the current station, including the line and direction of the train.                                        |
+| `announceLastStop`            | Announces when the train reaches the last stop on its current line.                                                                   |
+| `displayUpcomingStations`     | Displays information about upcoming stations along the train's route.                                                                 |
+| `displayAllChallenges`        | Displays information about all challenges available in the game.                                                                      |
+| `displayStationsFor`          | Displays information about stations for a specified set of stations.                                                                  |
+| `promptLineSelection`         | Prompts the user to select a line, either for the starting or destination station.                                                    |
+| `promptStationFromLine`       | Prompts the user to select a station from a specified line.                                                                           |
+| `isnumber`                    | Checks if a string represents a numeric value.                                                                                        |
+| `initializeArgs`              | Initializes the arguments for the game, (options listed in `Command Line Argument` Section).                                          |
 
 ****
 
@@ -269,7 +294,7 @@ and updates the train's line and scheduled stops accordingly.
 
 #### Integration of Python Code
 To enhance the functionality of the project and incorporate additional features,
-Python code was integrated into the system.
+I utilized Python's simple csv library.
 My Python scripts [csv_maker.py](csv/csv_maker.py) and [csv_reverser.py](csv/csv_reverser.py) use
 [all_stations.csv](csv/all_stations.csv) to separate each subway lines' `scheduledStops` into individual csv files
 (see the [csv directory](csv)).
@@ -330,7 +355,7 @@ void SubwayMap::createStations(LineName line, vector<Station>& subwayStations) {
         filePath += "all_stations.csv";
     } 
     else {
-        filePath += Line::getIDTextForEnum(line) + "_train_stations.csv";
+        filePath += Line::getIDTextForEnum(line) + "_train_stations.csv"; // standard file name pattern
     }
     createStations(filePath, subwayStations);
 }
@@ -343,15 +368,15 @@ void SubwayMap::updateStopsForLine(LineName line, vector<Station>& subwayStation
 
 #### User Experience Improvements
 The current station information, including the train line, direction, and station details, is displayed after each user action.
-When a transfer is available, the user is prompted to list the available transfer lines at the current station.
-Input validation has been improved to handle various edge cases and provide meaningful error messages.
+When a transfer is available, the user is presented the additonal option to transfer to the available lines at their current station.
+Input validation has been improved to handle various edge cases and provide error messages.
 
 With these additions, the game now **accurately simulates the experience of navigating the NYC subway system**,
 allowing players to get from `point A` to `point B` infinitely many ways.
 
 #### Small Cheat Code for Testers
 
-Take a look for my `handleUserInput()` function in `main.cpp`  
+Take a look for my `handleUserInput()` function in `Game.cpp`  
 1. Command: `Cmd/Ctrl` + `Shift` + `F`
 2. Copy/Paste: 
 ```text
@@ -445,7 +470,7 @@ if your destination station is along one of these branches
 
 How?
 ```c++
-void promptForATrainDestination(Train &train, GameState &gameState) {
+void promptForAtRockawayBranch(Train &train, GameState &gameState) {
     // Note: this is a simplified/modified version of the actual method in main.cpp 
     // If user is at Rockaway Blvd and is traveling Downtown, prompt for which
     // A train they would like to board:
@@ -481,7 +506,9 @@ Users can now control how the game is run without needing to modify the source c
 
 ****
 
-#### Video Demonstrations
+## Video Demonstrations
+
+> There have been many updates/improvements to the codebase since the time these were recorded
 
 ### [Input Validation](https://www.youtube.com/watch?v=8oJfOjqpsMM)
 > **Note:** I set hard coded values to make the demonstration as simple and understandable as possible. In the provided code, the two `Station` Objects are chosen at random.

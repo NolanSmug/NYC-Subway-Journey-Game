@@ -49,7 +49,7 @@ private:
 /******************* Prompting for Train Actions ********************/
     void promptForStartingLine(Train &train);
     void promptForDirection(Train &train);
-    void promptForATrainDestination(Train &train, GameState &gameState);
+    void promptForAtRockawayBranch(Train &train, GameState &gameState);
     bool handleUserInput(Train &train, GameState &gameState);
 
 /******************* Performing Train Actions ********************/

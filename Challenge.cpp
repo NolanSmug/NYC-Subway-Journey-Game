@@ -16,7 +16,7 @@ void Challenge::setStartLine(LineName newStartLine) {
 }
 
 LineName Challenge::getStartLine() {
-    return startLine;
+    return startStation.getTransfers()[0];
 }
 
 
