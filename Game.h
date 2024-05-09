@@ -43,8 +43,12 @@ private:
 
 /******************** Prompting for Game Setup ********************/
     void promptForGameMode(GameState &gameState);
-    void promptForChallengeSelection(GameState &gameState); // Challenge Mode
-    void promptsForCustomChallenge(Challenge &challenge);   // Challenge Mode
+
+/**************** Prompting for Challenge Setup *******************/
+    void promptForChallengeSelection(GameState &gameState);
+    void promptsForCustomChallenge(Challenge &challenge);
+    LineName promptLineSelection(bool isStartingStation);
+    Station promptStationFromLine(LineName line, bool isStartingStation);
 
 /******************* Prompting for Train Actions ********************/
     void promptForStartingLine(Train &train);
@@ -67,8 +71,6 @@ private:
     void displayAllChallenges(Challenge challenge);
     void displayStationsFor(vector<Station> stations);
 
-    LineName promptLineSelection(bool isStartingStation);
-    Station promptStationFromLine(LineName line, bool isStartingStation);
     static bool isnumber(const string &s);
     void initializeArgs(int argc, char *argv[]);
 };
