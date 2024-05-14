@@ -130,7 +130,7 @@ ostream& operator<<(ostream& str, Challenge challenge) {
     str << left << setw(32) << startStationStr;
     str << "  " << setw(22) << left << startStationTrfrStr;
 
-    str << setw(12) << left << "----->" << "   ";
+    str << setw(12) << left << "     ----->      ";
 
     str << left << setw(32) << destiStationStr;
     str << "  " << setw(22) << left << destiStationTrfrStr;

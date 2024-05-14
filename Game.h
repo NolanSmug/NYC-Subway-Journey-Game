@@ -19,7 +19,8 @@
 #include <cstdlib>
 #include <unordered_map>
 
-/// basically is the reason the game works
+using namespace std;
+
 struct GameState {
     LineName startingLine;
     Station startingStation;
@@ -31,11 +32,12 @@ struct GameState {
     void resetGameState();
 };
 
-using namespace std;
-
 class Game {
 public:
     void startGame(int argc, char* argv[]);
+    void resetGame(GameState &gameState);
+
+    bool promptToPlayAgain();
 
 private:
 /********************** Initialize the Game *********************/
@@ -70,9 +72,14 @@ private:
     void displayUpcomingStations(Train &train);
     void displayAllChallenges(Challenge challenge);
     void displayStationsFor(vector<Station> stations);
+    void displayDestinationStation(Station& station);
 
     static bool isnumber(const string &s);
     void initializeArgs(int argc, char *argv[]);
+
+    string getInput(Train &train, GameState &gameState);
+
+
 };
 
 

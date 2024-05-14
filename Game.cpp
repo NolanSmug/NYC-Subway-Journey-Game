@@ -31,16 +31,17 @@ void Game::startGame(int argc, char* argv[]) {
 
         unsigned int currentStationIndex = train.getCurrentStationIndex();
         unsigned int lastStationIndex = train.getScheduledStops().size() - 1;
-        bool atLastStop = (currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
-                          (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN);
         bool isAtATrainJunction = train.getCurrentStation().getName() == "Rockaway Blvd" &&
                                   train.getDirection() == DOWNTOWN;
+        bool atLastStop = (currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
+                          (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN)   &&
+                          !isAtATrainJunction;
 
-        if (atLastStop && !isAtATrainJunction) {
-            announceLastStop(train);
-        }
         if (isAtATrainJunction) {
             promptForAtRockawayBranch(train, gameState);
+        }
+        if (atLastStop) {
+            announceLastStop(train);
         }
 
         bool validInput = false;
@@ -49,12 +50,11 @@ void Game::startGame(int argc, char* argv[]) {
         }
     }
 
-    // GAME FINISHED
+    // GAME FINISHED (loop exited)
     if (train.getCurrentStation() == gameState.destinationStation) {
         cout << "\nYour current Station:\n" << train.getCurrentStation();
-        cout << "YOU WIN" << endl;
+        cout << "YOU WIN" << endl << endl;
     }
-
 }
 
 
@@ -75,6 +75,24 @@ void Game::initializeTrain(Train& train, GameState& gameState) {
 
     promptForDirection(train);
 }
+
+
+void Game::resetGame(GameState &gameState) {
+    gameState.resetGameState();
+    cout << "\n\n\n\n-----------GAME RESET-----------\n\n\n\n";
+}
+
+bool Game::promptToPlayAgain() {
+    string playAgainInput;
+    cout << "\nPlay again? (y/n): ";
+    getline(cin, playAgainInput);
+    playAgainInput.erase(remove(playAgainInput.begin(),playAgainInput.end(),' '), playAgainInput.end());
+
+    bool wantsToPlayAgain = tolower(playAgainInput[0]) == 'y';
+    
+    return wantsToPlayAgain;
+}
+
 
 void Game::promptForChallengeSelection(GameState &gameState) {
     Challenge challenge = Challenge();
@@ -113,6 +131,7 @@ void Game::promptForChallengeSelection(GameState &gameState) {
         }
     }
 }
+
 
 void Game::promptsForCustomChallenge(Challenge &challenge) {
     LineName chosenStartLine = promptLineSelection(true); // prompt for start line
@@ -200,7 +219,7 @@ void Game::promptForDirection(Train &train) {
             valid = true;
         }
         else {
-            cout << "Invalid input. ";
+            cout << "Invalid direction choice." << endl;
         }
     }
 }
@@ -273,7 +292,7 @@ void Game::promptForAtRockawayBranch(Train &train, GameState &gameState) {
     cout << endl;
 }
 
-bool Game::handleUserInput(Train &train, GameState& gameState) {
+string Game::getInput(Train &train, GameState &gameState) {
     string input;
     cout << "Options:\n";
     cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
@@ -285,53 +304,43 @@ bool Game::handleUserInput(Train &train, GameState& gameState) {
     }
     if (gameState.isFirstTurn) {
         cout << " - Enter 'r' to refresh stations\n";
-    }
-
-    getline(cin, input);
-
-    // remove any whitespaces in input
-    /// (https://stackoverflow.com/a/16011109/23352980)
-    input.erase(remove(input.begin(), input.end(), ' '), input.end());
-
-    // exit if input is known to be immediately invalid
-    if (!input.empty() && input.length() != 1 && !isnumber(input)) { // input is not empty, not 1 char, and NaN
-        return false;
-    }
-    char inputChar = tolower(input[0]);
-
-    // RESET GAME
-    if (inputChar == 'r') {
-        gameState.resetGameState();
-        cout << "\n\n\n\n-----------GAME RESET-----------\n\n\n\n";
-        initializeTrain(train, gameState);
-        return true;
-    }
-
-    if (input.empty()) {                                // advance 1 station
-        return advanceToNextStation(train);
-    }
-    else if (inputChar == 't') {                        // prompt transfer
-        return initializeTransfer(train);
-    }
-    else if (inputChar == 'c') {                        // change direction
-        return changeDirection(train);
-    }
-    else if (inputChar == 'd') {                        // show destination station
-        cout << "Destination Station:\n" << gameState.destinationStation;
-    }
-    else if (inputChar == '0') {                        // secret
-        displayUpcomingStations(train);
-    }
-    else {                                              // advance input<int> stations
-        return advanceMultipleStations(train, input);
-    }
-    input.clear();
-
-    if (gameState.isFirstTurn) {
         gameState.isFirstTurn = false;
     }
 
-    return false;
+    getline(cin, input);
+    input.erase(remove(input.begin(), input.end(), ' '), input.end());
+    return input;
+}
+
+bool Game::handleUserInput(Train &train, GameState& gameState) {
+    string input = getInput(train, gameState);
+    char inputChar = tolower(input[0]);
+
+    if (inputChar == 'r') {
+        resetGame(gameState);
+        initializeTrain(train,gameState);
+        return true;
+    }
+    else if (input.empty()) {
+        return advanceToNextStation(train);
+    }
+    else if (inputChar == 't') {
+        return initializeTransfer(train);
+    }
+    else if (inputChar == 'c') {
+        return changeDirection(train);
+    }
+    else if (inputChar == 'd') {
+        displayDestinationStation(gameState.destinationStation);
+        return false;
+    }
+    else if (inputChar == '0') {
+        displayUpcomingStations(train);
+        return true;
+    }
+    else {
+        return advanceMultipleStations(train, input);
+    }
 }
 
 
@@ -392,7 +401,7 @@ bool Game::promptForTransfer(Train &train) {
             cout << currentStation.getTransferLinesString().substr(1) << endl; // need substr to strip leading space
             alreadyListedTransfers = true;
         }
-        else if (input[0] == 'x') {
+        else if (input[0] == 'E' || input[0] == 'e') {
             return false;
         }
         else if (train.transferToLine(Line::stringToLineEnum(input), currentStation)) {
@@ -400,9 +409,7 @@ bool Game::promptForTransfer(Train &train) {
             return true;
         }
         else {
-            cout << "The " << input << " Train does not stop at "
-                 << currentStation.getName()
-                 << currentStation.getTransferLinesString() << endl;
+            cout << "Invalid input. Please try again." << endl; // Add this line to provide better feedback for invalid input
         }
     }
 }
@@ -451,6 +458,10 @@ void Game::displayCurrentStationInfo(Train &train) {
     train.getCurrentStation();
 
     cout << "\nCurrent Station:\n" << train.getCurrentStation();
+}
+
+void Game::displayDestinationStation(Station& destinationStation) {
+    cout << "Destination Station:\n" << destinationStation;
 }
 
 void Game::announceLastStop(Train &train) {
@@ -536,12 +547,13 @@ void Game::displayUpcomingStations(Train &train) {
 }
 
 void Game::displayAllChallenges(Challenge challenge) {
+    cout << "\n\t\t\t\t\tStarting Station\t\t\t\t\t\t\t\t\t\t\t\t\t\tDestination Station\t\t\t\t\t\t Difficulty\n" << endl;
     int count = 1;
     for (Challenge challenge : challenge.getAllChallenges()) {
         cout << count << (count < 10 ? ":  " : ": ") << challenge << endl;
         ++count;
     }
-    cout << endl << count << ": New Custom Journey" << endl;
+    cout << count << ": New Custom Journey..." << endl;
 }
 
 void Game::displayStationsFor(vector<Station> stations) {

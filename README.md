@@ -59,28 +59,28 @@ Here's how the game steps flow:
     - Users also have the options to create their own `CUSTOM` Challenge that gets added to [challenge_data.csv](./challenges/challenge_data.csv).
 
     ```text
-   Challange Selection Screen:
-      
-    1:  Grand Central-42 St                (4 5 6 7 Sr)         ----->       Brooklyn Bridge-City Hall          (4 5 6 J Z)            (Easy)    
-    2:  96 St                              (1 2 3)              ----->       Flatbush Av-Brooklyn College       (2 5)                  (Easy)    
-    3:  34 St-Penn Station                 (A C E 1 2 3)        ----->       World Trade Center                 (E)                    (Easy)    
-    4:  Metropolitan Av                    (G)                  ----->       Court Sq                           (7 E F G)              (Easy)    
-    5:  Grand Central-42 St                (4 5 6 7 Sr)         ----->       Mets-Willets Point                 (7)                    (Easy)    
-    6:  Van Cortlandt Park-242 St          (1)                  ----->       World Trade Center                 (E)                    (Medium)  
-    7:  Astoria-Ditmars Blvd               (N W)                ----->       Prince St                          (R W)                  (Medium)  
-    8:  14 St-Union Sq                     (4 5 6 N Q R W L)    ----->       Howard Beach-JFK Airport           (A)                    (Medium)  
-    9:  81 St-Museum of Natural History    (B C)                ----->       Delancey St-Essex St               (J Z F M)              (Medium)  
-    10: Myrtle Av                          (J M Z)              ----->       Nostrand Av                        (3)                    (Medium)  
-    11: Court Sq                           (7 E F G)            ----->       Dyckman St                         (1)                    (Hard)    
-    12: Pelham Bay Park                    (6)                  ----->       Coney Island-Stillwell Av          (D F N Q)              (Hard)    
-    13: Dyckman St                         (1)                  ----->       Greenpoint Av                      (G 7)                  (Hard)    
-    14: Rockaway Blvd                      (A)                  ----->       Jamaica-179 St                     (F)                    (Hard)    
-    15: Times Sq-42 St                     (1 2 3 7 N Q R W S)  ----->       Fulton St                          (2 3 4 5 A C J Z)      (Custom)  
-    16: Canal St                           (A C E)              ----->       33 St                              (6)                    (Custom)  
-    17: Church Av                          (2 5)                ----->       47-50 Sts-Rockefeller Ctr          (B D F M)              (Custom)  
-    18: Times Sq-42 St                     (1 2 3 7 N Q R W S)  ----->       14 St-Union Sq                     (4 5 6 N Q R W L)      (Custom)  
-   
-    19: New Custom Journey
+    Challange Selection Screen:
+          
+                Starting Station							        Destination Station			     Difficulty
+
+    1:  Grand Central-42 St                (4 5 6 7 Sr)              ----->      Brooklyn Bridge-City Hall          (4 5 6 J Z)            (Easy)    
+    2:  96 St                              (1 2 3)                   ----->      Flatbush Av-Brooklyn College       (2 5)                  (Easy)    
+    3:  34 St-Penn Station                 (A C E 1 2 3)             ----->      World Trade Center                 (E)                    (Easy)    
+    4:  Metropolitan Av                    (G)                       ----->      Court Sq                           (7 E F G)              (Easy)    
+    5:  Grand Central-42 St                (4 5 6 7 Sr)              ----->      Mets-Willets Point                 (7)                    (Easy)    
+    6:  Van Cortlandt Park-242 St          (1)                       ----->      World Trade Center                 (E)                    (Medium)  
+    7:  Astoria-Ditmars Blvd               (N W)                     ----->      Prince St                          (R W)                  (Medium)  
+    8:  14 St-Union Sq                     (4 5 6 N Q R W L)         ----->      Howard Beach-JFK Airport           (A)                    (Medium)  
+    9:  81 St-Museum of Natural History    (B C)                     ----->      Delancey St-Essex St               (J Z F M)              (Medium)  
+    10: Myrtle Av                          (J M Z)                   ----->      Nostrand Av                        (3)                    (Medium)  
+    11: Court Sq                           (7 E F G)                 ----->      Dyckman St                         (1)                    (Hard)    
+    12: Pelham Bay Park                    (6)                       ----->      Coney Island-Stillwell Av          (D F N Q)              (Hard)    
+    13: Dyckman St                         (1)                       ----->      Greenpoint Av                      (G)                    (Hard)    
+    14: Rockaway Blvd                      (A)                       ----->      Jamaica-179 St                     (F)                    (Hard)    
+    15: Times Sq-42 St                     (1 2 3 7 N Q R W S)       ----->      Fulton St                          (2 3 4 5 A C J Z)      (Custom)  
+    16: Canal St                           (A C E)                   ----->      33 St                              (6)                    (Custom)  
+    17: Church Av                          (2 5)                     ----->      47-50 Sts-Rockefeller Ctr          (B D F M)              (Custom)  
+    18: Times Sq-42 St                     (1 2 3 7 N Q R W S)       ----->      14 St-Union Sq                     (4 5 6 N Q R W L)      (Custom)  
      ```
 ****
 
@@ -580,7 +580,7 @@ The user now reached `Times Square`, the destination station. The game now ends.
 In this demonstration video,
 I step through the CLion debugger
 showing how all the fields we need to update in a Train object to perform a successful transfer.
-1. I set up some code in `main.cpp` to test the transfer to the `TWO_TRAIN` at 14th St
+1. I set up some code in `main.cpp` to test the transfer to the `TWO_TRAIN` at `14th St Union-Sq`
 2. `transferToLine()` is called with the requested transfers' `LineName` and the Train's `currentStation`
 3. `validTransfer()` returns `true`, as it finds the `TWO_LINE` in 14th st's vector of `LineName`s.
 4. `updateScheduledStops()` is called and builds a `SubwayMap` to be passed into the `SubwayMap` class (for `Station` file handling).
@@ -609,7 +609,7 @@ bool transferToLine(LineName newLine, Station currentStation) {
 
 ### [Subway Adventure: Navigating to Times Square 42nd St](https://youtu.be/Za8aYLOiGR8)  
 
-`Starting Point`: Brooklyn Bridge-City Hall  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Starting Station`: Brooklyn Bridge-City Hall  
 `Destination Station`: Times Sq-42 St
 
 **1. Initial Setup**  
