@@ -2,12 +2,9 @@
 
 int main(int argc, char* argv[]) {
     Game game;
-    bool userWantsToPlay;
-
     do {
         game.startGame(argc, argv);
-        userWantsToPlay = game.promptToPlayAgain();
-    } while (userWantsToPlay);
+    } while (game.promptToPlayAgain());
 
     return 0;
 }

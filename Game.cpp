@@ -33,8 +33,8 @@ void Game::startGame(int argc, char* argv[]) {
         unsigned int lastStationIndex = train.getScheduledStops().size() - 1;
         bool isAtATrainJunction = train.getCurrentStation().getName() == "Rockaway Blvd" &&
                                   train.getDirection() == DOWNTOWN;
-        bool atLastStop = (currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
-                          (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN)   &&
+        bool atLastStop = ((currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
+                          (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN))   &&
                           !isAtATrainJunction;
 
         if (isAtATrainJunction) {
@@ -65,9 +65,7 @@ void Game::initializeTrain(Train& train, GameState& gameState) {
     train.setLineType(); // ex: Local, Express, None
 
     displayCurrentStationInfo(train);
-
-    cout << "Destination Station:\n"
-         << gameState.destinationStation;
+    displayDestinationStationInfo(gameState.destinationStation);
 
     if (train.getCurrentStation().hasTransferLine()) {
         promptForStartingLine(train); // if startingStation has transfer line options
@@ -95,39 +93,43 @@ bool Game::promptToPlayAgain() {
 
 
 void Game::promptForChallengeSelection(GameState &gameState) {
-    Challenge challenge = Challenge();
+    Challenge challenge;
     challenge.initializeAllChallenges();
 
     displayAllChallenges(challenge);
 
+    int choiceIndex;
     bool validChoice = false;
+
     while (!validChoice) {
         cout << "\nSelect a Number Challenge to Complete: ";
-        string challengeChoiceIndex;
-        getline(cin, challengeChoiceIndex);
+        string input;
+        getline(cin, input);
 
-        int index;
-        istringstream inputStringStream(challengeChoiceIndex);
-        if (inputStringStream >> index && index >= 1 && index <= challenge.getAllChallenges().size()) {
-            Challenge challengeChoice = challenge.getAllChallenges()[index - 1]; // retrieve selected challenge
+        if (isnumber(input)) {
+            choiceIndex = stoi(input);
+            if (choiceIndex >= 1 && choiceIndex <= challenge.getAllChallenges().size()) {
+                Challenge selectedChallenge = challenge.getAllChallenges()[choiceIndex - 1];
 
-            // update GameState parameters for Game functionality
-            gameState.startingLine = challengeChoice.getStartLine();
-            gameState.startingStation = challengeChoice.getStartStation();
-            gameState.destinationStation = challengeChoice.getDestinationStation();
-            gameState.currentStation = gameState.startingStation;
+                gameState.startingLine = selectedChallenge.getStartLine();
+                gameState.startingStation = selectedChallenge.getStartStation();
+                gameState.destinationStation = selectedChallenge.getDestinationStation();
+                gameState.currentStation = gameState.startingStation;
 
-            // update currentStations vector based on the Challenge's startingLine
-            SubwayMap::createStations(gameState.startingLine, gameState.currentStations);
+                SubwayMap::createStations(gameState.startingLine, gameState.currentStations);
 
-            validChoice = true;
-        }
-        else if (index == challenge.getAllChallenges().size() + 1) {
-            promptsForCustomChallenge(challenge);
-            displayAllChallenges(challenge);
+                validChoice = true;
+            }
+            else if (choiceIndex == challenge.getAllChallenges().size() + 1) {
+                promptsForCustomChallenge(challenge);
+                displayAllChallenges(challenge);
+            }
+            else {
+                cout << "Invalid challenge index. Please select a valid challenge.";
+            }
         }
         else {
-            cout << "Invalid challenge index. Please select a valid challenge." << endl;
+            cout << "Invalid input. Please enter a number.";
         }
     }
 }
@@ -331,7 +333,7 @@ bool Game::handleUserInput(Train &train, GameState& gameState) {
         return changeDirection(train);
     }
     else if (inputChar == 'd') {
-        displayDestinationStation(gameState.destinationStation);
+        displayDestinationStationInfo(gameState.destinationStation);
         return false;
     }
     else if (inputChar == '0') {
@@ -460,7 +462,7 @@ void Game::displayCurrentStationInfo(Train &train) {
     cout << "\nCurrent Station:\n" << train.getCurrentStation();
 }
 
-void Game::displayDestinationStation(Station& destinationStation) {
+void Game::displayDestinationStationInfo(Station& destinationStation) {
     cout << "Destination Station:\n" << destinationStation;
 }
 
@@ -631,9 +633,9 @@ void GameState::resetGameState() { // if user wants to re-shuffle their stations
     startingStation = Station::getRandomStation(currentStations);
     do {
         destinationStation = Station::getRandomStation(Station::allNycStations); // select random destination station
-    } while (startingStation == destinationStation); // ensure starting != destinatio            n
+    } while (startingStation == destinationStation); // ensure starting != destination
 
-    currentStation = startingStation;
+    currentStation = startingStation; // update current station too
 }
 
 bool Game::isnumber(const string &s) {

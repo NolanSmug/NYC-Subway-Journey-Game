@@ -8,4 +8,6 @@ add_executable(main main.cpp Line.cpp Station.cpp SubwayMap.cpp Train.cpp
         Challenge.cpp
         Game.h
         Game.cpp
+        GameStats.h
+        GameStats.cpp
 )

@@ -35,15 +35,14 @@ struct GameState {
 class Game {
 public:
     void startGame(int argc, char* argv[]);
-    void resetGame(GameState &gameState);
-
     bool promptToPlayAgain();
 
 private:
 /********************** Initialize the Game *********************/
     void initializeTrain(Train &train, GameState &gameState);
+    void resetGame(GameState &gameState);
 
-/******************** Prompting for Game Setup ********************/
+    /******************** Prompting for Game Setup ********************/
     void promptForGameMode(GameState &gameState);
 
 /**************** Prompting for Challenge Setup *******************/
@@ -72,7 +71,7 @@ private:
     void displayUpcomingStations(Train &train);
     void displayAllChallenges(Challenge challenge);
     void displayStationsFor(vector<Station> stations);
-    void displayDestinationStation(Station& station);
+    void displayDestinationStationInfo(Station& destinationStation);
 
     static bool isnumber(const string &s);
     void initializeArgs(int argc, char *argv[]);
