@@ -10,6 +10,7 @@
 #include "Line.h"
 #include "Challenge.h"
 #include "Train.h"
+#include "GameStats.h"
 #include <iostream>
 #include "sstream"
 #include <iostream>
@@ -27,6 +28,7 @@ struct GameState {
     Station destinationStation;
     Station currentStation;
     vector<Station> currentStations;
+    GameStats gameStats;
     bool isFirstTurn;
 
     void resetGameState();
@@ -56,6 +58,7 @@ private:
     void promptForDirection(Train &train);
     void promptForAtRockawayBranch(Train &train, GameState &gameState);
     bool handleUserInput(Train &train, GameState &gameState);
+    string getInput(Train &train, GameState &gameState);
 
 /******************* Performing Train Actions ********************/
     bool advanceToNextStation(Train &train);
@@ -75,10 +78,6 @@ private:
 
     static bool isnumber(const string &s);
     void initializeArgs(int argc, char *argv[]);
-
-    string getInput(Train &train, GameState &gameState);
-
-
 };
 
 

@@ -86,8 +86,8 @@ bool Game::promptToPlayAgain() {
     getline(cin, playAgainInput);
     playAgainInput.erase(remove(playAgainInput.begin(),playAgainInput.end(),' '), playAgainInput.end());
 
-    bool wantsToPlayAgain = tolower(playAgainInput[0]) == 'y';
-    
+    bool wantsToPlayAgain = tolower(playAgainInput[0]) == 'y'; // variable can be removed, but readbility is best
+
     return wantsToPlayAgain;
 }
 
@@ -104,10 +104,12 @@ void Game::promptForChallengeSelection(GameState &gameState) {
     while (!validChoice) {
         cout << "\nSelect a Number Challenge to Complete: ";
         string input;
-        getline(cin, input);
+        getline(cin,input);
 
         if (isnumber(input)) {
             choiceIndex = stoi(input);
+            bool wantsCustomChallenge = choiceIndex == challenge.getAllChallenges().size() + 1;
+
             if (choiceIndex >= 1 && choiceIndex <= challenge.getAllChallenges().size()) {
                 Challenge selectedChallenge = challenge.getAllChallenges()[choiceIndex - 1];
 
@@ -120,7 +122,7 @@ void Game::promptForChallengeSelection(GameState &gameState) {
 
                 validChoice = true;
             }
-            else if (choiceIndex == challenge.getAllChallenges().size() + 1) {
+            else if (wantsCustomChallenge) {
                 promptsForCustomChallenge(challenge);
                 displayAllChallenges(challenge);
             }
@@ -324,10 +326,15 @@ bool Game::handleUserInput(Train &train, GameState& gameState) {
         return true;
     }
     else if (input.empty()) {
+        gameState.gameStats.incrementStationsVisited();
         return advanceToNextStation(train);
     }
     else if (inputChar == 't') {
-        return initializeTransfer(train);
+        if (initializeTransfer(train)) {
+            gameState.gameStats.incrementTransfers();
+            gameState.gameStats.addToLinesVisited(train.getLine());
+            gameState.gameStats.addToBoroughsVisited(train.getCurrentStation().getBorough());
+        }
     }
     else if (inputChar == 'c') {
         return changeDirection(train);
@@ -381,9 +388,11 @@ bool Game::initializeTransfer(Train &train) {
 
         train.setUptownLabel(Train::getTextForDirectionEnum(UPTOWN, train.getLine()));
         train.setDowntownLabel(Train::getTextForDirectionEnum(DOWNTOWN, train.getLine()));
+
+        return true;
     }
 
-    return true;
+    return false; // user has not chosen a valid transfer line
 }
 
 bool Game::promptForTransfer(Train &train) {
