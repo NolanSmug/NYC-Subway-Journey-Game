@@ -416,7 +416,6 @@ bool Game::promptForTransfer(Train &train) {
             return false;
         }
         else if (train.transferToLine(Line::stringToLineEnum(input), currentStation)) {
-            cout << endl;
             return true;
         }
         else {
