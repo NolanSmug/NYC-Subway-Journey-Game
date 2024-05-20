@@ -11,7 +11,7 @@ class UserPrompt {
 public:
     /******************** Prompting for Game Setup ********************/
     void promptForGameMode(GameState& gameState);
-    bool promptToPlayAgain();
+    static bool promptToPlayAgain();
 
     /**************** Prompting for Challenge Setup *******************/
     void promptForChallengeSelection(GameState& gameState);
