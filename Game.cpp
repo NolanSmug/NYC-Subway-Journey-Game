@@ -3,15 +3,15 @@
 //
 
 #include "Game.h"
-#include "UserInterface.h" // Include the header for UserInterface
-#include "UserPrompt.h" // Include the header for UserPrompt
+#include "UserInterface.h"
+#include "UserPrompt.h"
 
 // Definitions of non-static data members
 UserInterface ui;
 UserPrompt prompt;
 
-bool Game::challengeModeFlag = true;
-bool Game::easyModeFlag = false;
+bool Game::challengeModeFlag = true; // -c in args to set to false
+bool Game::easyModeFlag = false;     // -e in args to set to true
 
 void Game::startGame(int argc, char* argv[]) {
     // SET FLAGS FROM ARGS
