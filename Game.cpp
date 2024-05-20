@@ -38,7 +38,7 @@ void Game::startGame(int argc, char* argv[]) {
 
         bool isAtRockawayBranchJunction;
         bool isAtEndOfLine;
-        updateTrainState(train, gameState, isAtRockawayBranchJunction, isAtEndOfLine);
+        updateTrainState(train, isAtRockawayBranchJunction, isAtEndOfLine);
 
         if (isAtRockawayBranchJunction) {
             prompt.promptForAtRockawayBranch(train, gameState);
