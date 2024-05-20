@@ -2,8 +2,8 @@
 
 GameStats::GameStats() = default;
 
-GameStats::GameStats(int totalStationsVisited, int totalTransfers, vector<LineName> linesVisited,
-                     vector<Borough> boroughsVisited) : totalStationsVisited(totalStationsVisited),
+GameStats::GameStats(int totalStationsVisited, int totalTransfers, set<LineName> linesVisited,
+                     set<Borough> boroughsVisited) : totalStationsVisited(totalStationsVisited),
                                                                totalTransfers(totalTransfers),
                                                                linesVisited(linesVisited),
                                                                boroughsVisited(boroughsVisited) {};
@@ -28,18 +28,18 @@ int GameStats::getTotalTransfers(){
 
 
 void GameStats::addToLinesVisited(LineName lineName) {
-    linesVisited.push_back(lineName);
+    linesVisited.insert(lineName);
 }
 
-vector<LineName> GameStats::getLinesVisited() {
+set<LineName> GameStats::getLinesVisited() {
     return linesVisited;
 }
 
 void GameStats::addToBoroughsVisited(Borough borough) {
-    boroughsVisited.push_back(borough);
+    boroughsVisited.insert(borough);
 }
 
-vector<Borough> GameStats::getBoroughsVisited() {
+set<Borough> GameStats::getBoroughsVisited() {
     return boroughsVisited;
 }
 
@@ -47,5 +47,8 @@ vector<Borough> GameStats::getBoroughsVisited() {
 void GameStats::resetStats() {
     totalStationsVisited = 0;
     totalTransfers = 0;
+    linesVisited = {};
+    boroughsVisited = {};
+
 }
 

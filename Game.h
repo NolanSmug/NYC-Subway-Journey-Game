@@ -10,7 +10,10 @@
 #include "Line.h"
 #include "Challenge.h"
 #include "Train.h"
+#include "GameState.h"
 #include "GameStats.h"
+#include "UserInterface.h"
+#include "UserPrompt.h"
 #include <iostream>
 #include "sstream"
 #include <iostream>
@@ -20,65 +23,31 @@
 #include <cstdlib>
 #include <unordered_map>
 
-using namespace std;
-
-struct GameState {
-    LineName startingLine;
-    Station startingStation;
-    Station destinationStation;
-    Station currentStation;
-    vector<Station> currentStations;
-    GameStats gameStats;
-    bool isFirstTurn;
-
-    void resetGameState();
-};
-
+// Game.h
 class Game {
 public:
     void startGame(int argc, char* argv[]);
-    bool promptToPlayAgain();
 
+    static bool challengeModeFlag; // -c in args to set to false
+    static bool easyModeFlag;     // -e in args to set to true
 private:
-/********************** Initialize the Game *********************/
+    /********************** Initialize the Game *********************/
     void initializeTrain(Train &train, GameState &gameState);
     void resetGame(GameState &gameState);
+    void updateTrainState(Train &train, bool &isAtATrainJunction, bool &atLastStop);
 
-    /******************** Prompting for Game Setup ********************/
-    void promptForGameMode(GameState &gameState);
+    /********************** Handling User Actions *********************/
+    bool handleUserInput(Train &train, GameState& gameState);
 
-/**************** Prompting for Challenge Setup *******************/
-    void promptForChallengeSelection(GameState &gameState);
-    void promptsForCustomChallenge(Challenge &challenge);
-    LineName promptLineSelection(bool isStartingStation);
-    Station promptStationFromLine(LineName line, bool isStartingStation);
+    /******************* Performing Train Actions ********************/
+    bool advanceToNextStation(Train& train);
+    bool changeDirection(Train& train);
+    bool advanceMultipleStations(Train& train, string& input);
+    bool initializeTransfer(Train& train);
 
-/******************* Prompting for Train Actions ********************/
-    void promptForStartingLine(Train &train);
-    void promptForDirection(Train &train);
-    void promptForAtRockawayBranch(Train &train, GameState &gameState);
-    bool handleUserInput(Train &train, GameState &gameState);
-    string getInput(Train &train, GameState &gameState);
-
-/******************* Performing Train Actions ********************/
-    bool advanceToNextStation(Train &train);
-    bool changeDirection(Train &train);
-    bool advanceMultipleStations(Train &train, string &input);
-    bool initializeTransfer(Train &train);
-    bool promptForTransfer(Train &train);
-
-/**************** Displaying Game Information *******************/
-    void displayCurrentLineInfo(Train &train);
-    void displayCurrentStationInfo(Train &train);
-    void announceLastStop(Train &train);
-    void displayUpcomingStations(Train &train);
-    void displayAllChallenges(Challenge challenge);
-    void displayStationsFor(vector<Station> stations);
-    void displayDestinationStationInfo(Station& destinationStation);
-
-    static bool isnumber(const string &s);
-    void initializeArgs(int argc, char *argv[]);
+    void initializeArgs(int argc, char* argv[]);
 };
+
 
 
 #endif //NYC_SUBWAY_JOURNEY_GAME_GAME_H

@@ -5,7 +5,7 @@
 #ifndef NYC_SUBWAY_JOURNEY_GAME_GAMESTATS_H
 #define NYC_SUBWAY_JOURNEY_GAME_GAMESTATS_H
 
-#include <unordered_set>
+#include <set>
 #include "Station.h"
 
 using namespace std;
@@ -13,7 +13,7 @@ using namespace std;
 class GameStats {
 public:
     GameStats();
-    GameStats(int totalStationsVisited, int totalTransfers, vector<LineName> linesVisited, vector<Borough> boroughsVisited);
+    GameStats(int totalStationsVisited, int totalTransfers, set<LineName> linesVisited, set<Borough> boroughsVisited);
 
     void incrementStationsVisited();
     void incrementTransfers();
@@ -21,8 +21,8 @@ public:
     int getTotalStationsVisited();
     int getTotalTransfers();
 
-    vector<LineName> getLinesVisited();
-    vector<Borough> getBoroughsVisited();
+    set<LineName> getLinesVisited();
+    set<Borough> getBoroughsVisited();
 
     void addToLinesVisited(LineName lineName);
     void addToBoroughsVisited(Borough borough);
@@ -33,8 +33,8 @@ private:
     int totalStationsVisited;
     int totalTransfers;
 
-    vector<LineName> linesVisited;
-    vector<Borough> boroughsVisited;
+    set<LineName> linesVisited;
+    set<Borough> boroughsVisited;
 };
 
 #endif //NYC_SUBWAY_JOURNEY_GAME_GAMESTATS_H
