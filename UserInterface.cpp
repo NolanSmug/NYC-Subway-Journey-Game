@@ -140,3 +140,8 @@ void UserInterface::displayStationsFor(vector<Station> stations) {
         cout << " " << station.getId() << "  |  " << station.getName() << endl;
     }
 }
+
+void UserInterface::displayGameWin(Train train) {
+    cout << "\nYour current Station:\n" << train.getCurrentStation();
+    cout << "YOU WIN" << endl << endl;
+}

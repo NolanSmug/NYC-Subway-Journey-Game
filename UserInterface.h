@@ -11,14 +11,14 @@
 class UserInterface {
 public:
     void displayCurrentStationInfo(Train train);
-    void displayCurrentLineInfo(Train train);
     void displayDestinationStationInfo(Station destinationStation);
     void displayUpcomingStations(Train train);
-    void displayAllChallenges(Challenge challenge);
     void displayStationsFor(vector<Station> stations);
+    void displayCurrentLineInfo(Train train);
+    void displayAllChallenges(Challenge challenge);
+    void displayGameWin(Train train);
 
     void announceLastStop(Train &train); // must update the train here
-
 };
 
 

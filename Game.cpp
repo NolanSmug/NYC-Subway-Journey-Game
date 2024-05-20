@@ -55,8 +55,7 @@ void Game::startGame(int argc, char* argv[]) {
 
     // GAME FINISHED (loop exited)
     if (train.getCurrentStation() == gameState.destinationStation) {
-        cout << "\nYour current Station:\n" << train.getCurrentStation();
-        cout << "YOU WIN" << endl << endl;
+        ui.displayGameWin(train);
     }
 }
 
