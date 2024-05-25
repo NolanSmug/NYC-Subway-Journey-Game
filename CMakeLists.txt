@@ -23,7 +23,7 @@ include_directories(
 
 # Source files
 set(SOURCES
-        Core/Game/Game.cpp
+        Core/GameLogic/Game.cpp
         Core/Station/Station.cpp
         Core/Line/Line.cpp
         Core/Train/Train.cpp
