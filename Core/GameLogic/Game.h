@@ -26,7 +26,8 @@
 // Game.h
 class Game {
 public:
-    void runGame(int argc, char* argv[]);
+    void runGame();
+    void initializeArgs(int argc, char* argv[]);
 
 private:
     /********************** Initialize the Game *********************/
@@ -41,8 +42,6 @@ private:
     bool changeDirection(Train& train);
     bool advanceMultipleStations(Train &train, GameState &gameState, string &input);
     bool initializeTransfer(Train &train, GameState &gameState);
-
-    void initializeArgs(int argc, char* argv[]);
 
     UserInterface ui;
     UserPrompt prompt;

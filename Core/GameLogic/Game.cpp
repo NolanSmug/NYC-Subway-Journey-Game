@@ -4,25 +4,22 @@
 
 #include "Game.h"
 
-void Game::runGame(int argc, char* argv[]) {
-    // SET FLAGS FROM ARGS
-    initializeArgs(argc, argv);
-
-    // INITIALIZE ALL NYC STATIONS
+void Game::runGame() {
+    // Initialize all NYC stations
     Station::initializeAllStations();
 
-    // SET UP GAME STATE (holds data for the current game's parameters)
+    // Create GameState (holds data for the current game's parameters)
     GameState gameState;
     gameState.resetGameState();
 
-    // SELECT GAME MODE (as long as `-c` is not in args)
+    // Select Game Mode
     prompt.promptForGameMode(gameState);
 
-    // START TRAIN
+    // Start Train
     Train train;
     initializeTrain(train, gameState);
 
-    // GAME LOOP
+    // Game Loop
     bool validInput;
     while (train.getCurrentStation() != gameState.destinationStation) {
         ui.displayCurrentStationInfo(train);
@@ -44,9 +41,7 @@ void Game::runGame(int argc, char* argv[]) {
     }
 
     // GAME FINISHED (loop exited)
-    if (train.getCurrentStation() == gameState.destinationStation) {
-        ui.displayGameWin(train, gameState.gameStats);
-    }
+    ui.displayGameWin(train, gameState.gameStats);
 }
 
 
@@ -147,8 +142,6 @@ bool Game::initializeTransfer(Train &train, GameState &gameState) {
     return false; // user has not chosen a valid transfer line
 }
 
-
-
 void Game::initializeArgs(int argc, char* argv[]) {
     if (argc > 1) {
         for (int i = 1; i < argc; ++i) {
@@ -164,4 +157,3 @@ void Game::initializeArgs(int argc, char* argv[]) {
         }
     }
 }
-

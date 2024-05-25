@@ -3,7 +3,6 @@ project(NYC_Subway_Journey_Game)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Include directories
 include_directories(
         ${PROJECT_SOURCE_DIR}/Core/GameLogic
         ${PROJECT_SOURCE_DIR}/Core/Station
@@ -21,7 +20,6 @@ include_directories(
         ${PROJECT_SOURCE_DIR}/Main
 )
 
-# Source files
 set(SOURCES
         Core/GameLogic/Game.cpp
         Core/Station/Station.cpp
@@ -39,5 +37,4 @@ set(SOURCES
         Main/main.cpp
 )
 
-# Add executable
 add_executable(NYC_Subway_Journey_Game ${SOURCES})
