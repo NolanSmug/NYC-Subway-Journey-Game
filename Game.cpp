@@ -3,17 +3,8 @@
 //
 
 #include "Game.h"
-#include "UserInterface.h"
-#include "UserPrompt.h"
 
-// Definitions of non-static data members
-UserInterface ui;
-UserPrompt prompt;
-
-bool Game::challengeModeFlag = true; // -c in args to set to false
-bool Game::easyModeFlag = false;     // -e in args to set to true
-
-void Game::startGame(int argc, char* argv[]) {
+void Game::runGame(int argc, char* argv[]) {
     // SET FLAGS FROM ARGS
     initializeArgs(argc, argv);
 
@@ -55,7 +46,7 @@ void Game::startGame(int argc, char* argv[]) {
 
     // GAME FINISHED (loop exited)
     if (train.getCurrentStation() == gameState.destinationStation) {
-        ui.displayGameWin(train);
+        ui.displayGameWin(train, gameState.gameStats);
     }
 }
 
@@ -73,13 +64,16 @@ void Game::initializeTrain(Train& train, GameState& gameState) {
         prompt.promptForStartingLine(train); // if startingStation has transfer line options
     }
 
+    gameState.gameStats.addToLinesVisited(train.getLine());
+
+
     prompt.promptForDirection(train);
 }
 
 
 void Game::resetGame(GameState &gameState) {
     gameState.resetGameState();
-    cout << "\n\n\n\n-----------GAME RESET-----------\n\n\n\n";
+    ui.displayGameReset();
 }
 
 void Game::updateTrainState(Train& train, bool& isAtATrainJunction, bool& atLastStop) {
@@ -93,40 +87,36 @@ void Game::updateTrainState(Train& train, bool& isAtATrainJunction, bool& atLast
                       !isAtATrainJunction;
 }
 
-bool Game::handleUserInput(Train &train, GameState& gameState) {
+bool Game::handleUserInput(Train& train, GameState& gameState) {
     string input = prompt.getInput(train, gameState);
-    char inputChar = tolower(input[0]);
 
-    if (inputChar == 'r') {
-        resetGame(gameState);
-        initializeTrain(train,gameState);
-        return true;
+    switch (tolower(input[0])) {
+        case 'r':
+            resetGame(gameState);
+            initializeTrain(train, gameState);
+            return true;
+        case '\0':  // Empty input
+            return advanceToNextStation(train, gameState);
+        case 't':
+            return initializeTransfer(train, gameState);
+        case 'c':
+            return changeDirection(train);
+        case 'd':
+            ui.displayDestinationStationInfo(gameState.destinationStation);
+            return false;
+        case '0':
+            ui.displayUpcomingStations(train);
+            return true;
+        default:
+            return advanceMultipleStations(train, gameState, input);
     }
-    else if (input.empty()) {
-        return advanceToNextStation(train);
-    }
-    else if (inputChar == 't') {
-        return initializeTransfer(train);
-    }
-    else if (inputChar == 'c') {
-        return changeDirection(train);
-    }
-    else if (inputChar == 'd') {
-        ui.displayDestinationStationInfo(gameState.destinationStation);
-        return false;
-    }
-    else if (inputChar == '0') {
-        ui.displayUpcomingStations(train);
-        return true;
-    }
-    else {
-        return advanceMultipleStations(train, input);
-    }
+
 }
 
 
-bool Game::advanceToNextStation(Train &train) {
+bool Game::advanceToNextStation(Train &train, GameState &gameState) {
     if (train.advanceStation()) {
+        gameState.gameStats.incrementStationsVisited(train.getCurrentStation().getBorough());
         return true;
     }
 
@@ -135,28 +125,29 @@ bool Game::advanceToNextStation(Train &train) {
 
 bool Game::changeDirection(Train &train) {
     train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
-    string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
-    cout << "\nYou switched to the "
-         << trackLabel
-         << " platform." << endl;
+    ui.displayDirectionChange(train);
 
     return true;
 }
 
-bool Game::advanceMultipleStations(Train &train, string &input) {
+bool Game::advanceMultipleStations(Train &train, GameState &gameState, string &input) {
     int stationsToAdvance;
 
     istringstream inputStringStream(input);
     if (inputStringStream >> stationsToAdvance && train.advanceStation(stationsToAdvance)) {
+
+        gameState.gameStats.incrementStationsVisited(stationsToAdvance);
         return true;
     }
 
     return false;
 }
 
-bool Game::initializeTransfer(Train &train) {
+bool Game::initializeTransfer(Train &train, GameState &gameState) {
     if (prompt.promptForTransfer(train)) { // if user has chosen a valid transfer line
+        ui.displayTransferSuccess(train);
         prompt.promptForDirection(train);
+        gameState.gameStats.addToLinesVisited(train.getLine());
 
         train.setUptownLabel(Train::getTextForDirectionEnum(UPTOWN, train.getLine()));
         train.setDowntownLabel(Train::getTextForDirectionEnum(DOWNTOWN, train.getLine()));
@@ -176,10 +167,10 @@ void Game::initializeArgs(int argc, char* argv[]) {
             string arg = argv[i];
 
             if (arg == "-c") {
-                Game::challengeModeFlag = false;
+                GameState::challengeModeFlag = false;
             }
             else if (arg == "-e") {
-                Game::easyModeFlag = true;
+                GameState::easyModeFlag = true;
             }
         }
     }

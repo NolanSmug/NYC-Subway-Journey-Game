@@ -26,10 +26,8 @@
 // Game.h
 class Game {
 public:
-    void startGame(int argc, char* argv[]);
+    void runGame(int argc, char* argv[]);
 
-    static bool challengeModeFlag; // -c in args to set to false
-    static bool easyModeFlag;     // -e in args to set to true
 private:
     /********************** Initialize the Game *********************/
     void initializeTrain(Train &train, GameState &gameState);
@@ -40,12 +38,15 @@ private:
     bool handleUserInput(Train &train, GameState& gameState);
 
     /******************* Performing Train Actions ********************/
-    bool advanceToNextStation(Train& train);
+    bool advanceToNextStation(Train &train, GameState &gameState);
     bool changeDirection(Train& train);
-    bool advanceMultipleStations(Train& train, string& input);
-    bool initializeTransfer(Train& train);
+    bool advanceMultipleStations(Train &train, GameState &gameState, string &input);
+    bool initializeTransfer(Train &train, GameState &gameState);
 
     void initializeArgs(int argc, char* argv[]);
+
+    UserInterface ui;
+    UserPrompt prompt;
 };
 
 

@@ -8,6 +8,7 @@
 #include "Line.h"
 #include "Station.h"
 #include "SubwayMap.h"
+#include "GameStats.h"
 
 class GameState {
 public:
@@ -17,6 +18,11 @@ public:
     Station currentStation;
     vector<Station> currentStations;
     bool isFirstTurn;
+
+    GameStats gameStats;
+
+    static bool challengeModeFlag; // -c in args to set to false
+    static bool easyModeFlag;     // -e in args to set to true
 
     void resetGameState();
 };

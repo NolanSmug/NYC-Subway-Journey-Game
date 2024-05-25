@@ -5,7 +5,11 @@
 #ifndef NYC_SUBWAY_JOURNEY_GAME_USERINTERFACE_H
 #define NYC_SUBWAY_JOURNEY_GAME_USERINTERFACE_H
 
-#include "Game.h"
+#include "Train.h"
+#include "Challenge.h"
+#include "GameState.h"
+#include <iostream>
+#include <thread>
 
 // UserInterface.h
 class UserInterface {
@@ -16,7 +20,11 @@ public:
     void displayStationsFor(vector<Station> stations);
     void displayCurrentLineInfo(Train train);
     void displayAllChallenges(Challenge challenge);
-    void displayGameWin(Train train);
+    void displayGameWin(Train train, GameStats stats);
+    void displayTransferSuccess(Train train);
+    void displayAvailableTrainActions(Train train, GameState gameState);
+    void displayGameReset();
+    void displayDirectionChange(Train train);
 
     void announceLastStop(Train &train); // must update the train here
 };

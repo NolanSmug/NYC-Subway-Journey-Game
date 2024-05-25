@@ -7,6 +7,12 @@
 
 #include <set>
 #include "Station.h"
+#include <iostream>
+#include <set>
+#include <string>
+#include <iterator>
+
+using namespace std;
 
 using namespace std;
 
@@ -15,7 +21,8 @@ public:
     GameStats();
     GameStats(int totalStationsVisited, int totalTransfers, set<LineName> linesVisited, set<Borough> boroughsVisited);
 
-    void incrementStationsVisited();
+    void incrementStationsVisited(Borough currentBorough);
+    void incrementStationsVisited(int total);
     void incrementTransfers();
 
     int getTotalStationsVisited();
@@ -28,6 +35,8 @@ public:
     void addToBoroughsVisited(Borough borough);
 
     void resetStats();
+
+    friend ostream& operator<<(ostream& str, GameStats gameStats);
 
 private:
     int totalStationsVisited;

@@ -144,7 +144,7 @@ void UserPrompt::promptForDirection(Train &train) {
 
 void UserPrompt::promptForGameMode(GameState &gameState) {
 
-    if (Game::challengeModeFlag) {
+    if (GameState::challengeModeFlag) {
         string gameMode;
         cout << "Would you like to play Normal Mode (any key) or Challenge Mode (c)? ";
 
@@ -212,12 +212,15 @@ void UserPrompt::promptForAtRockawayBranch(Train &train, GameState &gameState) {
 
 
 
-
 bool UserPrompt::promptForTransfer(Train &train) {
     Station currentStation = train.getCurrentStation();
     string input;
-
     bool alreadyListedTransfers = false;
+
+    if (currentStation.getTransfers().size() == 1) {
+        return false;
+    }
+
     while (true) {
         cout << "Which line would you like to transfer to? ";
         cout << (!alreadyListedTransfers ? "(t to list transfer lines) | " : "");
@@ -230,7 +233,8 @@ bool UserPrompt::promptForTransfer(Train &train) {
             cout << currentStation.getTransferLinesString().substr(1) << endl; // need substr to strip leading space
             alreadyListedTransfers = true;
         }
-        else if (input[0] == 'E' || input[0] == 'e') {
+        else if (input[0] == 'e') {
+            cout << "Exited" << endl << endl;
             return false;
         }
         else if (train.transferToLine(Line::stringToLineEnum(input), currentStation)) {
@@ -301,21 +305,12 @@ Station UserPrompt::promptStationFromLine(LineName line, bool isStartingStation)
 }
 
 string UserPrompt::getInput(Train &train, GameState &gameState) {
+    uiPrompt.displayAvailableTrainActions(train,gameState);
+
     string input;
-    cout << "Options:\n";
-    cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
-    cout << " - Enter 'c' to change direction\n";
-    cout << " - Enter 'd' to display your Destination Station\n";
-
-    if (train.getCurrentStation().hasTransferLine()) {
-        cout << " - Enter 't' to transfer\n";
-    }
-    if (gameState.isFirstTurn) {
-        cout << " - Enter 'r' to refresh stations\n";
-    }
-
     getline(cin, input);
     input.erase(remove(input.begin(), input.end(), ' '), input.end());
+    
     return input;
 }
 
@@ -334,3 +329,4 @@ bool UserPrompt::promptToPlayAgain() {
 bool UserPrompt::isnumber(const string &s) {
     return all_of(s.begin(), s.end(), ::isdigit);
 }
+

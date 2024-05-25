@@ -5,21 +5,24 @@
 #ifndef NYC_SUBWAY_JOURNEY_GAME_USERPROMPT_H
 #define NYC_SUBWAY_JOURNEY_GAME_USERPROMPT_H
 
-#include "Game.h"
+#include "GameState.h"
+#include "Challenge.h"
+#include "Train.h"
+#include <iostream>
+#include "UserInterface.h"
+
+class UserInterface;
 
 class UserPrompt {
 public:
-    /******************** Prompting for Game Setup ********************/
     void promptForGameMode(GameState& gameState);
     static bool promptToPlayAgain();
 
-    /**************** Prompting for Challenge Setup *******************/
     void promptForChallengeSelection(GameState& gameState);
     void promptsForCustomChallenge(Challenge& challenge);
     LineName promptLineSelection(bool isStartingStation);
     Station promptStationFromLine(LineName line, bool isStartingStation);
 
-    /******************* Prompting for Train Actions ********************/
     void promptForStartingLine(Train& train);
     void promptForDirection(Train& train);
     void promptForAtRockawayBranch(Train& train, GameState& gameState);
@@ -28,8 +31,9 @@ public:
 
     string getInput(Train &train, GameState &gameState);
 
-
 private:
+    UserInterface uiPrompt;
+
     bool isnumber(const string &s);
 };
 

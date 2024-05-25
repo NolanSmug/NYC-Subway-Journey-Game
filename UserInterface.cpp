@@ -141,7 +141,35 @@ void UserInterface::displayStationsFor(vector<Station> stations) {
     }
 }
 
-void UserInterface::displayGameWin(Train train) {
+void UserInterface::displayGameWin(Train train, GameStats stats) {
     cout << "\nYour current Station:\n" << train.getCurrentStation();
-    cout << "YOU WIN" << endl << endl;
+    cout << "\nYOU WIN\n\n";
+    cout << stats << endl;
+}
+
+void UserInterface::displayTransferSuccess(Train train) {
+    cout << "Successfully transferred to the " << Line::getTextForEnum(train.getLine()) << " train platform." << endl;
+}
+
+void UserInterface::displayAvailableTrainActions(Train train, GameState gameState) {
+    cout << "Options:\n";
+    cout << " - Enter a number to advance that many stations (empty advances 1 station)\n";
+    cout << " - Enter 'c' to change direction\n";
+    cout << " - Enter 'd' to display your Destination Station\n";
+
+    if (train.getCurrentStation().hasTransferLine()) {
+        cout << " - Enter 't' to transfer\n";
+    }
+    if (gameState.isFirstTurn) {
+        cout << " - Enter 'r' to refresh stations\n";
+    }
+}
+
+void UserInterface::displayGameReset() {
+    cout << "\n\n\n\n-----------GAME RESET-----------\n\n\n\n";
+}
+
+void UserInterface::displayDirectionChange(Train train) {
+    string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
+    cout << "\nYou switched to the " << trackLabel << " platform." << endl;
 }
