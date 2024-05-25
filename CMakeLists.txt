@@ -1,20 +1,43 @@
 cmake_minimum_required(VERSION 3.26)
-project(NYC-Subway-Journey-Game)
+project(NYC_Subway_Journey_Game)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(main main.cpp Line.cpp Station.cpp SubwayMap.cpp Train.cpp
-        Challenge.h
-        Challenge.cpp
-        Game.h
-        Game.cpp
-        GameStats.h
-        GameStats.cpp
-        GameState.h
-        GameState.cpp
-        UserInterface.h
-        UserInterface.cpp
-        UserPrompt.h
-        UserPrompt.cpp
+# Include directories
+include_directories(
+        ${PROJECT_SOURCE_DIR}/Core/GameLogic
+        ${PROJECT_SOURCE_DIR}/Core/Station
+        ${PROJECT_SOURCE_DIR}/Core/Line
+        ${PROJECT_SOURCE_DIR}/Core/Train
+        ${PROJECT_SOURCE_DIR}/Core/GameStats
+        ${PROJECT_SOURCE_DIR}/Core/SubwayMap
 
+        ${PROJECT_SOURCE_DIR}/UI/UserInterface
+        ${PROJECT_SOURCE_DIR}/UI/UserPrompt
+
+        ${PROJECT_SOURCE_DIR}/Game/Challenge
+        ${PROJECT_SOURCE_DIR}/Game/GameState
+
+        ${PROJECT_SOURCE_DIR}/Main
 )
+
+# Source files
+set(SOURCES
+        Core/Game/Game.cpp
+        Core/Station/Station.cpp
+        Core/Line/Line.cpp
+        Core/Train/Train.cpp
+        Core/GameStats/GameStats.cpp
+        Core/SubwayMap/SubwayMap.cpp
+
+        UI/UserInterface/UserInterface.cpp
+        UI/UserPrompt/UserPrompt.cpp
+
+        Game/Challenge/Challenge.cpp
+        Game/GameState/GameState.cpp
+
+        Main/main.cpp
+)
+
+# Add executable
+add_executable(NYC_Subway_Journey_Game ${SOURCES})

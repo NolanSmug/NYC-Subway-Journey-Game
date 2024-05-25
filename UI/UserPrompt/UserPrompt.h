@@ -5,11 +5,12 @@
 #ifndef NYC_SUBWAY_JOURNEY_GAME_USERPROMPT_H
 #define NYC_SUBWAY_JOURNEY_GAME_USERPROMPT_H
 
-#include "GameState.h"
-#include "Challenge.h"
-#include "Train.h"
+#include "../Game/GameState/GameState.h"
+#include "../Game/Challenge/Challenge.h"
+#include "../Core/Train/Train.h"
+#include "../UserInterface/UserInterface.h"
+
 #include <iostream>
-#include "UserInterface.h"
 
 class UserInterface;
 

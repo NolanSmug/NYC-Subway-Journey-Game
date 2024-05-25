@@ -1,0 +1,47 @@
+NYC-Subway-Journey-Game/
+├── Core/
+│   ├── Game/
+│   │   ├── Game.h
+│   │   ├── Game.cpp
+│   │   └── ... (other game-related files)
+│   ├── Station/
+│   │   ├── Station.h
+│   │   ├── Station.cpp
+│   │   └── ... (other station-related files)
+│   ├── Line/
+│   │   ├── Line.h
+│   │   ├── Line.cpp
+│   │   └── ... (other line-related files)
+│   ├── GameStats/
+│   │   ├── GameStats.h
+│   │   ├── GameStats.cpp
+│   │   └── ... (other game stats files)
+│   ├── SubwayMap/
+│   │   ├── SubwayMap.h
+│   │   ├── SubwayMap.cpp
+│   │   └── ... (other subway map files)
+│   └── ... (other core modules)
+├── UI/
+│   ├── UserInterface/
+│   │   ├── UserInterface.h
+│   │   ├── UserInterface.cpp
+│   │   └── ... (other user interface files)
+│   ├── UserPrompt/
+│   │   ├── UserPrompt.h
+│   │   ├── UserPrompt.cpp
+│   │   └── ... (other user prompt files)
+│   └── ... (other UI modules)
+├── Game/
+│   ├── Challenge/
+│   │   ├── Challenge.h
+│   │   ├── Challenge.cpp
+│   │   └── ... (other challenge files)
+│   ├── GameState/
+│   │   ├── GameState.h
+│   │   ├── GameState.cpp
+│   │   └── ... (other game state files)
+│   └── ... (other game-related modules)
+├── Main/
+│   ├── main.cpp
+│   └── ... (other main files)
+└── ... (other project files and directories)

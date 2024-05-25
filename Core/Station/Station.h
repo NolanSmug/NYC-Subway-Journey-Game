@@ -5,8 +5,13 @@
 #ifndef NYC_SUBWAY_JOURNEY_GAME_STATION_H
 #define NYC_SUBWAY_JOURNEY_GAME_STATION_H
 
-#include "Line.h"
 #include <vector>
+#include "../SubwayMap/SubwayMap.h"
+#include "../Line/Line.h"
+#include "random"
+#include <iostream>
+#include <chrono>
+#include <cstdlib>
 
 enum Borough {
     MANHATTAN,

@@ -10,7 +10,7 @@ to navigate from a randomly assigned `starting station` to another randomly assi
 Here's how the game steps flow:
 
 1. **Initialization**:
-    - The player is given a random `starting station` and a random `destination station` within the subway system. (see [all_stations.csv](./csv/all_stations.csv))
+    - The player is given a random `starting station` and a random `destination station` within the subway system. (see [all_stations.csv](Core/SubwayMap/csv/all_stations.csv))
     - They are prompted to choose a subway line to board from the available transfer options at their `starting station`.
     - Once a line is chosen, they select a direction (e.g., `Queens-bound` or `Brooklyn-bound`) to start traveling.
 
@@ -56,7 +56,7 @@ Here's how the game steps flow:
 4. **Challenge Mode**:
     - Optionally, the player can choose to play in `Challenge Mode`, where they are presented with specific challenges to complete.
     - Challenges involve traveling from one `predetermined station` to another, each ranging in `difficulty (EASY,MEDIUM,HARD)`.
-    - Users also have the options to create their own `CUSTOM` Challenge that gets added to [challenge_data.csv](./challenges/challenge_data.csv).
+    - Users also have the options to create their own `CUSTOM` Challenge that gets added to [challenge_data.csv](Game/Challenge/challenges/challenge_data.csv).
 
     ```text
     Challange Selection Screen:
@@ -225,7 +225,7 @@ the game is very simple assuming you refer to the map or have expert NYC subway 
 However, if you look in the `csv` directory,
 you can see I have a second `.csv` file containing `Station` data for ALL NYC subway stations.
 Notice that each `Station` also has a list of transfers to other train lines that you can reach,
-meaning this file holds data for a **graph of the NYC subway system**. [All Stations CSV](./csv/all_stations.csv).
+meaning this file holds data for a **graph of the NYC subway system**. [All Stations CSV](Core/SubwayMap/csv/all_stations.csv).
 
 I realized this thanks to CS 2250 Computability & Complexity, which taught me how graphs are two-tuple data structures.
 
@@ -295,9 +295,9 @@ and updates the train's line and scheduled stops accordingly.
 #### Integration of Python Code
 To enhance the functionality of the project and incorporate additional features,
 I utilized Python's simple csv library.
-My Python scripts [csv_maker.py](csv/csv_maker.py) and [csv_reverser.py](csv/csv_reverser.py) use
-[all_stations.csv](csv/all_stations.csv) to separate each subway lines' `scheduledStops` into individual csv files
-(see the [csv directory](csv)).
+My Python scripts [csv_maker.py](Core/SubwayMap/csv/csv_maker.py) and [csv_reverser.py](Core/SubwayMap/csv/csv_reverser.py) use
+[all_stations.csv](Core/SubwayMap/csv/all_stations.csv) to separate each subway lines' `scheduledStops` into individual csv files
+(see the [csv directory](Core/SubwayMap/csv)).
 
 ```python
 import csv
@@ -305,7 +305,7 @@ import csv
 train_stations = {}
 
 # Open the CSV file containing all station data
-with open('./csv/all_stations.csv', newline='') as csvfile:
+with open('Core/SubwayMap/csv/all_stations.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
 
     # Iterate through each row in the CSV

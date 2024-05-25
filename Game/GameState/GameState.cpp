@@ -15,7 +15,9 @@ void GameState::resetGameState() { // if user wants to re-shuffle their stations
 
     SubwayMap::createStations(startingLine, currentStations); // fill currentStations vector for currentLine
 
-    startingStation = Station::getRandomStation(currentStations);
+    Station station;
+
+    startingStation = station.getRandomStation(currentStations);
     do {
         destinationStation = Station::getRandomStation(Station::allNycStations); // select random destination station
     } while (startingStation == destinationStation); // ensure starting != destination

@@ -6,13 +6,11 @@
 #define NYC_SUBWAY_JOURNEY_GAME_GAMESTATS_H
 
 #include <set>
-#include "Station.h"
+#include "../Station/Station.h"
 #include <iostream>
 #include <set>
 #include <string>
 #include <iterator>
-
-using namespace std;
 
 using namespace std;
 

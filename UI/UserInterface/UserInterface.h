@@ -5,9 +5,9 @@
 #ifndef NYC_SUBWAY_JOURNEY_GAME_USERINTERFACE_H
 #define NYC_SUBWAY_JOURNEY_GAME_USERINTERFACE_H
 
-#include "Train.h"
-#include "Challenge.h"
-#include "GameState.h"
+#include "../Core/Train/Train.h"
+#include "../Game/Challenge/Challenge.h"
+#include "../Game/GameState/GameState.h"
 #include <iostream>
 #include <thread>
 

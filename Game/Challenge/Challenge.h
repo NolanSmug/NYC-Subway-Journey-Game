@@ -6,8 +6,8 @@
 #define NYC_SUBWAY_JOURNEY_GAME_CHALLENGE_H
 
 #include <string>
-#include "Line.h"
-#include "Station.h"
+#include "../Line/Line.h"
+#include "../Station/Station.h"
 #include "sstream"
 #include <iomanip>
 

@@ -5,15 +5,15 @@
 #ifndef NYC_SUBWAY_JOURNEY_GAME_GAME_H
 #define NYC_SUBWAY_JOURNEY_GAME_GAME_H
 
-#include "Station.h"
-#include "SubwayMap.h"
-#include "Line.h"
-#include "Challenge.h"
-#include "Train.h"
-#include "GameState.h"
-#include "GameStats.h"
-#include "UserInterface.h"
-#include "UserPrompt.h"
+#include "../Station/Station.h"
+#include "../SubwayMap/SubwayMap.h"
+#include "../Line/Line.h"
+#include "../../Game/Challenge/Challenge.h"
+#include "../Train/Train.h"
+#include "../../Game/GameState/GameState.h"
+#include "../GameStats/GameStats.h"
+#include "../../UI/UserInterface/UserInterface.h"
+#include "../../UI/UserPrompt/UserPrompt.h"
 #include <iostream>
 #include "sstream"
 #include <iostream>

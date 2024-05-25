@@ -6,6 +6,8 @@
 #define NYC_SUBWAY_JOURNEY_GAME_LINE_H
 
 #include <string>
+#include "random"
+
 
 using namespace std;
 

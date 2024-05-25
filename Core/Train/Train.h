@@ -4,9 +4,9 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include "Line.h"
-#include "Station.h"
-#include "SubwayMap.h"
+#include "../Line/Line.h"
+#include "../Station/Station.h"
+#include "../SubwayMap/SubwayMap.h"
 
 using namespace std;
 

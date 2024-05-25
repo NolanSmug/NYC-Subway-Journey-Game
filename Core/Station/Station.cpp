@@ -3,12 +3,6 @@
 //
 
 #include "Station.h"
-#include "SubwayMap.h"
-#include "Line.h"
-#include "random"
-#include <iostream>
-#include <chrono>
-#include <cstdlib>
 
 // Constructors
 Station::Station() : id(), name(), transfers(), borough(MANHATTAN) {}
@@ -141,13 +135,20 @@ Station Station::getStation(string stationID) {
 }
 
 Station Station::getRandomStation(vector<Station> &stations) {
-    static unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    // Ensure there is at least one station in the vector
+    if (stations.empty()) {
+        throw std::runtime_error("Station vector is empty");
+    }
 
-    static mt19937_64 generator1(seed);
-    static default_random_engine generator2(generator1());
-    static uniform_int_distribution<size_t> dist(0, stations.size() - 1);
+    // Seed the random number generator only once
+    static std::random_device rd;
+    static std::mt19937 generator(rd());
 
-    size_t randomIndex = dist(generator2);
+    // Create a uniform distribution from 0 to stations.size() - 1
+    std::uniform_int_distribution<size_t> dist(0, stations.size() - 1);
+
+    // Generate a random index
+    size_t randomIndex = dist(generator);
 
     return stations[randomIndex];
 }

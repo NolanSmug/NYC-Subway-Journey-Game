@@ -56,7 +56,7 @@ vector<Challenge> Challenge::getAllChallenges() {
 
 
 void Challenge::initializeAllChallenges() {
-    ifstream file("../challenges/challenge_data.csv");
+    ifstream file("../Game/Challenge/challenges/challenge_data.csv");
     string header; // Read header (ignore)
     if (file) {
         getline(file, header);

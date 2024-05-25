@@ -5,7 +5,8 @@
 #include <fstream>
 #include "vector"
 #include "SubwayMap.h"
-#include "Station.h"
+#include "../Station/Station.h"
+#include "../Line/Line.h"
 
 void stringToLowerCase(string &string) {
     transform(string.begin(), string.end(), string.begin(), ::tolower);
@@ -14,17 +15,17 @@ void stringToLowerCase(string &string) {
 string lineNameToCSV(LineName line) {
     // special cases (ignore)
     if (line == NULL_TRAIN) {
-        return "../csv/all_stations.csv";
+        return "../Core/SubwayMap/csv/all_stations.csv";
     }
     if (line == A_ROCKAWAY_MOTT_TRAIN) {
-        return "../csv/A_train_rockaway–mott_stations.csv";
+        return "../Core/SubwayMap/csv/A_train_rockaway–mott_stations.csv";
     }
     if (line == A_LEFFERTS_TRAIN) {
-        return "../csv/A_train_lefferts_stations.csv";
+        return "../Core/SubwayMap/csv/A_train_lefferts_stations.csv";
     }
 
     string lineName = Line::getIDTextForEnum(line);
-    string filePath = "../csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
+    string filePath = "../Core/SubwayMap/csv/" + lineName + "_stations.csv"; // standard file name pattern for each line
     stringToLowerCase(filePath); // ensure lowercase
 //    cout << filePath << endl; // testing purposes
 

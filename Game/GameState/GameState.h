@@ -5,10 +5,10 @@
 #ifndef NYC_SUBWAY_JOURNEY_GAME_GAMESTATE_H
 #define NYC_SUBWAY_JOURNEY_GAME_GAMESTATE_H
 
-#include "Line.h"
-#include "Station.h"
-#include "SubwayMap.h"
-#include "GameStats.h"
+#include "../../Core/Line/Line.h"
+#include "../Core/Station/Station.h"
+#include "../../Core/SubwayMap/SubwayMap.h"
+#include "../../Core/GameStats/GameStats.h"
 
 class GameState {
 public:
