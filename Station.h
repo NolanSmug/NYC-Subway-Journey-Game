@@ -18,6 +18,8 @@ enum Borough {
 
 static const char * BoroughEnumStrings[] = {"Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island" };
 
+using namespace std;
+
 class Station {
 private:
     string id;

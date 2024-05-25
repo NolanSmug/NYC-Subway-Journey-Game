@@ -32,7 +32,6 @@ private:
     /********************** Initialize the Game *********************/
     void initializeTrain(Train &train, GameState &gameState);
     void resetGame(GameState &gameState);
-    void updateTrainState(Train &train, bool &isAtATrainJunction, bool &atLastStop);
 
     /********************** Handling User Actions *********************/
     bool handleUserInput(Train &train, GameState& gameState);

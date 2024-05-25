@@ -6,8 +6,11 @@
 
 #include <string>
 #include <vector>
-#include "Station.h"
-#include "SubwayMap.h"
+#include "Line.h"
+
+class Station;
+
+using namespace std;
 
 class SubwayMap {
 public:

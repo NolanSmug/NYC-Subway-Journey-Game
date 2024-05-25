@@ -3,10 +3,10 @@
 
 #include <string>
 #include <vector>
-#include "Station.h"
-#include "Line.h"
-#include "SubwayMap.h"
 #include <unordered_map>
+#include "Line.h"
+#include "Station.h"
+#include "SubwayMap.h"
 
 using namespace std;
 
@@ -16,8 +16,9 @@ enum Direction {
     NULL_DIRECTION
 };
 
-extern unordered_map<LineName, pair<string, string> > lineDirections;
+extern unordered_map<LineName, pair<string, string>> lineDirections;
 extern unordered_map<LineName, LineType> lineTypes;
+
 
 
 class Train {
@@ -40,6 +41,7 @@ public:
 
     bool transferToLine(LineName newLine, Station currentStation);
     void updateScheduledStops(LineName &line);
+    void updateTrainState();
 
     vector<Station> getScheduledStops();
     void addScheduledStop(Station newStop);
@@ -56,6 +58,9 @@ public:
     bool advanceStation();                  // overloaded
     bool advanceStation(int numStations);   // overloaded
 
+    bool isAtRockawayBranchJunction();
+    bool isAtLastStop();
+
     LineType setLineType();
 
     int getNumCars();
@@ -66,12 +71,18 @@ public:
 private:
     LineName currentLine;
     LineType lineType;
+
     Direction direction;
     string uptownLabel;
     string downtownLabel;
+
     vector<Station> scheduledStops;
+
     int currentStationIndex;
     int numCars; // not sure if this could be useful ever
+
+    bool isAtRockawayBranch;
+    bool isAtEndOfLine;
 };
 
 #endif //NYC_SUBWAY_JOURNEY_GAME_TRAIN_H

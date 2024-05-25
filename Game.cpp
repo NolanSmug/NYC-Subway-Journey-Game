@@ -27,14 +27,12 @@ void Game::runGame(int argc, char* argv[]) {
     while (train.getCurrentStation() != gameState.destinationStation) {
         ui.displayCurrentStationInfo(train);
 
-        bool isAtRockawayBranchJunction;
-        bool isAtEndOfLine;
-        updateTrainState(train, isAtRockawayBranchJunction, isAtEndOfLine);
+        train.updateTrainState();
 
-        if (isAtRockawayBranchJunction) {
+        if (train.isAtRockawayBranchJunction()) {
             prompt.promptForAtRockawayBranch(train, gameState);
         }
-        else if (isAtEndOfLine) {
+        else if (train.isAtLastStop()) {
             train.reverseDirection();
             ui.announceLastStop(train);
         }
@@ -77,16 +75,6 @@ void Game::resetGame(GameState &gameState) {
     ui.displayGameReset();
 }
 
-void Game::updateTrainState(Train& train, bool& isAtATrainJunction, bool& atLastStop) {
-    unsigned int currentStationIndex = train.getCurrentStationIndex();
-    unsigned int lastStationIndex = train.getScheduledStops().size() - 1;
-
-    isAtATrainJunction = train.getCurrentStation().getName() == "Rockaway Blvd" &&
-                              train.getDirection() == DOWNTOWN;
-    atLastStop = ((currentStationIndex == 0                && train.getDirection() == DOWNTOWN) ||
-                       (currentStationIndex == lastStationIndex && train.getDirection() == UPTOWN))   &&
-                      !isAtATrainJunction;
-}
 
 bool Game::handleUserInput(Train& train, GameState& gameState) {
     string input = prompt.getInput(train, gameState);

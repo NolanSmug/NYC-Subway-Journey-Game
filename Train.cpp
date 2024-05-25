@@ -147,6 +147,16 @@ void Train::updateScheduledStops(LineName &line) {
     subwayMap.updateStopsForLine(line, scheduledStops);
 }
 
+void Train::updateTrainState() {
+    unsigned int lastStationIndex = scheduledStops.size() - 1;
+
+    isAtRockawayBranch = getCurrentStation().getName() == "Rockaway Blvd" &&
+                                 getDirection() == DOWNTOWN;
+    isAtEndOfLine = ((currentStationIndex == 0                && getDirection() == DOWNTOWN) ||
+                    (currentStationIndex == lastStationIndex && getDirection() == UPTOWN))   &&
+                    !isAtRockawayBranch;
+}
+
 // Scheduled Stops
 vector<Station> Train::getScheduledStops()  {
     return scheduledStops;
@@ -245,6 +255,16 @@ bool Train::advanceStation(int numStations) {
     return valid;
 }
 
+bool Train::isAtLastStop() {
+    return isAtEndOfLine;
+}
+
+
+bool Train::isAtRockawayBranchJunction() {
+    return isAtRockawayBranch;
+}
+
+
 LineType Train::setLineType() {
     auto lineTypeIter = lineTypes.find(currentLine);
     if (lineTypeIter != lineTypes.end()) {
@@ -254,8 +274,6 @@ LineType Train::setLineType() {
         return NONE;
     }
 }
-
-
 
 // Number of Cars
 int Train::getNumCars() {
