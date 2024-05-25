@@ -10,7 +10,7 @@ to navigate from a randomly assigned `starting station` to another randomly assi
 Here's how the game steps flow:
 
 1. **Initialization**:
-    - The player is given a random `starting station` and a random `destination station` within the subway system. (see [all_stations.csv](./csv/all_stations.csv?target=_blank))
+    - The player is given a random `starting station` and a random `destination station` within the subway system. (see [all_stations.csv](./csv/all_stations.csv))
     - They are prompted to choose a subway line to board from the available transfer options at their `starting station`.
     - Once a line is chosen, they select a direction (e.g., `Queens-bound` or `Brooklyn-bound`) to start traveling.
 
