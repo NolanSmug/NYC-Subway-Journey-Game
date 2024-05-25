@@ -46,7 +46,7 @@ void UserInterface::displayDestinationStationInfo(Station destinationStation) {
     cout << "Destination Station:\n" << destinationStation;
 }
 
-void UserInterface::announceLastStop(Train &train) {
+void UserInterface::announceLastStop(Train train) {
     cout << "-------------------------------------------------------------------------------------------------------------------------" << endl;
     cout << "This is the last stop on this train. Everyone please leave the train, thank you for riding with MTA New York City Transit" << endl;
     cout << "-------------------------------------------------------------------------------------------------------------------------" << endl;
@@ -57,7 +57,6 @@ void UserInterface::announceLastStop(Train &train) {
     }
 
     // switch direction
-    train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
 
     this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes

@@ -29,6 +29,7 @@ public:
     void setLine(LineName newLineName);
 
     Direction getDirection();
+    void reverseDirection();
     void setDirection(Direction newDirection);
 
     string getUptownLabel();

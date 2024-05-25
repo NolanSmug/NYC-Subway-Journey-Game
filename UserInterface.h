@@ -26,7 +26,7 @@ public:
     void displayGameReset();
     void displayDirectionChange(Train train);
 
-    void announceLastStop(Train &train); // must update the train here
+    void announceLastStop(Train train);
 };
 
 

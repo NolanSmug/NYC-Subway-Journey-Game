@@ -35,6 +35,7 @@ void Game::runGame(int argc, char* argv[]) {
             prompt.promptForAtRockawayBranch(train, gameState);
         }
         else if (isAtEndOfLine) {
+            train.reverseDirection();
             ui.announceLastStop(train);
         }
 

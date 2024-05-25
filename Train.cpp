@@ -86,6 +86,10 @@ Direction Train::getDirection() {
     return direction;
 }
 
+void Train::reverseDirection() {
+    direction = (direction == DOWNTOWN ? UPTOWN : DOWNTOWN); // flip direction
+}
+
 void Train::setDirection(Direction newDirection) {
     direction = newDirection;
 }
