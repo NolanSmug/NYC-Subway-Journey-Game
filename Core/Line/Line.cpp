@@ -17,6 +17,8 @@ string Line::getLineTypeString(int enumVal) {
 }
 
 LineName Line::stringToLineEnum(string& lineStr) {
+    transform(lineStr.begin(), lineStr.end(), lineStr.begin(), ::toupper);
+
     if (lineStr == "1") return ONE_TRAIN;
     if (lineStr == "2") return TWO_TRAIN;
     if (lineStr == "3") return THREE_TRAIN;

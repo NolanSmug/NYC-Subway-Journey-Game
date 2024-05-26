@@ -23,8 +23,9 @@ public:
     void displayGameWin(Train train, GameStats stats);
     void displayTransferSuccess(Train train);
     void displayAvailableTrainActions(Train train, GameState gameState);
-    void displayGameReset();
     void displayDirectionChange(Train train);
+    void displayGameReset();
+
     void announceLastStop(Train train);
 };
 

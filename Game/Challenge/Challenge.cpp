@@ -94,8 +94,13 @@ void Challenge::initializeAllChallenges() {
         Station startStation = Station::getStation(startId);
         Station destStation = Station::getStation(destId);
 
-        // Create and add challenge
-        addNewChallenge(Challenge(startStation,destStation, difficulty));
+        if (startStation.getName() == "NULL_STATION" || destStation.getName() == "NULL_STATION") {
+            // don't write challenge
+        }
+        else {
+            // Create and add challenge
+            addNewChallenge(Challenge(startStation,destStation, difficulty));
+        }
     }
 
     file.close();
@@ -103,7 +108,9 @@ void Challenge::initializeAllChallenges() {
 
 
 void Challenge::addNewChallenge(Challenge newChallenge) {
-    allChallenges.emplace_back(newChallenge);
+    if (newChallenge.getStartLine() != NULL_TRAIN) {
+        allChallenges.emplace_back(newChallenge);
+    }
 }
 
 void Challenge::writeNewChallenge(Challenge newChallenge) {
@@ -113,9 +120,14 @@ void Challenge::writeNewChallenge(Challenge newChallenge) {
     Difficulty difficulty = newChallenge.getDifficulty();
     char comma = ',';
 
-    ofstream outputFile("../challenges/challenge_data.csv", ios::app); // ::app to keep exising contents
+    if (newChallenge.getStartStation().getName() == "NULL_STATION" ||
+        newChallenge.getDestinationStation().getName() == "NULL_STATION") {
+    }
+    else {
+        ofstream outputFile("../challenges/challenge_data.csv", ios::app); // ::app to keep exising contents
+        outputFile << startStationId << comma << destStationId << comma << difficulty << endl;
+    }
 
-    outputFile << startStationId << comma << destStationId << comma << difficulty << endl;
 }
 
 

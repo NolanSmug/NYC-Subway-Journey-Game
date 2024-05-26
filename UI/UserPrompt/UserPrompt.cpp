@@ -227,7 +227,6 @@ bool UserPrompt::promptForTransfer(Train &train) {
         cout << "(e to exit) ";
 
         getline(cin, input);
-        transform(input.begin(), input.end(), input.begin(), ::toupper);
 
         if (tolower(input[0]) == 't') {
             cout << currentStation.getTransferLinesString().substr(1) << endl; // need substr to strip leading space
@@ -235,7 +234,7 @@ bool UserPrompt::promptForTransfer(Train &train) {
         }
         else if (input[0] == 'e') {
             cout << "Exited" << endl << endl;
-            return false;
+            break;
         }
         else if (train.transferToLine(Line::stringToLineEnum(input), currentStation)) {
             return true;
@@ -244,6 +243,7 @@ bool UserPrompt::promptForTransfer(Train &train) {
             cout << "Invalid input. Please try again." << endl; // Add this line to provide better feedback for invalid input
         }
     }
+    return false;
 }
 
 
@@ -320,7 +320,7 @@ bool UserPrompt::promptToPlayAgain() {
     getline(cin, playAgainInput);
     playAgainInput.erase(remove(playAgainInput.begin(), playAgainInput.end(), ' '), playAgainInput.end());
 
-    bool wantsToPlayAgain = tolower(playAgainInput[0]) == 'y'; // variable can be removed, but readbility is best
+    bool wantsToPlayAgain = tolower(playAgainInput[0]) != 'n'; // variable can be removed, but readbility is best
 
     return wantsToPlayAgain;
 }
