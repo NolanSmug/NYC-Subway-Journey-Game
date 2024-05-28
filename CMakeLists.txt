@@ -35,6 +35,7 @@ set(SOURCES
         Game/GameState/GameState.cpp
 
         Main/main.cpp
+        UI/UserPrompt/UserPrompt.h
 )
 
 add_executable(NYC_Subway_Journey_Game ${SOURCES})

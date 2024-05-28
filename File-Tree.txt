@@ -1,6 +1,7 @@
-NYC-Subway-Journey-Game/
+NYC_Subway_Journey_Game/
+│
 ├── Core/
-│   ├── Game/
+│   ├── GameLogic/
 │   │   ├── Game.h
 │   │   ├── Game.cpp
 │   │   └── ... (other game-related files)
@@ -17,6 +18,14 @@ NYC-Subway-Journey-Game/
 │   │   ├── GameStats.cpp
 │   │   └── ... (other game stats files)
 │   ├── SubwayMap/
+│   │   ├── csv/
+│   │   │   ├── A_train_stations.csv
+│   │   │   ├── B_train_stations.csv
+│   │   │   ├── C_train_stations.csv
+│   │   │   ├── D_train_stations.csv
+│   │   │   ├── E_train_stations.csv
+│   │   │   ├── F_train_stations.csv
+│   │   │   ├── ...
 │   │   ├── SubwayMap.h
 │   │   ├── SubwayMap.cpp
 │   │   └── ... (other subway map files)
@@ -33,6 +42,8 @@ NYC-Subway-Journey-Game/
 │   └── ... (other UI modules)
 ├── Game/
 │   ├── Challenge/
+│   │   ├── challenges/
+│   │   │   ├── challenge_data.csv
 │   │   ├── Challenge.h
 │   │   ├── Challenge.cpp
 │   │   └── ... (other challenge files)

@@ -242,6 +242,7 @@ bool UserPrompt::promptForTransfer(Train &train) {
         else {
             cout << "Invalid input. Please try again." << endl; // Add this line to provide better feedback for invalid input
         }
+
     }
     return false;
 }
@@ -304,9 +305,32 @@ Station UserPrompt::promptStationFromLine(LineName line, bool isStartingStation)
     return Station::getStation(chosenId);
 }
 
-string UserPrompt::getInput(Train &train, GameState &gameState) {
-    uiPrompt.displayAvailableTrainActions(train,gameState);
+InputAction UserPrompt::parseInputToInputAction(string input) {
+    if (input.empty()) {
+        return ADVANCE_STATION;
+    }
 
+    char firstChar = tolower(input[0]);
+    switch (firstChar) {
+        case 'r':
+            return RESET_GAME;
+        case 't':
+            return TRANSFER_LINE;
+        case 'c':
+            return CHANGE_DIRECTION;
+        case 'd':
+            return DISPLAY_DESTINATION;
+        case '0':
+            return DISPLAY_UPCOMING_STATIONS;
+        default:
+            if (isdigit(firstChar)) {
+                return ADVANCE_NUM_STATION;
+            }
+            return INVALID;
+    }
+}
+
+string UserPrompt::getInput() {
     string input;
     getline(cin, input);
     input.erase(remove(input.begin(), input.end(), ' '), input.end());

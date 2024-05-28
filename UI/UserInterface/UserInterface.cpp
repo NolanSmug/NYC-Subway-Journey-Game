@@ -59,13 +59,9 @@ void UserInterface::announceLastStop(Train train) {
     // switch direction
     string trackLabel = Train::getTextForDirectionEnum(train.getDirection(), train.getLine());
 
-    this_thread::sleep_for(chrono::seconds(2)); // wait so user realizes
-
     cout << "You switched to the "
          << trackLabel
          << " platform.\n";
-
-    this_thread::sleep_for(chrono::seconds(1));
 
     displayCurrentLineInfo(train);
     cout << endl;

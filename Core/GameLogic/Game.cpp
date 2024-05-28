@@ -20,7 +20,6 @@ void Game::runGame() {
     initializeTrain(train, gameState);
 
     // Game Loop
-    bool validInput;
     while (train.getCurrentStation() != gameState.destinationStation) {
         ui.displayCurrentStationInfo(train);
 
@@ -34,10 +33,7 @@ void Game::runGame() {
             ui.announceLastStop(train);
         }
 
-        validInput = false;
-        while (!validInput) {
-            validInput = handleUserInput(train, gameState);
-        }
+        handleUserInput(train, gameState);
     }
 
     // GAME FINISHED (loop exited)
@@ -60,7 +56,6 @@ void Game::initializeTrain(Train& train, GameState& gameState) {
 
     gameState.gameStats.addToLinesVisited(train.getLine());
 
-
     prompt.promptForDirection(train);
 }
 
@@ -71,30 +66,48 @@ void Game::resetGame(GameState &gameState) {
 }
 
 
-bool Game::handleUserInput(Train& train, GameState& gameState) {
-    string input = prompt.getInput(train, gameState);
+void Game::handleUserInput(Train& train, GameState& gameState) {
+    bool validInput = false;
+    ui.displayAvailableTrainActions(train, gameState);
 
-    switch (tolower(input[0])) {
-        case 'r':
-            resetGame(gameState);
-            initializeTrain(train, gameState);
-            return true;
-        case '\0':  // Empty input
-            return advanceToNextStation(train, gameState);
-        case 't':
-            return initializeTransfer(train, gameState);
-        case 'c':
-            return changeDirection(train);
-        case 'd':
-            ui.displayDestinationStationInfo(gameState.destinationStation);
-            return false;
-        case '0':
-            ui.displayUpcomingStations(train);
-            return true;
-        default:
-            return advanceMultipleStations(train, gameState, input);
+    while (!validInput) {
+        string input = prompt.getInput();
+        InputAction inputAction = prompt.parseInputToInputAction(input);
+
+        switch (inputAction) {
+            case RESET_GAME:
+                resetGame(gameState);
+                initializeTrain(train, gameState);
+                validInput = true;
+                break;
+
+            case ADVANCE_STATION:
+                validInput = advanceToNextStation(train, gameState);
+                break;
+
+            case TRANSFER_LINE:
+                validInput = initializeTransfer(train, gameState);
+                break;
+
+            case CHANGE_DIRECTION:
+                train.reverseDirection();
+                validInput = true;
+                break;
+
+            case DISPLAY_DESTINATION:
+                ui.displayDestinationStationInfo(gameState.destinationStation);
+                break;
+
+            case DISPLAY_UPCOMING_STATIONS:
+                ui.displayUpcomingStations(train);
+                validInput = true;
+                break;
+
+            default:
+                validInput = advanceMultipleStations(train, gameState, input);
+                break;
+        }
     }
-
 }
 
 
@@ -107,12 +120,6 @@ bool Game::advanceToNextStation(Train &train, GameState &gameState) {
     return false;
 }
 
-bool Game::changeDirection(Train &train) {
-    train.setDirection(train.getDirection() == DOWNTOWN ? UPTOWN : DOWNTOWN);
-    ui.displayDirectionChange(train);
-
-    return true;
-}
 
 bool Game::advanceMultipleStations(Train &train, GameState &gameState, string &input) {
     int stationsToAdvance;

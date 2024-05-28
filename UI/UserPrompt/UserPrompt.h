@@ -9,10 +9,22 @@
 #include "../Game/Challenge/Challenge.h"
 #include "../Core/Train/Train.h"
 #include "../UserInterface/UserInterface.h"
+#include "../Core/Line/Line.h"
 
 #include <iostream>
 
 class UserInterface;
+
+enum InputAction {
+    RESET_GAME,
+    ADVANCE_STATION,
+    ADVANCE_NUM_STATION,
+    TRANSFER_LINE,
+    CHANGE_DIRECTION,
+    DISPLAY_DESTINATION,
+    DISPLAY_UPCOMING_STATIONS,
+    INVALID
+};
 
 class UserPrompt {
 public:
@@ -29,8 +41,8 @@ public:
     void promptForAtRockawayBranch(Train& train, GameState& gameState);
     bool promptForTransfer(Train& train);
 
-
-    string getInput(Train &train, GameState &gameState);
+    InputAction parseInputToInputAction(string input);
+    string getInput();
 
 private:
     UserInterface uiPrompt;
