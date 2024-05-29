@@ -229,18 +229,18 @@ bool UserPrompt::promptForTransfer(Train &train) {
         getline(cin, input);
 
         if (tolower(input[0]) == 't') {
-            cout << currentStation.getTransferLinesString().substr(1) << endl; // need substr to strip leading space
+            uiPrompt.displayTransferLines(currentStation);
             alreadyListedTransfers = true;
         }
         else if (input[0] == 'e') {
-            cout << "Exited" << endl << endl;
+            uiPrompt.displayTransferExit();
             break;
         }
         else if (train.transferToLine(Line::stringToLineEnum(input), currentStation)) {
             return true;
         }
         else {
-            cout << "Invalid input. Please try again." << endl; // Add this line to provide better feedback for invalid input
+            cout << "Invalid input.";
         }
 
     }
@@ -334,7 +334,7 @@ string UserPrompt::getInput() {
     string input;
     getline(cin, input);
     input.erase(remove(input.begin(), input.end(), ' '), input.end());
-    
+
     return input;
 }
 

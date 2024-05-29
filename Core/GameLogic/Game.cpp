@@ -29,8 +29,8 @@ void Game::runGame() {
             prompt.promptForAtRockawayBranch(train, gameState);
         }
         else if (train.isAtLastStop()) {
-            train.reverseDirection();
             ui.announceLastStop(train);
+            train.reverseDirection();
         }
 
         handleUserInput(train, gameState);
@@ -43,9 +43,8 @@ void Game::runGame() {
 
 // METHODS
 void Game::initializeTrain(Train& train, GameState& gameState) {
-    train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, NONE, 10);
+    train = Train(gameState.startingLine, NULL_DIRECTION, gameState.currentStations, train.setLineType(), 10);
     train.setCurrentStation(gameState.currentStation);
-    train.setLineType(); // ex: Local, Express, None
 
     ui.displayCurrentStationInfo(train);
     ui.displayDestinationStationInfo(gameState.destinationStation);
@@ -54,9 +53,9 @@ void Game::initializeTrain(Train& train, GameState& gameState) {
         prompt.promptForStartingLine(train); // if startingStation has transfer line options
     }
 
-    gameState.gameStats.addToLinesVisited(train.getLine());
-
     prompt.promptForDirection(train);
+
+    gameState.gameStats.addToLinesVisited(train.getLine());
 }
 
 

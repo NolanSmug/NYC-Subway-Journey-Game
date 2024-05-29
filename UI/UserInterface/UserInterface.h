@@ -21,10 +21,12 @@ public:
     void displayCurrentLineInfo(Train train);
     void displayAllChallenges(Challenge challenge);
     void displayGameWin(Train train, GameStats stats);
+    void displayTransferLines(Station station);
     void displayTransferSuccess(Train train);
     void displayAvailableTrainActions(Train train, GameState gameState);
     void displayDirectionChange(Train train);
     void displayGameReset();
+    void displayTransferExit();
 
     void announceLastStop(Train train);
 };

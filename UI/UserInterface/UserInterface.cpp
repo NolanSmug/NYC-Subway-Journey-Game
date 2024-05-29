@@ -136,6 +136,14 @@ void UserInterface::displayStationsFor(vector<Station> stations) {
     }
 }
 
+void UserInterface::displayTransferLines(Station station) {
+    cout << station.getTransferLinesString().substr(1) << endl; // need substr to strip leading space
+}
+
+void UserInterface::displayTransferExit() {
+    cout << "Exited" << endl << endl;
+}
+
 void UserInterface::displayGameWin(Train train, GameStats stats) {
     cout << "\nYour current Station:\n" << train.getCurrentStation();
     cout << "\nYOU WIN\n\n";
